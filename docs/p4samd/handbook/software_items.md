@@ -4,7 +4,9 @@ title: Software Items
 sidebar_label: Overview
 ---
 
-The section allows users to view, create, and edit software items. It provides an intuitive interface for managing software items, including detailed views, adding new entries, and updating existing records. Additionally, using the console, software items are also detected automatically, ensuring efficient and seamless handling of software-related data.
+The section allows users to view, create, and edit software items in the Software System Version. It provides an intuitive interface for managing software items, including detailed views, adding new entries, and updating existing records. Additionally, using the console, software items are also detected automatically, ensuring efficient and seamless handling of software-related data.
+
+The Software Items are described by **General** and **Specific** properties: the former are reporting the item information, shared with all the possible instances of the item (e.g. name of Manufacturer for a SOUP-type SWI); the latter refers to properties related to the instances of the SWI, considering the location in the software system, parent and specific usage. 
 
 ## Create Software Item Design 
 
@@ -22,7 +24,7 @@ The section allows users to view, create, and edit software items. It provides a
    Once you've completed the form, click the **"Add software item design"** button at the end of the modal to create and save the new Software Item in the system.
 
 :::tip
-You can create a new Software Item starting from an older one: simply select it from the dropdown, then modify the `name` and other fields.
+You can create a new Software Item starting from an existing one. Simply select it from the dropdown, modify the `name` and other fields as needed, it will be added as a *new* instance within the current system version.
 ::: 
 
 ## Software Items Visualization
@@ -97,7 +99,7 @@ From here, you can approve or disapprove a Software Item. <br/>Additionally, all
 This is divided into multiple tabs:
 - **Detail**: Displays all the fields entered ([Fields description](#fields-description)) for the Software Item.
 - **Traceability**: Shows the linked issues (Requirements, Risks, Integration Tests, Changes), which are clickable.
-- **Suggestions**: Displays a list of suggestions, if any, to ensure the Software Item meets the ISO standards.
+- **Suggestions**: Displays a list of suggestions, if any, to ensure the Software Item meets the reference standards.
 
 | # | Reference Requirement | Title | Description |
 |-----|-------|-----------|----------|
@@ -120,6 +122,85 @@ This is divided into multiple tabs:
 :::warning
 If a Software Item is not designed but detected by the system, a warning will appear, and you can proceed with its creation.
 :::
+
+## Edit Software Item
+
+When the **Edit** button is clicked, an edit modal will appear:
+
+![Edit Modal](img/swi_edit_modal.png)
+
+### Behavior of Edits by Tab
+
+#### Specific Properties Tab
+
+Changes made **exclusively** in the **Specific Properties** tab will affect **only the current instance** of the software item.
+
+#### General Properties Tab and Switches
+
+Changes made in the **General Properties** tab and/or to the switches:
+
+- **SOUP**
+- **Based on AI technology**
+
+will be **propagated to all software items** that share this instance.  
+This will cause **disapproval** of their associated tree structures (parents).
+
+### Special Case: Version Change
+
+When changing the **version** of a software item, there are two possible outcomes:
+
+####  1. No Existing Software Item with matching version
+
+If **no Software Item exists** with the same name and the new version:
+
+- The current instance under modification will be **disassociated** from the existing Software Item.
+- A **new SWI** will be created.
+- Other existing instances of the starting SWI remain **unaffected**.
+
+#### 2. A Software Item Already Exists with the New Version
+
+If a Software Item **already exists** with the same name and the new version, the user will be prompted to choose how to proceed:
+
+![Version Conflict Modal](img/swi_edit_modal_compare.png)
+
+The modal displays two options:
+
+- **Existing software item**  
+  Refers to the already existing Software Item and instances in the system.
+  Selecting this option, no changes are applied to other instances and the current instance is linked to the existing SWI.
+
+- **New software item**  
+  Uses the current information in the modal for updating the existing SWI.
+  Selecting this option, the current info in **General Properties** are propagated to the existing instances of the SWI.
+  _NB. Editing the general properties of SWI will revert the approval of the related instances and their tree structure (parents chain)_
+  
+
+:::warning
+ Be mindful of which tab you're editing. Only changes in Specific Properties are instance-specific. All others may have broader implications.
+:::
+
+
+## Software Items settings 
+
+P4SaMD detects the implementation of the Software Items, considering all the Projects belonging to your Company by default. You can customize your Software System, excluding detected Projects so that they and all of their SWI children will not appear in the SWI table and will not be taken into account in the Software System documentation. It applies, for example, on test/POC projects which are not part of your software product.
+   
+
+![alt text](img/system_versions_setting.png)
+The settings modal is available in the SWI tab, for each version when they are not released
+
+1. **Click the "Settings" Button**  
+   This will open the modal to customize the Software System at the Project level.
+
+2. **Customize the Software System** 
+   In the modal, select/deselect the Projects to define your Software System.
+
+3. **Save the customized Software System**  
+   Saving customization, the changes will be immediately apply on your Software System.
+
+:::info
+   - The exclusion of a Project is only possible when there is no associated design.
+   - The customization is only valid for the selected Software System Version
+::: 
 
 ## Fields description
 
@@ -185,11 +266,6 @@ If you select **Is AI**, the following additional fields are available:
 - **AI Risk Classification description**: additional information about the risk level for the AI system.
 
 :::warning
-Each Software Item is a design of an **instance**; every edit, approval, or disapproval **will be applied to all instances**.
-
-For this reason, you **cannot** create two Software Items with the same `name` and `version`, in that case an error will be displayed. 
-:::
-
-:::warning
 To **Approve** a Software Item all his children should be approved.
 :::
+
