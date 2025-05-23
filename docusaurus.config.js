@@ -52,7 +52,13 @@ async function createConfig() {
             docId: "p4samd/overview",
             label: "P4SaMD",
             activeBaseRegex: "(docs|docs/\\d.x)/p4samd"
-          }
+          },
+            {
+              type: 'doc',
+              docId: "hcp/overview",
+              label: "Health Composable Platform",
+              activeBaseRegex: "(docs|docs/\\d.x)/hcp"
+            }
           ]
         },
         {
@@ -200,8 +206,9 @@ async function createConfig() {
             }],
             editUrl: createEditUrl,
             sidebarPath: require.resolve("./sidebars.js"),
-            lastVersion: "2.1.x",
-            includeCurrentVersion: false,
+            lastVersion: "current",
+            includeCurrentVersion: true,
+            onlyIncludeVersions: ['current'],
             versions: {
               "2.1.x": {
                 label: "2.1.x (Current)",
