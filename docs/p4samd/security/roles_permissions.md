@@ -141,7 +141,7 @@ Without any of these permissions, the user cannot link a change request, require
 A user with the `p4samd.software.item.update` permission can edit a software edit design from the [Software Items][software-items] table or drawer, but with certain limitations:
 
 - If the software item design is already approved, the `p4samd.software.item.approval.revoke` or `p4samd.software.item.approve` permission is also required to revoke its approval and the approval of all its ancestors.
-- If general properties of the software item are changed, triggering the automatic revoke of approval of related software item, the `p4samd.software.item.approval.revoke` or `p4samd.software.item.approve` permission is also required.
+- If general properties of the software item are changed, which could lead to the automatic revoke of approval of related software item, the `p4samd.software.item.approval.revoke` or `p4samd.software.item.approve` permission is also required.
 
 With this permission, the user can link a change request, requirement, risk or tests from the [update modal][software-items-update] or from the specific section of the related P4SaMD entity.
 
@@ -167,6 +167,12 @@ Without the required permissions, the user can see all the details about existin
 
 ### Create Console project
 
+::::info
+
+This capability is enforced by the Console [Rönd][rond] instance.
+
+:::
+
 A user must have the Console `console.company.project.create` permission to create a new Company project on the Console.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the Console wizard to create a new project.
@@ -175,6 +181,12 @@ This permission is inherited from the [Console roles and permissions][console-ro
 
 ### Create Console microservice
 
+::::info
+
+This capability is enforced by the Console [Rönd][rond] instance.
+
+:::
+
 A user must have the Console `console.company.project.service.repository.create` permission to add a new microservice with a dedicated repository.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the *Design > Microservices* section of the Console project.
@@ -182,6 +194,12 @@ Without this permission, the user is not displayed the button on the [Software I
 This permission is inherited from the [Console roles and permissions][console-roles-permissions].
 
 ### Update Console project configuration
+
+::::info
+
+This capability is enforced by the Console [Rönd][rond] instance.
+
+:::
 
 A user must have the Console `console.company.project.configuration.update` permission to make any changes to a Console project configuration from the *Design* section.
 
