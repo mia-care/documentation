@@ -6,10 +6,10 @@ sidebar_label: Roles and permissions
 
 # Roles and permissions
 
-Configuring P4SaMD as [Console extension with Single Sign-On][console-extension-sso] allow us to integrate with Mia-Platform Console authentication and authorization flow and leverage [Console user roles and permissions][console-roles-permissions] to control access to P4SaMD resources and operations the user is allowed to perform, like creating projects or designing microservices, inside the Company linked to the P4SaMD installation.
+Configuring P4SaMD as [Console extension with Single Sign-On][console-extension-sso] allow us to integrate with Mia-Platform Console authentication and authorization flow and leverage [Console user roles and permissions][console-roles-permissions] to control access to P4SaMD resources and operations users can perform.
 
-In addition to inheriting Console roles and permissions, we define a set of custom P4SaMD permissions to give more fine-grained control over what users can do inside P4SaMD.
-Currently, you can assign these permissions to users based on their Console roles.
+In addition to inheriting Console roles and permissions, P4SaMD users have custom permissions giving more fine-grained control over what they can do inside P4SaMD. Currently, these permissions are assigned to users based on their Console roles.
+
 By default, unless stated otherwise, all authenticated users have full read access to information available on P4SaMD.
 
 ## Capabilities and permissions
