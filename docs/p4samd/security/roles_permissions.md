@@ -62,18 +62,18 @@ This table provides a list of the P4SaMD permissions granted to each Console rol
 
 ## Security policies
 
-The Role-Based Access Control (RBAC) security policies illustrated so far are enforced in two different but complementary ways:
+The Role-Based Access Control (RBAC) security policies are enforced in two different but complementary ways:
 
-- Visual elements, like buttons and menus, allowing the user to perform a certain action are hidden if the user is missing the required permission(s).
-- P4SaMD APIs are protected with [Rönd][rond], a distributed security policy evaluation tool integrated natively with the Mia-Platform Console.
+- Visual elements, like buttons and menus, allowing the user to perform a certain action are hidden if the user is missing the required permissions.
+- API endpoints are protected with [Rönd][rond], a distributed security policy evaluation tool integrated natively with the Mia-Platform Console.
 
-The association between roles and permissions (i.e. which P4SaMD permissions are granted to each Console role) is managed using [Rönd roles][rond].
+The association between roles and permissions is managed using [Rönd roles][rond].
 
 The following sections provide details about the security policies enforced for each capability mentioned previously.
 
 ### Download documentation
 
-A user must have the `p4samd.documentation.download` permission to be able to download any of the [automatically generated reports][reports], both on the [Overview page][overview] and the [Software items][software-items] section.
+A user must have the `p4samd.documentation.download` permission to download any of the [automatically generated reports][reports], both on the [Overview page][overview] and the [Software items][software-items] section.
 
 Without the required permissions, the user cannot:
 
@@ -83,33 +83,33 @@ Without the required permissions, the user cannot:
 
 ### Create reference
 
-A user must have the `p4samd.reference.create` permission to be able to [add a new reference][references-create] in the [References section][references].
+A user must have the `p4samd.reference.create` permission to [add a new reference][references-create] in the [References section][references].
 
 ### Delete reference
 
-A user must have the `p4samd.reference.delete` permission to be able to [delete an existing reference][references-delete] in the [References section][references].
+A user must have the `p4samd.reference.delete` permission to [delete an existing reference][references-delete] in the [References section][references].
 
 ### Update reference
 
-A user must have the `p4samd.reference.update` permission to be able to [update an existing reference][references-update] in the [References section][references].
+A user must have the `p4samd.reference.update` permission to [update an existing reference][references-update] in the [References section][references].
 
 ### Evaluate requirement with AI
 
-A user must have the `p4samd.requirement.ai.evaluate` permission to be able to request a new [AI-based evaluation][requirements-ai] of a requirement, which would overwrite any existing evaluation.
+A user must have the `p4samd.requirement.ai.evaluate` permission to request a new [AI-based evaluation][requirements-ai] of a requirement, which would overwrite any existing evaluation.
 
 Without the required permissions, the user can see all the details about existing requirement evaluations, but cannot trigger a new evaluation from both the [Requirements][requirements] table and drawer.
 
 ### Approve SWI design
 
-A user must have the `p4samd.software.item.approve` permission to be able to approve and revoke approval of a [software item][software-items].
+A user must have the `p4samd.software.item.approve` permission to approve and revoke approval of a [software item][software-items].
 
-Without the required permissions, the user can see any approval metadata for an already approved software item and, if granted the `p4samd.software.item.approval.revoke` permission, can revoke the approval, from both the [Software Items][software-items] table and drawer.
+Without the required permissions, the user can see any approval metadata for an already approved software item and, if granted the `p4samd.software.item.approval.revoke` permission, can revoke the approval.
 
 ### Revoke approval of SWI design
 
-A user with the `p4samd.software.item.approval.revoke` permission can only revoke the approval of an already-approved software item, but cannot approve any software item (see  section for such capability).
+A user with the `p4samd.software.item.approval.revoke` permission can revoke the approval of an already-approved software item, but cannot approve a software item.
 
-This is therefore a more limited version of the [*Approve SWI design*](#approve-swi-design) capability.
+The approval requires the `p4samd.software.item.approve` permission (see previous section).
 
 :::tip
 Under certain circumstances, updating a software item causes the automatic revoke of approval for one or more software items.
@@ -140,8 +140,8 @@ Without any of these permissions, the user cannot link a change request, require
 
 A user with the `p4samd.software.item.update` permission can edit a software edit design from the [Software Items][software-items] table or drawer, but with certain limitations:
 
-- If the software item design is already approved, the `p4samd.software.item.approval.revoke` permission is also required to revoke its approval and the approval of all its ancestors.
-- If general properties of the software item are changed, triggering the automatic revoke of approval of related software item, the `p4samd.software.item.approval.revoke` permission is also required.
+- If the software item design is already approved, the `p4samd.software.item.approval.revoke` or `p4samd.software.item.approve` permission is also required to revoke its approval and the approval of all its ancestors.
+- If general properties of the software item are changed, triggering the automatic revoke of approval of related software item, the `p4samd.software.item.approval.revoke` or `p4samd.software.item.approve` permission is also required.
 
 With this permission, the user can link a change request, requirement, risk or tests from the [update modal][software-items-update] or from the specific section of the related P4SaMD entity.
 
@@ -157,17 +157,17 @@ Without these permissions, the user can only view the vulnerabilities.
 
 ### Change software system settings
 
-A user must have the `p4samd.software.system.settings.manage` permission to be able to change the [system version settings][system-version-settings].
+A user must have the `p4samd.software.system.settings.manage` permission to change the [system version settings][system-version-settings].
 
 ### Evaluate test with AI
 
-A user must have the `p4samd.test.ai.evaluate` permission to be able to request a new [AI-based evaluation][tests-ai] of a test, which would overwrite any existing evaluation.
+A user must have the `p4samd.test.ai.evaluate` permission to request a new [AI-based evaluation][tests-ai] of a test, which would overwrite any existing evaluation.
 
 Without the required permissions, the user can see all the details about existing test evaluations, but cannot trigger a new evaluation from both the [Tests][tests] table and drawer.
 
 ### Create Console project
 
-A user must have the Console `console.company.project.create` permission to be able to create a new Company project on the Console.
+A user must have the Console `console.company.project.create` permission to create a new Company project on the Console.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the Console wizard to create a new project.
 
@@ -175,7 +175,7 @@ This permission is inherited from the [Console roles and permissions][console-ro
 
 ### Create Console microservice
 
-A user must have the Console `console.company.project.service.repository.create` permission to be able to add a new microservice with a dedicated repository.
+A user must have the Console `console.company.project.service.repository.create` permission to add a new microservice with a dedicated repository.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the *Design > Microservices* section of the Console project.
 
@@ -183,7 +183,7 @@ This permission is inherited from the [Console roles and permissions][console-ro
 
 ### Update Console project configuration
 
-A user must have the Console `console.company.project.configuration.update` permission to be able to make any changes to a Console project configuration from the *Design* section.
+A user must have the Console `console.company.project.configuration.update` permission to make any changes to a Console project configuration from the *Design* section.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the *Design > Microservices* section of the Console project.
 
@@ -196,7 +196,7 @@ This permission is inherited from the [Console roles and permissions][console-ro
 [rond-roles]: https://rond-authz.io/docs/policy-integration#roles
 
 [change-requests-link]: ../handbook/changes.md#actions
-[overview]: ../overview.md
+[overview]: ../handbook/system_overview.md
 [overview-reports]: ../handbook/system_overview.md#reports
 [references]: ../handbook/references.md
 [references-create]: ../handbook/references.md#1-create-a-reference
