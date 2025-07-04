@@ -38,7 +38,7 @@ All permissions starting with `console` are inherited from the Console, while th
 | [Change software system settings](#change-software-system-settings)           | `p4samd.software.system.settings.manage`            |
 | [Evaluate test with AI](#evaluate-test-with-ai)                               | `p4samd.test.ai.evaluate`                           |
 
-This table provides the default list of the P4SaMD permissions granted to each Console role.
+This table provides the default list of the P4SaMD permissions granted to each Console role. Please contact directly Mia-Care for more info or customization.
 
 | Permission                                          | Guest | Reporter | Developer | Maintainer | Project Administrator | Company Owner |
 | --------------------------------------------------- | ----- | -------- | --------- | ---------- | --------------------- | ------------- |
