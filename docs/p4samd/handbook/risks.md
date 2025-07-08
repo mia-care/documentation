@@ -18,9 +18,9 @@ The risks displayed in the table originate from the integrated ALM, where they a
 - **Suggestions**: The number of suggestions related to the risk. Visit [Insight & Suggestions](./insight_and_suggestions) 
 - **Probability**: A numerical value indicating the likelihood of the risk occurring.  
 - **Severity**: A numerical value representing the potential impact of the risk.  
-- **Risk Level**: A classification based on probability and severity. [Levels](#levels)
-- **Residual Risk**: The remaining level of risk after mitigation measures are applied. [Levels](#levels)
-- **RCM**: A number of risk control measures that mitigate the risk.
+- **Risk Level**: The resulting value of risk obtained by the mutiplication of P and S. [Levels](#levels)
+- **Residual Risk**: The remaining level of risk after mitigation measures are applied, given by the multiplication of Mitigated P and Mitigated S. [Levels](#levels)
+- **RCM**: The number of linked risk control measures that mitigate the risk.
 - **Software Items**: The number of software items affected by the risk.  
 - **Changes**: The number of modifications applied to the risk.  
 
@@ -45,13 +45,13 @@ You can browse back to previous entities by accessing the history menu at the to
 Beyond the information displayed in the table, this tab shows:
 
 - **Description**: A paragraph describing the risk.
-- **Hazard**: The nature of the risk and its potential consequences.  
-- **Sequence of events**: The conditions leading to the risk.  
+- **Hazard**: The description of the existing risk.  
+- **Sequence of events**: The conditions leading from the risk to the hazardous situation.  
 - **Hazardous situation**: The specific scenario in which the risk could occur.  
-- **Harm**: The expected negative impact.  
-- **Probability notes**: Notes about probability.
-- **Mitigated probability**: A number indicating how much the **RCM** mitigates probability.
-- **Mitigation severity**: A number indicating how much the **RCM** mitigates severity.
+- **Harm**: The expected damage to the patient.  
+- **Probability notes**: Notes and rationale about the probability value.
+- **Mitigated probability**: The probability value obtained after the application of **RCM**.
+- **Mitigation severity**: The severity value obtained after the application of **RCM**.
 
 ### Traceability
 
@@ -73,3 +73,5 @@ This tab shows related suggestions of the risk.
 |   ![alt text](img/risks_high.png)    | 11 ≤ **value** ≤ 15 |
 |  ![alt text](img/risks_medium.png)   | 6 ≤ **value** ≤ 10  |
 |    ![alt text](img/risks_low.png)    |         ≤ 5         |
+
+NB. this value are the default configuration of scale: for any custom settings, please contact Mia Care. 
