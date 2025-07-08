@@ -50,8 +50,8 @@ Beyond the information displayed in the table, this tab shows:
 - **Hazardous situation**: The specific scenario in which the risk could occur.  
 - **Harm**: The expected negative impact.  
 - **Probability notes**: Notes about probability.
-- **Mitigated probability**: A number indicating how much the **RCM** mitigates probability.
-- **Mitigation severity**: A number indicating how much the **RCM** mitigates severity.
+- **Mitigated probability**: A A [numerical value](#numerical-values) indicating how much the **RCM** mitigates probability.
+- **Mitigation severity**: A A [numerical value](#numerical-values) indicating how much the **RCM** mitigates severity.
 
 ### Traceability
 
@@ -73,3 +73,13 @@ This tab shows related suggestions of the risk.
 |   ![alt text](img/risks_high.png)    | 11 ≤ **value** ≤ 15 |
 |  ![alt text](img/risks_medium.png)   | 6 ≤ **value** ≤ 10  |
 |    ![alt text](img/risks_low.png)    |         ≤ 5         |
+
+## Numerical Values
+
+|        Visual Representation                  |       Range     |
+| :-------------------------------------------: | :-------------: |
+| ![alt text](img/risk_severity_very_high.png) |       Very High         |
+|   ![alt text](img/risk_severity_high.png)    |       High         |
+|  ![alt text](img/risk_severity_medium.png)   |       Medium         |
+|  ![alt text](img/risk_severity_normal.png)   |       Normal        |
+|    ![alt text](img/risk_severity_low.png)    |       Low         |
