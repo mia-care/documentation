@@ -19,7 +19,7 @@ The risks displayed in the table originate from the integrated ALM, where they a
 - **Probability**: A numerical value indicating the likelihood of the risk occurring.  
 - **Severity**: A numerical value representing the potential impact of the risk.  
 - **Risk Level**: The resulting value of risk obtained by the mutiplication of P and S. [Levels](#levels)
-- **Residual Risk**: The remaining level of risk after mitigation measures are applied, given by the multiplication of Mitigated P and Mitigated S. [Levels](#levels)
+- **Residual Risk**: The remaining level of risk after the mitigation of RCMs, given by the multiplication of Mitigated P and Mitigated S. [Levels](#levels)
 - **RCM**: The number of linked risk control measures that mitigate the risk.
 - **Software Items**: The number of software items affected by the risk.  
 - **Changes**: The number of modifications applied to the risk.  
@@ -51,7 +51,7 @@ Beyond the information displayed in the table, this tab shows:
 - **Harm**: The expected damage to the patient.  
 - **Probability notes**: Notes and rationale about the probability value.
 - **Mitigated probability**: The probability value obtained after the application of **RCM**.
-- **Mitigation severity**: The severity value obtained after the application of **RCM**.
+- **Mitigated severity**: The severity value obtained after the application of **RCM**.
 
 ### Traceability
 
