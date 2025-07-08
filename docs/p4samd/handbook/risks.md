@@ -50,8 +50,8 @@ Beyond the information displayed in the table, this tab shows:
 - **Hazardous situation**: The specific scenario in which the risk could occur.  
 - **Harm**: The expected damage to the patient.  
 - **Probability notes**: Notes and rationale about the probability value.
-- **Mitigated probability**: The probability value obtained after the application of **RCM**.
-- **Mitigated severity**: The severity value obtained after the application of **RCM**.
+- **Mitigated probability**: The probability [value](#values) obtained after the application of **RCM**.
+- **Mitigated severity**: The severity [value](#values) obtained after the application of **RCM**.
 
 ### Traceability
 
@@ -74,4 +74,14 @@ This tab shows related suggestions of the risk.
 |  ![alt text](img/risks_medium.png)   | 6 ≤ **value** ≤ 10  |
 |    ![alt text](img/risks_low.png)    |         ≤ 5         |
 
-NB. this value are the default configuration of scale: for any custom settings, please contact Mia Care. 
+## Values
+
+|        Visual Representation                  |       Range     |
+| :-------------------------------------------: | :-------------: |
+| ![alt text](img/risk_severity_very_high.png) |       Very High         |
+|   ![alt text](img/risk_severity_high.png)    |       High         |
+|  ![alt text](img/risk_severity_medium.png)   |       Medium         |
+|  ![alt text](img/risk_severity_normal.png)   |       Normal        |
+|    ![alt text](img/risk_severity_low.png)    |       Low         |
+
+NB. These probability and severity values are the default configuration of scale: for any custom settings, please contact Mia Care. 
