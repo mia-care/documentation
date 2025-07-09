@@ -120,5 +120,48 @@
       "label": "Frequently Asked Questions (FAQs)",
       "type": "doc"
     }
+  ],
+  "Health Composable Platform": [
+    {
+      "id": "hcp/overview",
+      "label": "What is HCP?",
+      "type": "doc"
+    },
+    {
+      "label": "Modules",
+      "type": "category",
+      "items": [
+        {
+          "id": "hcp/modules/ehr",
+          "label": "Electronic Health Record",
+          "type": "doc"
+        },
+        {
+          "id": "hcp/modules/therapy-and-monitoring",
+          "label": "Therapy and Monitoring",
+          "type": "doc"
+        },
+        {
+          "id": "hcp/modules/user-auth",
+          "label": "User Auth Module",
+          "type": "doc"
+        },
+        {
+          "id": "hcp/modules/booking",
+          "label": "Booking Module",
+          "type": "doc"
+        },
+        {
+          "id": "hcp/modules/notification",
+          "label": "Notification Module",
+          "type": "doc"
+        }
+      ]
+    },
+    {
+      "id": "hcp/architectures",
+      "label": "Architecture Strategies",
+      "type": "doc"
+    }
   ]
 }
