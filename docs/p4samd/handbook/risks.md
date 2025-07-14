@@ -18,6 +18,7 @@ The risks displayed in the table originate from the integrated ALM, where they a
 - **Suggestions**: The number of suggestions related to the risk. Visit [Insight & Suggestions](./insight_and_suggestions) 
 - **Probability**: A numerical value indicating the likelihood of the risk occurring.  
 - **Severity**: A numerical value representing the potential impact of the risk.  
+- **Status**: the status of the risk (to do, accepted, etc.)
 - **Risk Level**: The resulting value of risk obtained by the mutiplication of P and S. [Levels](#levels)
 - **Residual Risk**: The remaining level of risk after the mitigation of RCMs, given by the multiplication of Mitigated P and Mitigated S. [Levels](#levels)
 - **RCM**: The number of linked risk control measures that mitigate the risk.
