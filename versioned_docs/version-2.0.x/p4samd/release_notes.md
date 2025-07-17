@@ -4,4 +4,6 @@ title: Release Notes
 sidebar_label: Release Notes
 ---
 
-_No Release Notes available yet. Here the Release Notes of the P4SaMD following versions will be shown._
+| Release Version | Release notes                                   |
+| --------------- | ----------------------------------------------- |
+| v2.0            | [Read the release notes](release-notes/v2.0.md) |
