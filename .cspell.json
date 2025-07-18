@@ -2,14 +2,15 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "Fluentd",
     "GMLP",
     "IMDRF",
+    "mitigations",
     "rgba",
     "SDLC",
     "syft",
     "Traefik",
-    "Velero",
-    "Fluentd"
+    "Velero"
   ],
   "ignoreWords": [],
   "dictionaries": [
