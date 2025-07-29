@@ -37,6 +37,8 @@ All permissions starting with `console` are inherited from the Console, while th
 | [Accept SWI vulnerability](#accept-swi-vulnerability)                         | `p4samd.software.item.vulnerability.accept`         |
 | [Change software system settings](#change-software-system-settings)           | `p4samd.software.system.settings.manage`            |
 | [Evaluate test with AI](#evaluate-test-with-ai)                               | `p4samd.test.ai.evaluate`                           |
+| [Run test suite](#run-test-suite)                                             | `p4samd.test.suite.run`                             |
+| [Delete test suite](#delete-test-suite)                                       | `p4samd.test.suite.delete`                          |
 
 This table provides the default list of the P4SaMD permissions granted to each Console role. Please contact directly Mia-Care for more info or customization.
 
@@ -59,6 +61,8 @@ This table provides the default list of the P4SaMD permissions granted to each C
 | `p4samd.software.item.vulnerability.accept`         | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
 | `p4samd.software.system.settings.manage`            | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
 | `p4samd.test.ai.evaluate`                           | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.test.suite.run`                             | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.test.suite.delete`                          | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
 
 ## Security policies
 
@@ -155,6 +159,18 @@ A user must have the `p4samd.software.system.settings.manage` permission to chan
 A user must have the `p4samd.test.ai.evaluate` permission to request a new [AI-based evaluation][tests-ai] of a test, which would overwrite any existing evaluation.
 
 Without the required permissions, the user can see all the details about existing test evaluations, but cannot trigger a new evaluation from both the [Tests][tests] table and drawer.
+
+
+### Run test suite
+
+A user must have the `p4samd.test.suite.run` permission to execute a test suite.
+
+Without the required permissions, the user can see all the details about existing evaluations, but cannot trigger a new execution.
+
+
+### Delete test suite
+
+A user must have the `p4samd.test.suite.delete` permission to delete a test suite.
 
 ### Create Console project
 
