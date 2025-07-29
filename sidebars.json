@@ -23,6 +23,17 @@
           "id": "p4samd/monitoring",
           "label": "Monitoring",
           "type": "doc"
+        },
+        {
+          "label": "Security",
+          "type": "category",
+          "items": [
+            {
+              "id": "p4samd/security/roles_permissions",
+              "label": "Roles and permissions",
+              "type": "doc"
+            }
+          ]
         }
       ]
     },
