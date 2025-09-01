@@ -6,7 +6,7 @@ sidebar_label: Software Verification
 
 # Software Verification
 
-Ensuring the reliability and safety of Software as a Medical Device (SaMD) requires a balanced approach between automated and manual testing. Automated testing is crucial for early and efficient assessment of software quality, allowing fast execution of unit, integration, and regression tests and ensuring regulatory compliance, such as adherence to IEC 62304 and FDA guidelines, thanks to consistent and continuous validation during the entire software lifecycle.
+Ensuring the reliability and safety of Software as a Medical Device (SaMD) requires a balanced approach between automated and manual testing. Automated testing is crucial for early and efficient assessment of software quality, allowing fast execution of unit, integration, and system tests and ensuring regulatory compliance, such as adherence to IEC 62304, thanks to consistent and continuous validation during the entire software lifecycle.
 
 Manual testing remains relevant, especially for usability and exploratory testing, where human judgment is necessary to evaluate how clinicians and patients interact with the software, and for edge-case validation, ensuring the system correctly handles unexpected inputs or real-world complexities that automated tests might overlook. By combining automation for efficiency and coverage with manual testing for critical judgment and user experience, SaMD developers can create software that is not only compliant and robust but also practical and safe for medical use.
 
@@ -14,7 +14,7 @@ Manual testing remains relevant, especially for usability and exploratory testin
 
 P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system, organized in three main tabs:
 
-- **All tests**: Displays the list of individual tests.
+- **All tests**: Displays the list of individual tests, applicable for the current Software Version.
 - **Test suites**: Shows the available test suites and allows navigation into suite details.
 - **Executions**: Lists all test executions, with access to execution details.
 
@@ -33,7 +33,7 @@ For each test the following information are provided:
 - **Test Suite**: if the test is part of an [automated test suite](#test-suites);
 - **Latest Execution**: details about the last text execution, including when it was performed and the outcome (passed or failed);
 - **Software Items**: the number of software items associated to the test;
-- **Requirements**: the number of requirements covered by the test.
+- **Requirements**: the number of requirements verified by the test.
 
 Under the **Quality** column, you can see the following icons indicating the evaluation status of each test. For further details, please refer to the [AI evaluation](#ai-evaluation) section.
 
@@ -130,7 +130,7 @@ This tab displays all available test suites. Each suite groups multiple tests an
 For each test suite, the following information is shown:
 
 - **Title**: Name of the test suite.
-- **Execution Mode**: Automatic or manual.
+- **Execution Mode**: Automatic or manual, strictly tied to the nature of the associated tests.
 - **Tests**: Number of tests included in the suite.
 - **Last Execution**: Status and date of the last execution.
 
@@ -140,12 +140,12 @@ For each test suite, the following information is shown:
 - **Run all**: Execute all tests suites.
 - **View Details**: Click on a row to access the details of the selected test suite.
 - **Run Test Suite**: Execute a specific test suite.
-- **Delete Test Suite**: Open a modal that allow user to delete a specific test suites.
-- **Edit Test Suite**: Open a modal that let the user modify a specific test suite.
+- **Delete Test Suite**: Delete a specific test suite, without deleting the associated tests. 
+- **Edit Test Suite**: Allows users modify a specific test suite, such as the title.
 
 ### Selection
 
-All test suite that can be executed (have an api trigger and some tests associated) can be selected. Selection allow to execute multiple test suite in a single execution.
+All test suites that can be executed (so that they have an api trigger and one or more associated tests) can be selected. Selection allow to execute multiple test suite in a single action.
 
 ### Detail
 
@@ -156,11 +156,11 @@ Clicking on a row open a new page where there's the details of the test suite. H
 
 ## Executions
 
-This tab lists all test executions, from the most recent to the least.
+This tab lists all test executions, sorted by the most recent ones.
 
-For each execution, the following information is available:
+For each execution, the following pieces of information are available:
 
-- **Date and time**: When the test was executed.
+- **Date and time**: When the execution was performed.
 - **Note**: Show an icon if there are some notes.
 - **Test suites**: Number of test suites involved in the execution.
 - **Outcome**: Result of the execution (passed, failed, etc.).
