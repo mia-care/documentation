@@ -12,13 +12,16 @@ Manual testing remains relevant, especially for usability and exploratory testin
 
 ## Overview
 
-P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system. The main information are displayed in the table and additional details can be found by clicking on a table row, accessing the drawer.
+P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system, organized in three main tabs:
 
-The tests displayed in the table originate from the integrated ALM, where they are created, updated, and edited. The table dynamically reflects any changes made inside the ALM.  
+- **All tests**: Displays the list of individual tests.
+- **Test suites**: Shows the available test suites and allows navigation into suite details.
+- **Executions**: Lists all test executions, with access to execution details.
 
-Furthermore, the user is assisted evaluating the quality and compliance of the test thanks to the AI-powered evaluation features: the users can leverage AI to evaluate tests and collect suggestions for improvement according to *IEC 62304*.
+The tests originate from the integrated ALM, where they are created, updated, and edited. The table dynamically reflects any changes made inside the ALM.  
+Users are assisted in evaluating the quality and compliance of the tests thanks to AI-powered evaluation features.
 
-## Table
+## All tests
 
 For each test the following information are provided:
 
@@ -48,7 +51,7 @@ Under the last column on the table you can perform the following actions:
 
 - **Link Software Items**: by clicking on the link icon, you can link a software item to the test or unlink an already associated one. The linked software items are displayed in the drawer under the **Traceability** tab.
 
-## Drawer
+### Drawer
 
 Clicking on a table row opens a **drawer** displaying detailed information about the selected test.
 
@@ -58,24 +61,24 @@ You can navigate between the linked entities - requirements and software items -
 
 You can browse back to previous entities by accessing the history menu at the top of the detailed view and selecting the entity of interest.
 
-### Details
+#### Details
 
 In addition to the information displayed in the table, this tab shows:
 
 - **Description**: A paragraph describing the test.
 
-### Traceability
+#### Traceability
 
 This tab shows the linked issues of the requirement grouped by:
 
 - **[Software Items](./software_items.md)**
 - **[Requirements](./requirements.md)**
 
-### Suggestions
+#### Suggestions
 
 This tab shows related suggestions of the test. For further details, please check [Insight & Suggestions](./insight_and_suggestions.md).
 
-### Executions
+#### Executions
 
 This tab provides a list of all test executions, from the most recent to the least.
 
@@ -85,13 +88,7 @@ For each test execution, the following information are available:
 - when the test was executed;
 - the test outcome (passed, failed, etc.)
 
-## Test suites
-
-P4SaMD enables developers to manage automated tests, including integration and system tests, organized in test suites.
-
-A test suite is a collection of tests that you can managed directly from P4SaMD, although you cannot yet create them directly from the P4SaMD Control Panel.
-
-## AI evaluation
+### AI evaluation
 
 :::danger
 
@@ -124,3 +121,54 @@ If you select the row, in the modal on the right side of the page, under the **S
 At the top you can see a **suggested description**, which provides an example of how you could rewrite your test description to address its main weaknesses.
 
 Also, you can check how it scored on each specific criteria mentioned above, including the specific areas of strength and weakness.
+
+
+## Test suites
+
+This tab displays all available test suites. Each suite groups multiple tests and provides an overview of their execution status.
+
+For each test suite, the following information is shown:
+
+- **Title**: Name of the test suite.
+- **Execution Mode**: Automatic or manual.
+- **Tests**: Number of tests included in the suite.
+- **Last Execution**: Status and date of the last execution.
+
+### Actions
+
+- **Add suite**: Create a new test suite.
+- **Run all**: Execute all tests suites.
+- **View Details**: Click on a row to access the details of the selected test suite.
+- **Run Test Suite**: Execute a specific test suite.
+- **Delete Test Suite**: Open a modal that allow user to delete a specific test suites.
+- **Edit Test Suite**: Open a modal that let the user modify a specific test suite.
+
+### Selection
+
+All test suite that can be executed (have an api trigger and some tests associated) can be selected. Selection allow to execute multiple test suite in a single execution.
+
+### Detail
+
+Clicking on a row open a new page where there's the details of the test suite. Here we have three tabs:
+- **Tests**: Show all the tests related to the test suite.
+- **Executions**: Show all the execution that comprehend the test suite.
+- **Api Trigger**: This section allow to create or edit the **Api Trigger** needed to automatically execute test suite.
+
+## Executions
+
+This tab lists all test executions, from the most recent to the least.
+
+For each execution, the following information is available:
+
+- **Date and time**: When the test was executed.
+- **Note**: Show an icon if there are some notes.
+- **Test suites**: Number of test suites involved in the execution.
+- **Outcome**: Result of the execution (passed, failed, etc.).
+- **Executed by**: User who performed the execution.
+
+Clicking on a row opens the execution detail view, showing all relevant information about the selected execution.
+
+### Detail
+
+Clicking on a row opens a new page showing the execution details.
+Here you will find details such as the execution date, who performed the execution and any notes, as well as a list of the test suites performed with the related tests.
