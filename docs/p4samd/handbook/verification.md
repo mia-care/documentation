@@ -130,7 +130,7 @@ This tab displays all available test suites. Each suite groups multiple tests an
 For each test suite, the following information is shown:
 
 - **Title**: Name of the test suite.
-- **Execution Mode**: Automatic or manual, strictly tied to the nature of the associated tests.
+- **Execution Mode**: Automatic or manual, strictly tied to the Execution Mode of the associated tests.
 - **Tests**: Number of tests included in the suite.
 - **Last Execution**: Status and date of the last execution.
 
