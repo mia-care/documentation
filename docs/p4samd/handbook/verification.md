@@ -16,7 +16,7 @@ P4SaMD provides a comprehensive overview of all the tests planned for a version 
 
 - **All tests**: Displays the list of individual tests, applicable for the current Software Version.
 - **Test suites**: Shows the available test suites and allows navigation into suite details.
-- **Executions**: Lists all test executions, with access to execution details.
+- **Executions**: Lists all test executions, with access to execution details and reports.
 
 The tests originate from the integrated ALM, where they are created, updated, and edited. The table dynamically reflects any changes made inside the ALM.  
 Users are assisted in evaluating the quality and compliance of the tests thanks to AI-powered evaluation features.
@@ -86,7 +86,8 @@ For each test execution, the following information are available:
 
 - the user who executed the test;
 - when the test was executed;
-- the test outcome (passed, failed, etc.)
+- the test outcome of selected test suite (passed, failed, etc.)
+- Download report if available, download the report for the specific execution.
 
 ### AI evaluation
 
@@ -137,9 +138,9 @@ For each test suite, the following information is shown:
 ### Actions
 
 - **Add suite**: Create a new test suite.
-- **Run all**: Execute all tests suites.
+- **Run all**: Initiate execution of all automated test suites that have an API Trigger configured.
 - **View Details**: Click on a row to access the details of the selected test suite.
-- **Run Test Suite**: Execute a specific test suite.
+- **Run Test Suite**: Execute an automated test suite when its API Trigger is configured.
 - **Delete Test Suite**: Delete a specific test suite, without deleting the associated tests. 
 - **Edit Test Suite**: Allows users modify a specific test suite, such as the title.
 
@@ -151,7 +152,7 @@ All test suites that can be executed (so that they have an api trigger and one o
 
 Clicking on a row open a new page where there's the details of the test suite. Here we have three tabs:
 - **Tests**: Show all the tests related to the test suite.
-- **Executions**: Show all the execution that comprehend the test suite.
+- **Executions**: Displays all executions that include the test suite, with the option to download the corresponding report if available.
 - **Api Trigger**: This section allow to create or edit the **Api Trigger** needed to automatically execute test suite.
 
 ## Executions
@@ -163,12 +164,13 @@ For each execution, the following pieces of information are available:
 - **Date and time**: When the execution was performed.
 - **Note**: Show an icon if there are some notes.
 - **Test suites**: Number of test suites involved in the execution.
-- **Outcome**: Result of the execution (passed, failed, etc.).
+- **Outcome**: Result of the execution of all test suites included in that execution (passed, failed, etc.).
 - **Executed by**: User who performed the execution.
+- **Download report**: Download a ZIP archive containing a summary of the execution and all available individual reports from that execution.
 
 Clicking on a row opens the execution detail view, showing all relevant information about the selected execution.
 
 ### Detail
 
 Clicking on a row opens a new page showing the execution details.
-Here you will find details such as the execution date, who performed the execution and any notes, as well as a list of the test suites performed with the related tests.
+Here you will find details including the execution date, the user who performed the execution, and any associated notes. The view also lists all test suites involved in the execution along with their related tests. You can download a comprehensive report for the test suite execution, which includes a summary file and all available individual test suite reports as attachments.
