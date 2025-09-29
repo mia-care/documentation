@@ -63,9 +63,7 @@ You can browse back to previous entities by accessing the history menu at the to
 
 #### Details
 
-In addition to the information displayed in the table, this tab shows:
-
-- **Description**: A paragraph describing the test.
+In addition to the information displayed in the table, the steps and phases of the test are shown in the **Description**.
 
 #### Traceability
 
