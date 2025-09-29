@@ -14,9 +14,9 @@ Manual testing remains relevant, especially for usability and exploratory testin
 
 P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system, organized in three main tabs:
 
-- **All tests**: Displays the list of individual tests, applicable for the current Software Version.
-- **Test suites**: Shows the available test suites and allows navigation into suite details.
-- **Executions**: Lists all test executions, with access to execution details and reports.
+- **All tests**: Displays the list of individual tests which are applicable for the current Software Version. The list includes all the tests associated to the current system version and the previous ones, as long as they are not deprecated.  
+- **Test suites**: Shows the available test suites and allows navigation into suite details. The Test Suites are collectors of tests, to facilitate the test grouping and their execution. 
+- **Executions**: Lists all test executions with access to execution details and reports. The executions can refer to a single or multiple tests, achieved by the execution of Test Suites.  
 
 The tests originate from the integrated ALM, where they can be created, updated, and deleted. The table dynamically reflects any changes made inside the ALM.  
 Users are assisted in evaluating the quality and compliance of the tests thanks to AI-powered evaluation features.
@@ -124,9 +124,10 @@ At the top you can see a **suggested description**, which provides an example of
 Also, you can check how it scored on each specific criteria mentioned above, including the specific areas of strength and weakness.
 
 
-## Test suites
+## Test Suites
 
-This tab displays all available test suites. Each suite groups multiple tests and provides an overview of their execution status.
+In this tab, you can manage the tests though Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
+$$ Robi
 
 For each test suite, the following information is shown:
 
@@ -153,7 +154,7 @@ Clicking on a row open a new page where there's the details of the test suite. H
 
 ## Executions
 
-This tab lists all test executions, sorted by the most recent ones.
+This tab lists all test executions sorted by date, newest first. The executions relate to single procedure in which the user: select one or more tests, execute them and can access to the outcomes and reports. NB. The selection is allowed just for automatic Test Suites hence the executions and their reports refer to automatic tests only. The manual tests are therefore performed by human testers and need to be handled in the integrated ALM tool. The related repert can be produced through the templating system; see the reference Documentation engine section. 
 
 For each execution, the following pieces of information are available:
 
