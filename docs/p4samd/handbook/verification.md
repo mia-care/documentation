@@ -31,7 +31,7 @@ For each test the following information are provided:
 - **Type**: the type of test, like integration or system;
 - **Execution Mode**: if the test is executed automatically or manually;
 - **Test Suite**: if the test is part of an [automated test suite](#test-suites);
-- **Latest Execution**: details about the last text execution, including when it was performed and the outcome (passed or failed);
+- **Latest Execution**: details about the last text execution, including when it was performed and the outcome. The outcome can refer to the overall test (e.g. passed or failed for manual tests) or to the underneath test cases of the test (e.g. count of successful, failed or skipped test cases);
 - **Software Items**: the number of software items associated to the test;
 - **Requirements**: the number of requirements verified by the test.
 
@@ -125,7 +125,6 @@ Also, you can check how it scored on each specific criteria mentioned above, inc
 ## Test Suites
 
 In this tab, you can manage the tests though Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
-$$ Robi
 
 For each test suite, the following information is shown:
 
