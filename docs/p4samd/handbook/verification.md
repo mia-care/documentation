@@ -18,7 +18,7 @@ P4SaMD provides a comprehensive overview of all the tests planned for a version 
 - **Test suites**: Shows the available test suites and allows navigation into suite details.
 - **Executions**: Lists all test executions, with access to execution details and reports.
 
-The tests originate from the integrated ALM, where they are created, updated, and edited. The table dynamically reflects any changes made inside the ALM.  
+The tests originate from the integrated ALM, where they can be created, updated, and deleted. The table dynamically reflects any changes made inside the ALM.  
 Users are assisted in evaluating the quality and compliance of the tests thanks to AI-powered evaluation features.
 
 ## All tests
@@ -140,13 +140,9 @@ For each test suite, the following information is shown:
 - **Add suite**: Create a new test suite.
 - **Run all**: Initiate execution of all automated test suites that have an API Trigger configured.
 - **View Details**: Click on a row to access the details of the selected test suite.
-- **Run Test Suite**: Execute an automated test suite when its API Trigger is configured.
+- **Run Test Suite**: Execute an automated test suite when its API Trigger is configured. You can also _select_ more than one Test Suite and execute multiple test suites in a single action. 
 - **Delete Test Suite**: Delete a specific test suite, without deleting the associated tests. 
 - **Edit Test Suite**: Allows users modify a specific test suite, such as the title.
-
-### Selection
-
-All test suites that can be executed (so that they have an api trigger and one or more associated tests) can be selected. Selection allow to execute multiple test suite in a single action.
 
 ### Detail
 
