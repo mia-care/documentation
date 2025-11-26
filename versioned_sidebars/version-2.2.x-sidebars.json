@@ -115,6 +115,29 @@
         }
       ]
     },
+        {
+      "label": "Release Notes",
+      "type": "category",
+      "collapsed": true,
+      "link": {
+        "type": "doc",
+        "id": "p4samd/release_notes"
+      },
+      "items": [
+        {
+          "id": "p4samd/release-notes/v2.2",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/release-notes/v2.1",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/release-notes/v2.0",
+          "type": "doc"
+        }
+      ]
+    },
     {
       "id": "p4samd/faq",
       "label": "Frequently Asked Questions (FAQs)",
