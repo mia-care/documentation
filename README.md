@@ -76,3 +76,13 @@ Read related [contribution guide](/CONTRIBUTING.md#how-can-i-contribute).
 [mia-website]: http://mia-care.io
 [mia-docs]: https://docs.mia-care.io
 [mia-community]: https://github.com/mia-platform/community/discussions
+
+## How to release a new version
+
+- Update the `sidebars.json` and add the new version to that.
+- Release the new version with `yarn docusaurus docs:version x.y.z`
+- Update docusaurus.config.json :
+    - Update the `lastVersion` to `x.y.z`.
+    - Update `includeCurrentVersion` to `false`
+    - Add the new version  (`x.y.z`) to the `versions` and set it as `Current`.
+    - Update the `label` and `path` of the previous version.
