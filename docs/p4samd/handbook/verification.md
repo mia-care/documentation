@@ -149,6 +149,10 @@ Clicking on a row open a new page where there's the details of the test suite. H
 - **Executions**: Displays all executions that include the test suite, with the option to download the corresponding report if available.
 - **Api Trigger**: This section allow to create or edit the **Api Trigger** needed to automatically execute test suite.
 
+### Test Suite Execution Flow
+
+When you run a test suite, P4SaMD triggers the configured external test executor via API. The executor sends back results through a webhook to update the execution status. If the report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. Otherwise, only the execution status is recorded, and the report file remains available for download.
+
 ## Executions
 
 This tab lists all test executions sorted by date, newest first. The executions relate to single procedure in which the user: select one or more tests, execute them and can access to the outcomes and reports. NB. The selection is allowed just for automatic Test Suites hence the executions and their reports refer to automatic tests only. The manual tests are therefore performed by human testers and need to be handled in the integrated ALM tool. The related repert can be produced through the templating system; see the reference Documentation engine section. 
@@ -161,6 +165,18 @@ For each execution, the following pieces of information are available:
 - **Outcome**: Result of the execution of all test suites included in that execution (passed, failed, etc.).
 - **Executed by**: User who performed the execution.
 - **Download report**: Download a ZIP archive containing a summary of the execution and all available individual reports from that execution.
+
+### Execution Reports
+
+Each execution provides a downloadable ZIP archive containing:
+
+- **README.md**: A summary file with execution details, including:
+    - Execution date and executor name
+    - Overview of all test suites included in the execution
+    - Final result for each test suite (passed, failed, etc.)
+    - Reference to corresponding report files when available
+- **Individual Reports**: All available test suite reports from that execution
+
 
 Clicking on a row opens the execution detail view, showing all relevant information about the selected execution.
 
