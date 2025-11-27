@@ -49,6 +49,7 @@ Under the **Quality** column, you can see the following icons indicating the eva
 
 Under the last column on the table you can perform the following actions:
 
+- **Link to Implementation**: By clicking the arrow icon, you will be redirected to the implementation of the test. This action is available only for tests with the **Implementation Link** field populated.
 - **Link Software Items**: by clicking on the link icon, you can link a software item to the test or unlink an already associated one. The linked software items are displayed in the drawer under the **Traceability** tab.
 
 ### Drawer
@@ -63,7 +64,10 @@ You can browse back to previous entities by accessing the history menu at the to
 
 #### Details
 
-In addition to the information displayed in the table, the steps and phases of the test are shown in the **Description**.
+In addition to the information displayed in the table, this tab shows:
+
+- **Description**: A paragraph describing the test including the steps and phases.
+- **Implementation Link**: Define the link related to the implementation of the test.
 
 #### Traceability
 
