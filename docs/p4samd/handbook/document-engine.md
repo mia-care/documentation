@@ -14,10 +14,10 @@ This module provides a centralized documentation management system accessible to
 ## Features
 
 ### Template Management
-- **Create**: Generate specific documents using a templating system beyond standard document sets
+- **Create**: Generate templates to extend the default template set
 - **Edit**: Modify templates in `Markdown` and `Docx` format
 - **Publish**: Make templates available for use by changing status from `Draft` to `Published`
-- **Delete**: Soft delete templates
+- **Delete**: Delete templates
 
 For each template the following informations are available:
 
