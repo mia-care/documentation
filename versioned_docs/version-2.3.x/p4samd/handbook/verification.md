@@ -14,7 +14,7 @@ Manual testing remains relevant, especially for usability and exploratory testin
 
 P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system, organized in three main tabs:
 
-- **All tests**: Displays the list of individual tests which are applicable for the current Software Version. The list includes all the tests associated to the current system version and the previous ones, as long as they are not deprecated.  
+- **All tests**: Displays the list of individual tests which are applicable for the current Software Version. The list includes all the tests associated to the current and other system versions, as long as they are not deprecated.  
 - **Test suites**: Shows the available test suites and allows navigation into suite details. The Test Suites are collectors of tests, to facilitate the test grouping and their execution. 
 - **Executions**: Lists all test executions with access to execution details and reports. The executions can refer to a single or multiple tests, achieved by the execution of Test Suites.  
 
