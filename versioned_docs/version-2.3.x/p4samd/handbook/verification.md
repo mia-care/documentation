@@ -178,13 +178,18 @@ Each execution provides a downloadable ZIP archive containing:
     - Execution date and executor name
     - Overview of all test suites included in the execution
     - Final result for each test suite (passed, failed, etc.)
-    - Reference to corresponding report files when available
+    - References to corresponding report files when available
 - **Individual Reports**: All available test suite reports from that execution
-
-
-Clicking on a row opens the execution detail view, showing all relevant information about the selected execution.
 
 ### Detail
 
 Clicking on a row opens a new page showing the execution details.
 Here you will find details including the execution date, the user who performed the execution, and any associated notes. The view also lists all test suites involved in the execution along with their related tests. You can download a comprehensive report for the test suite execution, which includes a summary file and all available individual test suite reports as attachments.
+
+## Test Execution Flow
+
+To run a test suite, the following actions are required:
+
+- For each **Automatic** test that is created and has an external test executor configured, users can run executions
+- Each time an execution is created, a new job for the test suite is created and assigned a `JobId`
+- Based on the external executor's functionality, the job result is updated through the executor by webhook.
