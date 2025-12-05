@@ -151,11 +151,24 @@ For each test suite, the following information is shown:
 Clicking on a row open a new page where there's the details of the test suite. Here we have three tabs:
 - **Tests**: Show all the tests related to the test suite.
 - **Executions**: Displays all executions that include the test suite, with the option to download the corresponding report if available.
-- **Api Trigger**: This section allow to create or edit the **Api Trigger** needed to automatically execute test suite.
+- **External test executor**: This section allow to create or edit the **External test executor** needed to automatically execute test suite.
 
 ### Test Suite Execution Flow
 
 When you run a test suite, P4SaMD triggers the configured external test executor via API. The executor sends back results through a webhook to update the execution status. If the report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. Otherwise, only the execution status is recorded, and the report file remains available for download.
+
+### Creating and Configuring Test Suites
+
+Test suites can be created for software versions that are not yet released. Each test suite can contain one or more tests.
+
+For **Automatic** test suites, users must configure the external test executor in the test suite details before running executions. Without this configuration, P4SaMD cannot trigger or run the test suite correctly.
+
+When a configured automatic test suite is executed:
+1. A job is created for that specific execution
+2. The job triggers the configured external test executor
+3. Upon completion, the execution report becomes available for download (if provided by the executor)
+
+**Note**: Configuring the external test executor is mandatory for automatic test suite execution. Without proper configuration, the system cannot trigger jobs or retrieve execution results.
 
 ## Executions
 
