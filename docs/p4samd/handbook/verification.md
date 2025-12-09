@@ -139,7 +139,7 @@ For each Test Suite, the following pieces of information are shown:
 
 ### Actions
 
-- **Add suite**: Create a new Test Suite.
+- **Add suite**: Create a new Test Suite. NB. Test suites can be created for software versions that are not yet released. Each Test Suite can contain one or more tests.
 - **Run all**: Initiate execution of all automated Test Suites that are configured with an External test executor. 
 - **View Details**: Click on a row to access the details of the selected Test Suite.
 - **Run Test Suite**: Execute an automated Test Suite when its API Trigger is configured. You can also _select_ more than one Test Suite and execute multiple Test Suites in a single action. 
@@ -158,24 +158,17 @@ Clicking on a row, the details of the Test Suite are displayed, presented in thr
 
 **Automatic**: only automatic Test Suites with a configured External Test Executor can be run. 
 - Initialization: when the user triggers the execution, a new job for the Test Suite is created and assigned a `JobId`.
+- Running: the created job triggers the configured external test executor. 
 - Results: The executor sends back results through a webhook to update the execution status or job result. If the execution report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. 
 - Reports: for each execution, users can download the related report. See [Execution Reports](#execution-reports) paragraph.
 
 **Manual**: only automatic Test Suites with can be executed, the manual executions have to be handled in the ALM tool, initiating and updating the information in the tool. 
 
 
-### Creating and Configuring Test Suites
+### Configuring automatic Test Suites
 
-Test suites can be created for software versions that are not yet released. Each Test Suite can contain one or more tests.
+For **Automatic** Test Suites, users must configure the external test executor in the Test Suite details before running executions. 
 
-For **Automatic** Test Suites, users must configure the external test executor in the Test Suite details before running executions. Without this configuration, P4SaMD cannot trigger or run the Test Suite correctly.
-
-When a configured automatic Test Suite is executed:
-1. A job is created for that specific execution
-2. The job triggers the configured external test executor
-3. Upon completion, the execution report becomes available for download (if provided by the executor)
-
-**Note**: Configuring the external test executor is mandatory for automatic Test Suite execution. Without proper configuration, the system cannot trigger jobs or retrieve execution results.
 
 ## Executions
 
