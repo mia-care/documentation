@@ -17,6 +17,23 @@ If ALM information are missing, incorrect or outdated, the generated documentati
 
 :::
 
+## Default templates
+
+- ![SOUP Report](soup-report)
+- ![Changelogs](changelogs)
+- ![Unit Test report](unit-test-report)
+- ![Vulnerability Report](vulnerability-report)
+- ![Software Architecture Design](software-architecture-design)
+
+## Startup package of customizable templates
+- ![Release Note](release-note)
+- ![Acceptance Test Report](acceptance-test-report)
+- ![Verbale collaudo](verbale-collaudo)
+- ![Traceability Matrix](traceability-matrix)
+- ![Change Report](change-report)
+- ![Software Architectural Design Description](software-architectural-design-description)
+- ![Risk Management Report](risk-management-report)
+
 ## Changelogs
 
 Mia-Care P4SaMD allows you to download changelogs of software items in PDF format.
