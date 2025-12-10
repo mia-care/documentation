@@ -36,7 +36,7 @@ There will be some default reports that are taged as
 - **Vulnerability Report**: Provides a summary and details of detected vulnerabilities for the specific system version.
 - **Software architecture Design**: Provides the software items high level design as an image.
 
-The following reports are provided as the `Default templates`:
+The following reports are provided as startup package of customizable templates:
 - **Release Note**: Summarizes the key updates, features, and resolved issues in the system version.
 - **Acceptance Test Report**: Documents the results of acceptance testing to verify that the system meets specified requirements.
 - **Verbale collaudo**: Provides the official test acceptance record (Italian compliance document).
