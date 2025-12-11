@@ -30,7 +30,7 @@ If ALM information are missing, incorrect or outdated, the generated documentati
 - [Acceptance Test Report](#acceptance-test-report)
 - [Verbale collaudo](#verbale-di-collaudo)
 - [Traceability Matrix](#traceability-matrix)
-- [Change Report](#change-report)
+- [Change Request Report](#change-request-report)
 - [Software Architecture Description](#software-architecture-description)
 - [Risk Management Report](#risk-management-report)
 
@@ -297,7 +297,7 @@ The report provides the following information:
 - **Document generation info**: user who generated the document and timestamp.
 
 
-# Change Request Report
+## Change Request Report
 
 |    Available formats   | Available for  | Download from |
 |:-----------------------|:---------------|:--------------|
