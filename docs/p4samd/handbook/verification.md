@@ -151,24 +151,31 @@ For each Test Suite, the following pieces of information are shown:
 Clicking on a row, the details of the Test Suite are displayed, presented in three tabs:
 - **Tests**: Shows all the tests included in the Test Suite.
 - **Executions**: Displays all the cronological executions of that specific Test Suite, with the option to download the corresponding report if available.
-- **External test executor**: This section allow to create or edit the **External test executor** needed to automatically execute Test Suite.
+- **External test executor**: This section allows you to configure the external service required to automatically execute the test suite. To correctly trigger the executor, P4SaMD needs to pass the `jobId`. You must include the `{{@jobId}}` placeholder in at least one of the following fields: **Endpoint URL**, **Payload**, or **Header**. If the `jobId` is not configured, the executor will not be able to run the test.
+
+
 
 ### Test Suite Execution Flow
 
-
-**Automatic**: only automatic Test Suites with a configured External Test Executor can be run. 
-- Initialization: when the user triggers the execution, a new job for the Test Suite is created and assigned a `JobId`.
-- Running: the created job triggers the configured external test executor. 
-- Results: The executor sends back results through a webhook to update the execution status or job result. If the execution report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. 
-- Reports: for each execution, users can download the related report. See [Execution Reports](#execution-reports) paragraph.
+For **Automatic** test suites, users must configure the External Test Executor and set the `{{@jobId}}` in the test suite details before running executions. Without this configuration and providing the `jobId`, P4SaMD cannot trigger or run the test suite correctly.
+When a test suite is executed, P4SaMD triggers the configured external test executor via API, inserting the `{{@jobId}}` into the location specified by the user (Endpoint URL, Payload, or Header). The executor then sends updates back via a webhook to modify the execution status, calling the API with the expected `jobId` as a parameter. If the report is provided in JUnit format, P4SaMD automatically processes and displays the results on the dashboard; otherwise, only the execution status is recorded, and the report file remains available for download.
 
 **Manual**: only automatic Test Suites with can be executed, the manual executions have to be handled in the ALM tool, initiating and updating the information in the tool. 
 
+### Creating and Configuring Authomatic Test Suites
 
-### Configuring automatic Test Suites
+Test suites can be created for software versions that are not yet released. Each test suite can contain one or more tests.
 
-For **Automatic** Test Suites, users must configure the external test executor in the Test Suite details before running executions. 
 
+When a configured automatic Test Suite is executed:
+
+1. **Initialization**: the user triggers the execution, a new job for the Test Suite is created and assigned a `JobId`.
+2. **Running**: `jobId` will be set on the request based on the test configuration and the External Test Executor will be run and job will be updates based on the executor response. 
+3. **Results**: The executor can send back updates and results through a webhook to update the execution status or job result. If the execution report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. 
+4. **Reports**: for each execution, users can download the related report. See [Execution Reports](#execution-reports) paragraph
+
+
+**Note**: Configuring the external test executor and jobId is mandatory for automatic test suite execution. Without proper configuration, the system cannot trigger jobs or retrieve execution results.
 
 ## Executions
 
@@ -198,11 +205,3 @@ Each execution provides a downloadable ZIP archive containing:
 
 Clicking on a row opens a new page showing the execution details.
 Here you will find details including the execution date, the user who performed the execution, and any associated notes. The view also lists all Test Suites involved in the execution along with their related tests. You can download a comprehensive report for the Test Suite execution, which includes a summary file and all available individual Test Suite reports as attachments.
-
-## Test Execution Flow
-
-To run a Test Suite, the following actions are required:
-
-- For each **Automatic** test that is created and has an _External test executor_ configured, users can run executions
-- Each time an execution is created, a new job for the Test Suite is created and assigned a `JobId`
-- Based on the external executor's functionality, the job result is updated through the executor by webhook.
