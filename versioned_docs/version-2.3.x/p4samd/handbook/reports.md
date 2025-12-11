@@ -17,6 +17,23 @@ If ALM information are missing, incorrect or outdated, the generated documentati
 
 :::
 
+## Default templates
+
+- [SOUP Report](#soup-report)
+- [Changelogs](#changelogs)
+- [Unit Test report](#unit-test-report)
+- [Vulnerability Report](#vulnerability-report)
+- [Software Architecture Design](#software-architecture-design)
+
+## Startup package of customizable templates
+- [Release Note](#release-notes)
+- [Acceptance Test Report](#acceptance-test-report)
+- [Verbale collaudo](#verbale-di-collaudo)
+- [Traceability Matrix](#traceability-matrix)
+- [Change Report](#change-report)
+- [Software Architecture Description](#software-architecture-description)
+- [Risk Management Report](#risk-management-report)
+
 ## Changelogs
 
 Mia-Care P4SaMD allows you to download changelogs of software items in PDF format.
@@ -315,14 +332,14 @@ The report provides the following information:
 - **Conclusion**: conclusion on change requests implemented in the software system version;
 - **Document generation info**: user who generated the document and timestamp.
 
-## Software Architecture Design Description
+## Software Architecture Description
 
 |    Available formats   | Available for  | Download from |
 |:-----------------------|:---------------|:--------------|
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Software Architecture Design Description** contains the description of the software architecture and design and can be downloaded from the [Overview page][software-system-overview].
+The **Software Architecture Description** contains the description of the software architecture and design and can be downloaded from the [Overview page][software-system-overview].
 
 The report provides the following information:
 

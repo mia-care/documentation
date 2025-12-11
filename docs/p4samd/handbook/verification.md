@@ -161,7 +161,7 @@ For **Automatic** test suites, users must configure the External Test Executor a
 When a test suite is executed, P4SaMD triggers the configured external test executor via API, inserting the `{{@jobId}}` into the location specified by the user (Endpoint URL, Payload, or Header). The executor then sends updates back via a webhook to modify the execution `outcome`, calling the API with the expected `jobId` as a parameter. If the report is provided in JUnit format, P4SaMD automatically processes and displays the results on the dashboard; otherwise, only the execution status is recorded, and the report file remains available for download.
 
 **Manual**: only automatic Test Suites with can be executed, the manual executions have to be handled in the ALM tool, initiating and updating the information in the tool. 
-### Test Execution Webhook
+### Test Suite Execution Webhook
 
 This webhook allows the External Test Executor to update the created job. The executor should send updates through a multipart request to this endpoint:
 
@@ -171,14 +171,15 @@ https://{{domain}}/webhook/update-run-test-suite/:jobId
 
 The following body parameters can be processed by P4SaMD:
 
-|    Name    |  Type  |               Description               |
-|------------|--------|-----------------------------------------|
-| outcome    | string | Updates the status of the job execution |
+|    Name    |  Type  |               Description                  |
+|------------|--------|------------------------------------------- |
+| outcome    | string | Updates the status of the job execution    |
+| result     | string | the final result of your tests if the report is not in junit format |
 | message    | string | Description related to the execution|
-| junit      | string | The execution report in JUnit format (automatically processable) |
+| junitXml   | string | The execution report in JUnit format (automatically processable) |
 | reportFile | file   | The execution report file (downloadable but not automatically processed) |
 
-### Creating and Configuring Authomatic Test Suites
+### Creating and Configuring Automatic Test Suites
 
 Test suites can be created for software versions that are not yet released. Each test suite can contain one or more tests.
 
