@@ -142,11 +142,10 @@ For each Test Suite, the following information is displayed:
 #### Creating Test Suites
 
 - **Add suite**: Create a new Test Suite. NB. Test suites can be created for software versions that are not yet released. Each Test Suite can contain one or more tests.
-- **Run all**: Initiate execution of all automated Test Suites that are configured with an External Test Executor. 
 
 #### Running Test Suites
 
-- **Run all**: Execute all automated Test Suites that have configured External test executors correctly.
+- **Run all**: Initiate execution of all automated Test Suites that are configured with an External Test Executor. 
 - **Run Test Suite**: Execute a specific automated Test Suite when its API Trigger is configured. Multiple Test Suites can be selected and executed simultaneously.
 - **Manual executions**: Must be handled in the ALM tool, where testers initiate and update execution information.
 
@@ -180,8 +179,8 @@ Configure the external service required for automatic test suite execution.
 
 1. **Initialization**: User triggers execution → new job created with assigned `JobId`
 2. **Running**: `jobId` inserted into configured location → External Test Executor runs → job updates based on response
-3. **Results**: Executor sends updates via webhook → execution status updated → results processed
-4. **Reports**: JUnit format reports are automatically processed and displayed; other formats remain downloadable
+3. **Results**: External executor sends updates via webhook → execution status is updated → results are processed
+4. **Reports**: JUnit format reports are automatically processed and displayed; other received formats are saved and are downloadable
 
 #### Configuration Prerequisites
 
