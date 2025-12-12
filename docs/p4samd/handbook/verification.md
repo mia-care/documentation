@@ -128,7 +128,7 @@ Also, you can check how it scored on each specific criteria mentioned above, inc
 
 ## Test Suites
 
-In this tab, you can manage the tests though Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
+In this tab, you can manage the tests through Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
 
 For each Test Suite, the following information is displayed:
 
