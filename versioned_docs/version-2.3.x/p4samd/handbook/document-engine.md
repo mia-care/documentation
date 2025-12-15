@@ -38,9 +38,12 @@ For each template the following informations are available:
     - `Download`: Export template file
     - `Delete`: Remove template from system
 
-### Automatic Document Generation
+## Automatic Document Generation
 
-## Variables and Data Interpolation
+The Documentation Engine automatically generates compliance documents by combining published templates with real-time system data. This process eliminates manual document creation while ensuring consistency and accuracy across all regulatory deliverables.
+
+
+### Variables and Data Interpolation
 The documentation engine supports dynamic content generation using predefined variables. Possible variables are defined in the variable list: you can either copy-paste int the templates or write them manually follwing the specific syntax format `{{CATEGORY.variable_name}}`.
 These variables are automatically populated with actual data when generating the documentation in a specific System Version. 
 **Available Categories:**
@@ -56,7 +59,7 @@ These variables are automatically populated with actual data when generating the
 - `TEST_EXECUTION`
 - `TEST_SUITE
 
-## Custom Lists and Tables
+### Custom Lists and Tables
 For data which are not unique, such as the Requirements of a System Version, custom structure are available to organized the actual data. 
 In Custom Lists, organize the structure of the appeareance of 1 item and it will be repeated for all the existing entities of that item. 
 ```
@@ -81,7 +84,7 @@ To include images in your document:
 For instance, Software Item design image can be downloaded from the System Version Dashboard and attached dinamically to the generated .markdown documnet following the previous steps.  
 
 
-## Revision Management
+### Revision Management
 
 The system automatically maintains revision history for each published template without requiring manual intervention. When a template is published, the revision number increments automatically with each subsequent modification and save operation.
 
