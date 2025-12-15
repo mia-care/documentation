@@ -25,15 +25,27 @@ Below the global progress bar, users will find a series of **detailed progress b
 These KPIs provide actionable insights, enabling teams to measure progress and focus on areas requiring immediate attention.
 
 ## Reports
-Directly beneath the overall progress bar, a **select dropdown menu** enables users to generate and download reports tailored to the selected system version. The following reports are available:
+Directly beneath the overall progress bar, a **select dropdown menu** enables users to generate and download reports tailored to the selected system version.
+There will be some default reports that are taged as 
+
+ The following reports are available as set of `Default` templates:
 - **Release Note**: Summarizes the key updates, features, and resolved issues in the system version.
-- **Risk Report**: Provides a detailed analysis of identified risks, their risk control measures and current statuses.
-- **Test Report**: Lists all tests performed, their results, and any associated observations or issues.
-- **Change Report**: Documents all approved and implemented change requests.
 - **SOUP Report**: Details the use of all Software of Unknown Provenance (SOUP).
 - **Changelogs**: A folder containing the changelogs of each custom software components.
 - **Unit Tests**: Presents the outcomes and coverage of unit tests performed on custom software components.
 - **Vulnerability Report**: Provides a summary and details of detected vulnerabilities for the specific system version.
+- **Software architecture Design**: Provides the software items high level design as an image.
+
+The following reports are provided as startup package of customizable templates:
+- **Release Note**: Summarizes the key updates, features, and resolved issues in the system version.
+- **Acceptance Test Report**: Documents the results of acceptance testing to verify that the system meets specified requirements.
+- **Verbale collaudo**: Provides the official test acceptance record (Italian compliance document).
+- **Traceability Matrix**: Maps relationships between requirements, design elements, tests, and other artifacts to ensure full traceability.
+- **Change Report**: Details all changes made to the system version, including modifications, additions, and deletions.
+- **Software Architectural Design Description**: Describes the high-level software architecture, including components, interfaces.
+- **Risk Management Report**: Provides a comprehensive overview of identified risks, their assessments, and mitigation strategies.
+### Custom Reports
+You can create additional custom reports by designing templates using the documentation engine. Once published, these templates will become accessible in the dropdown menu and can be downloaded for any system version. please take a look at the [Documentation Engin](document-engine.md)
 
 These reports ensure compliance, traceability, and readiness for audits or external reviews.
 

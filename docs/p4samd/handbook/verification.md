@@ -14,11 +14,11 @@ Manual testing remains relevant, especially for usability and exploratory testin
 
 P4SaMD provides a comprehensive overview of all the tests planned for a version of the software system, organized in three main tabs:
 
-- **All tests**: Displays the list of individual tests which are applicable for the current Software Version. The list includes all the tests associated to the current system version and the previous ones, as long as they are not deprecated.  
-- **Test suites**: Shows the available test suites and allows navigation into suite details. The Test Suites are collectors of tests, to facilitate the test grouping and their execution. 
+- **All tests**: Displays the list of individual tests which are applicable for the current Software Version. The list includes all the tests associated to the current and other system versions, as long as they are not deprecated.  
+- **Test suites**: Shows the available Test Suites and allows navigation into suite details. The Test Suites are collectors of tests, to facilitate the test grouping and their execution. 
 - **Executions**: Lists all test executions with access to execution details and reports. The executions can refer to a single or multiple tests, achieved by the execution of Test Suites.  
 
-The tests originate from the integrated ALM, where they can be created, updated, and deleted. The table dynamically reflects any changes made inside the ALM.  
+The nominal definition of tests originates from the integrated ALM, where you can create new ones, update the information, and delete them. The P4SaMD table dynamically reflects any changes made inside the ALM.  
 Users are assisted in evaluating the quality and compliance of the tests thanks to AI-powered evaluation features.
 
 ## All tests
@@ -30,7 +30,7 @@ For each test the following information are provided:
 - **Quality**: the latest evaluation performed using AI, see a legend of the different icons below.
 - **Type**: the type of test, like integration or system;
 - **Execution Mode**: if the test is executed automatically or manually;
-- **Test Suite**: if the test is part of an [automated test suite](#test-suites);
+- **Test Suite**: if the test is part of an [automated Test Suite](#test-suites);
 - **Latest Execution**: details about the last text execution, including when it was performed and the outcome. The outcome can refer to the overall test (e.g. passed or failed for manual tests) or to the underneath test cases of the test (e.g. count of successful, failed or skipped test cases);
 - **Software Items**: the number of software items associated to the test;
 - **Requirements**: the number of requirements verified by the test.
@@ -128,34 +128,83 @@ Also, you can check how it scored on each specific criteria mentioned above, inc
 
 ## Test Suites
 
-In this tab, you can manage the tests though Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
+In this tab, you can manage the tests through Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
 
-For each test suite, the following information is shown:
+For each Test Suite, the following information is displayed:
 
-- **Title**: Name of the test suite.
+- **Title**: Name of the Test Suite.
 - **Execution Mode**: Automatic or manual, strictly tied to the Execution Mode of the associated tests.
 - **Tests**: Number of tests included in the suite.
 - **Last Execution**: Status and date of the last execution.
 
-### Actions
+### Managing Test Suites
 
-- **Add suite**: Create a new test suite.
-- **Run all**: Initiate execution of all automated test suites that have an API Trigger configured.
-- **View Details**: Click on a row to access the details of the selected test suite.
-- **Run Test Suite**: Execute an automated test suite when its API Trigger is configured. You can also _select_ more than one Test Suite and execute multiple test suites in a single action. 
-- **Delete Test Suite**: Delete a specific test suite, without deleting the associated tests. 
-- **Edit Test Suite**: Allows users modify a specific test suite, such as the title.
+#### Creating Test Suites
 
-### Detail
+- **Add suite**: Create a new Test Suite. NB. Test suites can be created for software versions that are not yet released. Each Test Suite can contain one or more tests.
 
-Clicking on a row open a new page where there's the details of the test suite. Here we have three tabs:
-- **Tests**: Show all the tests related to the test suite.
-- **Executions**: Displays all executions that include the test suite, with the option to download the corresponding report if available.
-- **Api Trigger**: This section allow to create or edit the **Api Trigger** needed to automatically execute test suite.
+#### Running Test Suites
 
-### Test Suite Execution Flow
+- **Run all**: Initiate execution of all automated Test Suites that are configured with an External Test Executor. 
+- **Run Test Suite**: Execute a specific automated Test Suite when its API Trigger is configured. Multiple Test Suites can be selected and executed simultaneously.
+- **Manual executions**: Must be handled in the ALM tool, where testers initiate and update execution information.
 
-When you run a test suite, P4SaMD triggers the configured external test executor via API. The executor sends back results through a webhook to update the execution status. If the report is provided in JUnit format, P4SaMD automatically processes and displays the results in the dashboard. Otherwise, only the execution status is recorded, and the report file remains available for download.
+#### Other Actions
+
+- **View Details**: Click on a row to access detailed information about the selected Test Suite.
+- **Edit Test Suite**: Modify Test Suite properties such as the title.
+- **Delete Test Suite**: Remove a specific Test Suite without deleting the associated tests.
+
+### Test Suite Details
+
+Clicking on a row displays the Test Suite details in three tabs:
+
+#### Tests Tab
+Shows all tests included in the Test Suite with their individual properties and status.
+
+#### Executions Tab
+Displays chronological executions of the specific Test Suite, with options to download corresponding reports when available.
+
+#### External Test Executor Tab
+Configure the external service required for automatic test suite execution. 
+
+**Configuration Requirements:**
+- P4SaMD requires a `jobId` to trigger the executor correctly
+- Include the `{{@jobId}}` placeholder in at least one of: **Endpoint URL**, **Payload**, or **Header**
+- Without proper `jobId` configuration, the executor cannot run
+
+### Automatic Test Suite Execution
+
+#### Execution Flow
+
+1. **Initialization**: User triggers execution → new job created with assigned `JobId`
+2. **Running**: `jobId` inserted into configured location → External Test Executor runs → job updates based on response
+3. **Results**: External executor sends updates via webhook → execution status is updated → results are processed
+4. **Reports**: JUnit format reports are automatically processed and displayed; other received formats are saved and are downloadable
+
+#### Configuration Prerequisites
+
+- External test executor must be configured
+- `{{@jobId}}` placeholder must be set in test suite details
+- Without proper configuration, P4SaMD cannot trigger or run test suites
+
+#### Webhook Integration
+
+External Test Executors update job status via webhook:
+
+```
+https://{{domain}}p4samd/webhook/update-run-test-suite/:jobId
+```
+
+**Supported Parameters:**
+
+|    Name    |  Type  |               Description                  |
+|------------|--------|------------------------------------------- |
+| outcome    | string | Updates the status of the job execution    |
+| result     | string | Final test results (if report not in JUnit format) |
+| message    | string | Execution description |
+| junitXml   | string | JUnit format report (automatically processed) |
+| reportFile | file   | Report file (downloadable, not auto-processed) |
 
 ## Executions
 
@@ -165,8 +214,8 @@ For each execution, the following pieces of information are available:
 
 - **Date and time**: When the execution was performed.
 - **Note**: Show an icon if there are some notes.
-- **Test suites**: Number of test suites involved in the execution.
-- **Outcome**: Result of the execution of all test suites included in that execution (passed, failed, etc.).
+- **Test suites**: Number of Test Suites involved in the execution.
+- **Outcome**: Result of the execution of all Test Suites included in that execution (passed, failed, etc.).
 - **Executed by**: User who performed the execution.
 - **Download report**: Download a ZIP archive containing a summary of the execution and all available individual reports from that execution.
 
@@ -176,15 +225,12 @@ Each execution provides a downloadable ZIP archive containing:
 
 - **README.md**: A summary file with execution details, including:
     - Execution date and executor name
-    - Overview of all test suites included in the execution
-    - Final result for each test suite (passed, failed, etc.)
-    - Reference to corresponding report files when available
-- **Individual Reports**: All available test suite reports from that execution
-
-
-Clicking on a row opens the execution detail view, showing all relevant information about the selected execution.
+    - Overview of all Test Suites included in the execution
+    - Final result for each Test Suite (passed, failed, etc.)
+    - References to corresponding report files when available
+- **Individual Reports**: All available Test Suite reports from that execution
 
 ### Detail
 
 Clicking on a row opens a new page showing the execution details.
-Here you will find details including the execution date, the user who performed the execution, and any associated notes. The view also lists all test suites involved in the execution along with their related tests. You can download a comprehensive report for the test suite execution, which includes a summary file and all available individual test suite reports as attachments.
+Here you will find details including the execution date, the user who performed the execution, and any associated notes. The view also lists all Test Suites involved in the execution along with their related tests. You can download a comprehensive report for the Test Suite execution, which includes a summary file and all available individual Test Suite reports as attachments.

@@ -17,32 +17,22 @@ If ALM information are missing, incorrect or outdated, the generated documentati
 
 :::
 
-## Change report
+## Default templates
 
-| Available formats | Available for  | Download from |
-|:------------------|:---------------|:--------------|
-| PDF               | System version | Overview page |
+- [SOUP Report](#soup-report)
+- [Changelogs](#changelogs)
+- [Unit Test report](#unit-test-report)
+- [Vulnerability Report](#vulnerability-report)
+- [Software Architecture Design](#software-architecture-design)
 
-The **Change report** contains a list of all change requests linked to a system version and can be downloaded from the [Overview page][software-system-overview].
-
-![Download change report from Overview page](img/download_change_report.png)
-
-For each change, the following information are available:
-
-- **Key**: the identifier with a link to the ALM issue
-- **Reporter**: the user who reported the change request
-- **Assignee**: the owner of processing the change request.
-- **Approval date**: when the change request was approved
-- **Due date**: the deadline for the implementation of the change request, if approved
-- **Affected version**: the software component affected by the change.
-- **Classification**: the classification of the type, scale and impact of the change, actual values depend on the configuration of the corresponding Jira issue type and could include for example `patch`, `minor` or `major`.
-- **Priority**: the level of priority (typically a positive number, where a lower value corresponds to a higher priority).
-- **Description**: a summary of the change request (current behavior, proposed change, reasons for change, affected components, etc.).
-- **Acceptance criteria**: The criteria to verify and validate that the change has been successfully applied.
-- **Notes**: Any additional notes about the change.
-- **Linked requirements**: the list of requirements related to the the change.
-- **Linked risks**: the list of risks that may affect the change.
-- **Software Items**: the list of software items affected by the change.
+## Startup package of customizable templates
+- [Release Note](#release-notes)
+- [Acceptance Test Report](#acceptance-test-report)
+- [Verbale collaudo](#verbale-di-collaudo)
+- [Traceability Matrix](#traceability-matrix)
+- [Change Request Report](#change-request-report)
+- [Software Architecture Description](#software-architecture-description)
+- [Risk Management Report](#risk-management-report)
 
 ## Changelogs
 
@@ -82,71 +72,6 @@ You can download it from the [Overview page][software-system-overview].
 
 ![Download release notes from Overview page](img/download_release_note.png)
 
-## Risk report
-
-| Available formats | Available for  | Download from |
-|:------------------|:---------------|:--------------|
-| PDF               | System version | Overview page |
-
-The **Risk report** contains a detailed list of all risks linked to a system version and can be downloaded from the [Overview page][software-system-overview].
-
-![Download risk report from Overview page](img/download_risk_report.png)
-
-For each risk, the following information are available:
-
-- **Title**: A brief description of the identified risk and a link to the Jira Issue represented by its Key.  
-- **Key**: identifier of the risk in the integrated ALM
-- **Type**: type of risk
-- **Status**: status of the risk
-- **Assignee**: owner of assessing the risk
-- **Hazardous situation**: The specific scenario in which the risk could occur.  
-- **Sequence of events**: The conditions leading to the risk.  
-- **Hazard**: The nature of the risk and its potential consequences.  
-- **Harm**: The expected negative impact.  
-- **Severity**: A numerical value representing the potential impact of the risk.  
-- **Probability**: A numerical value indicating the likelihood of the risk occurring.  
-- **Risk**: A classification based on probability and severity. [Levels][risks-levels]
-- **Description**: A paragraph describing the risk.
-- **Software Items**: The number of software items affected by the risk (name, version).
-- **Risk Control Measures (RCM)**: A list of risk control measures that mitigate the risk (key, title, link)
-- **Mitigated probability**: A number indicating how much the **RCM** mitigates probability.
-- **Mitigation severity**: A number indicating how much the **RCM** mitigates severity.
-- **Residual Risk**: The remaining level of risk after mitigation measures are applied. [Levels][risks-levels]
-
-## Software Item History
-
-| Available formats | Available for | Download from             |
-|:------------------|:--------------|:--------------------------|
-| JSON, PDF         | Software Item | Software Item drawer menu |
-
-The Software Item History report contains a log of the changes performed on a software item, from the most recent to the least, and can be download from the drawer that appears when you select a row in the software items table.
-
-![Download software item history](img/download_swi_history.png)
-
-This report is available in two formats:
-
-- **JSON**: the machine-readable version, including all the available information and suitable for further automated processing;
-- **PDF**: the readable version, including the most relevant information for regulatory and compliance purposes.
-
-For each history item the report includes the following information:
-
-- the operation performed (e.g. approval, link creation/update/removal, …);
-- the user who performed the operation;
-- when the operation was performed;
-- additional details about the operation performed (e.g. which fields were changed, which entity was linked, …).
-
-## SBOM report
-
-| Available formats | Available for  | Download from       |
-|:------------------|:---------------|:--------------------|
-| Excel (.xlsx)     | System version | Software Items page |
-
-The SBOM report contains the list of dependencies of all custom services linked to a system version and can be downloaded from the **Software Items** page.
-
-![Download system version SBOM](img/download_sbom.png)
-
-For additional information about the Software Bill of Materials (SBOM), please take a look at the [dedicated page][sbom].
-
 ## SOUP report
 
 | Available formats | Available for  | Download from |
@@ -174,32 +99,6 @@ The spreadsheet contains two tabs:
   - **License**: the software item license;
   - **Required Software and Hardware**: software and hardware requirements. 
 
-## Test report
-
-| Available formats | Available for  | Download from |
-|:------------------|:---------------|:--------------|
-| PDF               | System version | Overview page |
-
-The **test report** contains a list of all tests linked to a system version, including their executions, and can be downloaded from the [Overview page][software-system-overview].
-
-![Download test report from Overview page](img/download_test_report.png)
-
-For each test, the following information are available:
-
-- **Title**: the unique identifier (ID or key) and title of the test;
-- **Key**: the identifier of the test in the ALM;
-- **Type**: the type of test, like integration or system;
-- **Status**: the status of the test, based on the outcome of the last execution;
-- **Assignee**: the owner of the test;
-- **Execution Mode**: how the test is executed (typically automatic or manual);
-- **Description**: a detailed description of the test, including the scope and procedure;
-- **Requirements**: the list of requirements covered by the test, with key, title and link to the ALM issue;
-- **Software Items**: the list of software items associated to the test, with name and version;
-- **Test executions**: the list of test execution, from most to least recent:
-  - **Execution date**: when the test was executed;
-  - **Tester**: who executed the test;
-  - **Outcome**: if the test passed or failed.
-
 ## Unit Test report
 
 | Available formats                | Available for  | Download from |
@@ -225,6 +124,281 @@ For each test case in the test suite the following information are provided:
 - **Test Case**: name of the test case;
 - **Class**: description of the test case;
 - **Time**: how much time the test case required to finish.
+
+## Vulnerability Report
+
+| Available formats | Available for  | Download from |
+|:------------------|:---------------|:--------------|
+| Excel (.xlsx)     | System version | Overview page |
+
+The **Vulnerability Report** contain the list of all vulnerabilities for wach software item for specific system version.
+You can download it from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Summary**: The summary of software items and their Open, Exploitable, Unexploitable	Exploitable With Minor Damage
+- **System Vulnerabilities**: The information of all the available vulnerabilities in the specific system version, including:
+  - **Vulnerability ID**: unique identifier of the vulnerability (e.g. CVE-2025-27152);
+  - **Name**: name of the vulnerable package;
+  - **Repository ID**: identifier of the repository;
+  - **Package ID**: identifier of the package;
+  - **Title**: title of the vulnerability;
+  - **Description**: detailed description of the vulnerability;
+  - **Software Item**: name of the software item;
+  - **Software Item Version**: version of the software item;
+  - **Installed Version**: installed version of the package;
+  - **Fixed Version**: version where the vulnerability is fixed;
+  - **Severity**: severity level (e.g. HIGH);
+  - **Severity Source**: source of the severity rating;
+  - **Severity Score**: severity score;
+  - **CVSS**: CVSS score;
+  - **Published Date**: date when the vulnerability was published;
+  - **Status**: current status (e.g. OPEN);
+  - **Resolution**: resolution status;
+  - **Justification**: justification for the status;
+  - **Rationale**: rationale for the decision;
+  - **Vendor Severity**: severity assigned by the vendor;
+  - **Package status**: status of the package;
+  - **PrimaryURL**: link to the vulnerability details;
+  - **Approver**: who approved the vulnerability;
+  - **Risks**: linked risks;
+  - **RCM**: linked risk control measures;
+  - **Last Updated Date**: date of the last update.
+- **Info**: The information of the system-version and the user
+
+## Software Architecture Design
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| svg                    | System version | Overview page |
+
+The high level architecture image of software items for the specific system version.
+
+## Template Release notes
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Release notes** contain the list of all requirements and the hierarchy of software items (name and version) linked to the system version.
+You can download it from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
+- **Reference Template**: name and revision of the template used;
+- **Product information**:
+  - **Product Name**: name of the product;
+  - **Planned Date**: planned release date;
+  - **Released Date**: actual release date;
+  - **Version**: version of the software system;
+- **Reference Documentation**: scope of the document;
+- **New Features**: list of requirements linked to the release, including:
+  - **Requirement**: key, title, and link;
+  - **Tasks**: list of tasks linked to the requirement (issue type, key, title, link);
+  - **Bugs**: list of bugs linked to the requirement (key, title, link);
+- **Bugfix**: list of bugs fixed in the release (key, title, link);
+- **Breaking Changes**: list of possible breaking changes;
+- **Software System**: list of software items composing the system (name, version, repository link);
+- **Document generation info**: user who generated the document and timestamp.
+
+## Acceptance Test Report
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Acceptance Test Report** contains the outcome of the acceptance testing activities and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Reference Template**: name and revision of the template used;
+- **Project Name**: name of the project;
+- **Requesting Company**:
+  - **Requester**: name of the requester;
+  - **Offer Code**: code of the offer;
+  - **Customer Company**: extended name of the customer company;
+  - **Customer Requester**: name of the customer requester;
+- **Date**: date of the document;
+- **Location**: location (e.g. Milano);
+- **Client**: client company name;
+- **Mia-Care Project Manager**: Product Owner name;
+- **Project Contact Person for the Client**: client contact person;
+- **System Description**: introduction and list of requirements;
+- **Reference Documents**: Project Offer reference document name;
+- **Final Release**:
+  - **Acceptance Test Subject**: subject of the acceptance test;
+  - **Outcome**: result of the test (e.g. POSITIVE);
+  - **Subsequent Activities**: agreement details for AMS service;
+- **Signatures**: Mia-Care Project Manager and Client Manager;
+- **Document generation info**: user who generated the document and timestamp.
+
+## Verbale di Collaudo
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Verbale di Collaudo** contains the outcome of the acceptance testing activities and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information and the template is in italian:
+
+- **Template di riferimento**: name and revision of the template used;
+- **Nome Progetto**: name of the project;
+- **Società richiedente**:
+  - **Richiedente**: name of the requester;
+  - **Codice Offerta**: code of the offer;
+  - **Società richiedente estesa**: extended name of the customer company;
+  - **Referente cliente**: name of the customer requester;
+- **Data**: date of the document;
+- **Luogo**: location (e.g. Milano);
+- **Committente**: client company name;
+- **Responsabile Progetto Mia Care**: Product Owner name;
+- **Referente di progetto per il committente**: client contact person;
+- **Descrizione sistema**: introduction and list of requirements;
+- **Documenti di riferimento**: Project Offer reference document name;
+- **Rilascio finale**:
+  - **Oggetto collaudo**: subject of the acceptance test;
+  - **Esito**: result of the test (e.g. POSITIVE);
+  - **Attività successive**: agreement details for AMS service;
+- **Firme**: Mia-Care Project Manager and Client Manager;
+- **Document generation info**: user who generated the document and timestamp.
+
+## Traceability Matrix
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Traceability Matrix** contains the traceability information between requirements, tests, risks, software items and change requests and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
+- **Reference Template**: name and revision of the template used;
+- **Document version**: version of the document;
+- **Scope**: scope of the document;
+- **Product information**:
+  - **Product Name**: name of the product;
+  - **Planned Date**: planned release date;
+  - **Released Date**: actual release date;
+  - **Version**: version of the software system;
+- **Reference Documentation**: scope of the document;
+- **Matrix**: table with the following columns for each requirement:
+  - **Requirement key**: key of the requirement;
+  - **Verified by (Test)**: list of tests verifying the requirement (key);
+  - **Mitigates (Risk)**: list of risks mitigated by the requirement (key, title);
+  - **Implemented in (Software Item)**: list of software items implementing the requirement (name, version);
+  - **Affected by (Change Request)**: list of change requests affecting the requirement (key, title);
+- **Document generation info**: user who generated the document and timestamp.
+
+
+## Change Request Report
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Change Request Report** contains the list of change requests linked to the system version and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
+- **Reference Template**: name and revision of the template used;
+- **Scope**: scope of the document;
+- **Product information**:
+  - **Product Name**: name of the product;
+  - **Planned Date**: planned release date;
+  - **Released Date**: actual release date;
+  - **Version**: version of the software system;
+- **Reference Documentation**: scope of the document;
+- **Summary of Change Requests**: list of change requests (key, title);
+- **Change Requests**: detailed list of change requests, including:
+  - **Key** and **Title**;
+  - **Classification**: classification of the change request;
+  - **Description**: detailed description;
+  - **Acceptance criteria**: criteria for acceptance;
+  - **Affected Version**: version affected by the change;
+  - **Approval Date**: date of approval;
+  - **Assignee**: person assigned to the change request;
+  - **Status**: current status;
+  - **Linked Requirements**: list of linked requirements (key, title);
+  - **Notes**: additional notes;
+- **Conclusion**: conclusion on change requests implemented in the software system version;
+- **Document generation info**: user who generated the document and timestamp.
+
+## Software Architecture Description
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Software Architecture Description** contains the description of the software architecture and design and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
+- **Reference Template**: name and revision of the template used;
+- **Document version**: version of the document;
+- **Scope**: scope of the document;
+- **Product Information**:
+  - **Product Name**: name of the product;
+  - **Product Version**: version of the software system;
+  - **Planned Date**: planned release date;
+  - **Released Date**: actual release date;
+- **Reference Documentation**: scope of the document;
+- **Software Architecture Overview**:
+  - **Schema**: software architecture image;
+  - **Components**: list of software items (name, version, parent, parent type, safety class, SOUP);
+- **Software Design**: description of software design (e.g. authentication, design patterns);
+- **Development Tools**: list of tools used for development;
+- **Development Environment**: description of development environments;
+- **Software Deployment**: description of the deployment process;
+- **Main Technical Decision Justifications**: rationale for main technical decisions;
+- **Document generation info**: user who generated the document and timestamp.
+
+## Risk Management Report
+
+|    Available formats   | Available for  | Download from |
+|:-----------------------|:---------------|:--------------|
+| Markdown               | System version | Overview page |
+| Docx                   | System version | Overview page |
+
+The **Risk Management Report** contains the risk analysis and management information and can be downloaded from the [Overview page][software-system-overview].
+
+The report provides the following information:
+
+- **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
+- **Reference Template**: name and revision of the template used;
+- **Document version**: version of the document;
+- **Scope**: scope of the document;
+- **Product information**:
+  - **Product Name**: name of the product;
+  - **Planned Date**: planned release date;
+  - **Released Date**: actual release date;
+  - **Version**: version of the software system;
+- **Reference Documentation**: scope of the document;
+- **Summary of Risks**: list of risks (key, title);
+- **Risk Analysis**: detailed analysis for each risk:
+  - **Key**, **Status**, **Title**;
+  - **Assignee**: person assigned to the risk;
+  - **Hazard**: description of the hazard;
+  - **Sequence Of Events**: sequence of events leading to the hazardous situation;
+  - **Hazardous Situation**: description of the hazardous situation;
+  - **Harm**: description of the harm;
+  - **Risk Assessment**: table with Probability, Probability Notes, Severity, Risk (P*S), Probability after RCM, Severity after RCM, Residual Risk;
+  - **Linked Software Items**: number of linked software items;
+  - **Linked Risk Control Measures**: list of linked requirements (key, title);
+- **Verification of Risk Control Measures**: comments on verification;
+- **Conclusion**: conclusion on overall residual risk and benefit-risk analysis;
+- **Document generation info**: user who generated the document and timestamp.
+
 
 
 [software-system-overview]: system_overview.md

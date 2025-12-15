@@ -39,6 +39,13 @@ All permissions starting with `console` are inherited from the Console, while th
 | [Evaluate test with AI](#evaluate-test-with-ai)                               | `p4samd.test.ai.evaluate`                           |
 | [Run test suite](#run-test-suite)                                             | `p4samd.test.suite.run`                             |
 | [Delete test suite](#delete-test-suite)                                       | `p4samd.test.suite.delete`                          |
+| [Update Console project configuration](#update-console-project-configuration) | `console.company.project.configuration.update`      |
+| [Create document](#create-document)                                           | `p4samd.documents.create`                           |
+| [Delete document](#delete-document)                                           | `p4samd.documents.delete`                           |
+| [Download document preview](#download-document-preview)                       | `p4samd.documents.download.preview`                 |
+| [Publish document](#publish-document)                                         | `p4samd.documents.publish`                          |
+| [Update document](#update-document)                                           | `p4samd.documents.update`                           |
+| [Download documentation](#download-documentation)                             | `p4samd.documentation.download`                     |
 
 This table provides the default list of the P4SaMD permissions granted to each Console role. Please contact directly Mia-Care for more info or customization.
 
@@ -63,6 +70,12 @@ This table provides the default list of the P4SaMD permissions granted to each C
 | `p4samd.test.ai.evaluate`                           | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
 | `p4samd.test.suite.run`                             | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
 | `p4samd.test.suite.delete`                          | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.documents.create`                           | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.documents.delete`                           | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.documents.download.preview`                 | ❌    | ❌       | ✅        | ✅         | ✅                    | ✅            |
+| `p4samd.documents.publish`                          | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.documents.update`                           | ❌    | ❌       | ❌        | ✅         | ✅                    | ✅            |
+| `p4samd.documentation.download`                     | ❌    | ❌       | ✅        | ✅         | ✅                    | ✅            |
 
 ## Security policies
 
@@ -211,6 +224,27 @@ This capability is enforced by the Console [Rönd][rond] instance.
 A user must have the Console `console.company.project.configuration.update` permission to make any changes to a Console project configuration from the *Design* section.
 
 Without this permission, the user is not displayed the button on the [Software Items table][software-items-table] redirecting to the *Design > Microservices* section of the Console project.
+
+### Create document
+
+A user must have the `p4samd.documents.create` permission to create a new template.
+
+### Delete document
+
+A user must have the `p4samd.documents.delete` permission to delete an existing template.
+
+### Download document preview
+
+A user must have the `p4samd.documents.download.preview` permission to download a preview of a template.
+
+### Publish document
+
+A user must have the `p4samd.documents.publish` permission to change the state of a template.
+
+### Update document
+
+A user must have the `p4samd.documents.update` permission to update an existing document.
+
 
 This permission is inherited from the [Console roles and permissions][console-roles-permissions].
 
