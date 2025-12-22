@@ -22,7 +22,7 @@ Furthermore, the user is assisted evaluating the design inputs of the project th
 - **Type**: the requirement type (functional, regulatory, security, etc.).
 - **Assignee**: the Jira user assigned to the requirement.
 - **Latest Update**: who performed the last update to the requirement and when.
-- **Latest Approval**: who performed the last approval of the requirement and when.
+- **Approval**: who performed the approval of the requirement and when.
 - **Status**: the status of the requirement (opened, closed, etc.)
 - **Software Items**: the number of software items affected by the requirement.
 - **Risks**: the number of risks mitigated by the requirement.
