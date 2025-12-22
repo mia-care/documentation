@@ -17,8 +17,8 @@ Each change listed in the table contains the following information:
 
 - **Title**: A brief description of the identified change and a link to the Jira issue identified by its key.
 - **Status**: The status of the change request, actual values depend on the configuration of the corresponding Jira issue type and could include, for example, `Received`, `Reviewed`, `Completed` and `Refused`.
-- **Change Classification**: If the changes are considered significant or not significant according to [MDCG 2020-3](https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en).
-- **SW Change**: The type, scale and impact of the software change, actual values depend on the configuration of the corresponding Jira issue type and could include, for example, `patch`, `minor` or `major`.
+- **Change Classification**: Report here whether the change request is considered significant or non-significant, according to [MDCG 2020-3](https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en).
+- **SW Change**: The Software Change classification, following the semantic version such as with `patch`, `minor` or `major`.
 - **Assignee**: The owner of processing the change request.
 - **Due Date**: The deadline for the completion and release of the change in the affected software items.
 - **Software Items**: The number of software items affected by the change.
