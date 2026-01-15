@@ -234,7 +234,6 @@ The fields mentioned in the following sections are presented according to the lo
    - *Only for creation*
    - Selectable from the following options: `Project`, `Service`, `Library`, `Other`.
 - **Version**: Version of Software Item.
-   - *Only for creation*
    - All the version formats are allowed; the **semantic versioning** format is recommended.
 - **Description**: Description of the Software Item.
 - **Interface architecture reference**: Link to the interface architecture reference of the Software Item.
