@@ -84,7 +84,7 @@ Each box contains key details about a software item, including:
 4. **Count of Suggestions** (shown only if greater than 0)  
 3. **Approval Status**
 5. **Implementation Status**  
-6. **Software Safety Class** (shown only for medical device)
+6. **Software Safety Class** (shown only for Medical Device)
 
 ##### **Minimap**  
 - The minimap (bottom-right corner) provides an overview of the entire graph, helping users navigate large structures efficiently.  
@@ -221,7 +221,7 @@ The fields mentioned in the following sections are presented according to the lo
 
 ### SWI classes
 
-- [**Medical device**](#medical-device): Flag indicating whether the Software Item is a medical device.
+- [**Medical Device**](#medical-device): Flag indicating whether the Software Item is a Medical Device.
 - [**SOUP**](#soup): Flag indicating whether the Software Item is a "Software of Unknown Provenance" (SOUP).
     - Selectable only if the Software Item **IS NOT** of type `Project`.
 - [**Based on AI technology**](#based-on-ai-technology): Flag indicating whether the Software Item uses AI-based technologies.
@@ -260,13 +260,13 @@ The fields mentioned in the following sections are presented according to the lo
 - **Linked changes**: Applicable regulations for the Software Item.
     - Changes are defined in the provider application.
 
-### Medical device
+### Medical Device
 
-If you select **Medical device**, the following additional fields are available:
+If you select **Medical Device**, the following additional fields are available:
 
-- **Software safety classification**: Safety class of the medical device.
+- **Software safety classification**: Safety class of the Medical Device.
    - Available options: `A`, `B`, `C`.
-- **Software safety classification reason**: The rationale behind the safety classification of the medical device.
+- **Software safety classification reason**: The rationale behind the safety classification of the Medical Device.
 
 ### SOUP
 
