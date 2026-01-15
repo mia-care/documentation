@@ -8,7 +8,9 @@ The section allows users to view, create, and edit software items in the Softwar
 
 The Software Items are described by **General** and **Specific** properties: the former are reporting the item information, shared with all the possible instances of the item (e.g. name of Manufacturer for a SOUP-type SWI); the latter refers to properties related to the instances of the SWI, considering the location in the software system, parent and specific usage. 
 
-## Create Software Item Design 
+## Create Software Item Design
+
+![Edit Modal](img/swi_create_modal.png)
 
 1. **Click the "Add software item design" Button**  
    This will open the modal to create a new Software Item.
@@ -82,7 +84,7 @@ Each box contains key details about a software item, including:
 4. **Count of Suggestions** (shown only if greater than 0)  
 3. **Approval Status**
 5. **Implementation Status**  
-6. **Software Safety Class** (shown only for medical device)
+6. **Software Safety Class** (shown only for Medical Device)
 
 ##### **Minimap**  
 - The minimap (bottom-right corner) provides an overview of the entire graph, helping users navigate large structures efficiently.  
@@ -105,10 +107,9 @@ Depending on the status of the software items, several fast actions are availabl
 |![alt text](img/swi_ok.png)|  |The software item is in correct status |
 |![alt text](img/swi_missing_approval.png)|![alt text](img/swi_approve_btn.png)|The Software Item should be approved|Approve the item, if `SOUP` open a modal to fill required fields|
 |![alt text](img/swi_missing_version.png)|![alt text](img/swi_tag_btn.png)|Project \| Service need to be tagged |Redirect to console to create a tag|
-|![alt text](img/swi_invalid_version.png)|![alt text](img/swi_create_tag_btn.png)|Version is not following the semantic versioning |Redirect to console to edit a tag|
 |![alt text](img/swi_missing_implementation.png)|![alt text](img/swi_create_project_btn.png) ![alt text](img/swi_create_service_btn.png)|The Software Item is not implemented in the console  |Redirect to console create Project \| Service|
 |![alt text](img/swi_missing_design.png)|![alt text](img/swi_create_btn.png)|A Software Item was detected but not designed | Open modal to create a Software Item, If a design for a Software Item with the same name and version already exists, open the modal with pre-filled data|
-|![alt text](img/swi_version_unmatched.png)|        |Versions designed and detected are not matched| |
+|![alt text](img/swi_version_unmatched.png)|        |Versions designed and detected do not match| |
 |![alt text](img/swi_undetectable.png)|        |Software Item can't be detected| |
 
 ## Software Item Drawer
@@ -144,6 +145,7 @@ This is divided into multiple tabs:
 | 17 |[IEC 62304 **4.3**] | Undocumented SWI Reclassification | Please justify the re-classification of the SWI with a rationale in the dedicated classification reason field, describing how the new SOFTWARE ITEMS are segregated so that they may be classified separately. |
 | 18 |[IEC 62304 **4.3**] | Possible Software Item Misclassification | This software item has a safety class lower than at least one of its children. |
 | 19 |[IEC 62304 **5.3.1**] | Missing SWI Design | When a SWI is included in the software system, if detected but the design is missing, the user shall be warned. |
+| 20 | - | Non-semantic versioning | The SWI version does not follow [semantic versioning](https://semver.org/). |
 
 :::warning
 If a Software Item is not designed but detected by the system, a warning will appear, and you can proceed with its creation.
@@ -159,7 +161,11 @@ When the **Edit** button is clicked, an edit modal will appear:
 
 #### Specific Properties Tab
 
-Changes made **exclusively** in the **Specific Properties** tab will affect **only the current instance** of the software item.
+Changes made **exclusively** in the **Specific Properties** tab and/or to the switches:
+
+- **Medical device**
+
+will affect **only the current instance** of the software item.
 
 #### General Properties Tab and Switches
 
@@ -168,8 +174,9 @@ Changes made in the **General Properties** tab and/or to the switches:
 - **SOUP**
 - **Based on AI technology**
 
-will be **propagated to all software items** that share this instance.  
-This will cause **disapproval** of their associated tree structures (parents).
+will be **propagated to all software items** that share this instance.
+
+This will cause the automatic **disapproval** of their associated tree structures (parent SWIs).
 
 ### Special Case: Version Change
 
@@ -202,34 +209,47 @@ The modal displays two options:
   
 
 :::warning
- Be mindful of which tab you're editing. Only changes in Specific Properties are instance-specific. All others may have broader implications.
+
+Be mindful of which tab you're editing. Only changes in Specific Properties are instance-specific. All others may have broader implications.
+
 :::
 
 
 ## Fields description
 
+The fields mentioned in the following sections are presented according to the location and order they appear in the user interface.
+
+### SWI classes
+
+- [**Medical Device**](#medical-device): Flag indicating whether the Software Item is a Medical Device.
+- [**SOUP**](#soup): Flag indicating whether the Software Item is a "Software of Unknown Provenance" (SOUP).
+    - Selectable only if the Software Item **IS NOT** of type `Project`.
+- [**Based on AI technology**](#based-on-ai-technology): Flag indicating whether the Software Item uses AI-based technologies.
+
+### SWI common properties
+
 - **Software item name**:  Name of Software Item.
    - *Only for creation*
-- **Version**: Version of Software Item.
-   - *Only for creation*
-   - Should follow **semantic versioning** format.
-- **Implementation link**: Link to the implementation of the Software Item.
 - **Resource type**: Type of the Software Item (project, service, library, or other).
    - *Only for creation*
    - Selectable from the following options: `Project`, `Service`, `Library`, `Other`.
+- **Version**: Version of Software Item.
+   - All the version formats are allowed; the **semantic versioning** format is recommended.
+- **Description**: Description of the Software Item.
+- **Interface architecture reference**: Link to the interface architecture reference of the Software Item.
+- **Detailed interface architecture reference**: Link to the detailed interface architecture documentation.
+- **Detailed design reference**: Link to the detailed design documentation.
 - **Parent software item**: Select the parent Software Items.
    - *Only for creation*
    - Editable only if the Software Item type is `Service` or `Library`.
    - Allows the selection of multiple parent Software Items.
-- **Description**: Description of the Software Item.
-- **Is medical device**: Flag indicating whether the Software Item is a medical device.
-- **Is SOUP**: Flag indicating whether the Software Item is a "Software of Unknown Provenance" (SOUP).
-    - Selectable only if the Software Item **IS NOT** of type `Project`.
-- **Is AI**: Flag indicating whether the Software Item uses AI-based technologies.
+- **Architecture reference**: Link to the architecture reference of the Software Item.
 - **Repository ID**: ID of the repository associated with the Software Item.
 - **Repository link**: Link to the repository of the Software Item.
-- **Architecture reference**: Link to the architecture reference of the Software Item.
-- **Interface architecture reference**: Link to the interface architecture reference of the Software Item.
+- **Implementation link**: Link to the implementation of the Software Item.
+
+### SWI related entities
+
 - **Linked requirements**: Requirements associated with the Software Item.
     - Requirements are defined in the provider application.
 - **Linked integration tests**: Integration tests associated with the Software Item.
@@ -239,36 +259,34 @@ The modal displays two options:
 - **Linked changes**: Applicable regulations for the Software Item.
     - Changes are defined in the provider application.
 
-### Medical device
+### Medical Device
 
-If you select **Is medical device**, the following additional fields are available:
+If you select **Medical Device**, the following additional fields are available:
 
-- **Software safety classification**: Safety class of the medical device.
+- **Software safety classification**: Safety class of the Medical Device.
    - Available options: `A`, `B`, `C`.
-- **Software safety classification reason**: The rationale behind the safety classification of the medical device.
-- **Detailed design reference**: Link to the detailed design documentation.
-- **Detailed interface architecture reference**: Link to the detailed interface architecture documentation.
+- **Software safety classification reason**: The rationale behind the safety classification of the Medical Device.
 
 ### SOUP
 
 If you select **Is SOUP**, the following additional fields are available:
 
+- **Verification reason**: Reason for verifying the Software Item.
 - **Manufacturer**: Name of the Software Item manufacturer.
 - **License**: License of the Software Item.
 - **Required hardware and software**: Hardware and Software required for the Software Item.
-- **Verification reason**: Reason for verifying the Software Item.
 
-### AI
+### Based on AI technology
 
 If you select **Is AI**, the following additional fields are available:
 
 - **AI type**: type of AI technology (`Agent`, `Model`).
-- **AI Bias Mitigation Strategies**: measures adopted to address and mitigate AI bias risks.
 - **AI Transparency & Explainability**: measures adopted to ensure AI transparency and accountability.
 - **Technical Documentation Link/Reference**: link or reference to technical documentation about the model.
-- **AI Model/Data Hosting Location**: location of AI hosting and data processing facilities. 
 - **AI Risk Classification**: risk level of AI system (`Minimal`, `Limited`, `High Risk`, `Unacceptable`)
 - **AI Risk Classification description**: additional information about the risk level for the AI system.
+- **AI Bias Mitigation Strategies**: measures adopted to address and mitigate AI bias risks.
+- **AI Model/Data Hosting Location**: location of AI hosting and data processing facilities. 
 
 :::warning
 To **Approve** a Software Item all his children should be approved.

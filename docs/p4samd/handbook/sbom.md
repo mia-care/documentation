@@ -55,7 +55,7 @@ where:
 
 - `P4SAMD_BACKEND_URL` is the base URL of your P4SaMD backend service;
 - `CI_PROJECT_ID` is the ID of the repository associated to the software item;
-- `CI_COMMIT_TAG` is the name of the tag representing the version of the software item (should follow [semantic versioning][semantic-versioning]);
+- `CI_COMMIT_TAG` is the name of the tag representing the version of the software item (we recommend following [semantic versioning][semantic-versioning]);
 - `P4SAMD_API_KEY` is the API key required to authenticate with P4SaMD;
 - `P4SAMD_SBOM_FILE`: absolute or relative path to the SBOM file created previously with [syft][syft] or similar tools.
 
