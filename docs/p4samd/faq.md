@@ -119,7 +119,7 @@ Currently, we can integrate with the following products:
 
 - **ALM**: [Jira][jira] or, using [Jira][jira] as a bridge, any ALM that can be integrated with [Jira][jira] 
 - **Testing framework**: any solution capable of generating JUnit reports in XML format, such as [Jest][jest] or [Playwright][playwright]
-- **SBOM generator**: any solution capable of generating SBOMs in one of following formats (like [syft][syft] or [trivy][trivy]):
+- **SBOM generator**: any solution capable of generating SBOMs in one of following formats, like [syft][syft] or [trivy][trivy]:
 
 | Supported format        | Supported versions                       |
 | ----------------------- | ---------------------------------------- |

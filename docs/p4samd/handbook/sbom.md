@@ -33,7 +33,7 @@ The generated SBOM, currently available as Excel file, provides an inventory of 
 
 ## How to generate a SBOM
 
-P4SaMD is designed to automatically collect the SBOM of each custom service through a webhook and currently accepts the following formats:
+P4SaMD is designed to automatically collect the SBOM of each custom service through a webhook and currently supports the following formats:
 
 | Supported format        | Supported versions                       |
 | ----------------------- | ---------------------------------------- |
