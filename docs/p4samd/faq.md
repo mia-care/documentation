@@ -119,7 +119,11 @@ Currently, we can integrate with the following products:
 
 - **ALM**: [Jira][jira] or, using [Jira][jira] as a bridge, any ALM that can be integrated with [Jira][jira] 
 - **Testing framework**: any solution capable of generating JUnit reports in XML format, such as [Jest][jest] or [Playwright][playwright]
-- **SBOM generator**: any solution capable of generating SBOM in [CycloneDX format][cyclone-dx], like [trivy][trivy]
+- **SBOM generator**: any solution capable of generating SBOMs in one of following formats (like [syft][syft] or [trivy][trivy]):
+
+| Supported format        | Supported versions                       |
+| ----------------------- | ---------------------------------------- |
+| [CycloneDX][cyclone-dx] | `1.2`, `1.3`, `1.4`, `1.5`, `1.6`, `1.7` |
 
 More other integrations are in product roadmap, contact us to find them out! 
 
@@ -136,4 +140,5 @@ If you have further questions or need additional assistance, feel free to reach 
 [jest]: https://github.com/jest-community/jest-junit
 [jira]: https://www.atlassian.com/it/software/jira
 [playwright]: https://playwright.dev/docs/test-reporters#junit-reporter
+[syft]: https://github.com/anchore/syft
 [trivy]: https://trivy.dev/latest/

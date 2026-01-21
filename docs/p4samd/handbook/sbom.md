@@ -33,9 +33,13 @@ The generated SBOM, currently available as Excel file, provides an inventory of 
 
 ## How to generate a SBOM
 
-P4SaMD is designed to automatically collect the SBOM of each custom service through a webhook and currently supports the [CycloneDX][cyclone-dx] format.
+P4SaMD is designed to automatically collect the SBOM of each custom service through a webhook and currently accepts the following formats:
 
-You can easily generate the SBOM inside a CI/CD pipeline with tools like [syft][syft]:
+| Supported format        | Supported versions                       |
+| ----------------------- | ---------------------------------------- |
+| [CycloneDX][cyclone-dx] | `1.2`, `1.3`, `1.4`, `1.5`, `1.6`, `1.7` |
+
+You can easily generate the SBOM inside a CI/CD pipeline with tools like [syft][syft] or [trivy][trivy]:
 
 ```shell
 syft "/path/to/your/source/code" -o cyclonedx-json=gl-sbom-report.cdx.json
@@ -88,3 +92,4 @@ To further mitigate these risks you can adopt additional measures, like:
 [cyclone-dx]: https://cyclonedx.org/
 [syft]: https://github.com/anchore/syft
 [semantic-versioning]: https://semver.org
+[trivy]: https://trivy.dev/latest/
