@@ -25,14 +25,19 @@ Each suggestion includes:
 
 For Software Items suggestions, visit the [Software Items](./software_items.md#software-item-drawer) page.
 
-### Tests
+### Requirements
 
 | IEC 62304 Reference Requirement                  | Title                                     | Description                                                       |
 | ------------------------------------------------ | ----------------------------------------- | ----------------------------------------------------------------- |
 | [**5.7.4**] Evaluate SOFTWARE SYSTEM testing     | Missing Tests                             | Each Requirement must be associated with at least one test.       |
-| [**5.7.5**] SOFTWARE SYSTEM test record contents | Test not executed                         | Each Test must be executed at least once to ensure its validity.  |
-| [**5.7.5**] SOFTWARE SYSTEM test record contents | Missing Information in the Last Execution | The last execution must include all mandatory information.        |
-| -                                                | Missing Execution Mode                    | The test execution mode - automatic or manual - is not specified. |
+
+### Tests
+
+| IEC 62304 Reference Requirement                       | Title                                     | Description                                                                   |
+| ----------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| [**5.7.1**] Establish tests for software requirements | Test not executed                         | This test has not been executed.                                              |
+| [**5.7.5**] SOFTWARE SYSTEM test record contents      | Missing Information in the Last Execution | The last execution of the manual test must include all mandatory information. |
+| -                                                     | Missing Execution Mode                    | The test Execution Mode - automatic or manual - is not specified.             |
 
 ### Risks
 
