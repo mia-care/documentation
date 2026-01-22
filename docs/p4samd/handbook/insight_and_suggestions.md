@@ -21,24 +21,37 @@ Each suggestion includes:
 
 ## Suggestions Rules
 
+### Software Items
+
 For Software Items suggestions, visit the [Software Items](./software_items.md#software-item-drawer) page.
 
-| IEC 62304 Reference Requirement | Title | Description |
-|-----------|-----------|----------|
-|[**5.7.4**] Evaluate SOFTWARE SYSTEM testing | Missing Tests | Each Requirement must be associated with at least one test. |
-|[**5.7.5**] SOFTWARE SYSTEM test record contents | Test not executed | Each Test must be executed at least once to ensure its validity. |
-|[**5.7.5**] SOFTWARE SYSTEM test record contents | Missing Information in the Last Execution | The last execution must include all mandatory information. |
-|[**7.2.1**] Define RISK CONTROL measures | Missing Risk Control Measures | Risks associated with Software Items of class B or C must be linked to at least one Requirement as a Risk Control Measure. |
+### Requirements
 
+| IEC 62304 Reference Requirement                  | Title                                     | Description                                                       |
+| ------------------------------------------------ | ----------------------------------------- | ----------------------------------------------------------------- |
+| [**5.7.4**] Evaluate SOFTWARE SYSTEM testing     | Missing Tests                             | Each Requirement must be associated with at least one test.       |
+
+### Tests
+
+| IEC 62304 Reference Requirement                       | Title                                     | Description                                                                   |
+| ----------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| [**5.7.1**] Establish tests for software requirements | Test not executed                         | This test has not been executed.                                              |
+| [**5.7.5**] SOFTWARE SYSTEM test record contents      | Missing Information in the Last Execution | The last execution of the manual test must include all mandatory information. |
+| -                                                     | Missing Execution Mode                    | The test Execution Mode - automatic or manual - is not specified.             |
+
+### Risks
+
+| IEC 62304 Reference Requirement          | Title                         | Description                                                                                                                |
+| ---------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| [**7.2.1**] Define RISK CONTROL measures | Missing Risk Control Measures | Risks associated with Software Items of class B or C must be linked to at least one Requirement as a Risk Control Measure. |
 
 ## Suggestions Indicators  
 
 Inside tables, two types of icons could appear in the **Suggestions column** to help users quickly identify and navigate suggestions:  
 
-
-|Icon| Meaning |
-|-------|-------|
-| ![alt text](img/suggestion_icon_cluste.png) | Indicates that one or more child Software Items have suggestions.<br/> *Only for Software Items.* |  
+| Icon                                        | Meaning                                                                                                                                                                   |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![alt text](img/suggestion_icon_cluste.png) | Indicates that one or more child Software Items have suggestions.<br/> *Only for Software Items.*                                                                         |
 | ![alt text](img/suggestion_icon_number.png) | Displays the number of suggestions for the entity.<br/> Hovering over this icon reveals a **clickable menu** that directs the user to the **Suggestions Drawer** section. |
 
 By implementing these automated insights and suggestions, P4SaMD empowers users to efficiently manage compliance and enhance software quality.
