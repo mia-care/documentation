@@ -214,7 +214,7 @@ For each execution, the following pieces of information are available:
 
 - **Date and time**: When the execution was performed.
 - **Note**: Show an icon if there are some notes.
-- **Test suites**: Number or title of Test Suites involved in the execution.
+- **Test suites**: Number of Test Suites - or title if only one - involved in the execution.
 - **Outcome**: Result of the execution of all Test Suites included in that execution (passed, failed, etc.).
 - **Executed by**: User who performed the execution.
 - **Download report**: Download a ZIP archive containing a summary of the execution and all available individual reports from that execution.
