@@ -20,6 +20,7 @@ The documentation shaped from the templates can be generated and downloaded in t
 P4SaMD provides a default set of templates to help you start with a IEC 62304-compliant framework. 
 For enabled users, it is always possible customize and manage templates: 
 - **Creating** new templates to extend the default template set
+- **Duplicating** an existing template to use it as a starting point for a new one
 - **Editing** a template, to align the structure to your company QMS and the deliverables required for your product. 
 - **Publishing** a template to make it visible in the System Version Dashboard and ready for the documentation download
 - **Deleting** the templates when no more needed (the records would be archived in P4SaMD database, but not available to users) 
@@ -35,6 +36,7 @@ For each template the following informations are available:
     - `Published`: Template available for use
 - **Actions**: Available actions per template row (based on user permissions):
     - `Edit/View`: Modify or view template content
+    - `Duplicate`: Clone an existing template. The new template is created in `Draft` status with no revision. Requires the same permission as creating a template.
     - `Download`: Export template file
     - `Delete`: Remove template from system
 

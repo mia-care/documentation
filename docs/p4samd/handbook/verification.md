@@ -31,7 +31,7 @@ For each test the following information are provided:
 - **Type**: the type of test, like integration or system;
 - **Execution Mode**: if the test is executed automatically or manually;
 - **Test Suite**: if the test is part of an [automated Test Suite](#test-suites);
-- **Latest Execution**: details about the last text execution, including when it was performed and the outcome. The outcome can refer to the overall test (e.g. passed or failed for manual tests) or to the underneath test cases of the test (e.g. count of successful, failed or skipped test cases);
+- **Latest Execution**: details about the last text execution, including when it was performed and the outcome. The outcome can refer to the overall test (e.g. passed or failed for manual tests) or to the underneath test cases of the test (e.g. count of successful, failed or skipped test cases). If no execution of a manual test is available for the current system version, `Not executed` is displayed.
 - **Software Items**: the number of software items associated to the test;
 - **Requirements**: the number of requirements verified by the test.
 
@@ -214,7 +214,7 @@ For each execution, the following pieces of information are available:
 
 - **Date and time**: When the execution was performed.
 - **Note**: Show an icon if there are some notes.
-- **Test suites**: Number of Test Suites involved in the execution.
+- **Test suites**: Number or title of Test Suites involved in the execution.
 - **Outcome**: Result of the execution of all Test Suites included in that execution (passed, failed, etc.).
 - **Executed by**: User who performed the execution.
 - **Download report**: Download a ZIP archive containing a summary of the execution and all available individual reports from that execution.
