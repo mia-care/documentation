@@ -36,7 +36,7 @@ For each template the following informations are available:
     - `Published`: Template available for use
 - **Actions**: Available actions per template row (based on user permissions):
     - `Edit/View`: Modify or view template content
-    - `Duplicate`: Clone an existing template. The new template is created in `Draft` status with no revision. Requires the same permission as creating a template.
+    - `Duplicate`: Open the editor pre-filled with a copy of the template content and title.
     - `Download`: Export template file
     - `Delete`: Remove template from system
 
