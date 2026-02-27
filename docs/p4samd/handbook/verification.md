@@ -125,7 +125,6 @@ At the top you can see a **suggested description**, which provides an example of
 
 Also, you can check how it scored on each specific criteria mentioned above, including the specific areas of strength and weakness.
 
-
 ## Test Suites
 
 In this tab, you can manage the tests through Test Suites: create, update and also delete them. The displayed Test Suites are referring to the current system version and allow to group multiple tests of the same type. In fact, Test Suites can be _automatic_ or _manual_, and the related tests must be coherent to the defined type.
@@ -137,7 +136,7 @@ For each Test Suite, the following information is displayed:
 - **Tests**: Number of tests included in the suite.
 - **Last Execution**: Status and date of the last execution.
 
-### Managing Test Suites
+### Test Suites Management
 
 #### Creating Test Suites
 
@@ -160,18 +159,41 @@ For each Test Suite, the following information is displayed:
 Clicking on a row displays the Test Suite details in three tabs:
 
 #### Tests Tab
+
 Shows all tests included in the Test Suite with their individual properties and status.
+
+From this section you can perform the following actions:
+
+- **Edit test suite**: change the basic test suite information (name and execution mode).
+- **Run test suite**: execute the automated Test Suite when its API Trigger is configured. Progess information are available in the [Test Suites section](#test-suites).
 
 #### Executions Tab
 Displays chronological executions of the specific Test Suite, with options to download corresponding reports when available.
 
 #### External Test Executor Tab
-Configure the external service required for automatic test suite execution. 
+Configure the external service required for automatic test suite execution and run the automated test suite (progess information are available in the [Test Suites section](#test-suites)).
 
 **Configuration Requirements:**
+
 - P4SaMD requires a `jobId` to trigger the executor correctly
-- Include the `{{@jobId}}` placeholder in at least one of: **Endpoint URL**, **Payload**, or **Header**
+- Include the `{{@jobId}}` placeholder in at least one of: **Endpoint URL**, **Payload**, **Header** or **Query parameters**
 - Without proper `jobId` configuration, the executor cannot run
+
+**Endpoint URL and Query Parameters:**
+
+The endpoint URL can be entered in full (including query parameters) or built incrementally using the dedicated **Query Parameters** table (recommended solution). Any query parameter included in the saved endpoint URL is automatically parsed and added to the table, where individual values can be edited or removed without touching the full URL string.
+
+**Endpoint Validation:**
+
+After saving the configuration, P4SaMD automatically performs a reachability check on the configured endpoint URL to verify it is correctly set up. The check issues a lightweight request to the endpoint without triggering an actual job execution. A status badge is displayed next to the endpoint URL in the configuration card:
+
+| Badge           | Meaning                                                                                                               |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Checking…**   | The reachability check is in progress.                                                                                |
+| **Reachable**   | The endpoint responded successfully.                                                                                  |
+| **Unreachable** | The endpoint could not be reached or returned an error. |
+
+The validation badge is reset whenever the configuration modal is reopened, and a fresh check is run each time the configuration is saved successfully.
 
 ### Automatic Test Suite Execution
 
