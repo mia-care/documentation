@@ -18,7 +18,7 @@ Furthermore, the user is assisted evaluating the design inputs of the project th
 
 - **Title**: A brief description of the requirement and a link to the Jira Issue represented by its Key.
 - **Suggestions**: The number of suggestions related to the requirement.
-- **Quality**: the latest evaluation performed using AI, see a legend of the different icons below.
+- **Quality**: the latest AI evaluation result. If the requirement has been modified after the evaluation was performed, the evaluation is no longer displayed and must be requested again. See a legend of the different icons below.
 - **Type**: the requirement type (functional, regulatory, security, etc.).
 - **Assignee**: the Jira user assigned to the requirement.
 - **Latest Update**: who performed the last update to the requirement and when.
@@ -98,6 +98,12 @@ You can assess the conformity of a SaMD requirement by hovering on the icon unde
 
 The assessment may take a while, usually around a minute, so while we process it in the background you can keep working on P4SaMD and come back to check the progress at any time.
 
+:::info
+
+If the requirement is modified after an evaluation has been performed, the evaluation result is no longer displayed — the **Quality** icon reverts to **Missing**. A new evaluation must be requested to obtain up-to-date results.
+
+:::
+
 After the evaluation has been completed, the icon on the table is going to assume different colors depending on the overall rating and, by hovering it, you can see a preview of the results.
 
 | Evaluation        | Preview                                                                                               |
@@ -122,6 +128,12 @@ Also, you can check how it scored on each specific criteria mentioned above, inc
 
 ### Estimated Test Coverage
 
-The assessment on the requirement quality provides also an AI evaluation of the test coverage: all the **linked tests** are condidered for the estimantion, and the percentage result is shown in the **Tests (test coverage)** column. Additional information and insights about the score are reported in the Requirement Deatil (drawer), inside the Traceability tab. The system suggests also test cases based on the assessed requirement, to increase the coverage and improve the overall testbook completeness.  
+The assessment on the requirement quality provides also an AI evaluation of the test coverage: all the **linked tests** are condidered for the estimantion, and the percentage result is shown in the **Tests (test coverage)** column. Additional information and insights about the score are reported in the Requirement Deatil (drawer), inside the Traceability tab. The system suggests also test cases based on the assessed requirement, to increase the coverage and improve the overall testbook completeness.
+
+:::info
+
+If the requirement or any of the linked tests are modified after the evaluation, the test coverage result is no longer displayed. A new evaluation must be requested to obtain an updated estimate.
+
+:::
 
 [faq-data-sharing]: ../faq.md#does-mia-care-p4samd-share-data-with-third-party-organizations
