@@ -11,6 +11,7 @@ After the installation of Mia-Care P4SaMD, the configuration activities are carr
 1. **JIRA Integration (Mandatory)**: The integration with JIRA is a critical configuration step to enable data synchronization between JIRA and Mia-Care P4SaMD. This includes:
     - **Mapping JIRA Issue Fields:** Aligning the JIRA issue fields with the P4SaMD data model to reflect the customer’s unique configuration.
     - **Setup of JIRA Webhooks:** Configuring webhooks on JIRA projects to facilitate the automatic transmission of relevant data to P4SaMD in real time.
+    - **Setup Jira Project Link (Optional):** Configuring and linking the JIRA project URL within P4SaMD to enable direct navigation and connectivity between the two systems.
 
 2. **Console extension with Single Sign-On**: P4SaMD is designed to run as a [Console extension with SSO][console-extension-sso] for seamless integration with Mia-Platform Console authentication and authorization flow, to avoid additional logins and manage security policies directly through the Console. More information about Console roles and permissions are available on the [official documentation][console-roles-permissions].
 
