@@ -50,7 +50,30 @@ Under the **Quality** column, you can see the following icons indicating the eva
 Under the last column on the table you can perform the following actions:
 
 - **Link to Implementation**: By clicking the arrow icon, you will be redirected to the implementation of the test. This action is available only for tests with the **Implementation Link** field populated.
+- **Add to Test Suite**: By clicking the list icon, you can add the individual test to an existing Test Suite or create a new one. This action opens the [Add to Test Suite modal](#add-tests-to-test-suite). This action is available only for software versions that are not yet released.
 - **Link Software Items**: by clicking on the link icon, you can link a software item to the test or unlink an already associated one. The linked software items are displayed in the drawer under the **Traceability** tab.
+
+### Selecting and Adding Multiple Tests to a Test Suite
+
+For software versions that are not yet released, a checkbox column is displayed in the table, allowing you to select one or more tests to add to a Test Suite in bulk.
+
+When selecting the first test, only tests with the same **Execution Mode** (automatic or manual) can be selected. Tests with a different execution mode are disabled.
+
+Once one or more tests are selected, a **floating action bar** appears at the bottom of the screen showing the number of selected tests and an **Add to test suite** button. Clicking this button opens the [Add to Test Suite modal](#add-tests-to-test-suite).
+
+### Add Tests to Test Suite
+
+The **Add to Test Suite** modal allows you to add the selected test(s) — whether picked individually via the row action or in bulk via checkbox selection — to a Test Suite. The modal provides two options through separate tabs:
+
+#### Add to Existing Suite
+
+In this tab you can search for and select one or more existing Test Suites as the destination. Only Test Suites matching the execution mode of the selected tests are shown.
+
+For each selected destination suite, the modal displays the suite name and the number of tests currently included. If any of the selected tests are already present in a destination suite, a **warning banner** is shown indicating that duplicate tests have been detected and will be ignored.
+
+#### Create New Suite
+
+In this tab you can create a new Test Suite and add the selected tests to it. The execution mode is automatically determined by the selected tests and cannot be changed. You are required to provide a **name** for the new suite. The selected tests are listed at the bottom of the form as confirmation.
 
 ### Drawer
 
@@ -147,6 +170,7 @@ For each Test Suite, the following information is displayed:
 #### Creating Test Suites
 
 - **Add suite**: Create a new Test Suite. NB. Test suites can be created for software versions that are not yet released. Each Test Suite can contain one or more tests.
+- **Add tests from All Tests tab**: Tests can also be added to new or existing Test Suites directly from the [All tests](#all-tests) tab using the [Add to Test Suite](#add-tests-to-test-suite) feature.
 
 #### Running Test Suites
 
