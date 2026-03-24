@@ -25,9 +25,9 @@ The table below shows the external tools officially supported for each Mia-Care 
 
 | Category | Name               | Version | Mia-Care P4SaMD version |
 |----------|--------------------|---------|-------------------------|
-| IDP      | Mia Platform IDP   | v13.5.1 | 2.0.0                   |
-| DevOps   | GitLab             | v17.3.7 | 2.0.0                   |
-| ALM      | Jira REST API      | v2      | 2.0.0                   |
+| IDP      | Mia Platform IDP   | v14.5.2 | 2.5.0                   |
+| DevOps   | GitLab             | v17.11.7| 2.5.0                   |
+| ALM      | Jira REST API      | v2      | 2.5.0                   |
 
 ## Mia-Platform IDP Supported
 
