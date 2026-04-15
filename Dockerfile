@@ -1,4 +1,4 @@
-FROM nginx:1.27.3-alpine
+FROM nginx:1.29.8-alpine
 
 LABEL maintainer="Mia-Care <info@mia-care.io>" \
   name="P4SaMD Handbook" \
