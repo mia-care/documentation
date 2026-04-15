@@ -1,12 +1,12 @@
 {
-  "name": "mia-platform-doc",
-  "version": "12.0.17",
+  "name": "p4samd-handbook",
+  "version": "1.0.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "yarn build-redirects && USE_SIMPLE_CSS_MINIFIER=true docusaurus build",
+    "build": "yarn build-redirects && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
@@ -21,20 +21,18 @@
     "generate-last-edited": "node scripts/last-pages-edited.js "
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.3",
-    "@docusaurus/plugin-client-redirects": "2.4.3",
-    "@docusaurus/preset-classic": "2.4.3",
-    "@staticdeploy/cli": "^0.15.5",
+    "@docusaurus/core": "3.7.0",
+    "@docusaurus/plugin-client-redirects": "3.7.0",
+    "@docusaurus/preset-classic": "3.7.0",
+    "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "cspell": "^8.1.2",
     "klaw": "^4.1.0",
-    "mdx-mermaid": "^v1.3.2",
     "medium-zoom": "^1.0.8",
     "mermaid": "^10.6.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-youtube": "^10.1.0",
-    "swc-loader": "^0.2.3"
+    "prism-react-renderer": "^2.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "browserslist": {
     "production": [
@@ -59,5 +57,8 @@
     "prop-types": "^15.8.1",
     "semver-utils": "^1.1.4"
   },
-  "packageManager": "yarn@3.5.1"
+  "packageManager": "yarn@3.5.1",
+  "resolutions": {
+    "webpackbar": "7.0.0"
+  }
 }

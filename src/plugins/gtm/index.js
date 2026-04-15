@@ -1,5 +1,3 @@
-const {Joi} = require('@docusaurus/utils-validation');
-
 function pluginGoogleGtm(context, options) {
   const {trackingID} = options;
   const isProd = process.env.NODE_ENV === 'production';
@@ -46,12 +44,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`
   };
 }
 
-const pluginOptionsSchema = Joi.object({
-  trackingID: Joi.string().required(),
-});
-
-pluginGoogleGtm.validateOptions = ({options, validate}) => {
-  return validate(pluginOptionsSchema, options);
-}
-
-module.exports = pluginGoogleGtm
+module.exports = pluginGoogleGtm;

@@ -1,9 +1,8 @@
 FROM nginx:1.27.3-alpine
 
-LABEL maintainer="Mia Platform Core Team<core@mia-platform.eu>" \
-  name="Documentation" \
-  description="Mia-Platform documentation website" \
-  eu.mia-platform.url="https://www.mia-platform.eu"
+LABEL maintainer="Mia-Care <info@mia-care.io>" \
+  name="P4SaMD Handbook" \
+  description="Mia-Care P4SaMD documentation website"
 
 WORKDIR /etc/nginx
 
