@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmia_platform_doc=self.webpackChunkmia_platform_doc||[]).push([[3800],{15745:a=>{a.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
