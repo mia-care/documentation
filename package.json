@@ -25,7 +25,7 @@
     "@docusaurus/plugin-client-redirects": "3.7.0",
     "@docusaurus/preset-classic": "3.7.0",
     "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.1",
     "cspell": "^8.1.2",
     "klaw": "^4.1.0",
     "medium-zoom": "^1.0.8",
