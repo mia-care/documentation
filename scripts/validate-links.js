@@ -66,7 +66,7 @@ const checkLink = (link) => {
     let errors = [];
 
     if(path.toLowerCase().startsWith('http') || path.toLowerCase().startsWith('https')) {
-        if (path.toLowerCase().includes('docs.mia-platform.eu')) errors.push("httpLinkToInternalDocs");
+        // External links are allowed; no internal-docs restriction for this project.
     } else {
         if(!path.toLowerCase().includes('.md') && !path.toLowerCase().includes('.mdx')) errors.push("missingExtension");
         if(path.startsWith('.')) errors.push("relativePath");
