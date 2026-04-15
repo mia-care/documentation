@@ -29,7 +29,7 @@
     "cspell": "^8.1.2",
     "klaw": "^4.1.0",
     "medium-zoom": "^1.0.8",
-    "mermaid": "^10.6.0",
+    "mermaid": "^11.14.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
