@@ -287,17 +287,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.23.3":
-  version: 7.23.9
-  resolution: "@babel/eslint-parser@npm:7.23.9"
+"@babel/eslint-parser@npm:^7.28.6":
+  version: 7.28.6
+  resolution: "@babel/eslint-parser@npm:7.28.6"
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals": 5.1.1-v1
     eslint-visitor-keys: ^2.1.0
     semver: ^6.3.1
   peerDependencies:
     "@babel/core": ^7.11.0
-    eslint: ^7.5.0 || ^8.0.0
-  checksum: cfb87bc48d005f181807ae8f8357ba9eeb3ece38480084fb5d997bac03ebb4cf709ee197d697f506de8faa7f665fa07579b9b9c2045d86d6c17174b6c1b0c5c9
+    eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
+  checksum: 6d789f16842c6f47a6a15f8159ef822e4bf75e8d15f85be2a813098ca4ba49703590ff2cdd56c78cc8816f5779b687cd6245ada4049c25e923e8e40132ace501
   languageName: node
   linkType: hard
 
@@ -12445,7 +12445,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "p4samd-handbook@workspace:."
   dependencies:
-    "@babel/eslint-parser": ^7.23.3
+    "@babel/eslint-parser": ^7.28.6
     "@docusaurus/core": 3.7.0
     "@docusaurus/plugin-client-redirects": 3.7.0
     "@docusaurus/preset-classic": 3.7.0
