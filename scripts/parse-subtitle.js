@@ -9,7 +9,7 @@ const parseSubtitle = (srt) => {
         const [startTimeString, endTimeString] = timeString.split(" --> ");
         const text = textLines
             .join("\n")
-            .replace(/<[^>]*>/g, "")
+            .replace(/[<>]/g, "")
             .replace(/\{.*?\}/g, '')
         return {
             startTimeString,
