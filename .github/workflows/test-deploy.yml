@@ -18,7 +18,11 @@ jobs:
           node-version: 20
           cache: yarn
 
+      - name: Install dependencies (Dependabot)
+        if: github.actor == 'dependabot[bot]'
+        run: yarn install
       - name: Install dependencies
+        if: github.actor != 'dependabot[bot]'
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
