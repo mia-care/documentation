@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkp4samd_handbook=globalThis.webpackChunkp4samd_handbook||[]).push([[7472],{55513(s){s.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);
