@@ -56,7 +56,7 @@ const config = {
           label: "Release Notes",
           position: "left",
           type: "doc",
-          docId: "p4samd/release_notes",
+          docId: "p4samd/release-notes/v3.0",
         },
         {
           label: "FAQ",

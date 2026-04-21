@@ -73,13 +73,13 @@
       "type": "category",
       "items": [
         {
-          "id": "p4samd/release_notes",
-          "label": "All Versions",
+          "id": "p4samd/release-notes/v3.0",
+          "label": "Current (v3.x)",
           "type": "doc"
         },
         {
-          "id": "p4samd/release-notes/v3.0",
-          "label": "v3.0",
+          "id": "p4samd/release_notes",
+          "label": "Archived (v2.x)",
           "type": "doc"
         }
       ]

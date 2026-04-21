@@ -1,8 +1,8 @@
 import React from "react";
-import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
@@ -51,24 +51,48 @@ const handbookSections = [
   },
 ];
 
-const v3Highlights = [
+const v3Features = [
   {
-    badge: "NEW",
+    icon: "🏗️",
+    tag: "Architecture",
     title: "Standalone Platform",
-    body:
-      "P4SaMD v3 runs independently — no longer embedded in Mia-Platform Console. A dedicated UI built specifically for compliance governance.",
+    body: "P4SaMD v3 runs independently — no longer embedded in any third-party platform. A dedicated UI built specifically for compliance governance.",
+    link: "/docs/p4samd/overview",
   },
   {
-    badge: "NEW",
-    title: "Multi-Tenant Architecture",
-    body:
-      "A single installation can serve multiple independent organizations with complete data isolation between tenants.",
+    icon: "🏢",
+    tag: "Multi-Tenancy",
+    title: "Multiple Organizations",
+    body: "A single installation serves multiple independent organizations simultaneously, with complete database-level data isolation between tenants.",
+    link: "/docs/p4samd/handbook/organizations",
   },
   {
-    badge: "IMPROVED",
+    icon: "📝",
+    tag: "Work Items",
     title: "Native Work-Item Management",
-    body:
-      "Requirements, risks, and tests are managed directly inside P4SaMD. External ALM tools are optional, not required.",
+    body: "Requirements, risks, tests, and changes are managed natively inside P4SaMD. No external ALM tool required — Jira and others are now optional.",
+    link: "/docs/p4samd/handbook/requirements",
+  },
+  {
+    icon: "📦",
+    tag: "Projects",
+    title: "Multiple Projects per Organization",
+    body: "Manage all your medical device software projects in one place. Each project has its own team, compliance context, and version history.",
+    link: "/docs/p4samd/handbook/products",
+  },
+  {
+    icon: "🔄",
+    tag: "Brownfield",
+    title: "Brownfield Import & Gap Analysis",
+    body: "Onboard existing software through a guided wizard, then receive an automated compliance gap analysis and prioritized remediation plan.",
+    link: "/docs/p4samd/handbook/brownfield/overview",
+  },
+  {
+    icon: "⚙️",
+    tag: "Self-Service",
+    title: "Self-Service Configuration",
+    body: "Organizations configure projects, integrations, and settings autonomously — without requiring Mia-Care to intervene.",
+    link: "/docs/p4samd/handbook/getting_started",
   },
 ];
 
@@ -82,16 +106,17 @@ function SectionCard({ title, icon, href, description }) {
   );
 }
 
-function HighlightCard({ badge, title, body }) {
-  const isBadgeNew = badge === "NEW";
+function FeatureCard({ icon, tag, title, body, link }) {
   return (
-    <div className={styles.highlightCard}>
-      <span className={clsx(styles.badge, isBadgeNew ? styles.badgeNew : styles.badgeImproved)}>
-        {badge}
-      </span>
-      <h4 className={styles.highlightTitle}>{title}</h4>
-      <p className={styles.highlightBody}>{body}</p>
-    </div>
+    <Link className={styles.featureCard} to={link}>
+      <div className={styles.featureCardHeader}>
+        <span className={styles.featureIcon}>{icon}</span>
+        <span className={styles.featureTag}>{tag}</span>
+      </div>
+      <h4 className={styles.featureTitle}>{title}</h4>
+      <p className={styles.featureBody}>{body}</p>
+      <span className={styles.featureLearnMore}>Learn more →</span>
+    </Link>
   );
 }
 
@@ -151,11 +176,11 @@ function Home() {
           <div className="container">
             <h2 className={styles.sectionHeading}>What&apos;s New in v3</h2>
             <p className={styles.sectionSubheading}>
-              Version 3 is a complete re-architecture of P4SaMD. Here are the most impactful changes.
+              Version 3 is a complete re-architecture of P4SaMD. Here are the key changes.
             </p>
-            <div className={styles.highlightsGrid}>
-              {v3Highlights.map((props, idx) => (
-                <HighlightCard key={idx} {...props} />
+            <div className={styles.featuresShowcase}>
+              {v3Features.map((props, idx) => (
+                <FeatureCard key={idx} {...props} />
               ))}
             </div>
             <div className={styles.highlightsCta}>
@@ -178,7 +203,7 @@ function Home() {
               <div className={styles.resourceCard}>
                 <h3>📦 Release Notes</h3>
                 <p>Stay up to date with every version of P4SaMD, including patch-level improvements.</p>
-                <Link to="/docs/p4samd/release_notes">View release notes →</Link>
+                <Link to="/docs/p4samd/release-notes/v3.0">View release notes →</Link>
               </div>
               <div className={styles.resourceCard}>
                 <h3>🔒 Security & Roles</h3>
