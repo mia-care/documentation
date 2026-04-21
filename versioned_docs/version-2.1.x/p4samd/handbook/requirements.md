@@ -119,4 +119,4 @@ At the top you can see a **suggested description**, which provides an example of
 Also, you can check how it scored on each specific criteria mentioned above, including the specific areas of strength and weakness.
 
 
-[faq-data-sharing]: ../faq.md#does-mia-care-p4samd-share-data-with-third-party-organizations
+[faq-data-sharing]: ../faq.md
