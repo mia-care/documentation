@@ -1,0 +1,273 @@
+/* ─── Step Guide ───────────────────────────────────────────── */
+.stepGuide {
+  margin: 2.5rem 0;
+}
+
+/* Each step row */
+.step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 1.5rem;
+  position: relative;
+}
+
+/* Left column: badge + connecting line */
+.stepLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.stepBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(24, 144, 255, 0.3);
+  z-index: 1;
+}
+
+.stepBadgeIcon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* Vertical connector line */
+.stepLine {
+  flex: 1;
+  width: 2px;
+  background: var(--ifm-color-emphasis-200);
+  margin: 6px 0;
+  min-height: 24px;
+}
+
+/* Last step has no connector line */
+.step:last-child .stepLine {
+  display: none;
+}
+
+/* Right column */
+.stepRight {
+  padding-bottom: 2.5rem;
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+  padding-top: 0.6rem;
+}
+
+.stepNum {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.2rem;
+}
+
+.stepTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.stepBody {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.stepBody p:first-child {
+  margin-top: 0;
+}
+
+.stepBody ol,
+.stepBody ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.stepBody li {
+  margin-bottom: 0.35rem;
+}
+
+/* ─── Prerequisites ────────────────────────────────────────── */
+.prerequisites {
+  border: 1px solid var(--ifm-color-primary-light);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: var(--ifm-color-primary-lightest, #e6f4ff);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+[data-theme='dark'] .prerequisites {
+  background: rgba(24, 144, 255, 0.08);
+  border-color: var(--ifm-color-primary-dark);
+  border-left-color: var(--ifm-color-primary);
+}
+
+.prereqHeading {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-primary-darker, #096dd9);
+  margin: 0 0 0.75rem;
+}
+
+[data-theme='dark'] .prereqHeading {
+  color: var(--ifm-color-primary-light);
+}
+
+.prereqList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prereqItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.prereqCheck {
+  color: var(--ifm-color-success, #52c41a);
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+/* ─── Tip callout ──────────────────────────────────────────── */
+.tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border: 1px solid var(--ifm-color-warning-light, #ffe58f);
+  border-left: 4px solid var(--ifm-color-warning, #faad14);
+  border-radius: 8px;
+  background: var(--ifm-color-warning-lightest, #fffbe6);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .tip {
+  background: rgba(250, 173, 20, 0.08);
+  border-color: rgba(250, 173, 20, 0.4);
+  border-left-color: var(--ifm-color-warning, #faad14);
+}
+
+.tipIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.tipBody {
+  flex: 1;
+}
+
+.tipBody p {
+  margin: 0;
+}
+
+/* ─── Next Steps cards ─────────────────────────────────────── */
+.nextSteps {
+  border-top: 1px solid var(--ifm-toc-border-color);
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+.nextStepsHeading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 1rem;
+}
+
+.nextStepsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .nextStepsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nextStepCard {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-card-background-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.nextStepCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 10px rgba(24, 144, 255, 0.12);
+  color: var(--ifm-color-primary) !important;
+}
+
+.nextStepIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.nextStepLabel {
+  flex: 1;
+}
+
+.nextStepArrow {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .step {
+    grid-template-columns: 40px 1fr;
+    gap: 0 1rem;
+  }
+
+  .stepBadge {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .stepBadgeIcon {
+    font-size: 1.1rem;
+  }
+}
