@@ -1,0 +1,62 @@
+/* ─── Feature Grid ─────────────────────────────────────────── */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 996px) {
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Feature Box ──────────────────────────────────────────── */
+.featureBox {
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-card-background-color);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.featureBox:hover {
+  box-shadow: 0 4px 16px rgba(24, 144, 255, 0.1);
+  border-color: var(--ifm-color-primary-light);
+}
+
+.featureBoxHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.featureBoxIcon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.featureBoxTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.featureBoxBody {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ifm-color-content);
+}
+
+.featureBoxBody p {
+  margin: 0;
+}
+
+.featureBoxBody p:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
