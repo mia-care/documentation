@@ -11,6 +11,27 @@
       "type": "doc"
     },
     {
+      "label": "Installation",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/installation/installation_overview",
+          "label": "Deployment Modes",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/installation/installation_saas",
+          "label": "SaaS",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/installation/installation_on_premise",
+          "label": "On-premise",
+          "type": "doc"
+        }
+      ]
+    },
+    {
       "label": "Handbook",
       "type": "category",
       "items": [

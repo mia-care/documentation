@@ -1,0 +1,79 @@
+---
+id: installation_on_premise
+title: On-premise Installation
+sidebar_label: On-premise
+---
+
+On-premise deployments run P4SaMD entirely within infrastructure you own and manage. The platform is delivered as a set of Kubernetes workloads and is distributed as OCI container images. On-premise installations include the full **Enterprise** feature set.
+
+Your team is responsible for provisioning the infrastructure, running the installer, and managing ongoing operations (upgrades, backups, monitoring). Mia-Care provides the deployment package, release notes, and a dedicated account manager to guide the process.
+
+---
+
+## Prerequisites
+
+P4SaMD uses a Kubernetes-native architecture. Before installing, confirm that your environment satisfies the requirements below.
+
+### Mandatory Requirements
+
+These components must be present and correctly configured before installation can proceed.
+
+| Component | Minimum Requirement | Notes |
+|---|---|---|
+| **Kubernetes** | v1.27 or later | Any CNCF-conformant distribution (EKS, GKE, AKS, RKE2, k3s, etc.) |
+| **Nodes** | 3 nodes minimum | For high-availability. Single-node is supported for non-production use only. |
+| **CPU** | 4 vCPU per node | 8 vCPU recommended for production workloads |
+| **RAM** | 16 GB per node | 32 GB recommended when AI-powered features are enabled |
+| **Persistent storage** | 100 GB SSD | StorageClass with dynamic provisioning required |
+| **PostgreSQL** | v14 or later | External managed database recommended (RDS, Cloud SQL, Azure DB, self-hosted) |
+| **Object storage** | S3-compatible | AWS S3, MinIO, Google Cloud Storage, or Azure Blob Storage |
+| **Ingress controller** | Any Kubernetes-compatible | NGINX Ingress, Traefik, AWS ALB, etc. |
+| **TLS certificate** | Valid certificate | For your custom domain; cert-manager is supported for automated provisioning |
+| **Container registry access** | Pull access | Direct internet access or an internal mirror of the Mia-Care registry |
+| **SMTP server** | Any standards-compliant relay | For email notifications, password reset, and account invitations |
+| **OIDC identity provider** | OIDC-compliant IdP | Keycloak (bundled), Okta, Microsoft Entra ID, Auth0, or any OIDC-compliant provider |
+
+### Optional Requirements
+
+These components are not required but unlock specific capabilities or improve performance and observability.
+
+| Component | Purpose | Notes |
+|---|---|---|
+| **GPU nodes** | AI-powered features | Required only if you enable AI analysis capabilities; NVIDIA GPU with CUDA support |
+| **Redis** | Session caching | Improves response times under high concurrency; falls back to in-memory if absent |
+| **Elasticsearch** | Enhanced full-text search | Accelerates requirement and document search at scale; PostgreSQL full-text search is used otherwise |
+| **Prometheus + Grafana** | Monitoring & alerting | Recommended for production. A pre-built dashboard bundle is provided. |
+| **HashiCorp Vault** | Secrets management | P4SaMD integrates with Vault for external secret storage; Kubernetes Secrets are used otherwise |
+| **LDAP directory** | User provisioning | Supplementary to OIDC; enables LDAP-based group sync for user provisioning |
+
+---
+
+## Installation Overview
+
+Installation is performed using the P4SaMD Helm chart, which is distributed through the Mia-Care Helm repository. A high-level summary of the steps:
+
+1. **Prepare your cluster** — verify all mandatory prerequisites are satisfied, create the target namespace, and configure image pull secrets.
+2. **Configure values** — copy the provided `values.yaml` template and fill in your environment-specific parameters (database credentials, OIDC client, object storage bucket, domain name, etc.).
+3. **Run the installer** — apply the Helm chart. The installer creates all required Kubernetes resources and runs database migrations automatically.
+4. **Verify the deployment** — check that all pods are running and healthy, then run the built-in health-check endpoint to confirm the platform is operational.
+5. **Bootstrap the admin organization** — access the P4SaMD instance at your custom domain and complete the initial organization setup wizard.
+
+Full step-by-step installation instructions are provided in the deployment package delivered by your Mia-Care account manager.
+
+---
+
+## Upgrades
+
+P4SaMD follows semantic versioning. Upgrade packages are released on a regular cadence and include:
+
+- Updated Helm chart and container images
+- Migration scripts for any database schema changes
+- A release-specific upgrade guide noting any breaking changes or manual steps
+
+Upgrades are applied by updating the Helm chart version and re-running `helm upgrade`. Database migrations run automatically as part of the upgrade. It is strongly recommended to take a database snapshot before each upgrade.
+
+---
+
+## Support
+
+On-premise customers receive a dedicated account manager and access to the Mia-Care support portal. For critical production issues, a priority support SLA is available as part of the Enterprise agreement.
