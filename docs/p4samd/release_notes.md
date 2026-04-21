@@ -4,11 +4,12 @@ title: Release Notes
 sidebar_label: Release Notes
 ---
 
-| Release Version | Release notes                                   |
-| --------------- | ----------------------------------------------- |
-| v2.5            | [Read the release notes](release-notes/v2.5.md) |
-| v2.4            | [Read the release notes](release-notes/v2.4.md) |
-| v2.3            | [Read the release notes](release-notes/v2.3.md) |
-| v2.2            | [Read the release notes](release-notes/v2.2.md) |
-| v2.1            | [Read the release notes](release-notes/v2.1.md) |
-| v2.0            | [Read the release notes](release-notes/v2.0.md) |
+## P4SaMD v3.x
+
+| Release Version | Release Notes |
+|----------------|--------------|
+| v3.0 | [Read the release notes](release-notes/v3.0.md) |
+
+## P4SaMD v2.x
+
+P4SaMD v2 documentation has been archived. Select the appropriate version from the version dropdown above to view v2 release notes.

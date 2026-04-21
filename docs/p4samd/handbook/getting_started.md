@@ -4,45 +4,103 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-Mia-Care P4SaMD is a robust solution integrated with **Mia-Platform IDP** at the company level. This integration ensures seamless alignment of development and operational workflows for Software as a Medical Device (SaMD) products.
+This guide walks you through your first session in P4SaMD v3 — from logging in to navigating your first project.
 
-## Understanding the "Company" in Mia-Platform IDP
+## Prerequisites
 
-In the context of Mia-Platform IDP, a **Company** represents the organizational entity responsible for a specific product or group of products. When working with Mia-Care P4SaMD:
-- Each **Company** in Mia-Platform IDP corresponds to a single SaMD product.
-- A **single instance of P4SaMD** can be connected to one Company in Mia-Platform IDP, ensuring a dedicated setup for each SaMD.
+Before you begin, ensure that:
 
-For additional details about the concept of a "Company" and other functionalities, refer to the **[Mia-Platform IDP Official Documentation](https://docs.mia-platform.eu)**.
+1. Your organization has an active P4SaMD subscription (SaaS or on-premise).
+2. A P4SaMD administrator has created your user account and added you to at least one organization.
+3. You have received a welcome email with the URL of the P4SaMD instance and your login credentials.
 
-## ALM Tool Integration with P4SaMD
+## Step 1 — Log In
 
-Mia-Care P4SaMD is designed to integrate seamlessly with an Application Lifecycle Management (ALM) tool to manage and synchronize critical elements of the SaMD development lifecycle.
+1. Open your browser and navigate to the P4SaMD URL provided by your administrator.
+2. On the login screen, enter your credentials (username and password).
+3. Complete any multi-factor authentication steps if configured.
 
-### Entities Managed by P4SaMD
-Mia-Care P4SaMD tracks and manages the following entities as part of its integration with the ALM tool:
-1. **Requirements**  
-2. **Software Items**  
-3. **Tests**  
-4. **Test Executions**  
-5. **Risks**  
-6. **Changes**  
-7. **Versions**
+Once authenticated, P4SaMD checks which organizations your account belongs to and proceeds automatically to Step 2.
 
-### Data Synchronization with the ALM Tool
-- All entities except **Software Items** are traced in the ALM tool.  
-- Changes made to these entities in the ALM tool are automatically synchronized with Mia-Care P4SaMD in real-time, ensuring up-to-date and consistent information across both platforms.
+## Step 2 — Select Your Organization
 
-### Management of Software Items and Test Executions
-- **Software Items** are managed exclusively within Mia-Care P4SaMD. Their implementation and configuration are validated against Mia-Platform IDP, ensuring compliance with the overall setup.  
-- **Test Executions** are also handled directly by Mia-Care P4SaMD. The platform automates the management of test executions, offering streamlined workflows and reducing manual effort.
+If your account belongs to **more than one organization**, a selection screen appears after login. Each card shows the organization name and your role within it.
 
-This integration enables comprehensive tracking and management of all essential SaMD development elements, leveraging the strengths of the ALM tool and Mia-Care P4SaMD for a cohesive and efficient workflow.
+- Click an organization card to enter it.
+- Your selection determines which projects, users, and data are visible for the rest of your session.
 
-## Exploring Functionality through Mia-Platform Documentation
+If your account belongs to **exactly one organization**, P4SaMD skips this screen and takes you directly to the Products page.
 
-Since Mia-Care P4SaMD operates in conjunction with Mia-Platform IDP, many core functionalities and configurations are shared across the two platforms. These include infrastructure management, development pipelines, and security protocols. For comprehensive guidance, consult the **[Mia-Platform Official Documentation](https://docs.mia-platform.eu)**.
+:::tip Switching organizations later
+You can switch organizations at any time using the organization switcher in the top navigation bar. Your session data is saved — you will return to the same context when you switch back.
+:::
+
+## Step 3 — Explore the Products Page
+
+After selecting an organization, you land on the **Products page**. This is the main hub for all software projects within your organization.
+
+Each product card displays:
+
+- Project name and description
+- Project type (Standard or AI-Powered)
+- Latest version name and status
+- Software safety classification (Class A, B, or C)
+- Applicable regulatory framework (e.g., EU MDR, FDA)
+
+### Entering a Project
+
+Click any product card to enter the project context. P4SaMD loads the project's sidebar navigation and displays the project dashboard with the most recent workspace version.
+
+### Pinning Projects
+
+If you work with a project frequently, hover over its card and click the pin icon. The project appears in the **Pinned Projects** section of the left sidebar for quick access from any page.
+
+## Step 4 — Navigate the Project
+
+Once inside a project, the left sidebar shows the full set of SDLC tools available. The sections you see depend on your subscription plan and role:
+
+| Sidebar Section | Purpose |
+|----------------|---------|
+| **Dashboard** | Overview of project health, compliance status, and recent activity |
+| **Requirements** | Manage and trace software requirements |
+| **System Design** | Define and document your software architecture |
+| **Risks** | Identify, assess, and mitigate software risks |
+| **Verification & Validation** | Manage test plans and test cases |
+| **Changes** | Track and manage change requests |
+| **Versions** | Manage workspace versions and release workflows |
+| **Documentation** | Generate compliance documentation and reports |
+
+## Step 5 — Create or Import a Project
+
+### Creating a New Project
+
+If you need to start a new project from scratch:
+
+1. On the Products page, click **Create New Project**.
+2. Fill in the project details:
+   - Name and description
+   - Type: **Standard** or **AI-Powered**
+   - Intended use statement
+   - Target market region (e.g., EU, US)
+   - Regulatory frameworks (e.g., EU MDR, FDA 510(k))
+   - Software safety classification (IEC 62304 Class A, B, or C)
+3. Click **Create**.
+
+P4SaMD sets up the project and takes you to the project dashboard.
+
+### Importing an Existing Project (Brownfield)
+
+If you have an existing software system that you want to bring into P4SaMD:
+
+1. On the Products page, click **Import Project**.
+2. Follow the six-step Brownfield Import wizard.
+3. After completing the wizard, P4SaMD performs a compliance gap analysis and generates a remediation plan.
+
+See [Brownfield Import](./brownfield/overview) for the full walkthrough.
 
 ## Next Steps
-1. **Familiarize Yourself with Mia-Platform IDP:** Ensure your company and its workflows are properly configured in Mia-Platform IDP.
-2. **Understand Your JIRA Project:** Map the relevant JIRA fields to the P4SaMD data model for effective synchronization.
-3. **Leverage P4SaMD Capabilities:** Use the platform to efficiently manage your SaMD lifecycle within the integrated ecosystem.
+
+- [Understand organizations and multi-tenancy →](./organizations)
+- [Manage products and projects →](./products)
+- [Work with requirements →](./requirements)
+- [Run a Brownfield Import →](./brownfield/overview)

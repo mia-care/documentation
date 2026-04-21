@@ -1,139 +1,98 @@
 ---
 id: faq
-title: Frequently Asked Questions (FAQ)
+title: Frequently Asked Questions
 sidebar_label: FAQ
 ---
 
-Welcome to the **P4SaMD FAQ page**, where we address the most common questions about our platform. This section is designed to provide clear and detailed answers to help you better understand P4SaMD, its capabilities, and its role in the SaMD development lifecycle.
+Welcome to the P4SaMD FAQ. This page answers the most common questions about the platform, its capabilities, and how it fits into your development process.
 
 ---
 
 ### Is P4SaMD an eQMS?
 
-No, **P4SaMD is not an eQMS**. However, it complements eQMS tools by enhancing their functionality in two key ways:
+No. P4SaMD is not an Electronic Quality Management System (eQMS). It complements your eQMS by:
 
-1. **Integration with eQMS**:  
-   P4SaMD integrates seamlessly with your existing eQMS, providing quick access to documents stored in the eQMS directly from its interface. This reduces the need to switch between systems and streamlines workflows.
+1. **Integrating with it**: P4SaMD can provide quick access to documents stored in your eQMS directly from the platform interface, reducing tool-switching.
+2. **Enforcing the policies it defines**: P4SaMD ensures that development activities follow the procedures and requirements documented in your QMS, such as those required by ISO 13485.
 
-2. **Policy and Process Enforcement**:  
-   P4SaMD enforces the policies and processes defined in your Quality Management System (QMS). For example, it ensures that all development activities comply with procedural requirements outlined in standards like **ISO 13485**, helping teams maintain alignment with regulatory and quality expectations.
-
-While it does not replace an eQMS, P4SaMD serves as a bridge between quality management and software development, ensuring both are tightly integrated and compliant.
+P4SaMD serves as a bridge between your quality management processes and your software development lifecycle — but it does not replace your eQMS.
 
 ---
 
-### Is P4SaMD an ALM?
+### Is P4SaMD an ALM tool?
 
-No, **P4SaMD is not an ALM (Application Lifecycle Management tool)**, nor is it a project specification management tool like Jira or Matrix Requirements. However, P4SaMD enhances these tools through integrations that provide added value:
+No. P4SaMD is not an Application Lifecycle Management tool. In version 3, however, P4SaMD includes **native work-item management** — requirements, risks, tests, and changes are managed directly inside the platform.
 
-- **Integration with ALM and Specification Tools**:  
-   P4SaMD integrates with platforms like Jira and Matrix Requirements to link project management and specification data with the software development lifecycle.
-  
-- **Unified Traceability**:  
-   These integrations enable full traceability across the development process, linking requirements, risks, and project specifications to design, implementation, and verification activities.
-
-P4SaMD creates a unified access point for governance and development, ensuring compliance while enhancing productivity and collaboration.
+External ALM tools such as Jira are supported as **optional** integrations offering bidirectional synchronization, but they are no longer a prerequisite for using P4SaMD. If you do not have an existing ALM setup, P4SaMD works fully out of the box.
 
 ---
 
-### What is the relationship between Mia-Platform IDP and Mia-Care P4SaMD?
+### Does P4SaMD v3 require Mia-Platform Console or any other specific platform?
 
-**Mia-Platform IDP** is a robust, general-purpose tool designed to manage the entire software lifecycle. It is domain-agnostic and supports a wide range of software development needs, from source control to CI/CD pipelines.
+No. P4SaMD version 3 operates as a **standalone platform**. It does not require Mia-Platform Console to be deployed or in use by your organization. Authentication is handled via a federated OIDC identity provider that is part of the P4SaMD installation, independent of any third-party platform.
 
-**Mia-Care P4SaMD**, on the other hand, is an **extension of Mia-Platform IDP**, specifically developed by Mia-Care to address the unique requirements of SaMD development. Here’s how they relate:
-
-- **Mia-Platform IDP** provides the core capabilities for managing software development processes.
-- **Mia-Care P4SaMD** adds functionalities required for compliance with **ISO 13485**, **IEC 62304**, **ISO 14971**, and other SaMD-specific standards.
-
-In essence, Mia-Care P4SaMD builds upon the flexibility of Mia-Platform IDP, tailoring it to meet the stringent regulatory demands of SaMD development.
+This is a major change from version 2, which was integrated with Mia-Platform Console.
 
 ---
 
 ### Is P4SaMD certified as SaMD?
 
-No, **Mia-Care P4SaMD is not a Software as a Medical Device (SaMD)**. It does not have a specific intended medical use and, as a result, cannot be certified as SaMD. However, Mia-Care P4SaMD is validated for use in developing SaMD solutions. This validation ensures that P4SaMD meets the requirements for reliability, quality, and compliance needed to support regulated software development.
-
-For more details about the validation process, refer to the next question or contact Mia-Care for documentation.
+No. P4SaMD does not have a specific intended medical use and therefore cannot be certified as Software as a Medical Device. However, P4SaMD is **validated** for use in developing SaMD solutions. This validation confirms that the platform meets the requirements for reliability and quality needed to support regulated software development.
 
 ---
 
 ### Is P4SaMD validated for SaMD development?
 
-Yes, **Mia-Care P4SaMD is validated** for the development of solutions intended to be certified as SaMD. This validation includes:
+Yes. P4SaMD is validated for use in the development of solutions intended to be certified as SaMD. Validation is performed following industry guidelines such as GAMP 5 (Good Automated Manufacturing Practice) and GMP Annex 11, ensuring that the platform operates reliably in regulated environments.
 
-- **Compliance with Guidelines**:  
-   Validation is performed following industry-standard guidelines such as **GAMP5** (Good Automated Manufacturing Practice) and **GMP Annex 11**. This ensures that P4SaMD operates reliably within regulated environments.
-
-- **Purpose of Validation**:  
-   The validation process ensures that P4SaMD supports SaMD development without introducing risks and that it aligns with regulatory requirements throughout the software lifecycle.
-
-To learn more about the validation process or request specific validation documentation, please contact Mia-Care.
+For validation documentation, contact Mia-Care.
 
 ---
 
-### Can I integrate tools not natively supported by P4SaMD?
+### Can I integrate tools that P4SaMD does not natively support?
 
-Yes, **Mia-Care P4SaMD supports integration with tools outside of its native ecosystem**. Here’s how:
-
-- **API Support**:  
-   P4SaMD provides a comprehensive set of APIs that allow you to integrate it into any technology stack or development process. These APIs enable you to connect with tools specific to your workflows, even if they are not natively supported by P4SaMD.
-
-- **Flexible Implementation**:  
-   Integration with non-native tools can be carried out directly by your team or with the assistance of Mia-Care. In collaboration with your team, Mia-Care can ensure a seamless connection tailored to your specific requirements.
-
-This flexibility ensures that P4SaMD can adapt to your existing infrastructure and processes, making it a versatile addition to any development environment.
+Yes. P4SaMD exposes a comprehensive set of APIs that allow you to connect it to any tool or technology stack. Integrations can be built by your team or in collaboration with Mia-Care. This flexibility ensures that P4SaMD adapts to your existing infrastructure.
 
 ---
 
-### Does using Mia-Care P4SaMD automatically grant certification?
+### Does using P4SaMD automatically grant regulatory certification?
 
-No, **Mia-Care P4SaMD does not provide automatic certification** for the software developed with it. Mia-Care is not a notified body and therefore cannot certify your product. However:
-
-- **Support for Certification**:  
-   Mia-Care has a network of partners, including notified bodies, who can assist you in obtaining certification for your software. P4SaMD facilitates compliance with standards and simplifies the certification process by ensuring that your development process aligns with regulatory requirements.
-
-Using P4SaMD significantly reduces the effort needed to prepare for certification, but the certification itself must be conducted by an authorized body.
+No. P4SaMD does not provide automatic certification for the software developed with it. Mia-Care is not a notified body. However, Mia-Care has a network of partners — including notified bodies — who can assist you in obtaining certification. P4SaMD significantly simplifies the preparation process by ensuring your development activities are aligned with regulatory expectations and by generating the necessary compliance documentation.
 
 ---
 
-### How does Mia-Care P4SaMD deal with Artificial Intelligence functionalities and he generated information?
+### How does P4SaMD support Artificial Intelligence features in medical software?
 
-P4SaMD includes functionalities based on artificial intelligence, the intellectual property of which remains with the Provider. The Client acknowledges that the results generated by artificial intelligence systems may be inaccurate, incomplete, and/or irrelevant. Consequently, prior to any use thereof, the Client undertakes to verify their accuracy and remains solely responsible for their utilization. The Client agrees not to provide P4SaMD with any personal data, whether sensitive or not, and shall in any case remain responsible for compliance with applicable data protection regulations, including EU Regulation 2016/679 (GDPR). 
+P4SaMD includes a dedicated **AI Validation** module designed to support medical software that incorporates machine learning and AI components. This module addresses requirements under the EU AI Act, FDA Good Machine Learning Practices (GMLP), and Predetermined Change Control Plans (PCCP). It provides structured management of training datasets, model versions, and performance metrics, and automates assessments of "substantial modifications" when AI models are updated.
 
-**Mia-Care P4SaMD** will share data with specific external parties only when AI-powered features are triggered by the user, in particular:
+Additionally, P4SaMD's **Smart Insight (Whisper)** module uses AI to proactively evaluate project artifacts against regulatory rules, identify quality issues in requirements, and highlight gaps in test coverage.
 
-- [Microsoft OpenAI Azure][azure-openai-service]: to provide AI-based functionalities, **Mia-Care P4SaMD** will share data received from the integrated ALM.
-
-  - [GDPR compliance][azure-openai-gdpr]
-  - [Terms of Use][azure-openai-tos]
-  - [Data Protection Addendum][azure-openai-dpa]
-  - [Data, privacy, and security][azure-openai-data-privacy-security]
-
-You should always check the privacy policy and terms of use of the services your are going to use, to ensure their data processing practices are compliant with applicable regulations and company policies, especially if sensitive or confidential information are involved.
+AI-powered features are clearly marked in the platform and can be enabled or disabled by an administrator.
 
 ---
 
-### Does Mia-Care P4SaMD integrate with a specific ALM / eQMS / … ?
+### What deployment models are available?
 
-Currently, we can integrate with the following products:
+P4SaMD v3 supports three deployment models:
 
-- **ALM**: [Jira][jira] or, using [Jira][jira] as a bridge, any ALM that can be integrated with [Jira][jira] 
-- **Testing framework**: any solution capable of generating JUnit reports in XML format, such as [Jest][jest] or [Playwright][playwright]
-- **SBOM generator**: any solution capable of generating SBOM in [CycloneDX format][cyclone-dx], like [trivy][trivy]
+| Model | Description |
+|-------|-------------|
+| **Multi-Tenant SaaS** | Shared cloud instance managed by Mia-Care. Logical data isolation via Row-Level Security. |
+| **Dedicated SaaS** | Dedicated cloud infrastructure per customer, managed by Mia-Care. Physical database isolation. |
+| **On-Premise** | Self-hosted by the customer. Full data sovereignty, supports air-gapped networks. |
 
-More other integrations are in product roadmap, contact us to find them out! 
+All three models provide the same feature set.
 
 ---
 
-If you have further questions or need additional assistance, feel free to reach out to our team. We are here to help you succeed with P4SaMD!
+### Can multiple teams in my organization use P4SaMD simultaneously?
 
-[azure-openai-service]: https://azure.microsoft.com/en-us/products/ai-services/openai-service
-[azure-openai-gdpr]: https://learn.microsoft.com/en-us/legal/gdpr
-[azure-openai-tos]: https://learn.microsoft.com/en-us/legal/termsofuse
-[azure-openai-dpa]: https://aka.ms/DPA
-[azure-openai-data-privacy-security]: https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy
-[cyclone-dx]: https://cyclonedx.org/
-[jest]: https://github.com/jest-community/jest-junit
-[jira]: https://www.atlassian.com/it/software/jira
-[playwright]: https://playwright.dev/docs/test-reporters#junit-reporter
-[trivy]: https://trivy.dev/latest/
+Yes. P4SaMD v3 is built on a multi-tenant architecture. Within your organization, you can create and manage multiple independent projects, each with its own team, configuration, compliance context, and version history. Users can be assigned to specific projects with role-based access.
+
+---
+
+### What happens to my v2 configuration if I migrate to v3?
+
+P4SaMD v3 is a new platform with a different architecture. Direct in-place migration from v2 to v3 is not supported. For customers moving from v2, the recommended path is to use the **Brownfield Import** feature in v3 to onboard your existing project — the platform will perform a compliance gap analysis and generate a remediation plan to bring your project to audit-ready status under the v3 framework.
+
+For migration support, contact Mia-Care.
