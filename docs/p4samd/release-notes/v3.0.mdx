@@ -5,6 +5,7 @@ sidebar_label: Current (v3.x)
 ---
 
 import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
+import { Roadmap, RoadmapItem } from '@site/src/components/Roadmap';
 
 ## P4SaMD v3.0
 
@@ -81,19 +82,61 @@ Workspace versions provide IEC 62304-aligned configuration management. Draft ver
 P4SaMD v3 is a new platform. There is no direct in-place migration path from v2. Organizations moving from v2 are recommended to use the **Brownfield Import** feature to onboard their existing projects into the v3 platform. Contact Mia-Care for migration support.
 
 ---
+Product Roadmap
 
-### Known Limitations in v3.0
+P4SaMD v3 is an evolving platform. The features below are actively in development and will roll out in upcoming minor releases throughout 2026 and beyond:
 
-The following features from the full v3 roadmap are under active development and will be available in upcoming minor releases:
+<Roadmap>
 
-- Risk Management module (UI)
-- Verification & Validation test execution
-- SDLC Workflow Orchestrator and CI/CD integration
-- Documentation Engine (auto-generated reports)
-- System Design module
-- BOM Management and SBOM generation
-- Smart Insight (Whisper) AI advisor
-- AI Assistant
-- Post-Market Surveillance
+<RoadmapItem icon="⚠️" title="Risk Management" quarter="Q3 2026" status="in-progress">
 
+Full risk management capabilities including hazard analysis, risk assessment worksheets, residual risk evaluation, and ISO 14971-compliant risk management reports. Bidirectional traceability between risks, requirements, and mitigations.
+
+</RoadmapItem>
+
+<RoadmapItem icon="✅" title="Verification & Validation Execution" quarter="Q3 2026" status="in-progress">
+
+Execute test plans directly in P4SaMD with test case assignment, execution tracking, evidence attachment, and pass/fail reporting. IEC 62304-aligned V&V documentation generation with full traceability to requirements and design.
+
+</RoadmapItem>
+
+<RoadmapItem icon="🔄" title="SDLC Workflow Orchestrator" quarter="Q4 2026" status="soon">
+
+Automated workflow engine that coordinates development activities across the software lifecycle. CI/CD pipeline integration for automated test triggering, build verification, and compliance gate enforcement.
+
+</RoadmapItem>
+
+<RoadmapItem icon="📄" title="Documentation Engine" quarter="Q4 2026" status="soon">
+
+Auto-generated compliance documentation including Software Development Plans, Risk Management Reports, Verification Reports, and Technical Files. Template-based output with PDF export and regulatory submission packaging.
+
+</RoadmapItem>
+
+<RoadmapItem icon="🏗️" title="System Design & Architecture" quarter="Q1 2027" status="planned">
+
+System architecture modeling with component diagrams, interface specifications, and design rationale capture. Automated generation of Software Architecture Documents and Detailed Design Specifications aligned to IEC 62304 requirements.
+
+</RoadmapItem>
+
+<RoadmapItem icon="📦" title="BOM Management & SBOM" quarter="Q1 2027" status="planned">
+
+Bill of Materials management for software components, dependencies, and SOUP items. Automated SBOM generation in SPDX and CycloneDX formats. License compliance tracking and vulnerability correlation.
+
+</RoadmapItem>
+
+<RoadmapItem icon="🤖" title="Smart Insight AI Advisor" quarter="Q2 2027" status="planned">
+
+Context-aware AI assistant that provides intelligent suggestions for requirement writing, gap analysis recommendations, and compliance best practices. Trained on medical device regulatory frameworks and software engineering standards.
+
+</RoadmapItem>
+
+<RoadmapItem icon="📊" title="Post-Market Surveillance" quarter="Q2 2027" status="planned">
+
+Post-market monitoring dashboard with adverse event tracking, complaint management, field action coordination, and trend analysis. Integration capabilities with vigilance reporting systems and regulatory authority portals.
+
+</RoadmapItem>
+
+</Roadmap>
+
+Each minor release will include detailed documentation of new capabilities as they become available. Subscribe to release notifications or contact Mia-Care for roadmap updates and feature access
 Release notes for each subsequent minor version will document new capabilities as they become available.
