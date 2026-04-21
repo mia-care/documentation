@@ -131,7 +131,7 @@ const config = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          editUrl: createEditUrl,
+          // editUrl: createEditUrl,
           sidebarPath: require.resolve("./sidebars.js"),
           lastVersion: "current",
           includeCurrentVersion: true,
