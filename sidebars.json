@@ -79,6 +79,22 @@
       ]
     },
     {
+      "label": "Tutorials",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/tutorials/implementing-iec-62304",
+          "label": "IEC 62304 Compliance",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/tutorials/brownfield-analysis",
+          "label": "Brownfield Regulatory Analysis",
+          "type": "doc"
+        }
+      ]
+    },
+    {
       "label": "Security",
       "type": "category",
       "items": [
