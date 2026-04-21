@@ -4,6 +4,8 @@ title: Products & Projects
 sidebar_label: Products & Projects
 ---
 
+import { NextSteps } from '@site/src/components/StepGuide';
+
 The **Products page** is the organization-level hub that lists all medical device software projects in your organization. Access it by clicking **All Products** in the sidebar (visible when no project is selected), or by navigating up to the organization level via the breadcrumb.
 
 Each project is shown as a card. The card displays the project name and description, the project type (Standard or **AI-Powered**), the name and status of the most recent workspace version, the overall compliance posture, the IEC 62304 safety classification (Class A, B, or C), and the primary target regulatory framework. Clicking a card opens the project and loads its sidebar navigation pointing to the most recent version. If you work with a project frequently, hover over its card and click the **pin icon** — pinned projects appear at the top of the left sidebar for one-click access from anywhere in the platform.
@@ -26,6 +28,8 @@ Once inside a project, go to **Settings → Team Members** to add or remove user
 
 ---
 
-- [Work with requirements →](./requirements)
-- [Run a Brownfield Import →](./brownfield/overview)
-- [Manage versions →](./version_management)
+<NextSteps items={[
+  { icon: '📝', label: 'Work with requirements', to: './requirements' },
+  { icon: '🔄', label: 'Run a Brownfield Import', to: './brownfield/overview' },
+  { icon: '📋', label: 'Manage versions', to: './version_management' },
+]} />

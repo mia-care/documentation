@@ -4,6 +4,8 @@ title: Brownfield Import — Overview
 sidebar_label: Overview
 ---
 
+import { NextSteps } from '@site/src/components/StepGuide';
+
 The **Brownfield Import** feature allows you to onboard an existing software project — one already in development or even in production — into P4SaMD. The platform analyzes your current state against the applicable regulatory framework and produces a prioritized compliance gap analysis and a remediation plan you can act on immediately.
 
 Use this feature when your software product already exists but has not been developed under a formal IEC 62304-compliant process, when you need to understand the gap between your current state and EU MDR or FDA certification requirements, when you want to generate a structured roadmap to bring an existing product to audit-ready status, or when you are acquiring or inheriting a system and need to assess its regulatory posture.
@@ -31,4 +33,6 @@ When evaluation completes, the Evaluation page shows an **overall compliance sco
 
 ---
 
-- [Start the Import Wizard →](./import-wizard)
+<NextSteps items={[
+  { icon: '📋', label: 'Start the Import Wizard', to: './import-wizard' },
+]} />

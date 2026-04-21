@@ -4,6 +4,8 @@ title: Version Management
 sidebar_label: Version Management
 ---
 
+import { NextSteps } from '@site/src/components/StepGuide';
+
 P4SaMD uses **workspace versions** to track the evolution of your medical device software through its development lifecycle. Each version is a named, timestamped snapshot of all project artifacts — requirements, risks, software items, and test evidence — at a specific point in time, aligned with IEC 62304 configuration management requirements.
 
 The **active version** is always shown in the project header. You can switch to a different version by clicking the version name and choosing from the dropdown list of all available versions; the sidebar and all content views update immediately to reflect your selection.
@@ -22,4 +24,6 @@ Every change to an artifact within a version is recorded in the audit log with t
 
 ---
 
-- [Manage requirements →](./requirements)
+<NextSteps items={[
+  { icon: '📝', label: 'Manage requirements', to: './requirements' },
+]} />

@@ -4,6 +4,8 @@ title: Requirements Management
 sidebar_label: Requirements
 ---
 
+import { NextSteps } from '@site/src/components/StepGuide';
+
 The **Requirements** section of P4SaMD is where you capture, organize, trace, and verify the software requirements for your medical device project. Work-item management is built directly into the platform — no external ALM tool is needed. Open it by clicking **Requirements** in the left project sidebar.
 
 ## Navigating the Requirements List
@@ -34,4 +36,6 @@ You can also **import** requirements from a CSV file — useful for migrating fr
 
 ---
 
-- [Work with versions →](./version_management)
+<NextSteps items={[
+  { icon: '📋', label: 'Work with versions', to: './version_management' },
+]} />

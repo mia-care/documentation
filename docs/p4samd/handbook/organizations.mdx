@@ -4,6 +4,8 @@ title: Organizations & Multi-Tenancy
 sidebar_label: Organizations
 ---
 
+import { NextSteps } from '@site/src/components/StepGuide';
+
 P4SaMD is a **multi-tenant platform**. A single installation serves multiple independent organizations simultaneously, with complete data isolation between them — your projects, users, and data are never visible to anyone outside your organization.
 
 An **organization** is the top-level container for everything in P4SaMD: your medical device projects, the team members who work on them, organization-wide settings such as compliance templates and integrations, and your subscription quota. Think of it as your private workspace within the platform.
@@ -24,5 +26,7 @@ All data in P4SaMD is strictly scoped to its organization. Search results, filte
 
 ---
 
-- [Manage products and projects →](./products)
-- [Understand user roles and permissions →](../security/roles_permissions)
+<NextSteps items={[
+  { icon: '📦', label: 'Manage products and projects', to: './products' },
+  { icon: '🔐', label: 'Understand user roles and permissions', to: '../security/roles_permissions' },
+]} />

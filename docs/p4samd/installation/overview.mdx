@@ -5,6 +5,7 @@ sidebar_label: Overview
 ---
 
 import { DeploymentTable } from '@site/src/components/DeploymentTable';
+import { NextSteps } from '@site/src/components/StepGuide';
 
 P4SaMD is available in three deployment modes. Each mode is designed for a different organizational profile — from teams that want to be up and running in minutes to enterprises that require full infrastructure ownership.
 
@@ -76,7 +77,7 @@ The table below summarizes the key characteristics of each mode. Where multi-ten
 
 ---
 
-## Next Steps
-
-- [SaaS plans and differences →](./installation_saas)
-- [On-premise requirements →](./installation_on_premise)
+<NextSteps items={[
+  { icon: '☁️', label: 'SaaS plans and differences', to: './installation_saas' },
+  { icon: '💻', label: 'On-premise requirements', to: './installation_on_premise' },
+]} />
