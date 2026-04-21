@@ -97,7 +97,7 @@ In addition to the information displayed in the table, this tab shows:
 This tab shows the linked issues of the requirement grouped by:
 
 - **[Software Items](./software_items.md)**
-- **[Requirements](./requirements.md)**
+- **[Requirements](./requirements)**
 
 #### Suggestions
 
