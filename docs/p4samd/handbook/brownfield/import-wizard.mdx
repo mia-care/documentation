@@ -1,0 +1,107 @@
+---
+id: import-wizard
+title: Brownfield Import Wizard
+sidebar_label: Import Wizard
+---
+
+import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
+
+This page walks you through each step of the Brownfield Import wizard. To launch it, go to the **Products page** and click **Import Project**.
+
+<Prerequisites items={[
+  'Access to your source code repository (URL or downloadable archive).',
+  'Existing design documents, SOPs, and technical documentation, if any.',
+  'Any available test reports, risk analyses, or regulatory submissions.',
+  'Information about your CI/CD pipeline and build toolchain.',
+  'The regulatory framework you are targeting (EU MDR, FDA, etc.) and your intended device classification.',
+]} />
+
+<StepGuide>
+
+<Step number={1} icon="📋" title="Overview">
+
+This step introduces the import process. Review the summary of what P4SaMD needs from you and what the evaluation will produce — the gap analysis scope, the types of evidence it can ingest, and the format of the remediation plan. When you are ready to proceed, click **Get Started**.
+
+</Step>
+
+<Step number={2} icon="🎯" title="Use Case">
+
+Select the primary reason for your compliance assessment. The use case helps P4SaMD focus the gap analysis on what matters most for your situation.
+
+| Use case | When to choose it |
+|---|---|
+| **New certification** | Preparing a new product for first regulatory submission |
+| **Market expansion** | Extending an existing certification to a new region (e.g., US → EU) |
+| **Acquisition / due diligence** | Assessing a product you are acquiring |
+| **Continuous compliance** | Ongoing compliance monitoring for a product already on the market |
+| **Legacy remediation** | Bringing an existing non-compliant product into conformance |
+
+Click **Next** after selecting a use case.
+
+</Step>
+
+<Step number={3} icon="🗺️" title="Target Definition">
+
+Define the compliance target that P4SaMD will assess your project against. The regulatory framework, device class, safety classification, and intended use together determine exactly which requirements are checked.
+
+| Field | Description |
+|---|---|
+| **Regulatory Framework** | EU MDR, FDA 510(k), FDA PMA, or other applicable framework |
+| **Device Class** | Risk classification: Class I, IIa, IIb (EU) or Class I, II, III (FDA) |
+| **Software Safety Class** | IEC 62304 classification: Class A, B, or C |
+| **Intended Use** | Plain-language statement of the software's intended medical purpose |
+| **Target Market Region** | Geographic markets where the device will be placed |
+
+</Step>
+
+<Step number={4} icon="📁" title="Technical Assets">
+
+Upload or reference the technical artifacts that make up your software product. You do not need to provide every asset type — P4SaMD adjusts the analysis to what is available, and the more you provide the more complete the evaluation will be.
+
+| Asset type | What to provide |
+|---|---|
+| **Source repository** | Repository URL (GitHub, GitLab, etc.) or a compressed archive of the codebase |
+| **CI/CD configuration** | Pipeline definition files (`.github/workflows`, `Jenkinsfile`, `.gitlab-ci.yml`, etc.) |
+| **Build artifacts** | Compiled binaries, container images, or package manifests if available |
+| **Dependency manifest** | `package.json`, `Cargo.toml`, `go.mod`, `requirements.txt`, or equivalent |
+| **Infrastructure configuration** | Kubernetes manifests, Helm charts, Docker Compose files if applicable |
+
+Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
+
+</Step>
+
+<Step number={5} icon="📄" title="Documentation">
+
+Upload existing compliance documentation. P4SaMD recognizes and indexes these documents as part of the gap analysis, treating them as evidence of existing compliance work.
+
+| Document type | Examples |
+|---|---|
+| **Design documents** | Software Design Specification, Architecture Description |
+| **Risk analysis** | Risk Management File, FMEA, Hazard Analysis |
+| **Test evidence** | Test Plans, Test Reports, Test Summary Reports |
+| **Quality records** | SOPs, Work Instructions, Change Records |
+| **Regulatory submissions** | Technical File, 510(k) summary, Declarations of Conformity |
+
+Supported file formats: PDF, Word (`.docx`), Markdown, plain text.
+
+</Step>
+
+<Step number={6} icon="✅" title="Summary & Submit">
+
+Review all the information you have provided: the use case, target definition, list of uploaded technical assets, and list of uploaded documents. If anything needs to be corrected, use the **Back** button to return to the relevant step.
+
+When you are satisfied, click **Submit for Evaluation**. P4SaMD begins processing your uploaded materials immediately.
+
+After submission you are redirected to the **Evaluation page**, which shows the current processing status (Queued → Processing → Complete) and a progress indicator for each analysis phase. Processing can take from a few minutes to several hours depending on the volume of content. You can leave the page and return later — the evaluation runs in the background.
+
+<Tip>
+  If you need to pause before finishing the wizard, click <strong>Save and Exit</strong> at any point. To resume, go to the Products page, click <strong>Import Project</strong>, and choose <strong>Resume</strong> when prompted.
+</Tip>
+
+</Step>
+
+</StepGuide>
+
+<NextSteps items={[
+  { icon: '📊', label: 'Understand the evaluation results', to: './overview' },
+]} />
