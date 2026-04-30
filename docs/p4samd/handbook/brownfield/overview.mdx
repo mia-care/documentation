@@ -18,18 +18,18 @@ The six wizard steps are:
 
 | Step | Name | What you provide |
 |---|---|---|
-| 1 | Overview | Review the process and what to prepare |
-| 2 | Use Case | Reason for the assessment (new certification, market expansion, acquisition, etc.) |
+| 1 | Import Project | Review the process and what to prepare |
+| 2 | Use Case | Reason for the assessment (e.g., Regulatory Change, Delta Certification, Add Feature, Audit Preparation) |
 | 3 | Target Definition | Target regulatory framework, device class, intended use, and target market region |
 | 4 | Technical Assets | Source repositories, CI/CD configurations, build artifacts, and development toolchain details |
 | 5 | Documentation | Existing design documents, SOPs, test reports, risk analyses, and other compliance evidence |
 | 6 | Summary | Review all inputs before submitting for evaluation |
 
-You can pause at any time by clicking **Save and Exit** — your session is saved and you can resume from the Brownfield Import page. If you want to start over, use **Discard** to clear the session.
+You can pause at any time by clicking **Save as Draft** in the wizard footer. Your session is saved and listed as a draft in the **Brownfield** section of the left sidebar. Click **Resume** on the draft card to pick up exactly where you left off. To exit without saving, click **Cancel** and choose **Exit without saving** — if you have never saved the session as a draft, no data is stored.
 
 ## After Evaluation
 
-When evaluation completes, the Evaluation page shows an **overall compliance score** (the percentage of the target framework currently satisfied), a **gap analysis breakdown** categorized by area with a severity rating for each gap, a **remediation plan** with recommended actions prioritized by impact, organized by compliance area, and an **evidence inventory** of the documentation that was recognized and ingested.
+When evaluation completes, the Evaluation page shows an **overall compliance score** (the percentage of the target framework currently satisfied), a **gap analysis breakdown** categorized by area with a severity rating for each gap, and a **remediation plan** organized by compliance area (Requirements, Design, Risk Management, Software Implementation, Verification, Configuration). Each task is assigned a priority (Critical, High, or Low) based on its impact on your regulatory target. The plan starts as an editable draft — you can review, reassign, and reorder tasks before confirming it. Once confirmed, you track task completion per area.
 
 <NextSteps items={[
   { icon: '📋', label: 'Start the Import Wizard', to: './import-wizard' },

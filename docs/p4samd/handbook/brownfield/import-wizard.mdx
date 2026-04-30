@@ -6,7 +6,7 @@ sidebar_label: Import Wizard
 
 import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
 
-This page walks you through each step of the Brownfield Import wizard. To launch it, go to the **Brownfield Session page** and click **Import Project**.
+This page walks you through each step of the Brownfield Import wizard. To launch it, click **Brownfield** in the left sidebar, then click **+ Create Project** on the Sessions page.
 
 <Prerequisites items={[
   'Access to your source code repository (URL or downloadable archive).',
@@ -18,7 +18,7 @@ This page walks you through each step of the Brownfield Import wizard. To launch
 
 <StepGuide>
 
-<Step number={1} icon="📋" title="Overview">
+<Step number={1} icon="📋" title="Import Project">
 
 This step introduces the import process. Review the summary of what P4SaMD needs from you and what the evaluation will produce — the gap analysis, the types of evidence it can ingest, and the output of the process. When you are ready to proceed, click **Get Started**.
 
@@ -55,21 +55,22 @@ Define the compliance target that P4SaMD will assess your project against. The r
 | **Intended Use** | Plain-language statement of the software's intended medical purpose |
 | **Regulatory Framework** | EU MDR, FDA 510(k), FDA PMA, or other applicable framework |
 | **Software Safety Class** | IEC 62304 classification: Class A, B, or C |
-| **Target Market Jurisdiction** | Geographic markets where the device will be placed |
+| **Target Market Jurisdiction** | Geographic markets where the device will be placed. Supported: **EU** (MDR / IVDR), **UK** (UKCA), **CH** (Swissmedic), **US** (FDA), **BR** (ANVISA), **JP** (PMDA), **CN** (NMPA) |
 
 </Step>
 
 <Step number={4} icon="📁" title="Technical Assets">
 
-Upload or reference the technical artifacts that make up your software product. You do not need to provide every asset type — P4SaMD adjusts the analysis to what is available, and the more you provide the more complete the evaluation will be.
+Upload the technical artifacts that make up your software product. For each file you upload, assign an **artifact category** — this tells P4SaMD which part of the compliance lifecycle it belongs to and determines what the evaluation checks against it. You do not need to cover every category; the more you provide, the more complete the evaluation.
 
-| Asset type | What to provide |
+| Category | What belongs here |
 |---|---|
-| **Source repository** | Repository URL (GitHub, GitLab, etc.) or a compressed archive of the codebase |
-| **CI/CD configuration** | Pipeline definition files (`.github/workflows`, `Jenkinsfile`, `.gitlab-ci.yml`, etc.) |
-| **Build artifacts** | Compiled binaries, container images, or package manifests if available |
-| **Dependency manifest** | `package.json`, `Cargo.toml`, `go.mod`, `requirements.txt`, or equivalent |
-| **Infrastructure configuration** | Kubernetes manifests, Helm charts, Docker Compose files if applicable |
+| **Requirements** | Requirements specifications, change control records |
+| **Design** | Architecture descriptions, detailed design documents, database schemas |
+| **Risk Management** | Risk analysis files, hazard logs, risk control measure records |
+| **Software Implementation** | Source code archives, git repositories, SBOM / SOUP declarations |
+| **Verification** | Unit, integration, and system test results; code review records |
+| **Configuration** | CI/CD pipeline files, build manifests, infrastructure definitions, dependency lock files |
 
 Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
 
@@ -77,15 +78,16 @@ Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
 
 <Step number={5} icon="📄" title="Documentation">
 
-Upload existing compliance documentation. P4SaMD recognizes and indexes these documents as part of the gap analysis, treating them as evidence of existing compliance work.
+Upload existing compliance documentation. As with technical assets, assign an **artifact category** to each document — this determines how it is weighted in the gap analysis and which remediation tasks it can satisfy.
 
-| Document type | Examples |
+| Category | Document examples |
 |---|---|
-| **Design documents** | Software Design Specification, Architecture Description |
-| **Risk analysis** | Risk Management File, FMEA, Hazard Analysis |
-| **Test evidence** | Test Plans, Test Reports, Test Summary Reports |
-| **Quality records** | SOPs, Work Instructions, Change Records |
-| **Regulatory submissions** | Technical File, 510(k) summary, Declarations of Conformity |
+| **Requirements** | Software Requirements Specification, traceability matrices, change request records |
+| **Design** | Software Design Specification, Architecture Description |
+| **Risk Management** | Risk Management File, FMEA, Hazard Analysis, RCM records |
+| **Verification** | Test Plans, Test Reports, Test Summary Reports |
+| **Configuration** | SOPs, Work Instructions, development environment records |
+| **Requirements / Risk Management** | Regulatory submissions (Technical File, 510(k), Declarations of Conformity) |
 
 Supported file formats: PDF, Word (`.docx`), Markdown, plain text.
 
@@ -97,10 +99,10 @@ Review all the information you have provided: the use case, target definition, l
 
 When you are satisfied, click **Submit for Evaluation**. P4SaMD begins processing your uploaded materials immediately.
 
-After submission you are redirected to the **Evaluation page**, which shows the current processing status (Queued → Processing → Complete) and a progress indicator for each analysis phase. Processing can take from a few minutes to several hours depending on the volume of content. You can leave the page and return later — the evaluation runs in the background.
+After submission you are redirected to the **Evaluation page**, which shows the current processing status (**Evaluating → Evaluated**, or **Failed** if the evaluation could not complete) and a progress indicator for each analysis phase. Processing can take from a few minutes to several hours depending on the volume of content. You can leave the page and return later — the evaluation runs in the background.
 
 <Tip>
-  You can pause at any time by clicking <strong>Save as Draft<strong> in the wizard footer. Click Resume on the draft card to pick up exactly where you left off. To exit without saving, click Cancel and choose Exit without saving; if you have never saved the session as a draft, no data is stored.
+  If you need to pause before finishing the wizard, click <strong>Save as Draft</strong> in the wizard footer at any point. To resume, open the <strong>Brownfield</strong> section from the left sidebar and click <strong>Resume</strong> on your draft session card.
 </Tip>
 
 </Step>
