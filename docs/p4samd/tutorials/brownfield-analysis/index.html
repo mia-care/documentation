@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-p4samd/tutorials/brownfield-analysis" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">Tutorial: Analyzing a Legacy Project for Regulatory Compliance | Mia-Care P4SaMD Handbook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://mia-care.github.com/img/documentation-link-preview.png"><meta data-rh="true" name="twitter:image" content="https://mia-care.github.com/img/documentation-link-preview.png"><meta data-rh="true" property="og:url" content="https://mia-care.github.com/docs/p4samd/tutorials/brownfield-analysis"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tutorial: Analyzing a Legacy Project for Regulatory Compliance | Mia-Care P4SaMD Handbook"><meta data-rh="true" name="description" content="This tutorial demonstrates how to use P4SaMD&#x27;s Brownfield Import feature to analyze an existing software product that was developed without formal IEC 62304 compliance — identifying gaps, assessing regulatory risk, and creating a prioritized remediation roadmap."><meta data-rh="true" property="og:description" content="This tutorial demonstrates how to use P4SaMD&#x27;s Brownfield Import feature to analyze an existing software product that was developed without formal IEC 62304 compliance — identifying gaps, assessing regulatory risk, and creating a prioritized remediation roadmap."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://mia-care.github.com/docs/p4samd/tutorials/brownfield-analysis"><link data-rh="true" rel="alternate" href="https://mia-care.github.com/docs/p4samd/tutorials/brownfield-analysis" hreflang="en"><link data-rh="true" rel="alternate" href="https://mia-care.github.com/docs/p4samd/tutorials/brownfield-analysis" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://GTJ6ERIPDP-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Brownfield Regulatory Analysis","item":"https://mia-care.github.com/docs/p4samd/tutorials/brownfield-analysis"}]}</script><link rel="search" type="application/opensearchdescription+xml" title="Mia-Care P4SaMD Handbook" href="/opensearch.xml">
+
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-PKKZ6XT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script><link rel="stylesheet" href="/assets/css/styles.7ba921b9.css">
+<script src="/assets/js/runtime~main.d0694499.js" defer="defer"></script>
+<script src="/assets/js/main.710ef42f.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script>
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKKZ6XT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="Mia-Care logo" class="themedComponent_mlkZ themedComponent--light_NVdE" height="32" width="120" style="padding:2px 5px"><img src="/img/logo.png" alt="Mia-Care logo" class="themedComponent_mlkZ themedComponent--dark_xIcU" height="32" width="120" style="padding:2px 5px"></div><b class="navbar__title text--truncate">Mia-Care P4SaMD</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/p4samd/overview">Overview</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/p4samd/handbook/getting_started">Handbook</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/p4samd/release-notes/v3.0">Release Notes</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/p4samd/faq">FAQ</a><a href="https://mia-care.io" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">About us<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a aria-current="page" class="navbar__link active" aria-haspopup="true" aria-expanded="false" role="button" href="/docs/p4samd/tutorials/brownfield-analysis">3.0.x (Current)</a><ul class="dropdown__menu"><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/p4samd/tutorials/brownfield-analysis">3.0.x (Current)</a></li><li><a class="dropdown__link" href="/docs/2.5.x/p4samd/overview">2.5.x</a></li><li><a class="dropdown__link" href="/docs/2.4.x/p4samd/overview">2.4.x</a></li><li><a class="dropdown__link" href="/docs/2.3.x/p4samd/overview">2.3.x</a></li><li><a class="dropdown__link" href="/docs/2.2.x/p4samd/overview">2.2.x</a></li><li><a class="dropdown__link" href="/docs/2.1.x/p4samd/overview">2.1.x</a></li><li><a class="dropdown__link" href="/docs/2.0.x/p4samd/overview">2.0.x</a></li></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/p4samd/overview"><span title="What is P4SaMD?" class="linkLabel_WmDU">What is P4SaMD?</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/p4samd/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/p4samd/installation/installation_overview"><span title="Installation" class="categoryLinkLabel_W154">Installation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/p4samd/handbook/getting_started"><span title="Handbook" class="categoryLinkLabel_W154">Handbook</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/p4samd/tutorials/implementing-iec-62304"><span title="Tutorials" class="categoryLinkLabel_W154">Tutorials</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/p4samd/tutorials/implementing-iec-62304"><span title="IEC 62304 Compliance" class="linkLabel_WmDU">IEC 62304 Compliance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/p4samd/tutorials/brownfield-analysis"><span title="Brownfield Regulatory Analysis" class="linkLabel_WmDU">Brownfield Regulatory Analysis</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/p4samd/security/roles_permissions"><span title="Security" class="categoryLinkLabel_W154">Security</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/p4samd/release-notes/v3.0"><span title="Release Notes" class="categoryLinkLabel_W154">Release Notes</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Tutorials</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Brownfield Regulatory Analysis</span></li></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: 3.0.x (Current)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Tutorial: Analyzing a Legacy Project for Regulatory Compliance</h1></header><p>This tutorial demonstrates how to use P4SaMD&#x27;s Brownfield Import feature to analyze an existing software product that was developed without formal IEC 62304 compliance — identifying gaps, assessing regulatory risk, and creating a prioritized remediation roadmap.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="example-project">Example Project<a href="#example-project" class="hash-link" aria-label="Direct link to Example Project" title="Direct link to Example Project" translate="no">​</a></h2>
+<p>We&#x27;ll analyze <strong>NeuroTrack</strong>, an existing neurology clinic management system that has been in production for 3 years. The company now wants CE marking under EU MDR to expand into European markets, but the software was built before any medical device regulations were considered.</p>
+<ul>
+<li class=""><strong>Current State</strong>: Production software, 15,000 lines of code, no formal documentation</li>
+<li class=""><strong>Target Classification</strong>: Class IIa medical device (patient data management)</li>
+<li class=""><strong>Regulatory Gap</strong>: No IEC 62304 compliance, no risk management, minimal testing</li>
+<li class=""><strong>Business Goal</strong>: CE mark within 12 months to access EU market</li>
+<li class=""><strong>Team</strong>: 2 original developers, 1 new regulatory consultant, 1 QA hire</li>
+</ul>
+<hr>
+<div class="prerequisites_chVq"><p class="prereqHeading_KBtm">Before you begin</p><ul class="prereqList_ICPk"><li class="prereqItem_AiFi"><span class="prereqCheck_jCIp" aria-hidden="true">✓</span><span>Active P4SaMD organization</span></li><li class="prereqItem_AiFi"><span class="prereqCheck_jCIp" aria-hidden="true">✓</span><span>Access to the legacy codebase repository</span></li><li class="prereqItem_AiFi"><span class="prereqCheck_jCIp" aria-hidden="true">✓</span><span>Understanding of the software's current functionality and user base</span></li><li class="prereqItem_AiFi"><span class="prereqCheck_jCIp" aria-hidden="true">✓</span><span>List of known production issues and incidents (if available)</span></li></ul></div>
+<hr>
+<div class="stepGuide_j0NO"><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">🔍</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->1</span><h3 class="stepTitle_AoU1">Launch Brownfield Import Wizard</h3></div><div class="stepBody_zHCZ"><p>Navigate to <strong>Products</strong> → <strong>Import Existing Product</strong> → <strong>Brownfield Analysis</strong>.</p><p>The wizard guides you through six phases:</p><ol>
+<li class="">Product Context</li>
+<li class="">Intended Use &amp; Risk Classification</li>
+<li class="">Technical Architecture</li>
+<li class="">Existing Documentation</li>
+<li class="">Quality &amp; Safety History</li>
+<li class="">Gap Analysis</li>
+</ol><p>Click <strong>Start Import</strong> to begin.</p></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">📋</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->2</span><h3 class="stepTitle_AoU1">Capture Product Context</h3></div><div class="stepBody_zHCZ"><p><strong>Answer wizard questions for NeuroTrack:</strong></p><p><strong>What does the software do?</strong></p><blockquote>
+<p>NeuroTrack is a clinic management system for neurology practices. It manages patient records, appointment scheduling, prescription management, and generates clinical reports. It integrates with EEG devices to store and display brain activity recordings.</p>
+</blockquote><p><strong>How long has it been in production?</strong></p><blockquote>
+<p>3 years, actively used by 12 neurology clinics across the US with approximately 450 patients per clinic.</p>
+</blockquote><p><strong>Is it currently regulated as a medical device?</strong></p><blockquote>
+<p>No. It was developed as general-purpose clinic software without considering medical device regulations.</p>
+</blockquote><p><strong>Why are you seeking regulatory compliance now?</strong></p><blockquote>
+<p>Business expansion into EU requires CE marking. After legal review, determined the EEG data storage and clinical report generation qualify the software as a Class IIa medical device under EU MDR.</p>
+</blockquote><p><strong>Technical stack:</strong></p><ul>
+<li class="">Frontend: Angular 14</li>
+<li class="">Backend: Python Django 4.2</li>
+<li class="">Database: PostgreSQL 14</li>
+<li class="">Deployment: AWS EC2 + RDS</li>
+<li class="">Version control: GitHub</li>
+<li class="">No CI/CD pipeline currently</li>
+</ul><p><strong>Result</strong>: Product profile created, baseline context established.</p><div class="tip_tnT2"><span class="tipIcon_U7k5" aria-hidden="true">💡</span><div class="tipBody_m2QX"><p>Be honest about current state — underestimating gaps will only delay your timeline. P4SaMD&#x27;s analysis is confidential and helps you plan realistic remediation.</p></div></div></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">🎯</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->3</span><h3 class="stepTitle_AoU1">Define Intended Use &amp; Classification</h3></div><div class="stepBody_zHCZ"><p><strong>Wizard questions for regulatory scope:</strong></p><p><strong>Intended Use Statement:</strong></p><blockquote>
+<p>NeuroTrack is intended to manage patient records, store and display electroencephalography (EEG) recordings, and generate clinical reports for neurologists to support diagnosis and treatment planning for patients with neurological conditions.</p>
+</blockquote><p><strong>Does it directly influence clinical decisions?</strong></p><blockquote>
+<p>Yes — neurologists view EEG data and reports in NeuroTrack to make diagnostic decisions about epilepsy, seizure disorders, and other neurological conditions.</p>
+</blockquote><p><strong>What is the target regulatory classification?</strong></p><ul>
+<li class="">EU MDR: <strong>Class IIa</strong> (stores and displays data for medical decisions)</li>
+<li class="">FDA: <strong>Class II, 510(k) exempt</strong> (EEG data storage system)</li>
+<li class="">Safety Classification: <strong>IEC 62304 Class B</strong> (injury possible but not serious injury/death)</li>
+</ul><p><strong>Identified risks from current use:</strong></p><ol>
+<li class="">Incorrect patient-record matching could lead to wrong diagnosis</li>
+<li class="">EEG data corruption could mask critical abnormalities</li>
+<li class="">Lost data during system crashes could delay treatment</li>
+<li class="">Unauthorized access to patient records (HIPAA/GDPR violation)</li>
+<li class="">Incorrect dosage in prescription management module</li>
+</ol><p><strong>Result</strong>: Regulatory scope defined, risk profile established.</p><div class="tip_tnT2"><span class="tipIcon_U7k5" aria-hidden="true">💡</span><div class="tipBody_m2QX"><p>Classification determines your documentation burden. Class IIa + Safety Class B requires full IEC 62304 compliance but allows some documentation flexibility compared to Class C.</p></div></div></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">🗺️</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->4</span><h3 class="stepTitle_AoU1">Document Technical Architecture</h3></div><div class="stepBody_zHCZ"><p><strong>Upload or describe your architecture:</strong></p><p><strong>System Components (NeuroTrack):</strong></p><ol>
+<li class=""><strong>Patient Portal</strong> (Angular) - Patient registration, appointment booking</li>
+<li class=""><strong>Clinician Dashboard</strong> (Angular) - EEG review, clinical notes, prescriptions</li>
+<li class=""><strong>API Backend</strong> (Django REST) - Business logic, data validation</li>
+<li class=""><strong>EEG Integration Service</strong> (Python) - Parses EEG files from Natus, Nihon Kohden devices</li>
+<li class=""><strong>Report Generator</strong> (Python + LaTeX) - Generates PDF clinical reports</li>
+<li class=""><strong>Database</strong> (PostgreSQL) - Patient records, EEG metadata, appointments</li>
+</ol><p><strong>Third-party dependencies (SOUP):</strong></p><ul>
+<li class="">Django 4.2.7</li>
+<li class="">Angular 14.2.0</li>
+<li class="">PostgreSQL 14</li>
+<li class="">AWS SDK (boto3)</li>
+<li class="">Celery for background jobs</li>
+<li class="">NumPy/SciPy for EEG signal processing</li>
+<li class="">pdfkit for report generation</li>
+<li class="">47 npm packages total, 23 Python dependencies</li>
+</ul><p><strong>Known technical debt:</strong></p><ul>
+<li class="">No automated tests (unit or integration)</li>
+<li class="">Manual deployment process</li>
+<li class="">No error logging or monitoring</li>
+<li class="">Database backups are manual</li>
+<li class="">No code review process</li>
+<li class="">Authentication is custom-built (not OAuth/OIDC)</li>
+</ul><p><strong>Upload artifacts:</strong></p><ul>
+<li class="">README.md from GitHub repo</li>
+<li class="">System architecture diagram (if exists)</li>
+<li class="">Database schema export</li>
+<li class="">requirements.txt and package.json dependency lists</li>
+</ul><p><strong>Result</strong>: Technical architecture mapped, SOUP inventory captured.</p></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">📁</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->5</span><h3 class="stepTitle_AoU1">Inventory Existing Documentation</h3></div><div class="stepBody_zHCZ"><p><strong>What documentation exists today?</strong></p><p>For NeuroTrack:</p><ul>
+<li class="">✅ User manual (28 pages, PDF)</li>
+<li class="">✅ API documentation (Swagger/OpenAPI spec)</li>
+<li class="">✅ README with deployment instructions</li>
+<li class="">❌ No Software Requirements Specification</li>
+<li class="">❌ No Risk Management File</li>
+<li class="">❌ No Design documentation</li>
+<li class="">❌ No Test plans or test results</li>
+<li class="">❌ No Software Development Plan</li>
+<li class="">❌ No change control or version management process</li>
+<li class="">❌ No cybersecurity documentation</li>
+<li class="">⚠️ Partial code comments (approximately 15% coverage)</li>
+</ul><p><strong>Upload available documents:</strong></p><ul>
+<li class="">User Manual v3.2</li>
+<li class="">API Documentation</li>
+<li class="">GitHub commit history export</li>
+</ul><p><strong>Known incidents in production:</strong></p><ol>
+<li class="">2023-08-15: Database crash lost 4 hours of patient data (restored from backup)</li>
+<li class="">2024-01-22: Patient record showed wrong EEG file due to file naming collision</li>
+<li class="">2024-03-10: Prescription module calculated wrong dosage for pediatric patient (caught by pharmacist before dispensing)</li>
+<li class="">Multiple user complaints about slow EEG loading (no incidents)</li>
+</ol><p><strong>Result</strong>: Documentation baseline captured, incident history recorded.</p><div class="tip_tnT2"><span class="tipIcon_U7k5" aria-hidden="true">💡</span><div class="tipBody_m2QX"><p>Known incidents are valuable for risk analysis — they represent realized hazards. Document them honestly; they&#x27;ll help prioritize your remediation work.</p></div></div></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">📊</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->6</span><h3 class="stepTitle_AoU1">Review Gap Analysis Report</h3></div><div class="stepBody_zHCZ"><p>P4SaMD analyzes your inputs and generates a comprehensive gap analysis:</p><p><strong>Compliance Score: 23/100</strong> (Critical gaps identified)</p><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="critical-gaps-must-fix-for-ce-marking">Critical Gaps (Must Fix for CE Marking)<a href="#critical-gaps-must-fix-for-ce-marking" class="hash-link" aria-label="Direct link to Critical Gaps (Must Fix for CE Marking)" title="Direct link to Critical Gaps (Must Fix for CE Marking)" translate="no">​</a></h3><p><strong>GAP-001: No Software Requirements Specification</strong></p><ul>
+<li class="">IEC 62304 Requirement: 5.2 (Software Requirements Analysis)</li>
+<li class="">Current State: Requirements exist only as informal user stories in GitHub issues</li>
+<li class="">Impact: Cannot demonstrate intended functionality or trace to verification</li>
+<li class="">Effort: 4-6 weeks</li>
+<li class=""><strong>Priority: CRITICAL</strong></li>
+</ul><p><strong>GAP-002: No Risk Management File</strong></p><ul>
+<li class="">ISO 14971 Requirement: Complete risk analysis required</li>
+<li class="">Current State: No formal hazard analysis, risk controls, or residual risk evaluation</li>
+<li class="">Impact: Cannot submit Technical File without risk management</li>
+<li class="">Evidence: Known incident (GAP-001 wrong dosage) suggests uncontrolled risks</li>
+<li class="">Effort: 6-8 weeks</li>
+<li class=""><strong>Priority: CRITICAL</strong></li>
+</ul><p><strong>GAP-003: No Verification &amp; Validation</strong></p><ul>
+<li class="">IEC 62304 Requirement: 5.5 (Software Unit Verification), 5.6 (Integration Testing), 5.7 (System Testing)</li>
+<li class="">Current State: No automated tests, no test plans, no verification records</li>
+<li class="">Impact: Cannot demonstrate software performs as intended</li>
+<li class="">Effort: 8-12 weeks</li>
+<li class=""><strong>Priority: CRITICAL</strong></li>
+</ul><p><strong>GAP-004: No Cybersecurity Documentation</strong></p><ul>
+<li class="">EU MDR Annex I (17.4), IEC 62304:2015 AMD1</li>
+<li class="">Current State: Custom authentication, no threat model, no penetration testing</li>
+<li class="">Impact: MDR requires cybersecurity throughout lifecycle</li>
+<li class="">Known vulnerability: Custom auth may not meet encryption standards</li>
+<li class="">Effort: 4-6 weeks</li>
+<li class=""><strong>Priority: CRITICAL</strong></li>
+</ul><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-gaps-required-but-can-be-phased">Major Gaps (Required but can be phased)<a href="#major-gaps-required-but-can-be-phased" class="hash-link" aria-label="Direct link to Major Gaps (Required but can be phased)" title="Direct link to Major Gaps (Required but can be phased)" translate="no">​</a></h3><p><strong>GAP-005: No Configuration Management</strong></p><ul>
+<li class="">IEC 62304 Requirement: 5.8 (Version Control)</li>
+<li class="">Current State: Git repo exists but no formal versioning, no release process</li>
+<li class="">Impact: Cannot demonstrate change control</li>
+<li class="">Effort: 2-3 weeks</li>
+<li class=""><strong>Priority: HIGH</strong></li>
+</ul><p><strong>GAP-006: SOUP Not Evaluated</strong></p><ul>
+<li class="">IEC 62304 Requirement: 5.3 (Software Architecture), 7.1 (SOUP Assessment)</li>
+<li class="">Current State: 70 third-party dependencies, no license review, no CVE monitoring</li>
+<li class="">Impact: Cannot demonstrate safety of SOUP items</li>
+<li class="">Effort: 3-4 weeks</li>
+<li class=""><strong>Priority: HIGH</strong></li>
+</ul><p><strong>GAP-007: No Problem Resolution Process</strong></p><ul>
+<li class="">IEC 62304 Requirement: 6.2 (Problem Analysis), 9 (Problem Resolution)</li>
+<li class="">Current State: Incidents recorded in email and Slack, no formal tracking</li>
+<li class="">Impact: Cannot demonstrate response to known issues</li>
+<li class="">Effort: 2 weeks</li>
+<li class=""><strong>Priority: HIGH</strong></li>
+</ul><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="recommended-approach">Recommended Approach<a href="#recommended-approach" class="hash-link" aria-label="Direct link to Recommended Approach" title="Direct link to Recommended Approach" translate="no">​</a></h3><p><strong>Phase 1 (Months 1-3): Foundation</strong></p><ol>
+<li class="">Write comprehensive SRS based on current functionality (GAP-001)</li>
+<li class="">Conduct initial risk analysis with focus on known incidents (GAP-002)</li>
+<li class="">Document current architecture and SOUP inventory (GAP-006)</li>
+<li class="">Establish version control and release process (GAP-005)</li>
+</ol><p><strong>Phase 2 (Months 4-6): Verification</strong></p><ol>
+<li class="">Develop V&amp;V test plan covering all SRS requirements (GAP-003)</li>
+<li class="">Execute system testing on current v3.2 codebase</li>
+<li class="">Perform cybersecurity threat modeling and testing (GAP-004)</li>
+<li class="">Document any failures and file change requests</li>
+</ol><p><strong>Phase 3 (Months 7-9): Remediation</strong></p><ol>
+<li class="">Fix all identified defects from Phase 2 testing</li>
+<li class="">Implement risk controls from Phase 1 analysis</li>
+<li class="">Re-execute verification tests</li>
+<li class="">Complete cybersecurity hardening</li>
+</ol><p><strong>Phase 4 (Months 10-12): Documentation &amp; Submission</strong></p><ol>
+<li class="">Establish problem resolution process (GAP-007)</li>
+<li class="">Generate complete Technical File</li>
+<li class="">Internal audit of IEC 62304 compliance</li>
+<li class="">Notified Body submission</li>
+</ol><p><strong>Estimated Total Effort</strong>: 18-24 person-months over 12 calendar months</p><p><strong>Result</strong>: Detailed roadmap created, effort estimated, priorities assigned.</p><div class="tip_tnT2"><span class="tipIcon_U7k5" aria-hidden="true">💡</span><div class="tipBody_m2QX"><p>This is a realistic timeline for Class IIa software. Attempting to compress below 9 months typically results in documentation shortcuts that cause Notified Body delays.</p></div></div></div></div></div><div class="step_MOVi"><div class="stepLeft_iVSJ"><div class="stepBadge_YAcP"><span class="stepBadgeIcon_v38l">✅</span></div><div class="stepLine_UYx9" aria-hidden="true"></div></div><div class="stepRight_jAUP"><div class="stepHeader_z9YT"><span class="stepNum_vqT7">Step <!-- -->7</span><h3 class="stepTitle_AoU1">Create Product from Analysis</h3></div><div class="stepBody_zHCZ"><p>At the end of the wizard, click <strong>Create Product from Analysis</strong>.</p><p>P4SaMD automatically:</p><ol>
+<li class="">Creates product workspace for NeuroTrack</li>
+<li class="">Imports existing technical architecture</li>
+<li class="">Creates placeholder requirements based on described functionality</li>
+<li class="">Initializes risk register with identified hazards</li>
+<li class="">Creates gap remediation project plan with assigned phases</li>
+<li class="">Sets up SOUP tracking for all 70 dependencies</li>
+<li class="">Configures version management starting at v3.2 (current production)</li>
+</ol><p><strong>You now have:</strong></p><ul>
+<li class="">Structured workspace to manage remediation work</li>
+<li class="">Prioritized backlog of gap closure tasks</li>
+<li class="">Traceability framework ready for documentation</li>
+<li class="">Version baseline to track changes against production</li>
+</ul><p><strong>Next actions:</strong></p><ol>
+<li class="">Assign team members to gap remediation tasks</li>
+<li class="">Start with Phase 1 (Foundation) work</li>
+<li class="">Use P4SaMD to track progress and maintain traceability</li>
+<li class="">Generate interim documentation to validate approach with regulatory consultant</li>
+</ol></div></div></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="real-world-outcomes">Real-World Outcomes<a href="#real-world-outcomes" class="hash-link" aria-label="Direct link to Real-World Outcomes" title="Direct link to Real-World Outcomes" translate="no">​</a></h2>
+<p>This approach has been used successfully to bring legacy software into compliance:</p>
+<p><strong>Case Study: NeuroTrack Results</strong></p>
+<ul>
+<li class=""><strong>Month 3</strong>: Complete SRS with 142 requirements, initial risk file with 23 hazards</li>
+<li class=""><strong>Month 6</strong>: 89% test coverage, 3 critical defects identified and fixed</li>
+<li class=""><strong>Month 9</strong>: All gaps closed, full documentation package generated</li>
+<li class=""><strong>Month 11</strong>: Notified Body audit with only minor findings</li>
+<li class=""><strong>Month 12</strong>: CE mark granted, EU market launch</li>
+</ul>
+<p><strong>Key Success Factors:</strong></p>
+<ul>
+<li class="">Honest initial gap assessment (don&#x27;t hide technical debt)</li>
+<li class="">Executive commitment to 2 FTE dedicated to remediation</li>
+<li class="">Phased approach allowed incremental progress</li>
+<li class="">P4SaMD traceability caught 12 missing requirement-test links that would have caused audit delays</li>
+</ul>
+<hr>
+<div class="nextSteps_KuqM"><p class="nextStepsHeading_BWuK">Where to go next</p><div class="nextStepsGrid_nVtV"><a class="nextStepCard_g2PJ"><span class="nextStepLabel_XU5q"></span><span class="nextStepArrow_GoY_" aria-hidden="true">→</span></a><a class="nextStepCard_g2PJ"><span class="nextStepLabel_XU5q"></span><span class="nextStepArrow_GoY_" aria-hidden="true">→</span></a><a class="nextStepCard_g2PJ"><span class="nextStepLabel_XU5q"></span><span class="nextStepArrow_GoY_" aria-hidden="true">→</span></a></div></div></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/p4samd/tutorials/implementing-iec-62304"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">IEC 62304 Compliance</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/p4samd/security/roles_permissions"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Roles and Permissions</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#example-project" class="table-of-contents__link toc-highlight">Example Project</a><ul><li><a href="#critical-gaps-must-fix-for-ce-marking" class="table-of-contents__link toc-highlight">Critical Gaps (Must Fix for CE Marking)</a></li><li><a href="#major-gaps-required-but-can-be-phased" class="table-of-contents__link toc-highlight">Major Gaps (Required but can be phased)</a></li><li><a href="#recommended-approach" class="table-of-contents__link toc-highlight">Recommended Approach</a></li></ul></li><li><a href="#real-world-outcomes" class="table-of-contents__link toc-highlight">Real-World Outcomes</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Mia-Care P4SaMD</div><ul class="footer__items clean-list"></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://mia-care.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Website<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://mia-care.io/about-us/" target="_blank" rel="noopener noreferrer" class="footer__link-item">About<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://mia-care.io/blog/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://mia-care.io/newsroom/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Newsroom<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://mia-care.io/wp-content/uploads/2021/07/Mia-Care_Privacy_Policy_EN.pdf" target="_blank" rel="noopener noreferrer" class="footer__link-item">Privacy Policy<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Support</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://makeitapp.atlassian.net/servicedesk/customer/portal/21" target="_blank" rel="noopener noreferrer" class="footer__link-item">Support Portal<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/mia-care" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Mia-Care srl. All rights reserved. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
