@@ -1,0 +1,27 @@
+---
+id: version_management
+title: Version Management
+sidebar_label: Version Management
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+P4SaMD uses **workspace versions** to track the evolution of your medical device software through its development lifecycle. Each version is a named, timestamped snapshot of all project artifacts — requirements, risks, software items, and test evidence — at a specific point in time, aligned with IEC 62304 configuration management requirements.
+
+The **active version** is always shown in the project header. You can switch to a different version by clicking the version name and choosing from the dropdown list of all available versions; the sidebar and all content views update immediately to reflect your selection.
+
+## Creating and Managing Versions
+
+To create a new version, go to **Versions** in the left sidebar and click **Create Version**. You provide a name (for example `v1.0.0` or `2.3-beta`) and an optional description. The new version starts as a **Draft**, pre-populated with the current state of all project artifacts, and is immediately available for active development.
+
+When development on a version is complete and all required verification activities have been carried out, you release it via **Versions → [version name] → In Review → Frozen → Release**. The Frozen status is approved and ready for release; no edits allowed unless re-open the In Review status. Releasing a version locks it permanently — all artifacts become read-only, the release date and releasing user are recorded, and a release summary is generated. Released versions cannot be modified or deleted; they are permanent compliance records.
+
+If you need to make changes after release, create a new version and work from there.
+
+## Audit Trail
+
+Every change to an artifact within a version is recorded in the audit log with the exact timestamp, the user who made the change, and the previous and new values. The audit log is accessible from **Settings → Audit Log** and is always scoped to the active organization, ensuring that the compliance record is complete and tamper-evident.
+
+<NextSteps items={[
+  { icon: '📝', label: 'Manage requirements', to: './requirements' },
+]} />

@@ -247,4 +247,4 @@ This phased approach ensures a smooth deployment of Mia-Care P4SaMD, with high l
 
 [contact-us]: https://mia-care.io
 [enhanced-project-workflow]: https://docs.mia-platform.eu/docs/development_suite/set-up-infrastructure/enhanced-project-workflow
-[faq]: faq.md
+[faq]: faq.mdx

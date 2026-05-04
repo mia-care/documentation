@@ -1,0 +1,33 @@
+---
+id: products
+title: Products & Projects
+sidebar_label: Products & Projects
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+The **Products page** is the organization-level hub that lists all medical device software projects in your organization. Access it by clicking **All Products** in the sidebar (visible when no project is selected), or by navigating up to the organization level via the breadcrumb.
+
+Each project is shown as a card. The card displays the project name and description, the project type (Standard or **AI-Powered**), the name and status of the most recent workspace version, the overall compliance posture, the IEC 62304 safety classification (Class A, B, or C), and the primary target regulatory framework. Clicking a card opens the project and loads its sidebar navigation pointing to the most recent version. If you work with a project frequently, hover over its card and click the **pin icon** — pinned projects appear at the top of the left sidebar for one-click access from anywhere in the platform.
+
+## Creating a Project
+
+To start a new project from scratch, click **Create New Project** on the Products page and fill in the form. The fields you must provide are: a project **name**, the project **type** (Standard or AI-Powered), an **intended use statement** in plain language, the **target market region** (EU, US, or other), the applicable **regulatory frameworks** (such as EU MDR or FDA 510(k)), and the **IEC 62304 safety classification** (Class A, B, or C). A description is optional but recommended.
+
+Choosing **AI-Powered** as the project type enables an additional set of sidebar sections for managing AI and ML components, model versions, datasets, and AI-specific compliance workflows. This setting can be changed later by a project administrator.
+
+Once you click **Create**, P4SaMD provisions the project and takes you directly to the project dashboard.
+
+## Importing an Existing Project
+
+If you have an existing software system that you need to bring under a formal compliance process, use **Import Project** on the Products page to open the Brownfield Import wizard. The wizard guides you through six steps to describe the project, upload technical assets, and provide existing documentation. After submission, P4SaMD runs a compliance gap analysis and generates a prioritized remediation plan. See [Brownfield Import](./brownfield/overview) for the full walkthrough.
+
+## Managing Team Members
+
+Once inside a project, go to **Settings → Team Members** to add or remove users and adjust their roles. Roles control which sections of the project a user can view and which actions they can perform. See [Roles and Permissions](../security/roles_permissions) for a full description.
+
+<NextSteps items={[
+  { icon: '📝', label: 'Work with requirements', to: './requirements' },
+  { icon: '🔄', label: 'Run a Brownfield Import', to: './brownfield/overview' },
+  { icon: '📋', label: 'Manage versions', to: './version_management' },
+]} />

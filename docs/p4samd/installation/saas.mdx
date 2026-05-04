@@ -1,0 +1,102 @@
+---
+id: installation_saas
+title: SaaS Deployment
+sidebar_label: SaaS
+---
+
+import { DeploymentTable } from '@site/src/components/DeploymentTable';
+
+P4SaMD offers two cloud-hosted deployment options: **Multi-tenant SaaS** and **Dedicated SaaS**. Both are fully managed by Mia-Care — you never need to provision servers, manage databases, or handle platform upgrades.
+
+---
+
+## Multi-tenant SaaS
+
+In the multi-tenant model, your organization runs alongside other P4SaMD customers on a shared cloud infrastructure. Your data is kept strictly isolated through row-level security at the database layer and organization-scoped access control at the application layer — no user from another organization can ever see or access your data.
+
+This mode is the fastest way to get started: provisioning a new organization takes minutes. Platform updates are applied automatically during scheduled maintenance windows, so you always run the latest version without any action on your part.
+
+The features available to your organization depend on your **subscription plan**.
+
+---
+
+## Dedicated SaaS
+
+In the dedicated model, Mia-Care provisions a private cloud environment — a dedicated Kubernetes cluster, dedicated database, and dedicated object storage — exclusively for your organization. No other customer shares any part of your infrastructure.
+
+Dedicated SaaS is available starting from the **Professional** plan. It is the recommended choice when:
+
+- Your organization requires contractual data-isolation guarantees beyond logical row-level separation.
+- You need a custom domain (e.g., `samd.yourcompany.com`) with a TLS certificate issued to your domain.
+- You have specific data-residency requirements (e.g., data must remain within a specific EU region).
+- Your procurement or compliance process requires a dedicated-infrastructure vendor commitment.
+
+Platform updates are applied during a **scheduled maintenance window** agreed with you — giving your team advance notice before any change is deployed.
+
+---
+
+## Plan Comparison
+
+The table below shows which features are available on each subscription tier. **Dedicated SaaS starts at the Professional plan**; the Starter and Standard tiers are multi-tenant only.
+
+<DeploymentTable
+  columns={['', 'Starter', 'Standard', 'Professional', 'Enterprise']}
+  highlight={[2, 3]}
+  groups={[
+    {
+      label: 'Projects & Users',
+      rows: [
+        { label: 'Projects', values: ['3', '10', '25', 'Unlimited'] },
+        { label: 'Users per project', values: ['5', '15', '50', 'Unlimited'] },
+        { label: 'Organizations', values: ['1', '1', '1', 'Unlimited'] },
+      ],
+    },
+    {
+      label: 'Core SDLC',
+      rows: [
+        { label: 'Requirements management', values: [true, true, true, true] },
+        { label: 'Risk management', values: [true, true, true, true] },
+        { label: 'Verification & validation', values: [true, true, true, true] },
+        { label: 'Version management', values: [true, true, true, true] },
+        { label: 'Compliance documentation', values: [true, true, true, true] },
+      ],
+    },
+    {
+      label: 'Advanced Features',
+      rows: [
+        { label: 'Brownfield import', values: [false, true, true, true] },
+        { label: 'AI-powered features', values: [false, false, true, true] },
+        { label: 'API access', values: [false, true, true, true] },
+        { label: 'Custom integrations', values: [false, false, true, true] },
+        { label: 'Audit log retention', values: ['30 days', '90 days', '1 year', 'Unlimited'] },
+      ],
+    },
+    {
+      label: 'Identity & Security',
+      rows: [
+        { label: 'Single Sign-On (SSO / SAML)', values: [false, false, true, true] },
+        { label: 'Custom domain', values: [false, false, true, true], note: 'Dedicated SaaS only' },
+        { label: 'IP allowlist', values: [false, false, false, true] },
+        { label: 'Data residency region', values: ['EU or US', 'EU or US', 'Configurable', 'Configurable'] },
+      ],
+    },
+    {
+      label: 'Deployment & Support',
+      rows: [
+        { label: 'Deployment type', values: ['Multi-tenant', 'Multi-tenant', 'Multi-tenant or Dedicated', 'Multi-tenant or Dedicated'] },
+        { label: 'Uptime SLA', values: ['99.5 %', '99.5 %', '99.9 %', '99.9 %'] },
+        { label: 'Support', values: ['Email', 'Email', 'Dedicated manager', 'Dedicated manager'] },
+        { label: 'Onboarding assistance', values: [false, false, true, true] },
+        { label: 'Custom SLA', values: [false, false, false, true] },
+      ],
+    },
+  ]}
+/>
+
+---
+
+## Getting Access
+
+To create a new SaaS organization, contact [Mia-Care](https://mia-care.io) or speak to your account representative. Provisioning typically completes within one business day for multi-tenant and three to five business days for dedicated environments.
+
+Once your organization is provisioned, you will receive a welcome email with your instance URL, admin credentials, and a link to this documentation.

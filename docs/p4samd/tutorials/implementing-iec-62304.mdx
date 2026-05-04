@@ -1,0 +1,312 @@
+---
+id: implementing-iec-62304
+title: "Tutorial: Implementing a Medical Device with IEC 62304"
+sidebar_label: "IEC 62304 Compliance"
+---
+
+import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
+
+This tutorial walks through the complete lifecycle of developing a medical device software product in P4SaMD following IEC 62304 requirements — from initial product setup through version release and documentation generation.
+
+## Example Project
+
+We'll implement **CardioWatch Remote**, a mobile application that monitors cardiac patients remotely by collecting heart rate, blood pressure, and ECG data from wearable devices and transmitting it to healthcare providers.
+
+- **Device Classification**: Class IIb (medium risk)
+- **Safety Class**: Class B per IEC 62304
+- **Regulatory Framework**: EU MDR + IEC 62304:2006/AMD1:2015
+- **Team**: 3 developers, 1 QA engineer, 1 regulatory specialist
+
+---
+
+<Prerequisites items={[
+  'Active P4SaMD organization',
+  'Product Owner or Administrator role',
+  'Understanding of your device\'s intended use and risk class',
+  'Development team onboarded to platform'
+]} />
+
+---
+
+<StepGuide>
+
+<Step number={1} title="Create Your Product" icon="📦">
+
+Navigate to **Products** in your organization dashboard and click **Create Product**.
+
+**Fill in product details:**
+- **Product Name**: CardioWatch Remote
+- **Intended Use**: Remote monitoring of cardiac patients with chronic conditions. Collects vital signs from wearable sensors and alerts healthcare providers to abnormal patterns.
+- **Safety Classification**: Class B
+- **Regulatory Scope**: EU MDR (Class IIb), FDA 510(k) (Class II)
+- **SOUP Dependencies**: React Native 0.72, AWS SDK, Bluetooth LE library
+
+**Result**: Your product workspace is created with a Draft v1.0.0 version automatically initialized.
+
+<Tip type="best-practice">
+Document your intended use statement clearly and early — it drives all downstream risk analysis and requirements decisions.
+</Tip>
+
+</Step>
+
+<Step number={2} title="Define System Requirements" icon="📝">
+
+Navigate to **Requirements** and create your system-level User Requirements (USR).
+
+**Example requirements for CardioWatch:**
+
+**USR-001**: Patient Vital Sign Capture
+- Description: The system shall capture heart rate, blood pressure, and single-lead ECG from connected wearable devices via Bluetooth LE.
+- Rationale: Core monitoring functionality per intended use.
+- Verification Method: Integration test with certified wearable device.
+
+**USR-002**: Abnormal Pattern Detection
+- Description: The system shall detect and flag abnormal cardiac patterns based on configurable thresholds set by healthcare providers.
+- Rationale: Early intervention capability to prevent adverse events.
+- Verification Method: Test with known abnormal pattern datasets.
+
+**USR-003**: Healthcare Provider Alerting
+- Description: The system shall send push notifications to designated healthcare providers within 30 seconds of detecting an abnormal pattern.
+- Rationale: Time-critical notification per clinical workflow requirements.
+- Verification Method: Performance test with simulated alerts.
+
+**USR-004**: Data Privacy & Security
+- Description: All patient data shall be encrypted at rest (AES-256) and in transit (TLS 1.3) in compliance with GDPR and HIPAA requirements.
+- Rationale: Regulatory requirement for patient data protection.
+- Verification Method: Security audit and penetration testing.
+
+Create 8-12 USRs covering functional, performance, security, and usability requirements.
+
+**Decompose into Software Requirements (SRS):**
+
+For each USR, create detailed SRS entries. Example for USR-001:
+
+- **SRS-001-1**: Bluetooth LE device discovery and pairing
+- **SRS-001-2**: Heart rate data parsing from ANT+ protocol
+- **SRS-001-3**: Blood pressure data validation (range 40-250 mmHg)
+- **SRS-001-4**: ECG waveform sampling at 250 Hz minimum
+- **SRS-001-5**: Data buffering during network interruption
+
+Link each SRS to its parent USR using the traceability panel.
+
+<Tip type="warning">
+IEC 62304 requires bidirectional traceability. Every SRS must link to a USR, and every USR must be fully decomposed into SRS.
+</Tip>
+
+</Step>
+
+<Step number={3} title="Conduct Risk Analysis" icon="⚠️">
+
+Navigate to **Risk Management** and create a risk analysis for your product.
+
+**Example hazards for CardioWatch:**
+
+**HAZARD-001**: Missed Critical Alert
+- Hazard: System fails to detect life-threatening cardiac event
+- Harm: Patient death or serious injury due to delayed intervention
+- Severity: Catastrophic (5)
+- Initial Probability: Occasional (3)
+- Risk Level: Unacceptable (15)
+
+**Risk Controls:**
+1. Dual-algorithm abnormal pattern detection (SRS-002-2)
+2. System self-test every 5 minutes (SRS-010)
+3. Provider escalation if no acknowledgment within 2 minutes (SRS-003-3)
+
+**Residual Risk**: Severity 5, Probability 1 → Risk Level 5 (Acceptable with review)
+
+**HAZARD-002**: False Alert Fatigue
+- Hazard: Excessive false alarms cause providers to ignore alerts
+- Harm: Real emergency missed due to alert fatigue
+- Severity: Critical (4)
+- Initial Probability: Probable (4)
+- Risk Level: Unacceptable (16)
+
+**Risk Controls:**
+1. Machine learning model trained on 10,000+ validated cardiac patterns (SRS-002-4)
+2. Adjustable sensitivity thresholds per patient profile (SRS-002-5)
+3. Alert confirmation from multiple sensor inputs (SRS-002-6)
+
+**Residual Risk**: Severity 4, Probability 2 → Risk Level 8 (Acceptable)
+
+Create 10-15 hazards covering clinical, technical, cybersecurity, and usability risks. Link each risk control to the implementing SRS requirement.
+
+<Tip type="best-practice">
+Document your risk acceptability criteria upfront. For Class B software, risks above level 12 typically require additional controls or risk-benefit justification.
+</Tip>
+
+</Step>
+
+<Step number={4} title="Design Software Architecture" icon="🏗️">
+
+Navigate to **Design** and document your software architecture.
+
+**High-Level Architecture for CardioWatch:**
+
+**System Components:**
+1. **Mobile App (React Native)** - Patient-facing UI and local data processing
+2. **Cloud Backend (Node.js/AWS)** - Data aggregation, analytics, provider dashboard
+3. **Pattern Detection Engine (Python)** - ML-based cardiac anomaly detection
+4. **Notification Service** - Push notification delivery
+5. **Data Storage** - Encrypted S3 buckets + DynamoDB for metadata
+
+**SOUP Items:**
+- React Native 0.72.6 (MIT license)
+- TensorFlow Lite 2.13.0 for on-device ML inference
+- AWS SDK 3.x
+- react-native-ble-plx 3.1.2 for Bluetooth
+- express 4.18.2 for backend API
+
+Document interfaces between components, data flow diagrams, and security boundaries.
+
+Link design elements to SRS requirements:
+- Mobile App UI → SRS-001 (data capture), SRS-006 (patient dashboard)
+- Pattern Detection Engine → SRS-002 (abnormal detection)
+- Notification Service → SRS-003 (provider alerts)
+
+<Tip type="info">
+IEC 62304 Class B requires software architecture documentation but not detailed design for each unit. Focus on component interfaces and data flows.
+</Tip>
+
+</Step>
+
+<Step number={5} title="Implement & Write Tests" icon="✅">
+
+Navigate to **Verification & Validation** and create test specifications.
+
+**Example V&V Test Cases:**
+
+**TEST-001**: Bluetooth Device Pairing
+- Verifies: SRS-001-1
+- Type: Integration Test
+- Procedure: Attempt pairing with certified Polar H10 heart rate monitor
+- Expected Result: Successful pairing within 15 seconds, heart rate data received
+- Evidence: Test execution log, Bluetooth packet capture
+
+**TEST-002**: Abnormal Pattern Detection - Ventricular Tachycardia
+- Verifies: SRS-002-1
+- Type: System Test
+- Procedure: Feed pre-recorded V-Tach ECG pattern into detection algorithm
+- Expected Result: Alert triggered within 3 seconds with 95% confidence score
+- Evidence: Test dataset, algorithm output log, timestamp analysis
+
+**TEST-003**: Alert Delivery Performance
+- Verifies: SRS-003-1
+- Type: Performance Test
+- Procedure: Trigger 100 alerts under normal network conditions
+- Expected Result: 99% delivered within 30 seconds, mean delivery time < 5 seconds
+- Evidence: Performance test report, latency distribution chart
+
+**TEST-004**: Data Encryption at Rest
+- Verifies: SRS-004-1
+- Type: Security Test
+- Procedure: Dump database storage, attempt to read patient records
+- Expected Result: All records encrypted, no plaintext data accessible
+- Evidence: Security audit report, encryption validation certificate
+
+Create 30-50 test cases covering all SRS requirements. Link each test to its parent SRS using traceability.
+
+Execute tests as development progresses and attach evidence (screenshots, logs, reports) to each test record.
+
+<Tip type="warning">
+IEC 62304 requires 100% SRS coverage by V&V tests. Run the traceability report to identify any untested requirements before version release.
+</Tip>
+
+</Step>
+
+<Step number={6} title="Document Changes" icon="🔄">
+
+If you need to modify requirements or design after testing reveals issues:
+
+Navigate to **Change Management** and create a Change Request.
+
+**Example Change Request:**
+
+**CR-005**: Increase alert timeout from 30s to 60s
+- Reason: Performance testing (TEST-003) showed 5% of alerts exceeded 30s during peak network congestion
+- Impact Analysis: Affects SRS-003-1, TEST-003
+- Risk Assessment: Low — does not affect safety, improves reliability
+- Approval: Product Owner approved 2024-04-15
+
+**Modified Requirements:**
+- SRS-003-1: Updated performance requirement to 60 seconds
+- TEST-003: Updated expected result criteria
+
+Link the change request to affected requirements and re-execute impacted tests.
+
+</Step>
+
+<Step number={7} title="Release Version" icon="📌">
+
+When all requirements are verified and all tests pass:
+
+Navigate to **Versions** and select your Draft v1.0.0.
+
+Click **Release Version** and confirm:
+- ✅ All requirements approved
+- ✅ All tests executed and passed
+- ✅ All risks evaluated and acceptable
+- ✅ Design documentation complete
+- ✅ SOUP list finalized
+
+**Version is now locked** and becomes a compliance baseline. A new Draft v1.1.0 is automatically created for future development.
+
+<Tip type="best-practice">
+Released versions are immutable. All requirements, risks, tests, and design documents are frozen as regulatory records. Any changes require a new version.
+</Tip>
+
+</Step>
+
+<Step number={8} title="Generate Documentation" icon="📄">
+
+Navigate to **Documentation** and generate IEC 62304 compliance documents:
+
+**Available Templates:**
+- ✅ Software Development Plan
+- ✅ Software Requirements Specification
+- ✅ Software Architecture Document
+- ✅ Risk Management Report (ISO 14971)
+- ✅ Verification & Validation Report
+- ✅ Traceability Matrix
+- ✅ Software Release Notes
+
+Select templates and click **Generate Documentation Package**.
+
+**Output**: ZIP file containing:
+- All documents in PDF format with digital signatures
+- Complete traceability matrices (USR→SRS→Design→Tests→Risks)
+- Evidence attachments (test logs, screenshots, reports)
+- SOUP inventory with license and cybersecurity analysis
+
+Submit to your Notified Body or regulatory authority as part of your Technical File.
+
+<Tip type="info">
+Generated documents automatically include version numbers, approval signatures, and timestamps. Re-generate after any version release to maintain current documentation.
+</Tip>
+
+</Step>
+
+</StepGuide>
+
+---
+
+<NextSteps
+  title="Next Steps"
+  items={[
+    {
+      title: "Continuous Compliance",
+      description: "Learn how to manage ongoing development with version control and change management",
+      link: "../handbook/version_management"
+    },
+    {
+      title: "Risk Management Best Practices",
+      description: "Deep dive into ISO 14971 risk analysis workflows",
+      link: "../handbook/risk_management"
+    },
+    {
+      title: "CI/CD Integration",
+      description: "Automate testing and compliance checks in your development pipeline",
+      link: "../handbook/cicd_integration"
+    }
+  ]}
+/>

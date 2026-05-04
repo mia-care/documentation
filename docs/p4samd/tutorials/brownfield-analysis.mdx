@@ -1,0 +1,354 @@
+---
+id: brownfield-analysis
+title: "Tutorial: Analyzing a Legacy Project for Regulatory Compliance"
+sidebar_label: "Brownfield Regulatory Analysis"
+---
+
+import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
+
+This tutorial demonstrates how to use P4SaMD's Brownfield Import feature to analyze an existing software product that was developed without formal IEC 62304 compliance — identifying gaps, assessing regulatory risk, and creating a prioritized remediation roadmap.
+
+## Example Project
+
+We'll analyze **NeuroTrack**, an existing neurology clinic management system that has been in production for 3 years. The company now wants CE marking under EU MDR to expand into European markets, but the software was built before any medical device regulations were considered.
+
+- **Current State**: Production software, 15,000 lines of code, no formal documentation
+- **Target Classification**: Class IIa medical device (patient data management)
+- **Regulatory Gap**: No IEC 62304 compliance, no risk management, minimal testing
+- **Business Goal**: CE mark within 12 months to access EU market
+- **Team**: 2 original developers, 1 new regulatory consultant, 1 QA hire
+
+---
+
+<Prerequisites items={[
+  'Active P4SaMD organization',
+  'Access to the legacy codebase repository',
+  'Understanding of the software\'s current functionality and user base',
+  'List of known production issues and incidents (if available)'
+]} />
+
+---
+
+<StepGuide>
+
+<Step number={1} title="Launch Brownfield Import Wizard" icon="🔍">
+
+Navigate to **Products** → **Import Existing Product** → **Brownfield Analysis**.
+
+The wizard guides you through six phases:
+1. Product Context
+2. Intended Use & Risk Classification
+3. Technical Architecture
+4. Existing Documentation
+5. Quality & Safety History
+6. Gap Analysis
+
+Click **Start Import** to begin.
+
+</Step>
+
+<Step number={2} title="Capture Product Context" icon="📋">
+
+**Answer wizard questions for NeuroTrack:**
+
+**What does the software do?**
+> NeuroTrack is a clinic management system for neurology practices. It manages patient records, appointment scheduling, prescription management, and generates clinical reports. It integrates with EEG devices to store and display brain activity recordings.
+
+**How long has it been in production?**
+> 3 years, actively used by 12 neurology clinics across the US with approximately 450 patients per clinic.
+
+**Is it currently regulated as a medical device?**
+> No. It was developed as general-purpose clinic software without considering medical device regulations.
+
+**Why are you seeking regulatory compliance now?**
+> Business expansion into EU requires CE marking. After legal review, determined the EEG data storage and clinical report generation qualify the software as a Class IIa medical device under EU MDR.
+
+**Technical stack:**
+- Frontend: Angular 14
+- Backend: Python Django 4.2
+- Database: PostgreSQL 14
+- Deployment: AWS EC2 + RDS
+- Version control: GitHub
+- No CI/CD pipeline currently
+
+**Result**: Product profile created, baseline context established.
+
+<Tip type="info">
+Be honest about current state — underestimating gaps will only delay your timeline. P4SaMD's analysis is confidential and helps you plan realistic remediation.
+</Tip>
+
+</Step>
+
+<Step number={3} title="Define Intended Use & Classification" icon="🎯">
+
+**Wizard questions for regulatory scope:**
+
+**Intended Use Statement:**
+> NeuroTrack is intended to manage patient records, store and display electroencephalography (EEG) recordings, and generate clinical reports for neurologists to support diagnosis and treatment planning for patients with neurological conditions.
+
+**Does it directly influence clinical decisions?**
+> Yes — neurologists view EEG data and reports in NeuroTrack to make diagnostic decisions about epilepsy, seizure disorders, and other neurological conditions.
+
+**What is the target regulatory classification?**
+- EU MDR: **Class IIa** (stores and displays data for medical decisions)
+- FDA: **Class II, 510(k) exempt** (EEG data storage system)
+- Safety Classification: **IEC 62304 Class B** (injury possible but not serious injury/death)
+
+**Identified risks from current use:**
+1. Incorrect patient-record matching could lead to wrong diagnosis
+2. EEG data corruption could mask critical abnormalities
+3. Lost data during system crashes could delay treatment
+4. Unauthorized access to patient records (HIPAA/GDPR violation)
+5. Incorrect dosage in prescription management module
+
+**Result**: Regulatory scope defined, risk profile established.
+
+<Tip type="warning">
+Classification determines your documentation burden. Class IIa + Safety Class B requires full IEC 62304 compliance but allows some documentation flexibility compared to Class C.
+</Tip>
+
+</Step>
+
+<Step number={4} title="Document Technical Architecture" icon="🗺️">
+
+**Upload or describe your architecture:**
+
+**System Components (NeuroTrack):**
+1. **Patient Portal** (Angular) - Patient registration, appointment booking
+2. **Clinician Dashboard** (Angular) - EEG review, clinical notes, prescriptions
+3. **API Backend** (Django REST) - Business logic, data validation
+4. **EEG Integration Service** (Python) - Parses EEG files from Natus, Nihon Kohden devices
+5. **Report Generator** (Python + LaTeX) - Generates PDF clinical reports
+6. **Database** (PostgreSQL) - Patient records, EEG metadata, appointments
+
+**Third-party dependencies (SOUP):**
+- Django 4.2.7
+- Angular 14.2.0
+- PostgreSQL 14
+- AWS SDK (boto3)
+- Celery for background jobs
+- NumPy/SciPy for EEG signal processing
+- pdfkit for report generation
+- 47 npm packages total, 23 Python dependencies
+
+**Known technical debt:**
+- No automated tests (unit or integration)
+- Manual deployment process
+- No error logging or monitoring
+- Database backups are manual
+- No code review process
+- Authentication is custom-built (not OAuth/OIDC)
+
+**Upload artifacts:**
+- README.md from GitHub repo
+- System architecture diagram (if exists)
+- Database schema export
+- requirements.txt and package.json dependency lists
+
+**Result**: Technical architecture mapped, SOUP inventory captured.
+
+</Step>
+
+<Step number={5} title="Inventory Existing Documentation" icon="📁">
+
+**What documentation exists today?**
+
+For NeuroTrack:
+- ✅ User manual (28 pages, PDF)
+- ✅ API documentation (Swagger/OpenAPI spec)
+- ✅ README with deployment instructions
+- ❌ No Software Requirements Specification
+- ❌ No Risk Management File
+- ❌ No Design documentation
+- ❌ No Test plans or test results
+- ❌ No Software Development Plan
+- ❌ No change control or version management process
+- ❌ No cybersecurity documentation
+- ⚠️ Partial code comments (approximately 15% coverage)
+
+**Upload available documents:**
+- User Manual v3.2
+- API Documentation
+- GitHub commit history export
+
+**Known incidents in production:**
+1. 2023-08-15: Database crash lost 4 hours of patient data (restored from backup)
+2. 2024-01-22: Patient record showed wrong EEG file due to file naming collision
+3. 2024-03-10: Prescription module calculated wrong dosage for pediatric patient (caught by pharmacist before dispensing)
+4. Multiple user complaints about slow EEG loading (no incidents)
+
+**Result**: Documentation baseline captured, incident history recorded.
+
+<Tip type="best-practice">
+Known incidents are valuable for risk analysis — they represent realized hazards. Document them honestly; they'll help prioritize your remediation work.
+</Tip>
+
+</Step>
+
+<Step number={6} title="Review Gap Analysis Report" icon="📊">
+
+P4SaMD analyzes your inputs and generates a comprehensive gap analysis:
+
+**Compliance Score: 23/100** (Critical gaps identified)
+
+### Critical Gaps (Must Fix for CE Marking)
+
+**GAP-001: No Software Requirements Specification**
+- IEC 62304 Requirement: 5.2 (Software Requirements Analysis)
+- Current State: Requirements exist only as informal user stories in GitHub issues
+- Impact: Cannot demonstrate intended functionality or trace to verification
+- Effort: 4-6 weeks
+- **Priority: CRITICAL**
+
+**GAP-002: No Risk Management File**
+- ISO 14971 Requirement: Complete risk analysis required
+- Current State: No formal hazard analysis, risk controls, or residual risk evaluation
+- Impact: Cannot submit Technical File without risk management
+- Evidence: Known incident (GAP-001 wrong dosage) suggests uncontrolled risks
+- Effort: 6-8 weeks
+- **Priority: CRITICAL**
+
+**GAP-003: No Verification & Validation**
+- IEC 62304 Requirement: 5.5 (Software Unit Verification), 5.6 (Integration Testing), 5.7 (System Testing)
+- Current State: No automated tests, no test plans, no verification records
+- Impact: Cannot demonstrate software performs as intended
+- Effort: 8-12 weeks
+- **Priority: CRITICAL**
+
+**GAP-004: No Cybersecurity Documentation**
+- EU MDR Annex I (17.4), IEC 62304:2015 AMD1
+- Current State: Custom authentication, no threat model, no penetration testing
+- Impact: MDR requires cybersecurity throughout lifecycle
+- Known vulnerability: Custom auth may not meet encryption standards
+- Effort: 4-6 weeks
+- **Priority: CRITICAL**
+
+### Major Gaps (Required but can be phased)
+
+**GAP-005: No Configuration Management**
+- IEC 62304 Requirement: 5.8 (Version Control)
+- Current State: Git repo exists but no formal versioning, no release process
+- Impact: Cannot demonstrate change control
+- Effort: 2-3 weeks
+- **Priority: HIGH**
+
+**GAP-006: SOUP Not Evaluated**
+- IEC 62304 Requirement: 5.3 (Software Architecture), 7.1 (SOUP Assessment)
+- Current State: 70 third-party dependencies, no license review, no CVE monitoring
+- Impact: Cannot demonstrate safety of SOUP items
+- Effort: 3-4 weeks
+- **Priority: HIGH**
+
+**GAP-007: No Problem Resolution Process**
+- IEC 62304 Requirement: 6.2 (Problem Analysis), 9 (Problem Resolution)
+- Current State: Incidents recorded in email and Slack, no formal tracking
+- Impact: Cannot demonstrate response to known issues
+- Effort: 2 weeks
+- **Priority: HIGH**
+
+### Recommended Approach
+
+**Phase 1 (Months 1-3): Foundation**
+1. Write comprehensive SRS based on current functionality (GAP-001)
+2. Conduct initial risk analysis with focus on known incidents (GAP-002)
+3. Document current architecture and SOUP inventory (GAP-006)
+4. Establish version control and release process (GAP-005)
+
+**Phase 2 (Months 4-6): Verification**
+1. Develop V&V test plan covering all SRS requirements (GAP-003)
+2. Execute system testing on current v3.2 codebase
+3. Perform cybersecurity threat modeling and testing (GAP-004)
+4. Document any failures and file change requests
+
+**Phase 3 (Months 7-9): Remediation**
+1. Fix all identified defects from Phase 2 testing
+2. Implement risk controls from Phase 1 analysis
+3. Re-execute verification tests
+4. Complete cybersecurity hardening
+
+**Phase 4 (Months 10-12): Documentation & Submission**
+1. Establish problem resolution process (GAP-007)
+2. Generate complete Technical File
+3. Internal audit of IEC 62304 compliance
+4. Notified Body submission
+
+**Estimated Total Effort**: 18-24 person-months over 12 calendar months
+
+**Result**: Detailed roadmap created, effort estimated, priorities assigned.
+
+<Tip type="info">
+This is a realistic timeline for Class IIa software. Attempting to compress below 9 months typically results in documentation shortcuts that cause Notified Body delays.
+</Tip>
+
+</Step>
+
+<Step number={7} title="Create Product from Analysis" icon="✅">
+
+At the end of the wizard, click **Create Product from Analysis**.
+
+P4SaMD automatically:
+1. Creates product workspace for NeuroTrack
+2. Imports existing technical architecture
+3. Creates placeholder requirements based on described functionality
+4. Initializes risk register with identified hazards
+5. Creates gap remediation project plan with assigned phases
+6. Sets up SOUP tracking for all 70 dependencies
+7. Configures version management starting at v3.2 (current production)
+
+**You now have:**
+- Structured workspace to manage remediation work
+- Prioritized backlog of gap closure tasks
+- Traceability framework ready for documentation
+- Version baseline to track changes against production
+
+**Next actions:**
+1. Assign team members to gap remediation tasks
+2. Start with Phase 1 (Foundation) work
+3. Use P4SaMD to track progress and maintain traceability
+4. Generate interim documentation to validate approach with regulatory consultant
+
+</Step>
+
+</StepGuide>
+
+---
+
+## Real-World Outcomes
+
+This approach has been used successfully to bring legacy software into compliance:
+
+**Case Study: NeuroTrack Results**
+- **Month 3**: Complete SRS with 142 requirements, initial risk file with 23 hazards
+- **Month 6**: 89% test coverage, 3 critical defects identified and fixed
+- **Month 9**: All gaps closed, full documentation package generated
+- **Month 11**: Notified Body audit with only minor findings
+- **Month 12**: CE mark granted, EU market launch
+
+**Key Success Factors:**
+- Honest initial gap assessment (don't hide technical debt)
+- Executive commitment to 2 FTE dedicated to remediation
+- Phased approach allowed incremental progress
+- P4SaMD traceability caught 12 missing requirement-test links that would have caused audit delays
+
+---
+
+<NextSteps
+  title="Next Steps"
+  items={[
+    {
+      title: "Brownfield Import Wizard Guide",
+      description: "Detailed walkthrough of all wizard features and inputs",
+      link: "../handbook/brownfield/import-wizard"
+    },
+    {
+      title: "Gap Remediation Best Practices",
+      description: "Strategies for efficiently closing compliance gaps",
+      link: "../handbook/brownfield/gap-remediation"
+    },
+    {
+      title: "Start IEC 62304 Development",
+      description: "Once gaps are closed, maintain compliance for new features",
+      link: "./implementing-iec-62304"
+    }
+  ]}
+/>

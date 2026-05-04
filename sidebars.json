@@ -6,34 +6,28 @@
       "type": "doc"
     },
     {
+      "id": "p4samd/faq",
+      "label": "FAQ",
+      "type": "doc"
+    },
+    {
       "label": "Installation",
       "type": "category",
       "items": [
         {
-          "id": "p4samd/system_requirement",
-          "label": "System Requirements",
+          "id": "p4samd/installation/installation_overview",
+          "label": "Deployment Modes",
           "type": "doc"
         },
         {
-          "id": "p4samd/configuration",
-          "label": "Configuration",
+          "id": "p4samd/installation/installation_saas",
+          "label": "SaaS",
           "type": "doc"
         },
         {
-          "id": "p4samd/monitoring",
-          "label": "Monitoring",
+          "id": "p4samd/installation/installation_on_premise",
+          "label": "On-premise",
           "type": "doc"
-        },
-        {
-          "label": "Security",
-          "type": "category",
-          "items": [
-            {
-              "id": "p4samd/security/roles_permissions",
-              "label": "Roles and permissions",
-              "type": "doc"
-            }
-          ]
         }
       ]
     },
@@ -47,61 +41,14 @@
           "type": "doc"
         },
         {
-          "label": "Software System",
-          "type": "category",
-          "items": [
-            {
-              "id": "p4samd/handbook/system_versions",
-              "label": "Versions",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/system_overview",
-              "label": "Overview",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/insight_and_suggestions",
-              "label": "Insight and Suggestions",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/reports",
-              "label": "Reports",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/references",
-              "label": "References",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/document_engine",
-              "label": "Documentation Engine",
-              "type": "doc"
-            }
-          ]
+          "id": "p4samd/handbook/organizations",
+          "label": "Organizations",
+          "type": "doc"
         },
         {
-          "label": "Software Items",
-          "type": "category",
-          "items": [
-            {
-              "id": "p4samd/handbook/software_items",
-              "label": "Software Items",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/sbom",
-              "label": "Software Bill Of Materials (SBOM)",
-              "type": "doc"
-            },
-            {
-              "id": "p4samd/handbook/vulnerabilities",
-              "label": "Vulnerabilities",
-              "type": "doc"
-            }
-          ]
+          "id": "p4samd/handbook/products",
+          "label": "Products & Projects",
+          "type": "doc"
         },
         {
           "id": "p4samd/handbook/requirements",
@@ -109,24 +56,51 @@
           "type": "doc"
         },
         {
-          "id": "p4samd/handbook/risks",
-          "label": "Risks",
+          "id": "p4samd/handbook/version_management",
+          "label": "Version Management",
           "type": "doc"
         },
         {
-          "label": "Tests",
+          "label": "Brownfield Import",
           "type": "category",
           "items": [
             {
-              "id": "p4samd/handbook/software_verification",
-              "label": "Software Verification",
+              "id": "p4samd/handbook/brownfield/overview",
+              "label": "Overview",
+              "type": "doc"
+            },
+            {
+              "id": "p4samd/handbook/brownfield/import-wizard",
+              "label": "Import Wizard",
               "type": "doc"
             }
           ]
+        }
+      ]
+    },
+    {
+      "label": "Tutorials",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/tutorials/implementing-iec-62304",
+          "label": "IEC 62304 Compliance",
+          "type": "doc"
         },
         {
-          "id": "p4samd/handbook/changes",
-          "label": "Changes",
+          "id": "p4samd/tutorials/brownfield-analysis",
+          "label": "Brownfield Regulatory Analysis",
+          "type": "doc"
+        }
+      ]
+    },
+    {
+      "label": "Security",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/security/roles_permissions",
+          "label": "Roles and Permissions",
           "type": "doc"
         }
       ]
@@ -134,42 +108,18 @@
     {
       "label": "Release Notes",
       "type": "category",
-      "collapsed": true,
-      "link": {
-        "type": "doc",
-        "id": "p4samd/release_notes"
-      },
       "items": [
         {
-          "id": "p4samd/release-notes/v2.5",
+          "id": "p4samd/release-notes/v3.0",
+          "label": "Current (v3.x)",
           "type": "doc"
         },
         {
-          "id": "p4samd/release-notes/v2.4",
-          "type": "doc"
-        },
-        {
-          "id": "p4samd/release-notes/v2.3",
-          "type": "doc"
-        },
-        {
-          "id": "p4samd/release-notes/v2.2",
-          "type": "doc"
-        },
-        {
-          "id": "p4samd/release-notes/v2.1",
-          "type": "doc"
-        },
-        {
-          "id": "p4samd/release-notes/v2.0",
+          "id": "p4samd/release_notes",
+          "label": "Archived (v2.x)",
           "type": "doc"
         }
       ]
-    },
-    {
-      "id": "p4samd/faq",
-      "label": "Frequently Asked Questions (FAQs)",
-      "type": "doc"
     }
   ]
 }

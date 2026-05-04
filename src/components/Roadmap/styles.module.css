@@ -1,0 +1,157 @@
+.roadmap {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.roadmapItem {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.roadmapItem:last-child .timelineLine {
+  display: none;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.timelineDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--ifm-color-emphasis-300);
+  background: white;
+  z-index: 1;
+  margin-top: 0.5rem;
+}
+
+.timelineDot.status_in-progress {
+  border-color: #2563eb;
+  background: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.timelineDot.status_soon {
+  border-color: #8b5cf6;
+  background: white;
+}
+
+.timelineDot.status_planned {
+  border-color: var(--ifm-color-emphasis-300);
+  background: white;
+}
+
+.timelineLine {
+  width: 2px;
+  flex: 1;
+  background: var(--ifm-color-emphasis-200);
+  margin-top: 0.5rem;
+}
+
+.content {
+  flex: 1;
+  padding-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.headerText {
+  flex: 1;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--ifm-heading-color);
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.quarter {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+}
+
+.statusBadge.status_in-progress {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.statusBadge.status_soon {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.statusBadge.status_planned {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.description p {
+  margin: 0;
+}
+
+.description p:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .roadmapItem {
+    gap: 1rem;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .header {
+    gap: 0.75rem;
+  }
+}

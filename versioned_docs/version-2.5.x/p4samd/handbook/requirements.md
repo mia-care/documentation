@@ -136,4 +136,4 @@ If the requirement or any of the linked tests are modified after the evaluation,
 
 :::
 
-[faq-data-sharing]: ../faq.md#does-mia-care-p4samd-share-data-with-third-party-organizations
+[faq-data-sharing]: ../faq.md

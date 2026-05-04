@@ -1,0 +1,81 @@
+---
+id: installation_overview
+title: Deployment Modes
+sidebar_label: Overview
+---
+
+import { DeploymentTable } from '@site/src/components/DeploymentTable';
+import { NextSteps } from '@site/src/components/StepGuide';
+
+P4SaMD is available in three deployment modes. Each mode is designed for a different organizational profile — from teams that want to be up and running in minutes to enterprises that require full infrastructure ownership.
+
+- **Multi-tenant SaaS** — the fastest way to start. Your organization shares the P4SaMD cloud infrastructure with other tenants, with strict data isolation enforced at every layer. Features and quotas depend on the subscription plan you choose.
+- **Dedicated SaaS** — P4SaMD runs in a cloud environment provisioned exclusively for your organization. You get all the convenience of a managed service with the isolation, customization, and SLA guarantees of a private deployment. Available from the **Professional** plan upward.
+- **On-premise** — P4SaMD runs entirely within your own infrastructure, on a Kubernetes cluster you control. Full data residency, maximum customization, and no dependency on external networks. Supplied as the **Enterprise** plan feature set.
+
+---
+
+## Deployment Comparison
+
+The table below summarizes the key characteristics of each mode. Where multi-tenant SaaS features vary by plan, the value shown reflects the most restrictive tier; see [SaaS Plans](./installation_saas#plan-comparison) for the full plan matrix.
+
+<DeploymentTable
+  columns={['', 'Multi-tenant SaaS', 'Dedicated SaaS', 'On-premise']}
+  highlight={[1, 2]}
+  groups={[
+    {
+      label: 'Infrastructure',
+      rows: [
+        { label: 'Managed by', values: ['Mia-Care', 'Mia-Care', 'Your team'] },
+        { label: 'Infrastructure', values: ['Shared cloud', 'Dedicated cloud', 'Your servers'] },
+        { label: 'Database isolation', values: ['Row-level (shared DB)', 'Dedicated database', 'Your database'] },
+        { label: 'Custom domain', values: ['plan', true, true] },
+        { label: 'Data residency region', values: ['EU or US zones', 'Configurable', 'Full control'] },
+      ],
+    },
+    {
+      label: 'Operations',
+      rows: [
+        { label: 'Platform updates', values: ['Automatic', 'Scheduled window', 'Manual / self-managed'] },
+        { label: 'Uptime SLA', values: ['99.5 %', '99.9 %', 'Self-managed'] },
+        { label: 'Backups', values: ['Mia-Care managed', 'Mia-Care managed', 'Your responsibility'] },
+        { label: 'Monitoring', values: ['Mia-Care managed', 'Mia-Care managed', 'Bring your own stack'] },
+      ],
+    },
+    {
+      label: 'Features',
+      rows: [
+        { label: 'All core SDLC features', values: [true, true, true] },
+        { label: 'AI-powered features', values: ['plan', true, true] },
+        { label: 'Brownfield import', values: ['plan', true, true] },
+        { label: 'Single Sign-On (SSO / SAML)', values: ['plan', true, true] },
+        { label: 'API access', values: ['plan', true, true] },
+        { label: 'Custom integrations', values: ['plan', true, true] },
+        { label: 'Audit log retention', values: ['90 days', '1 year', 'Unlimited'] },
+      ],
+    },
+    {
+      label: 'Support',
+      rows: [
+        { label: 'Support channel', values: ['Email / ticketing', 'Dedicated account manager', 'Dedicated account manager'] },
+        { label: 'Onboarding assistance', values: [false, true, true] },
+        { label: 'Custom SLA', values: [false, true, true] },
+      ],
+    },
+  ]}
+/>
+
+---
+
+## Choosing a Mode
+
+**Multi-tenant SaaS** is the right choice if you want to start immediately without any infrastructure work, and your team is comfortable with a shared-cloud model. It scales well for small-to-medium teams and covers all core compliance workflows even on the entry plan.
+
+**Dedicated SaaS** suits organizations that need full data isolation, a custom domain, or specific data-residency commitments, but do not want to manage their own infrastructure. It is also the recommended path for organizations subject to procurement or vendor-assessment requirements that preclude shared infrastructure.
+
+**On-premise** is designed for organizations with strict network air-gap requirements, existing Kubernetes infrastructure, or policies that mandate full ownership of all infrastructure and data. It carries the highest operational responsibility — your team is responsible for installation, upgrades, backups, and monitoring.
+
+<NextSteps items={[
+  { icon: '☁️', label: 'SaaS plans and differences', to: './installation_saas' },
+  { icon: '💻', label: 'On-premise requirements', to: './installation_on_premise' },
+]} />

@@ -42,6 +42,23 @@
   overflow: visible;
 }
 
+/* ─── Navbar: inactive items neutral, only active/hover gets primary color ── */
+.navbar__link {
+  color: var(--ifm-font-color-base);
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  opacity: 1;
+}
+
+[data-theme='dark'] .navbar__link {
+  color: var(--ifm-font-color-base);
+}
+
 .hero__subtitle {
   color:var(--ifm-color-content-secondary) !important;
 }

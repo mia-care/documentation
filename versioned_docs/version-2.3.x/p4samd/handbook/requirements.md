@@ -124,4 +124,4 @@ Also, you can check how it scored on each specific criteria mentioned above, inc
 
 The assessment on the requirement quality provides also an AI evaluation of the test coverage: all the **linked tests** are condidered for the estimantion, and the percentage result is shown in the **Tests (test coverage)** column. Additional information and insights about the score are reported in the Requirement Deatil (drawer), inside the Traceability tab. The system suggests also test cases based on the assessed requirement, to increase the coverage and improve the overall testbook completeness.  
 
-[faq-data-sharing]: ../faq.md#does-mia-care-p4samd-share-data-with-third-party-organizations
+[faq-data-sharing]: ../faq.md

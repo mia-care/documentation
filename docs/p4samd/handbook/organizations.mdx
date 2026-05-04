@@ -1,0 +1,30 @@
+---
+id: organizations
+title: Organizations & Multi-Tenancy
+sidebar_label: Organizations
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+P4SaMD is a **multi-tenant platform**. A single installation serves multiple independent organizations simultaneously, with complete data isolation between them — your projects, users, and data are never visible to anyone outside your organization.
+
+An **organization** is the top-level container for everything in P4SaMD: your medical device projects, the team members who work on them, organization-wide settings such as compliance templates and integrations, and your subscription quota. Think of it as your private workspace within the platform.
+
+## Working Across Multiple Organizations
+
+A single user account can belong to more than one organization. This is common for consultants, contractors, or team members who span multiple regulated product lines. Each membership is independent — your role and permissions in one organization have no bearing on another. When you log in, P4SaMD checks how many organizations your account belongs to: if there is only one, you are taken there automatically; if there are several, a selection screen displays each organization card showing your role, and you click to enter.
+
+You can switch between organizations at any time without logging out. Click your organization name in the top navigation bar to open the switcher panel, then select the organization you want. Your session context — active project, open filters, in-progress work — is preserved independently for each organization, so switching and switching back leaves everything where you left it.
+
+## Settings and Administration
+
+Organization administrators have access to a settings area where they can configure the organization's display name, default regulatory frameworks and compliance templates, feature toggles (such as enabling AI-powered capabilities), and connections to external tools such as git providers, CI/CD systems, or ALM platforms. These settings are scoped to the organization and do not affect other organizations on the same installation. Only users with the **Organization Admin** role can access this area.
+
+## Data Isolation
+
+All data in P4SaMD is strictly scoped to its organization. Search results, filters, reports, and audit logs never surface data from another organization. The isolation is enforced at two independent layers — Row-Level Security at the database and access control checks at the application — so there is no single point of failure that could allow cross-tenant data leakage.
+
+<NextSteps items={[
+  { icon: '📦', label: 'Manage products and projects', to: './products' },
+  { icon: '🔐', label: 'Understand user roles and permissions', to: '../security/roles_permissions' },
+]} />

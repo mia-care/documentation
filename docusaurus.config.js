@@ -4,7 +4,7 @@ const createEditUrl = require("./createEditUrl");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Mia-Care P4SaMD Handbook",
-  tagline: "Learn how Mia-Care P4SaMD supports Software as a Medical Device development",
+  tagline: "The compliance governance platform for Software as a Medical Device development",
   url: "https://mia-care.github.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -41,21 +41,28 @@ const config = {
       },
       items: [
         {
-          label: "Product",
+          label: "Overview",
           position: "left",
           type: "doc",
           docId: "p4samd/overview",
         },
         {
+          label: "Handbook",
+          position: "left",
+          type: "doc",
+          docId: "p4samd/handbook/getting_started",
+        },
+        {
           label: "Release Notes",
           position: "left",
           type: "doc",
-          docId: "p4samd/release_notes",
+          docId: "p4samd/release-notes/v3.0",
         },
         {
-          href: "https://mia-care.io/competence-center/video/mia-care-product-demo-platform-for-software-as-a-medical-device/",
+          label: "FAQ",
           position: "left",
-          label: "Product demo"
+          type: "doc",
+          docId: "p4samd/faq",
         },
         {
           href: "https://mia-care.io",
@@ -124,40 +131,45 @@ const config = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          editUrl: createEditUrl,
+          // editUrl: createEditUrl,
           sidebarPath: require.resolve("./sidebars.js"),
-          lastVersion: "2.5.x",
-          includeCurrentVersion: false,
+          lastVersion: "current",
+          includeCurrentVersion: true,
           versions: {
-            "2.5.x": {
-              label: "2.5.x (Current)",
+            current: {
+              label: "3.0.x (Current)",
               path: "",
               banner: "none"
+            },
+            "2.5.x": {
+              label: "2.5.x",
+              path: "2.5.x",
+              banner: "unmaintained"
             },
             "2.4.x": {
               label: "2.4.x",
               path: "2.4.x",
-              banner: "none"
+              banner: "unmaintained"
             },
             "2.3.x": {
               label: "2.3.x",
               path: "2.3.x",
-              banner: "none"
+              banner: "unmaintained"
             },
             "2.2.x": {
               label: "2.2.x",
               path: "2.2.x",
-              banner: "none"
+              banner: "unmaintained"
             },
             "2.1.x": {
               label: "2.1.x",
               path: "2.1.x",
-              banner: "none"
+              banner: "unmaintained"
             },
             "2.0.x": {
               label: "2.0.x",
               path: "2.0.x",
-              banner: "none"
+              banner: "unmaintained"
             },
           },
           async sidebarItemsGenerator({
