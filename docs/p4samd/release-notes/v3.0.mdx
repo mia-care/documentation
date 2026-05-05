@@ -82,6 +82,24 @@ Workspace versions provide IEC 62304-aligned configuration management. Draft ver
 P4SaMD v3 is a new platform. There is no direct in-place migration path from v2. Organizations moving from v2 are recommended to use the **Brownfield Import** feature to onboard their existing projects into the v3 platform. Contact Mia-Care for migration support.
 
 ---
+
+## Maintenance Releases
+
+### Late April 2026 — Bug Fixes
+
+**Requirements export — parent item display IDs**
+
+When exporting requirements with active section or type filters applied, parent items that fall outside the filtered set now appear correctly in the `parent_display_id` column of the exported file. Previously, filtered-out parents were unresolved, leaving their display ID blank in the exported file.
+
+**Requirements level filter — PRS / SRS**
+
+Filtering the requirements list by **PRS** or **SRS** now returns the expected item type. A label-to-value mapping issue previously caused the two options to filter in reverse, showing SRS items when PRS was selected and vice versa.
+
+**Requirements CSV import — row-level validation**
+
+The CSV import dialog now validates each row before submission. Rows missing the mandatory **Type** field are flagged immediately. If the server returns validation errors, they are shown in the row-level error table rather than a generic notification.
+
+---
 Product Roadmap
 
 P4SaMD v3 is an evolving platform. The features below are actively in development and will roll out in upcoming minor releases throughout 2026 and beyond:
