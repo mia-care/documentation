@@ -128,14 +128,6 @@ function Home() {
       description="The official handbook for Mia-Care P4SaMD — the Platform for Software as a Medical Device."
       title={siteConfig.title}
     >
-      {/* Announcement Banner */}
-      <div className={styles.announcementBanner}>
-        <span>🎉 P4SaMD v3 is now available — redesigned as a standalone platform.</span>
-        <Link className={styles.announcementLink} to="/docs/p4samd/release-notes/v3.0">
-          View release notes →
-        </Link>
-      </div>
-
       {/* Hero */}
       <header className={styles.hero}>
         <div className={clsx("container", styles.heroInner)}>
