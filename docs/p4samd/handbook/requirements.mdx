@@ -30,9 +30,25 @@ P4SaMD maintains bidirectional traceability automatically. In the requirement de
 
 ## Searching, Filtering, and Bulk Actions
 
-Use the search bar to find requirements by title or ID. The filter panel lets you narrow by type, status, quality level (if Smart Insight is enabled), and assignee. For large projects, the flat view with filters is the fastest way to work through a backlog.
+Use the search bar to find requirements by title or ID. The filter panel lets you narrow by type, status, quality level, and assignee. For large projects, the flat view with filters is the fastest way to work through a backlog.
 
 You can also **import** requirements from a CSV file — useful for migrating from an external ALM tool or loading a pre-existing requirement set — and **export** the full list in standard formats for use outside P4SaMD.
+
+### CSV Import
+
+When importing requirements from a CSV file, each row is validated individually. If some rows are valid and others are not, the platform imports the valid rows and reports errors for the rejected ones — you do not need to fix everything before any requirements are created. Error details are shown per row so you can correct and re-import only the failed entries.
+
+## Quality Assessment
+
+P4SaMD automatically assesses the quality of each requirement based on completeness and clarity. A quality badge appears next to each requirement in the list:
+
+| Badge | Level | Meaning |
+|---|---|---|
+| ✅ Emerald | **Very High** | Complete, unambiguous, testable, and all fields populated |
+| ✅ Blue | **High** | Adequate but may lack some optional fields |
+| ⚠️ Amber | **Low** | Incomplete, ambiguous, or missing critical information |
+
+Quality is re-evaluated automatically every time you create or update a requirement. While the new score is being computed, the badge is temporarily hidden. Once evaluation completes, the updated badge appears — no manual action is needed.
 
 <NextSteps items={[
   { icon: '📋', label: 'Work with versions', to: './version_management' },
