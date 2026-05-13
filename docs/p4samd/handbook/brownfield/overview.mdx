@@ -31,6 +31,28 @@ You can pause at any time by clicking **Save as Draft** in the wizard footer. Yo
 
 When evaluation completes, the Evaluation page shows an **overall compliance score** (the percentage of the target framework currently satisfied), a **gap analysis breakdown** categorized by area with a severity rating for each gap, and a **remediation plan** organized by compliance area (Requirements, Design, Risk Management, Software Implementation, Verification, Configuration). Each task is assigned a priority (Critical, High, or Low) based on its impact on your regulatory target. The plan starts as an editable draft — you can review, reassign, and reorder tasks before confirming it. Once confirmed, you track task completion per area.
 
+### Evaluation Progress
+
+While the evaluation is running, the Evaluation page displays real-time progress through four processing phases:
+
+1. **Document Preparation** — uploaded files are normalized and prepared for analysis
+2. **Document Extraction** — relevant content is extracted from your technical assets and documentation
+3. **Payload Crafting** — extracted data is structured against your target regulatory framework
+4. **Evaluation** — the compliance gap analysis is computed and the remediation plan is generated
+
+Progress updates appear in real time — you can leave the page and return at any time without losing your place.
+
+### Evaluation Metrics
+
+After evaluation completes, two key metrics are highlighted:
+
+- **Compliance Health Score** — an overall percentage indicating how much of the target framework is currently satisfied by your existing documentation and processes
+- **Traceability Coverage** — the degree to which your existing artifacts are traceable across lifecycle phases (requirements → design → implementation → verification)
+
+### Exporting Results
+
+You can export the evaluation results for use in external reports or regulatory submissions. Available export formats include **PDF** (for human-readable compliance reports) and **CSV** (for data import into other tools or spreadsheets). Click **Export** on the Evaluation page and select your preferred format.
+
 <NextSteps items={[
   { icon: '📋', label: 'Start the Import Wizard', to: './import-wizard' },
 ]} />

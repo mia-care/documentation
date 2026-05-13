@@ -14,6 +14,8 @@ The **active version** is always shown in the project header. You can switch to 
 
 To create a new version, go to **Versions** in the left sidebar and click **Create Version**. You provide a name (for example `v1.0.0` or `2.3-beta`) and an optional description. The new version starts as a **Draft**, pre-populated with the current state of all project artifacts, and is immediately available for active development.
 
+When you create a new project, a default workspace version named **main** is created automatically so you can start working immediately.
+
 When development on a version is complete and all required verification activities have been carried out, you release it via **Versions → [version name] → In Review → Frozen → Release**. The Frozen status is approved and ready for release; no edits allowed unless re-open the In Review status. Releasing a version locks it permanently — all artifacts become read-only, the release date and releasing user are recorded, and a release summary is generated. Released versions cannot be modified or deleted; they are permanent compliance records.
 
 If you need to make changes after release, create a new version and work from there.

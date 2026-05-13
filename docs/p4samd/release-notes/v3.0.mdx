@@ -82,15 +82,55 @@ Workspace versions provide IEC 62304-aligned configuration management. Draft ver
 P4SaMD v3 is a new platform. There is no direct in-place migration path from v2. Organizations moving from v2 are recommended to use the **Brownfield Import** feature to onboard their existing projects into the v3 platform. Contact Mia-Care for migration support.
 
 ---
-Product Roadmap
+
+## May 2026 Updates
+
+### New: Risk Management
+
+P4SaMD now includes a full **Risk Management** module compliant with ISO 14971. You can create, assess, mitigate, and track risks directly in the platform with:
+
+- A 5×5 severity/probability risk matrix with automatic risk level computation
+- A complete status lifecycle (Identified → Analyzed → Mitigation Required → Under Control → Verified → Accepted)
+- Control measures with verification tracking and residual risk documentation
+- Bidirectional traceability to requirements and test cases
+- CSV import and export for the risk register
+- Bulk operations for efficient risk management
+
+See the [Risk Management handbook page](../handbook/risks.md) for full details.
+
+### Improved: Requirement Quality Assessment
+
+Requirement quality is now assessed automatically every time you create or edit a requirement. Quality badges (Very High, High, Low) update in real time without any manual trigger. While a new score is being computed, the badge is temporarily hidden until the updated assessment is ready.
+
+### Improved: Brownfield Evaluation Pipeline
+
+The Brownfield evaluation now provides real-time progress tracking through four processing phases (Document Preparation, Extraction, Payload Crafting, Evaluation). After completion, two new metrics are available: **Compliance Health Score** and **Traceability Coverage**. You can also export evaluation results in PDF and CSV formats.
+
+### Improved: Requirements Import
+
+CSV import now provides detailed per-row validation feedback. Valid rows are imported even when other rows contain errors (partial-success behavior), so you no longer need to fix all issues in a file before any requirements are created.
+
+### Changed: Default Workspace Version Name
+
+New projects now start with a default workspace version named **main** (previously `v1.0`).
+
+### Patch Fixes
+
+- Fixed requirements type filter where selecting PRS or SRS showed items of the opposite type
+- Fixed requirements export where parent display IDs were not resolved correctly when parent items were excluded by filters
+- Internal infrastructure and performance improvements
+
+---
+
+## Product Roadmap
 
 P4SaMD v3 is an evolving platform. The features below are actively in development and will roll out in upcoming minor releases throughout 2026 and beyond:
 
 <Roadmap>
 
-<RoadmapItem icon="⚠️" title="Risk Management" quarter="Q3 2026" status="in-progress">
+<RoadmapItem icon="⚠️" title="Risk Management" quarter="Q2 2026" status="available">
 
-Full risk management capabilities including hazard analysis, risk assessment worksheets, residual risk evaluation, and ISO 14971-compliant risk management reports. Bidirectional traceability between risks, requirements, and mitigations.
+ISO 14971-compliant risk management with hazard identification, 5×5 severity/probability risk matrix, automatic risk level computation (Unacceptable / ALARP / Acceptable), control measures, residual risk tracking, and a full status lifecycle. Bidirectional traceability between risks, requirements, and verification evidence. CSV import and export included.
 
 </RoadmapItem>
 

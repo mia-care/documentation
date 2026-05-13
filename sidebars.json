@@ -56,6 +56,11 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/risks",
+          "label": "Risk Management",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/handbook/version_management",
           "label": "Version Management",
           "type": "doc"
