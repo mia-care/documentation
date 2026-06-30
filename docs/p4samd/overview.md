@@ -78,6 +78,6 @@ P4SaMD integrates with the tools your team already uses:
 
 ## Next Steps
 
-- [Get started with P4SaMD →](./handbook/getting_started)
+- [Get started with P4SaMD →](./handbook/getting-started)
 - [Read the FAQ →](./faq)
 - [See what's new in v3 →](./release-notes/v3.0)

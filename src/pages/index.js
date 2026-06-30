@@ -17,7 +17,7 @@ const handbookSections = [
   {
     title: "Getting Started",
     icon: "🚀",
-    href: "/docs/p4samd/handbook/getting_started",
+    href: "/docs/p4samd/handbook/getting-started",
     description:
       "Log in, select your organization, and navigate the platform for the first time.",
   },
@@ -92,7 +92,7 @@ const v3Features = [
     tag: "Self-Service",
     title: "Self-Service Configuration",
     body: "Organizations configure projects, integrations, and settings autonomously — without requiring Mia-Care to intervene.",
-    link: "/docs/p4samd/handbook/getting_started",
+    link: "/docs/p4samd/handbook/getting-started",
   },
 ];
 

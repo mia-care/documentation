@@ -8,8 +8,12 @@ const config = {
   url: "https://mia-care.github.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
   favicon: "img/favicon.ico",
   organizationName: "Mia-Care",
   projectName: "p4samd-handbook",
@@ -105,7 +109,7 @@ const config = {
             },
             {
               label: "Privacy Policy",
-              href: "https://mia-care.io/wp-content/uploads/2021/07/Mia-Care_Privacy_Policy_EN.pdf",
+              href: "https://mia-care.io/privacy-policy",
             },
           ],
         },

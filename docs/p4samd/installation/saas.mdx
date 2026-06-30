@@ -95,18 +95,47 @@ The table below shows which features are available on each subscription tier. **
 
 ---
 
-## Prerequisites
+## System Requirements
 
-Because SaaS is fully managed by Mia-Care, there is **nothing to install** and no servers, databases, or Kubernetes to provision — that is all handled for you. The prerequisites below are about what you need on your side to onboard and use the platform.
+P4SaMD SaaS is a fully managed, browser-based web application. There is **nothing to install** and no servers, databases, or Kubernetes for you to provision — that is all handled by Mia-Care. (Infrastructure requirements such as Kubernetes, PostgreSQL, object storage, and an OIDC provider apply only to [On-premise](./on-premise.mdx) deployments.) The only requirements are on the end-user device.
+
+> **Applies to:** P4SaMD v3.x &nbsp;·&nbsp; **Last updated:** 30 June 2026
+
+### Supported Web Browsers
+
+P4SaMD supports recent desktop browsers. The minimum supported versions are:
+
+| Browser | Minimum version | Platforms |
+|---|---|---|
+| Google Chrome | 114 or later | Windows, macOS, Linux |
+| Microsoft Edge | 114 or later | Windows, macOS |
+| Mozilla Firefox | 115 (ESR) or later | Windows, macOS, Linux |
+| Apple Safari | 16.4 or later | macOS, iOS / iPadOS |
+
+Browsers and versions not listed above (including Microsoft Internet Explorer) are **not officially supported**. Using an unsupported or outdated browser may cause parts of the interface to render or behave incorrectly. Keeping your browser updated to the latest available version is recommended.
+
+### Client-Side Requirements
+
+| Requirement | Minimum |
+|---|---|
+| Operating system | Windows 10 or later, macOS 12 or later, or a current mainstream Linux distribution; iOS / iPadOS 16+ or Android 11+ for tablet/mobile access |
+| Screen resolution | 1280 × 720 (1366 × 768 or higher recommended) |
+| JavaScript | Must be enabled in the browser |
+| Cookies | First-party cookies must be allowed (used to maintain your authenticated session) |
+| Network | A stable broadband internet connection — **5 Mbps or faster recommended**. Outbound HTTPS (port 443) to your P4SaMD instance URL; if your network restricts egress, allowlist the instance domain. |
+
+:::tip Sharing with customers
+The two tables above are self-contained: they can be copied directly into customer communications as the official P4SaMD SaaS system requirements, without needing the rest of this document.
+:::
+
+## Onboarding Prerequisites
+
+Beyond the system requirements above, onboarding a new SaaS organization requires only a few things on your side.
 
 ### Mandatory
 
-These are needed for any SaaS plan.
-
 | Requirement | Details |
 |---|---|
-| **Modern web browser** | A current version of Chrome, Edge, Firefox, or Safari (last two major releases). P4SaMD is a web application; no desktop client is required. |
-| **Network access** | Outbound HTTPS (port 443) to your P4SaMD instance URL. If your network restricts egress, allowlist the instance domain. |
 | **Business email** | A reachable email address per user, for invitations, notifications, and password resets. Ensure mail from Mia-Care's sending domain is not blocked by your spam filters. |
 | **Organization administrator** | A named person to complete the initial organization setup wizard and manage members, roles, and settings. |
 | **Subscription plan** | An active subscription agreement with the plan tier that covers the features you need (see the [plan comparison](#plan-comparison) above). |
