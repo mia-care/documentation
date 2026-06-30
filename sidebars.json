@@ -130,6 +130,11 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/release-notes/roadmap",
+          "label": "Product Roadmap",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/release_notes",
           "label": "Archived (v2.x)",
           "type": "doc"
