@@ -32,6 +32,12 @@
   margin-top: 0.5rem;
 }
 
+.timelineDot.status_available {
+  border-color: #16a34a;
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
 .timelineDot.status_in-progress {
   border-color: #2563eb;
   background: #2563eb;
@@ -109,9 +115,25 @@
   border-radius: 12px;
 }
 
+.statusBadge.status_available {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+}
+
 .statusBadge.status_in-progress {
   background: rgba(37, 99, 235, 0.1);
   color: #2563eb;
+}
+
+.betaBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
 }
 
 .statusBadge.status_soon {
