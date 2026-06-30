@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-export function RoadmapItem({ icon, title, quarter, status = 'planned', children }) {
+export function RoadmapItem({ icon, title, quarter, status = 'planned', beta = false, children }) {
   const statusLabels = {
+    'available': 'Available',
     'in-progress': 'In Development',
     'planned': 'Planned',
     'soon': 'Coming Soon'
@@ -24,6 +25,7 @@ export function RoadmapItem({ icon, title, quarter, status = 'planned', children
               <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>
                 {statusLabels[status]}
               </span>
+              {beta && <span className={styles.betaBadge}>Beta</span>}
             </div>
           </div>
         </div>

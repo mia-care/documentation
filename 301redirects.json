@@ -1,2 +1,14 @@
 {
+  "/docs/p4samd/handbook/getting_started": {
+    "destination": "/docs/p4samd/handbook/getting-started",
+    "addedOn": "2026-06-30"
+  },
+  "/docs/p4samd/handbook/version_management": {
+    "destination": "/docs/p4samd/handbook/version-management",
+    "addedOn": "2026-06-30"
+  },
+  "/docs/p4samd/handbook/ai_configuration": {
+    "destination": "/docs/p4samd/handbook/ai-configuration",
+    "addedOn": "2026-06-30"
+  }
 }

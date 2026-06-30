@@ -95,6 +95,64 @@ The table below shows which features are available on each subscription tier. **
 
 ---
 
+## System Requirements
+
+P4SaMD SaaS is a fully managed, browser-based web application. There is **nothing to install** and no servers, databases, or Kubernetes for you to provision — that is all handled by Mia-Care. (Infrastructure requirements such as Kubernetes, PostgreSQL, object storage, and an OIDC provider apply only to [On-premise](./on-premise.mdx) deployments.) The only requirements are on the end-user device.
+
+> **Applies to:** P4SaMD v3.x &nbsp;·&nbsp; **Last updated:** 30 June 2026
+
+### Supported Web Browsers
+
+P4SaMD supports recent desktop browsers. The minimum supported versions are:
+
+| Browser | Minimum version | Platforms |
+|---|---|---|
+| Google Chrome | 114 or later | Windows, macOS, Linux |
+| Microsoft Edge | 114 or later | Windows, macOS |
+| Mozilla Firefox | 115 (ESR) or later | Windows, macOS, Linux |
+| Apple Safari | 16.4 or later | macOS, iOS / iPadOS |
+
+Browsers and versions not listed above (including Microsoft Internet Explorer) are **not officially supported**. Using an unsupported or outdated browser may cause parts of the interface to render or behave incorrectly. Keeping your browser updated to the latest available version is recommended.
+
+### Client-Side Requirements
+
+| Requirement | Minimum |
+|---|---|
+| Operating system | Windows 10 or later, macOS 12 or later, or a current mainstream Linux distribution; iOS / iPadOS 16+ or Android 11+ for tablet/mobile access |
+| Screen resolution | 1280 × 720 (1366 × 768 or higher recommended) |
+| JavaScript | Must be enabled in the browser |
+| Cookies | First-party cookies must be allowed (used to maintain your authenticated session) |
+| Network | A stable broadband internet connection — **5 Mbps or faster recommended**. Outbound HTTPS (port 443) to your P4SaMD instance URL; if your network restricts egress, allowlist the instance domain. |
+
+:::tip Sharing with customers
+The two tables above are self-contained: they can be copied directly into customer communications as the official P4SaMD SaaS system requirements, without needing the rest of this document.
+:::
+
+## Onboarding Prerequisites
+
+Beyond the system requirements above, onboarding a new SaaS organization requires only a few things on your side.
+
+### Mandatory
+
+| Requirement | Details |
+|---|---|
+| **Business email** | A reachable email address per user, for invitations, notifications, and password resets. Ensure mail from Mia-Care's sending domain is not blocked by your spam filters. |
+| **Organization administrator** | A named person to complete the initial organization setup wizard and manage members, roles, and settings. |
+| **Subscription plan** | An active subscription agreement with the plan tier that covers the features you need (see the [plan comparison](#plan-comparison) above). |
+
+### Optional (plan-dependent)
+
+These unlock specific capabilities and are only needed if you intend to use the corresponding feature.
+
+| Requirement | Needed for | Details |
+|---|---|---|
+| **OIDC / SAML identity provider** | Single Sign-On (Professional plan and above) | Okta, Microsoft Entra ID, Auth0, Google Workspace, or any OIDC / SAML 2.0–compliant provider. Without SSO, P4SaMD manages credentials for you. |
+| **Custom domain + DNS control** | Custom domain (Dedicated SaaS, Professional plan and above) | A DNS record you control (e.g. `samd.yourcompany.com`) and authorization to validate it so a TLS certificate can be issued. |
+| **Data-residency decision** | Regional data hosting | Choose the **EU** or **US** region at provisioning. Dedicated SaaS supports a configurable region. |
+| **Egress IP ranges** | IP allowlist (Enterprise plan) | The public IP ranges your users connect from, if you want to restrict access to your organization to known networks. |
+
+---
+
 ## Getting Access
 
 To create a new SaaS organization, contact [Mia-Care](https://mia-care.io) or speak to your account representative. Provisioning typically completes within one business day for multi-tenant and three to five business days for dedicated environments.

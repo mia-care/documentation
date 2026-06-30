@@ -2,6 +2,7 @@
 id: ai_configuration
 title: AI Configuration
 sidebar_label: AI Configuration
+slug: ai-configuration
 ---
 
 P4SaMD's AI capabilities — including the [Whisper AI Assistant](./whisper.md) and AI-powered compliance evaluation — are configured per organization by an administrator. This page explains how to enable AI features and connect your own LLM provider. AI configuration was introduced in **v3.2**.

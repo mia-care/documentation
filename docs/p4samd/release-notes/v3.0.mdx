@@ -2,20 +2,140 @@
 id: v3.0
 title: Release Notes — Current (v3.x)
 sidebar_label: Current (v3.x)
+toc_max_heading_level: 2
 ---
 
 import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
-import { Roadmap, RoadmapItem } from '@site/src/components/Roadmap';
 
-## P4SaMD v3.0
+Releases are grouped by the month they shipped, newest first.
 
-**Release date**: 26 May 2026
+## June 2026 (v3.1.0 – v3.2.0)
 
-Version 3.0 is a complete re-architecture of P4SaMD. This release marks the beginning of the v3 product line. It delivers a standalone platform that operates independently of any third-party software infrastructure.
+Three releases shipped in June: the **Whisper AI Assistant** and AI configuration (v3.2.0), a storage migration (v3.1.1), and the System Design lifecycle and team-administration work (v3.1.0).
+
+### P4SaMD v3.2.0 — 30 June 2026
+
+Version 3.2 introduces **Whisper**, the in-platform AI assistant, together with the tenant-level **AI configuration** that powers it. This is the first release of the AI advisor capability previously on the roadmap.
+
+<FeatureGrid>
+
+<FeatureBox icon="🤖" title="Whisper AI Assistant">
+
+A new AI assistant available on every project page, opened from the sparkles icon in the top bar. Whisper surfaces **compliance suggestions** for the active version and offers an interactive **chat** that can read your project and propose changes for you to confirm.
+
+</FeatureBox>
+
+<FeatureBox icon="🔎" title="Compliance Suggestions">
+
+Whisper analyzes your active version and lists AI-detected compliance findings, sorted by priority, each with a normative reference, reasoning, remediation steps, and a confidence indicator. You can run a fresh analysis on demand and dismiss, resolve, or reopen each finding.
+
+</FeatureBox>
+
+<FeatureBox icon="💬" title="Conversational Chat with Confirmable Actions">
+
+Ask Whisper questions in natural language and get streamed answers. When the assistant proposes a change to your data (for example creating a requirement), it presents a **Confirm / Decline** card — nothing is changed without your explicit approval, and every confirmed or declined action is recorded in the audit log.
+
+</FeatureBox>
+
+<FeatureBox icon="⚙️" title="AI Configuration & LLM Profiles">
+
+Administrators can enable AI features per organization and assign an LLM provider and model to each workload — **Chat** and **Evaluation** — from a new **LLM Profiles** settings page, with live credential validation. Providers can expose an allow-list of selectable chat models, and the live model list can be discovered directly from the provider.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+:::note Beta
+The Whisper AI Assistant ships in **beta** in v3.2.0. It is available for use, with coverage and proactive guidance expanding in upcoming releases.
+:::
+
+#### New: Whisper AI Assistant
+
+The Whisper panel slides in from the right (and can be expanded to full page) and shows the current project and version context. Its two modes are:
+
+- **Compliance Suggestions** — AI-detected findings for the active version. The top-bar badge shows the count of open findings. Each finding opens a detail drawer (priority, category, normative reference, description, reasoning, remediation steps, confidence). **Analyze now** triggers a fresh analysis; findings can be **dismissed** or **resolved** (with an optional reason and an undo), and a freshness label shows how recently the analysis ran.
+- **Chat** — a conversational assistant with token-by-token streaming, persisted conversations you can resume or delete, and a per-message model picker. Proposed mutating actions require **Confirm / Decline**, and assistant messages are clearly marked as AI-generated.
+
+See the [Whisper AI Assistant](../handbook/whisper.md) handbook page for the full walkthrough.
+
+#### New: AI Configuration
+
+A new **LLM Profiles** page under Settings (Admin-only) lets you configure AI provider credentials separately for the **Chat** and **Evaluation** workloads — so you can, for example, use one provider for chat and another for compliance evaluation. AI features are gated behind a per-organization **AI features** toggle. See [AI Configuration](../handbook/ai_configuration.md) for details.
+
+#### For developers
+
+- The MCP tool catalog grew to **17 tools**, adding risk-management and software-item domain tools, now shared as a single source of truth with the Whisper agent.
+- AI assistant activity (confirmed/declined actions and conversation creation) is now written to the audit log.
+
+#### Security
+
+- LLM provider API keys are now stored **encrypted at rest (AES-256-GCM)** in the database, removing the previous external secrets-manager dependency.
+
+### P4SaMD v3.1.1 — 12 June 2026
+
+A focused maintenance release that migrated file storage to a managed object store.
+
+#### Changed: File storage migrated to Google Cloud Storage
+
+The self-hosted file storage backend was replaced with a managed **Google Cloud Storage (GCS)** bucket across all environments. This removes a single point of failure (an unreplicated storage pod) and the risk of data loss on restart, and simplifies credential management.
+
+:::warning Breaking change
+**Files uploaded before this release are not accessible afterward.** No data was migrated between the old storage and the new GCS bucket, so any previously uploaded files — for example design files in the System Design section — must be re-uploaded. This was an accepted trade-off given the platform's current internal-only audience and the small volume of stored data.
+:::
+
+### P4SaMD v3.1.0 — 11 June 2026
+
+Version 3.1 deepens the native SDLC artifact management introduced in v3.0, with a focus on the **System Design** workspace, formal lifecycle controls, and team administration.
+
+#### New: Software Item Lifecycle (System Design)
+
+Software items now carry a formal IEC 62304-aligned lifecycle status: **Draft → Approved → Verified**, plus a terminal **Deprecated** state. You move items through the lifecycle from the software item detail view:
+
+- **Approve** an item once its design is ready (requires the Admin role).
+- **Verify** an approved item once it has supporting evidence.
+- **Revert to Draft** to reopen an Approved or Verified item for further work.
+- **Deprecate** an item that is no longer in use. Deprecation is one-way, requires a written rationale (at least 10 characters), and is only available for items belonging to a released version.
+
+Items that belong to a **released** version are protected: they cannot be deleted, and editing them requires an edit rationale that is recorded in the item's history.
+
+#### New: Tabbed Detail Pages for Requirements and Software Items
+
+Requirements and software items now open in a dedicated detail page with three tabs:
+
+- **Details** — view and inline-edit all fields, including the parent/child hierarchy and a system-metadata block (created/updated/approved by, with timestamps).
+- **Traceability** — see linked risks, tests, software items, and change requests, plus a risk-coverage indicator and a link to the traceability matrix.
+- **History** — a chronological audit trail of every create, edit, status transition, and deletion, now showing the human-readable name of the person who made each change.
+
+#### New: Product Members Management
+
+Each project gets a **Members** page (shown as **Product Members** inside a project, **Tenant Members** at the organization level) for managing who has access and at what role. The page includes a member table with search and role filtering, a stats panel, and an **Add Member** dialog with an expandable per-role capability breakdown. Removing a member is guarded so you cannot remove the last Admin. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
+
+#### Improved
+
+- Requirement and software item lists are now **sortable** and show a stats bar; requirements can be sorted by their display ID.
+- Label entry now offers **autocomplete suggestions** instead of a separate single-label filter.
+- Larger design files can be uploaded to software items without hitting a size limit.
+
+#### Fixed
+
+- Switching organization now cancels in-flight requests and clears tenant-scoped cached data, so screens no longer briefly show data from the previously selected organization.
+- Corrected sort ordering on the Risk and Software Item lists.
+
+#### For developers: extended MCP coverage
+
+The bundled MCP server gained broad new read/write coverage (requirement lifecycle transitions, full risk register management, traceability links, software item browsing, version management, and design-file access), so external AI assistants and coding agents can operate on project data without REST access.
 
 ---
 
-### What's New
+## May 2026 (v3.0.x)
+
+The v3 product line launched in May with v3.0.0, followed by a series of v3.0.x patch updates.
+
+### P4SaMD v3.0.0 — 26 May 2026
+
+Version 3.0 is a complete re-architecture of P4SaMD. This release marks the beginning of the v3 product line. It delivers a standalone platform that operates independently of any third-party software infrastructure.
+
+#### What's New
 
 <FeatureGrid>
 
@@ -75,17 +195,13 @@ Workspace versions provide IEC 62304-aligned configuration management. Draft ver
 
 </FeatureGrid>
 
----
-
-### Upgrading from v2
+#### Upgrading from v2
 
 P4SaMD v3 is a new platform. There is no direct in-place migration path from v2. Organizations moving from v2 are recommended to use the **Brownfield Import** feature to onboard their existing projects into the v3 platform. Contact Mia-Care for migration support.
 
----
+### Patch updates — late May 2026 (v3.0.x)
 
-## May 2026 Updates
-
-### New: Risk Management
+#### New: Risk Management
 
 P4SaMD now includes a full **Risk Management** module compliant with ISO 14971. You can create, assess, mitigate, and track risks directly in the platform with:
 
@@ -98,23 +214,23 @@ P4SaMD now includes a full **Risk Management** module compliant with ISO 14971. 
 
 See the [Risk Management handbook page](../handbook/risks.md) for full details.
 
-### Improved: Requirement Quality Assessment
+#### Improved: Requirement Quality Assessment
 
 Requirement quality is now assessed automatically every time you create or edit a requirement. Quality badges (Very High, High, Low) update in real time without any manual trigger. While a new score is being computed, the badge is temporarily hidden until the updated assessment is ready.
 
-### Improved: Brownfield Evaluation Pipeline
+#### Improved: Brownfield Evaluation Pipeline
 
 The Brownfield evaluation now provides real-time progress tracking through four processing phases (Document Preparation, Extraction, Payload Crafting, Evaluation). After completion, two new metrics are available: **Compliance Health Score** and **Traceability Coverage**. You can also export evaluation results in PDF and CSV formats.
 
-### Improved: Requirements Import
+#### Improved: Requirements Import
 
 CSV import now provides detailed per-row validation feedback. Valid rows are imported even when other rows contain errors (partial-success behavior), so you no longer need to fix all issues in a file before any requirements are created.
 
-### Changed: Default Workspace Version Name
+#### Changed: Default Workspace Version Name
 
 New projects now start with a default workspace version named **main** (previously `v1.0`).
 
-### Patch Fixes
+#### Patch Fixes
 
 - Fixed requirements type filter where selecting PRS or SRS showed items of the opposite type
 - Fixed requirements export where parent display IDs were not resolved correctly when parent items were excluded by filters
@@ -122,181 +238,8 @@ New projects now start with a default workspace version named **main** (previous
 
 ---
 
-## P4SaMD v3.1
-
-**Release date**: 11 June 2026
-
-Version 3.1 deepens the native SDLC artifact management introduced in v3.0, with a focus on the **System Design** workspace, formal lifecycle controls, and team administration.
-
-### New: Software Item Lifecycle (System Design)
-
-Software items now carry a formal IEC 62304-aligned lifecycle status: **Draft → Approved → Verified**, plus a terminal **Deprecated** state. You move items through the lifecycle from the software item detail view:
-
-- **Approve** an item once its design is ready (requires the Admin role).
-- **Verify** an approved item once it has supporting evidence.
-- **Revert to Draft** to reopen an Approved or Verified item for further work.
-- **Deprecate** an item that is no longer in use. Deprecation is one-way, requires a written rationale (at least 10 characters), and is only available for items belonging to a released version.
-
-Items that belong to a **released** version are protected: they cannot be deleted, and editing them requires an edit rationale that is recorded in the item's history.
-
-### New: Tabbed Detail Pages for Requirements and Software Items
-
-Requirements and software items now open in a dedicated detail page with three tabs:
-
-- **Details** — view and inline-edit all fields, including the parent/child hierarchy and a system-metadata block (created/updated/approved by, with timestamps).
-- **Traceability** — see linked risks, tests, software items, and change requests, plus a risk-coverage indicator and a link to the traceability matrix.
-- **History** — a chronological audit trail of every create, edit, status transition, and deletion, now showing the human-readable name of the person who made each change.
-
-### New: Product Members Management
-
-Each project gets a **Members** page (shown as **Product Members** inside a project, **Tenant Members** at the organization level) for managing who has access and at what role. The page includes a member table with search and role filtering, a stats panel, and an **Add Member** dialog with an expandable per-role capability breakdown. Removing a member is guarded so you cannot remove the last Admin. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
-
-### Improved
-
-- Requirement and software item lists are now **sortable** and show a stats bar; requirements can be sorted by their display ID.
-- Label entry now offers **autocomplete suggestions** instead of a separate single-label filter.
-- Larger design files can be uploaded to software items without hitting a size limit.
-
-### Fixed
-
-- Switching organization now cancels in-flight requests and clears tenant-scoped cached data, so screens no longer briefly show data from the previously selected organization.
-- Corrected sort ordering on the Risk and Software Item lists.
-
-### For developers: extended MCP coverage
-
-The bundled MCP server gained broad new read/write coverage (requirement lifecycle transitions, full risk register management, traceability links, software item browsing, version management, and design-file access), so external AI assistants and coding agents can operate on project data without REST access.
-
----
-
-## P4SaMD v3.1.1
-
-**Release date**: 12 June 2026
-
-A focused maintenance release that migrated file storage to a managed object store.
-
-### Changed: File storage migrated to Google Cloud Storage
-
-The self-hosted file storage backend was replaced with a managed **Google Cloud Storage (GCS)** bucket across all environments. This removes a single point of failure (an unreplicated storage pod) and the risk of data loss on restart, and simplifies credential management.
-
-:::warning Breaking change
-**Files uploaded before this release are not accessible afterward.** No data was migrated between the old storage and the new GCS bucket, so any previously uploaded files — for example design files in the System Design section — must be re-uploaded. This was an accepted trade-off given the platform's current internal-only audience and the small volume of stored data.
+:::tip Looking ahead
+For features planned for upcoming releases, see the [Product Roadmap](./roadmap.mdx).
 :::
 
----
-
-## P4SaMD v3.2
-
-**Expected: July 2026**
-
-Version 3.2 introduces **Whisper**, the in-platform AI assistant, together with the tenant-level **AI configuration** that powers it. This is the first release of the AI advisor capability previously on the roadmap.
-
-<FeatureGrid>
-
-<FeatureBox icon="🤖" title="Whisper AI Assistant">
-
-A new AI assistant available on every project page, opened from the sparkles icon in the top bar. Whisper surfaces **compliance suggestions** for the active version and offers an interactive **chat** that can read your project and propose changes for you to confirm.
-
-</FeatureBox>
-
-<FeatureBox icon="🔎" title="Compliance Suggestions">
-
-Whisper analyzes your active version and lists AI-detected compliance findings, sorted by priority, each with a normative reference, reasoning, remediation steps, and a confidence indicator. You can run a fresh analysis on demand and dismiss, resolve, or reopen each finding.
-
-</FeatureBox>
-
-<FeatureBox icon="💬" title="Conversational Chat with Confirmable Actions">
-
-Ask Whisper questions in natural language and get streamed answers. When the assistant proposes a change to your data (for example creating a requirement), it presents a **Confirm / Decline** card — nothing is changed without your explicit approval, and every confirmed or declined action is recorded in the audit log.
-
-</FeatureBox>
-
-<FeatureBox icon="⚙️" title="AI Configuration & LLM Profiles">
-
-Administrators can enable AI features per organization and assign an LLM provider and model to each workload — **Chat** and **Evaluation** — from a new **LLM Profiles** settings page, with live credential validation. Providers can expose an allow-list of selectable chat models, and the live model list can be discovered directly from the provider.
-
-</FeatureBox>
-
-</FeatureGrid>
-
-### New: Whisper AI Assistant
-
-The Whisper panel slides in from the right (and can be expanded to full page) and shows the current project and version context. Its two modes are:
-
-- **Compliance Suggestions** — AI-detected findings for the active version. The top-bar badge shows the count of open findings. Each finding opens a detail drawer (priority, category, normative reference, description, reasoning, remediation steps, confidence). **Analyze now** triggers a fresh analysis; findings can be **dismissed** or **resolved** (with an optional reason and an undo), and a freshness label shows how recently the analysis ran.
-- **Chat** — a conversational assistant with token-by-token streaming, persisted conversations you can resume or delete, and a per-message model picker. Proposed mutating actions require **Confirm / Decline**, and assistant messages are clearly marked as AI-generated.
-
-See the [Whisper AI Assistant](../handbook/whisper.md) handbook page for the full walkthrough.
-
-### New: AI Configuration
-
-A new **LLM Profiles** page under Settings (Admin-only) lets you configure AI provider credentials separately for the **Chat** and **Evaluation** workloads — so you can, for example, use one provider for chat and another for compliance evaluation. AI features are gated behind a per-organization **AI features** toggle. See [AI Configuration](../handbook/ai_configuration.md) for details.
-
-### For developers
-
-- The MCP tool catalog grew to **17 tools**, adding risk-management and software-item domain tools, now shared as a single source of truth with the Whisper agent.
-- AI assistant activity (confirmed/declined actions and conversation creation) is now written to the audit log.
-
-### Security
-
-- LLM provider API keys are now stored **encrypted at rest (AES-256-GCM)** in the database, removing the previous external secrets-manager dependency.
-
----
-
-## Product Roadmap
-
-P4SaMD v3 is an evolving platform. The features below are actively in development and will roll out in upcoming minor releases throughout 2026 and beyond:
-
-<Roadmap>
-
-<RoadmapItem icon="⚠️" title="Risk Management" quarter="Q2 2026" status="available">
-
-ISO 14971-compliant risk management with hazard identification, 5×5 severity/probability risk matrix, automatic risk level computation (Unacceptable / ALARP / Acceptable), control measures, residual risk tracking, and a full status lifecycle. Bidirectional traceability between risks, requirements, and verification evidence. CSV import and export included.
-
-</RoadmapItem>
-
-<RoadmapItem icon="✅" title="Verification & Validation Execution" quarter="Q3 2026" status="in-progress">
-
-Execute test plans directly in P4SaMD with test case assignment, execution tracking, evidence attachment, and pass/fail reporting. IEC 62304-aligned V&V documentation generation with full traceability to requirements and design.
-
-</RoadmapItem>
-
-<RoadmapItem icon="🔄" title="SDLC Workflow Orchestrator" quarter="Q4 2026" status="soon">
-
-Automated workflow engine that coordinates development activities across the software lifecycle. CI/CD pipeline integration for automated test triggering, build verification, and compliance gate enforcement.
-
-</RoadmapItem>
-
-<RoadmapItem icon="📄" title="Documentation Engine" quarter="Q4 2026" status="soon">
-
-Auto-generated compliance documentation including Software Development Plans, Risk Management Reports, Verification Reports, and Technical Files. Template-based output with PDF export and regulatory submission packaging.
-
-</RoadmapItem>
-
-<RoadmapItem icon="🏗️" title="System Design & Architecture" quarter="Q1 2027" status="planned">
-
-System architecture modeling with component diagrams, interface specifications, and design rationale capture. Automated generation of Software Architecture Documents and Detailed Design Specifications aligned to IEC 62304 requirements.
-
-</RoadmapItem>
-
-<RoadmapItem icon="📦" title="BOM Management & SBOM" quarter="Q1 2027" status="planned">
-
-Bill of Materials management for software components, dependencies, and SOUP items. Automated SBOM generation in SPDX and CycloneDX formats. License compliance tracking and vulnerability correlation.
-
-</RoadmapItem>
-
-<RoadmapItem icon="🤖" title="Whisper AI Assistant" quarter="Q3 2026" status="available">
-
-Context-aware in-platform AI assistant (**Whisper**), available from v3.2. Provides AI-detected compliance suggestions against the active version and a conversational chat that can read project data and propose changes for you to confirm. Grounded in medical device regulatory frameworks and software engineering standards. Future iterations will expand coverage and proactive guidance.
-
-</RoadmapItem>
-
-<RoadmapItem icon="📊" title="Post-Market Surveillance" quarter="Q2 2027" status="planned">
-
-Post-market monitoring dashboard with adverse event tracking, complaint management, field action coordination, and trend analysis. Integration capabilities with vigilance reporting systems and regulatory authority portals.
-
-</RoadmapItem>
-
-</Roadmap>
-
-Each minor release will include detailed documentation of new capabilities as they become available. Subscribe to release notifications or contact Mia-Care for roadmap updates and feature access
-Release notes for each subsequent minor version will document new capabilities as they become available.
+Release notes for each subsequent release will be documented here as they become available.

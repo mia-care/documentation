@@ -6,11 +6,6 @@
       "type": "doc"
     },
     {
-      "id": "p4samd/faq",
-      "label": "FAQ",
-      "type": "doc"
-    },
-    {
       "label": "Installation",
       "type": "category",
       "items": [
@@ -121,12 +116,22 @@
       ]
     },
     {
+      "id": "p4samd/faq",
+      "label": "FAQ",
+      "type": "doc"
+    },
+    {
       "label": "Release Notes",
       "type": "category",
       "items": [
         {
           "id": "p4samd/release-notes/v3.0",
           "label": "Current (v3.x)",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/release-notes/roadmap",
+          "label": "Product Roadmap",
           "type": "doc"
         },
         {
