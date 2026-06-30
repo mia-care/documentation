@@ -22,9 +22,13 @@ Once you click **Create**, P4SaMD provisions the project and takes you directly 
 
 If you have an existing software system that you need to bring under a formal compliance process, use **Import Project** on the Products page to open the Brownfield Import wizard. The wizard guides you through six steps to describe the project, upload technical assets, and provide existing documentation. After submission, P4SaMD runs a compliance gap analysis and generates a prioritized remediation plan. See [Brownfield Import](./brownfield/overview) for the full walkthrough.
 
-## Managing Team Members
+## Managing Product Members
 
-Once inside a project, go to **Settings → Team Members** to add or remove users and adjust their roles. Roles control which sections of the project a user can view and which actions they can perform. See [Roles and Permissions](../security/roles_permissions) for a full description.
+Each project has a **Product Members** page (open it from **Members** in the project sidebar) where administrators control who has access and at what role. The page shows a member table with **search** and a **role filter**, plus a stats panel summarizing the team (Active, Admin, Tech Team, and Business users).
+
+Click **Add Member** to grant access: pick a user from your organization and assign a **Product Role** — **Admin**, **Tech Team**, **Business**, **QA**, or **Viewer**. The dialog includes a **Show capabilities** breakdown so you can see exactly what each role can do before assigning it. Removing a member is confirmed by typing their name and is blocked if it would leave the project without an Admin.
+
+At the organization level, the same page is shown as **Tenant Members** for managing organization-wide membership. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
 
 <NextSteps items={[
   { icon: '📝', label: 'Work with requirements', to: './requirements' },
