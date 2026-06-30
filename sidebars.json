@@ -66,6 +66,16 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/whisper",
+          "label": "Whisper AI Assistant",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/handbook/ai_configuration",
+          "label": "AI Configuration",
+          "type": "doc"
+        },
+        {
           "label": "Brownfield Import",
           "type": "category",
           "items": [

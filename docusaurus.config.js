@@ -137,7 +137,7 @@ const config = {
           includeCurrentVersion: true,
           versions: {
             current: {
-              label: "3.0.x (Current)",
+              label: "3.x (Current)",
               path: "",
               banner: "none"
             },

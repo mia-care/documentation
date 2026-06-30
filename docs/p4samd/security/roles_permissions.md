@@ -4,51 +4,31 @@ title: Roles and Permissions
 sidebar_label: Roles and Permissions
 ---
 
-P4SaMD v3 has its own role-based access control (RBAC) system, independent of any external platform. Roles are assigned at two levels: **Organization** and **Project**.
+P4SaMD v3 has its own role-based access control (RBAC) system, independent of any external platform. Roles are assigned at two levels: as an **organization (tenant) member** and as a **member of a specific project**. Both levels use the same five roles, assigned independently: a user's role in one project (or at the organization level) has no bearing on another.
 
-## Organization Roles
+## Roles
 
-Organization roles govern what a user can do at the organization level — managing members, settings, and projects.
-
-| Role | Description |
-|------|-------------|
-| **Organization Admin** | Full control over the organization: manage members, settings, integrations, feature toggles, and subscription. Can create and delete projects. |
-| **Organization Member** | Can view the organization's product list and enter projects they are a member of. Cannot change organization settings or create projects. |
-
-## Project Roles
-
-Project roles govern what a user can do within a specific project. A user must be explicitly added to a project to have access to it.
-
-| Role | Description |
-|------|-------------|
-| **Project Admin** | Full control within the project: manage team members, project settings, integrations, and all SDLC artifacts. Can release versions. |
-| **Maintainer** | Can create, edit, approve, and release most project artifacts (requirements, risks, tests, changes, versions). Cannot manage team membership or project settings. |
-| **Developer** | Can create and edit artifacts. Cannot approve, release, or delete items. |
-| **Reporter** | Read-only access to all project artifacts. Cannot modify anything. |
-| **Guest** | Read-only access to a limited subset of project information. |
+| Role | Summary |
+|------|---------|
+| **Admin** | Full control. Invite and remove members, change member roles, manage all settings, full read/write access to every SDLC section, and delete or archive the product. |
+| **Tech Team** | Create and edit work items in the design and implementation sections, review and approve specifications, and read all work items. |
+| **Business** | Create and manage work items such as requirements and risks, review and approve specifications, participate in product definition, and read the design and implementation sections. |
+| **QA** | Review and verify work items in the testing section, approve requirements and risk controls, access test plans and results, and read all SDLC sections. |
+| **Viewer** | Read-only access to all product content; browse requirements, design, and implementation. Cannot create, edit, or delete any work items. |
 
 ## Capabilities by Role
 
-The following table shows the key capabilities available to each project role.
+The full capability breakdown is shown in-product when you assign a role in the **Add Member** dialog (click **Show capabilities**). The capabilities are:
 
-| Capability | Guest | Reporter | Developer | Maintainer | Project Admin |
-|-----------|-------|----------|-----------|------------|---------------|
-| View requirements, risks, tests | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Create requirements | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Edit requirements | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Approve requirements | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Deprecate requirements | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Create risks | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Approve risks | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Create and run test suites | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Delete test suites | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Create and approve software items | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Delete software items | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Generate and publish documentation | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Create new versions | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Release a version | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Manage project settings | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Add / remove project members | ❌ | ❌ | ❌ | ❌ | ✅ |
+| Role | Capabilities |
+|------|-------------|
+| **Admin** | • Invite and remove product members<br/>• Change member roles<br/>• Manage all product settings<br/>• Full read and write access to all SDLC sections<br/>• Delete or archive the product |
+| **Tech Team** | • Create and edit work items in design and implementation sections<br/>• Review and approve specifications<br/>• Read access to all the work items |
+| **Business** | • Create and manage work items like requirements and risks<br/>• Review and approve specifications<br/>• Participate in product definition activities<br/>• Read access to design and implementation sections |
+| **QA** | • Review and verify work items in testing section<br/>• Approve requirements and risk controls<br/>• Access test plans and test results<br/>• Read access to all SDLC sections |
+| **Viewer** | • Read-only access to all product content<br/>• Browse requirements, design, and implementation sections<br/>• Cannot create, edit, or delete any work items |
+
+Members are managed from the **Members** page — **Tenant Members** at the organization level and **Product Members** inside a project. See [Products & Projects](../handbook/products.mdx) for how to add and remove members.
 
 ## Authentication
 
