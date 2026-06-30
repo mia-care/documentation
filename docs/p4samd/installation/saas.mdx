@@ -95,6 +95,35 @@ The table below shows which features are available on each subscription tier. **
 
 ---
 
+## Prerequisites
+
+Because SaaS is fully managed by Mia-Care, there is **nothing to install** and no servers, databases, or Kubernetes to provision — that is all handled for you. The prerequisites below are about what you need on your side to onboard and use the platform.
+
+### Mandatory
+
+These are needed for any SaaS plan.
+
+| Requirement | Details |
+|---|---|
+| **Modern web browser** | A current version of Chrome, Edge, Firefox, or Safari (last two major releases). P4SaMD is a web application; no desktop client is required. |
+| **Network access** | Outbound HTTPS (port 443) to your P4SaMD instance URL. If your network restricts egress, allowlist the instance domain. |
+| **Business email** | A reachable email address per user, for invitations, notifications, and password resets. Ensure mail from Mia-Care's sending domain is not blocked by your spam filters. |
+| **Organization administrator** | A named person to complete the initial organization setup wizard and manage members, roles, and settings. |
+| **Subscription plan** | An active subscription agreement with the plan tier that covers the features you need (see the [plan comparison](#plan-comparison) above). |
+
+### Optional (plan-dependent)
+
+These unlock specific capabilities and are only needed if you intend to use the corresponding feature.
+
+| Requirement | Needed for | Details |
+|---|---|---|
+| **OIDC / SAML identity provider** | Single Sign-On (Professional plan and above) | Okta, Microsoft Entra ID, Auth0, Google Workspace, or any OIDC / SAML 2.0–compliant provider. Without SSO, P4SaMD manages credentials for you. |
+| **Custom domain + DNS control** | Custom domain (Dedicated SaaS, Professional plan and above) | A DNS record you control (e.g. `samd.yourcompany.com`) and authorization to validate it so a TLS certificate can be issued. |
+| **Data-residency decision** | Regional data hosting | Choose the **EU** or **US** region at provisioning. Dedicated SaaS supports a configurable region. |
+| **Egress IP ranges** | IP allowlist (Enterprise plan) | The public IP ranges your users connect from, if you want to restrict access to your organization to known networks. |
+
+---
+
 ## Getting Access
 
 To create a new SaaS organization, contact [Mia-Care](https://mia-care.io) or speak to your account representative. Provisioning typically completes within one business day for multi-tenant and three to five business days for dedicated environments.

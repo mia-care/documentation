@@ -1,9 +1,16 @@
 /* ─── Wrapper ──────────────────────────────────────────────── */
 .wrapper {
-  overflow-x: auto;
   margin: 2rem 0;
   border-radius: 10px;
   border: 1px solid var(--ifm-toc-border-color);
+  /* Clip cell backgrounds (e.g. highlighted columns) to the rounded corners */
+  overflow: hidden;
+}
+
+/* Inner scroll container keeps horizontal scrolling on narrow screens while
+   the wrapper clips the rounded corners. */
+.scroll {
+  overflow-x: auto;
 }
 
 /* ─── Table ────────────────────────────────────────────────── */

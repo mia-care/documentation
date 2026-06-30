@@ -38,6 +38,7 @@ export function DeploymentTable({ columns, groups, highlight = [] }) {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.scroll}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -88,6 +89,7 @@ export function DeploymentTable({ columns, groups, highlight = [] }) {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

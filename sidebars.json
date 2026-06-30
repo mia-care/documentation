@@ -6,11 +6,6 @@
       "type": "doc"
     },
     {
-      "id": "p4samd/faq",
-      "label": "FAQ",
-      "type": "doc"
-    },
-    {
       "label": "Installation",
       "type": "category",
       "items": [
@@ -109,6 +104,11 @@
           "type": "doc"
         }
       ]
+    },
+    {
+      "id": "p4samd/faq",
+      "label": "FAQ",
+      "type": "doc"
     },
     {
       "label": "Release Notes",
