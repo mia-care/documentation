@@ -4,10 +4,10 @@ title: Whisper AI Assistant
 sidebar_label: Whisper AI Assistant
 ---
 
-**Whisper** is the in-platform AI assistant. It helps you keep a project compliant by continuously surfacing **compliance suggestions** for the active version and by answering questions and proposing changes through an interactive **chat**. Whisper is available from **v3.2**.
+**Whisper** is the in-platform AI assistant. It helps you keep a project compliant by continuously surfacing **compliance suggestions** for the active version and by answering questions and proposing changes through an interactive **chat**.
 
-:::info
-Whisper only appears when an administrator has enabled **AI features** for your organization and configured a chat provider. See [AI Configuration](./ai_configuration.md) to set this up.
+:::info Availability — on request
+Whisper is available from **v3.2**, but it is **not enabled by default**. Access is granted **on request**: contact Mia-Care (or your account manager) to enable Whisper for your organization. Once access has been granted, an administrator must turn on **AI features** and configure a chat provider before Whisper appears — see [AI Configuration](./ai_configuration.md).
 :::
 
 ## Opening Whisper
