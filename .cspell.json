@@ -2,15 +2,22 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "AES",
     "Fluentd",
+    "GCM",
+    "GCS",
     "GMLP",
     "IMDRF",
+    "Keycloak",
+    "LLM",
     "mitigations",
+    "OIDC",
     "rgba",
     "SDLC",
     "syft",
     "Traefik",
-    "Velero"
+    "Velero",
+    "Whisper"
   ],
   "ignoreWords": [],
   "dictionaries": [
