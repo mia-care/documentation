@@ -9141,9 +9141,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.5.0":
-  version: 10.5.0
-  resolution: "eslint@npm:10.5.0"
+"eslint@npm:^10.6.0":
+  version: 10.6.0
+  resolution: "eslint@npm:10.6.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.8.0
     "@eslint-community/regexpp": ^4.12.2
@@ -9182,7 +9182,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: ba4154355defd36a38b3200c53a0190c50165d9d09821f99f88707a959ff913693dabd15e4cf4df2d63c24596cc6dd5f02635ca03b78d2cb618d9071d246bbf1
+  checksum: 7022eee742ba9268daa3fcae76a7f06f6b98387be7992379a3c8926b4f8a8953d6b57b10a049ed8662e3abac34ac7c0625587253c7797720e02daa9a3e6c1063
   languageName: node
   linkType: hard
 
@@ -13606,7 +13606,7 @@ __metadata:
     "@swc/core": ^1.15.43
     clsx: ^2.1.1
     cspell: ^10.0.1
-    eslint: ^10.5.0
+    eslint: ^10.6.0
     eslint-plugin-react: 7.37.5
     front-matter: ^4.0.2
     git-list-updated: ^1.2.1
