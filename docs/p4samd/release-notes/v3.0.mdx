@@ -9,6 +9,53 @@ import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
 
 Releases are grouped by the month they shipped, newest first.
 
+## July 2026 (v3.3.0 – v3.3.1)
+
+### P4SaMD v3.3.0 — 9 July 2026
+
+Version 3.3 focuses on administrative visibility and evaluation reliability: organization admins get a clearer view of tenant status and plan usage, Product Information now keeps a change history, and both Brownfield and AI-assisted evaluations recover more gracefully from interruptions.
+
+#### New: Organization Information & Plan Overview
+
+The organization **Settings** page is now organized into three tabs — **Information**, **Members**, and **AI Configuration** — all still restricted to the **Admin** role. The new **Information** tab shows a Tenant Overview card (organization name and status) and a Subscription Plan card (current plan tier, users and projects in use against your plan's limits).
+
+#### New: Product Information Change History
+
+The **Product** page (**Configuration → Product** in the project sidebar) now has two tabs: **Details** (the existing view/edit form) and **History**. The History tab lists every change made to the product's metadata — product name, description, intended use, safety classification, target market region, regulatory frameworks, and AI-powered type — showing who made the change and when, with a filter to narrow the feed to a single field.
+
+#### Improved: Brownfield Evaluation
+
+- **Retry Evaluation** is now available on a failed evaluation. Open the failed session's Evaluation page and click **Retry Evaluation** to resubmit the same materials for a fresh evaluation without redoing the wizard.
+- The gap analysis now surfaces a normative reference for more gaps, drawing on additional regulatory metadata (such as the specific article or regulation) supplied by the applicable framework.
+
+:::caution Brownfield evaluation accuracy fix
+This release fixes a defect in the Brownfield compliance check where certain gaps could be reported as compliant when they were not. If you rely on a Brownfield evaluation completed before 9 July 2026, re-run the evaluation (using the new **Retry Evaluation** button, or by starting a new session) to get corrected results.
+:::
+
+#### Improved: Evaluation Reliability
+
+Requirement quality-score, Brownfield, and Whisper evaluations now recover more predictably from interruptions:
+
+- An evaluation that stalls (for example, because of a slow or unresponsive AI provider) now fails with a clear error after a bounded wait instead of remaining in progress for hours.
+- An evaluation left in progress by a platform restart is now automatically detected and marked as failed shortly afterward, instead of appearing to run indefinitely — so you know when it is safe to retry.
+- Evaluations are no longer at risk of being incorrectly marked as failed during routine platform maintenance.
+
+#### Fixed
+
+- Resuming a Whisper chat conversation after confirming a proposed action no longer occasionally fails to send your next message.
+
+#### Security
+
+All AI-powered evaluation workloads — Requirement Quality Score, Brownfield analysis, and Whisper compliance suggestions — now consistently use your organization's own configured **Evaluation** credentials (see [AI Configuration](../handbook/ai_configuration.md)) end to end for every request.
+
+#### For developers
+
+The requirements REST API and MCP tool catalog gained new capabilities for managing requirement hierarchy programmatically: re-parenting a requirement, setting labels and an initial status at creation, dedicated endpoints for managing sections, and creating requirement-to-requirement traceability links. These are currently available via the API and MCP only; UI support is planned for a future release.
+
+### P4SaMD v3.3.1 — 9 July 2026 (patch)
+
+A same-day patch fixing a display defect: requirement level labels could show the wrong text in the requirements table. No other user-facing changes.
+
 ## June 2026 (v3.1.0 – v3.2.0)
 
 Three releases shipped in June: the **Whisper AI Assistant** and AI configuration (v3.2.0), a storage migration (v3.1.1), and the System Design lifecycle and team-administration work (v3.1.0).
