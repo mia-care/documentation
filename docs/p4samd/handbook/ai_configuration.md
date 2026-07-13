@@ -40,7 +40,7 @@ Click **Save** to store the configuration. P4SaMD **validates the credentials li
 Each workload shows its current status — **Configured** or **Not configured** — along with the date it was last updated. On the Chat workload, a **Use same configuration as Evaluation** action copies the Evaluation provider settings across, so you do not have to re-enter them.
 
 :::info Credential security
-API keys are stored **encrypted at rest (AES-256-GCM)** in the database. They are never returned to the browser; the configuration form only indicates whether a key is currently stored.
+API keys are stored **encrypted at rest (AES-256-GCM)** in the database. They are never returned to the browser; the configuration form only indicates whether a key is currently stored. As of v3.3, every AI-powered evaluation workload — Requirement Quality Score, Brownfield analysis, and Whisper compliance suggestions — consistently uses your organization's own configured **Evaluation** credentials end to end for every request.
 :::
 
 ### Available chat models
