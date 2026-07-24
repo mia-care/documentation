@@ -13616,7 +13616,7 @@ __metadata:
     mermaid: ^11.16.0
     prism-react-renderer: ^2.3.0
     prop-types: ^15.8.1
-    react: ^19.2.7
+    react: ^19.2.8
     react-dom: ^19.2.7
     semver-utils: ^1.1.4
   languageName: unknown
@@ -15084,10 +15084,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react@npm:19.2.7"
-  checksum: be94ec2f1779b27cac328ddae18e52933c2977a2425b67039229ead45c62d0363b66e894076236616c8d98821a9a760fcbab8a9da8ae9c4b2849dfd12cc32a46
+"react@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react@npm:19.2.8"
+  checksum: cdedb4786eb3eb79c8fbaa6df299de61ecd9e1cd4c7cd52213b5af7a98c67d532fd6b14b9d546ae5851f3962437aec22ad17ee6e8e0450de11c595300c5e5bd7
   languageName: node
   linkType: hard
 
