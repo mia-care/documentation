@@ -71,6 +71,11 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/sbom",
+          "label": "SBOM",
+          "type": "doc"
+        },
+        {
           "label": "Brownfield Import",
           "type": "category",
           "items": [

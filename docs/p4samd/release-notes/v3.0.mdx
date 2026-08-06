@@ -9,6 +9,68 @@ import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
 
 Releases are grouped by the month they shipped, newest first.
 
+## August 2026 (v3.4.0)
+
+### P4SaMD v3.4.0 — 6 August 2026
+
+Version 3.4 introduces native **Software Bill of Materials (SBOM)** generation and a new **approval workflow for uploaded unit test reports**, alongside smaller improvements to the Requirements and System Overview pages.
+
+<FeatureGrid>
+
+<FeatureBox icon="📦" title="Native SBOM Generation">
+
+P4SaMD now generates a CycloneDX Software Bill of Materials for you directly — no separate scanning tool or CI/CD integration required. Trigger a scan manually, automatically on a repository/version change, or on a daily/weekly schedule, then browse components, compare versions, and export.
+
+</FeatureBox>
+
+<FeatureBox icon="✅" title="Run Approval & Guided Traceability Review">
+
+Uploaded unit test reports now go through a dedicated approval lifecycle — Incomplete → Traceability Required → Ready for Approval → Pending Third-Party Approval → Approved — with a submit-for-approval flow to a designated reviewer and an opt-in guided review that walks you through linking test results to software items first.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+#### New: Native SBOM Generation
+
+Every software item with a resolvable repository link now has an **SBOM** tab that generates and stores its Software Bill of Materials automatically — see the [SBOM](../handbook/sbom.md) handbook page for the full walkthrough. Highlights:
+
+- Automatic generation triggered manually, on a repository/version change, or on a configurable daily/weekly schedule.
+- A version selector to browse SBOMs across different versions or refs of the same software item, plus a diff view between any two scans.
+- A project-wide SBOM view on the **System Design** page, aggregating components across all software items with its own diff and export.
+- Manual import (with a preview step) for software items that aren't backed by a resolvable git reference.
+- Per-version component **status** and **notes**, so you can record that a component has been reviewed and why.
+
+#### New: Run Approval & Guided Traceability Review for Unit Test Reports
+
+Uploaded unit test reports now have a dedicated **Run Approval** view covering their full approval lifecycle. Submitting a report for approval routes it to a designated project reviewer; if the run contains failing test cases, a rationale is required before it can be submitted. Reports also surface non-blocking traceability gaps — test cases not yet linked to a software item or requirement — and an opt-in **guided traceability review** setting walks you through resolving those links before approval.
+
+#### Improved
+
+- The **Product Progression Score** card has been redesigned with a fuller breakdown and clearer messaging for items that are tracked but not yet progressed.
+- The Requirement Detail page layout has been overhauled, including a redesigned text editor for requirement content.
+- Requirements gained a **Change parent** action with a dedicated picker — see [Requirements](../handbook/requirements.mdx#requirement-lifecycle).
+- The verification table's **Last Result** column now shows a hover popover with test result details.
+
+#### Fixed
+
+- The software item name displayed incorrectly in the System Design tree in some cases.
+- The Product Progression Score calculation and display have been corrected.
+- Unlimited plans now surface correctly in the member-invite flow, and the invite flow's plan-limit messaging has been clarified.
+- Requirement and Risk history tab entries are now ordered correctly.
+- The unit test report list's name filter now matches the uploaded file name instead of an optional label.
+- Seat-limit enforcement is now consistent with the limits shown on the tenant **Information** tab.
+
+#### Security
+
+You'll now receive an email notification when a failed login attempt is detected on your account, including the date/time and originating IP address, so you can spot unauthorized access attempts sooner.
+
+#### For developers
+
+- Fixed an MCP defect where creating a software item or SOUP entity via the MCP tool catalog always failed, and corrected an error message that referenced the wrong domain for software-item hierarchy violations.
+- Requirement↔requirement traceability MCP tools now propagate a real request ID on error responses, for easier correlation when debugging.
+- Evaluation stall detection (introduced in v3.3.0) now allows a longer window before failing a stalled job, reducing false positives on legitimately slow evaluations.
+
 ## July 2026 (v3.3.0 – v3.3.1)
 
 ### P4SaMD v3.3.0 — 9 July 2026
