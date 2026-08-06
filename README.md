@@ -6,7 +6,7 @@ The site is built with [Docusaurus 3](https://docusaurus.io/).
 
 ## Local Development
 
-**Requirements:** Node.js 18+ and [Yarn](https://yarnpkg.com/).
+**Requirements:** Node.js 20+ and [Yarn](https://yarnpkg.com/).
 
 Install dependencies:
 
