@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-PKKZ6XT",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script><link rel="stylesheet" href="/assets/css/styles.51577955.css">
-<script src="/assets/js/runtime~main.3b398d04.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2c587b37.js" defer="defer"></script>
 <script src="/assets/js/main.44190541.js" defer="defer"></script>
 </head>
 <body>
@@ -32,14 +32,9 @@
 <p>You can also optionally provide the <strong>sequence of events</strong> (the causal chain leading from hazard to harm), the <strong>hazardous situation</strong> (the specific scenario in which harm could occur), and an <strong>assignee</strong> responsible for managing this risk.</p>
 <p>After saving, the risk appears in the list with an automatically assigned display ID (e.g., <code>RSK-0001</code>) and an <strong>Identified</strong> status.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="iso-14971-risk-matrix">ISO 14971 Risk Matrix<a href="#iso-14971-risk-matrix" class="hash-link" aria-label="Direct link to ISO 14971 Risk Matrix" title="Direct link to ISO 14971 Risk Matrix" translate="no">​</a></h2>
-<p>P4SaMD automatically computes the <strong>initial risk level</strong> based on the severity × probability combination using a 5×5 risk matrix aligned with ISO 14971:</p>
-<table><thead><tr><th>Risk Level</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Unacceptable</strong></td><td>Risk must be mitigated before the device can proceed</td></tr><tr><td><strong>ALARP</strong></td><td>Risk is tolerable only if reduced as low as reasonably practicable</td></tr><tr><td><strong>Acceptable</strong></td><td>Risk is within acceptable limits</td></tr></tbody></table>
-<p>The matrix classification:</p>
-<ul>
-<li class=""><strong>Unacceptable</strong>: Any risk with S5 severity; S4 with P2–P5; S3 with P3–P5</li>
-<li class=""><strong>ALARP</strong>: S4/P1; S3/P1–P2; S2/P3–P5; S1/P5</li>
-<li class=""><strong>Acceptable</strong>: All remaining combinations</li>
-</ul>
+<p>P4SaMD automatically computes the <strong>initial risk level</strong> based on the severity × probability combination using the ISO 14971:2019 &quot;Option A&quot; 5×5 risk matrix:</p>
+<table><thead><tr><th>Risk Level</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Unacceptable</strong></td><td>Risk must be mitigated before the device can proceed</td></tr><tr><td><strong>Tolerable</strong></td><td>Risk is tolerable only if reduced as low as reasonably practicable</td></tr><tr><td><strong>Acceptable</strong></td><td>Risk is within acceptable limits</td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Terminology update in v3.5.0</div><div class="admonitionContent_BuS1"><p>This zone was previously labelled <strong>ALARP</strong>. As of P4SaMD v3.5.0, it is called <strong>Tolerable</strong> everywhere in the platform, and the matrix&#x27;s severity/probability boundaries were realigned to the ISO 14971 &quot;Option A&quot; matrix. This was a genuine reclassification, not just a rename: some combinations that were previously <strong>Unacceptable</strong> — for example, Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3 — are now <strong>Tolerable</strong>. See the <a class="" href="/docs/p4samd/release-notes/v3.0#regulatory-risk-matrix-realigned-to-iso-14971-option-a">v3.5.0 release notes</a> for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.</p></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="risk-lifecycle">Risk Lifecycle<a href="#risk-lifecycle" class="hash-link" aria-label="Direct link to Risk Lifecycle" title="Direct link to Risk Lifecycle" translate="no">​</a></h2>
 <p>Each risk progresses through the following statuses:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#bfc7d5;--prism-background-color:#292d3e"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#bfc7d5;background-color:#292d3e"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#bfc7d5"><span class="token plain">Identified → Analyzed → Mitigation Required → Under Control → Verified</span><br></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">                 ↓              ↓                   ↓            ↓</span><br></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">              Accepted       Accepted            Accepted     Accepted</span><br></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">                 ↓              ↓                   ↓            ↓</span><br></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">              Transferred   Transferred         Transferred  Transferred</span><br></div></code></pre></div></div>
@@ -54,7 +49,7 @@
 <ul>
 <li class=""><strong>Total</strong> risks in the version</li>
 <li class=""><strong>Unacceptable</strong> risk count</li>
-<li class=""><strong>ALARP</strong> risk count</li>
+<li class=""><strong>Tolerable</strong> risk count</li>
 <li class=""><strong>Under Control</strong> risk count</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="filters">Filters<a href="#filters" class="hash-link" aria-label="Direct link to Filters" title="Direct link to Filters" translate="no">​</a></h3>
@@ -63,7 +58,7 @@
 <li class="">Harm category (Patient, Operator, Environment, Device)</li>
 <li class="">Severity level (S1–S5)</li>
 <li class="">Probability level (P1–P5)</li>
-<li class="">Initial risk level (Unacceptable, ALARP, Acceptable)</li>
+<li class="">Initial risk level (Unacceptable, Tolerable, Acceptable)</li>
 <li class="">Residual risk level</li>
 <li class="">Status</li>
 <li class="">Assignee</li>
