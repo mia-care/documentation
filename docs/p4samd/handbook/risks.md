@@ -25,18 +25,17 @@ After saving, the risk appears in the list with an automatically assigned displa
 
 ## ISO 14971 Risk Matrix
 
-P4SaMD automatically computes the **initial risk level** based on the severity × probability combination using a 5×5 risk matrix aligned with ISO 14971:
+P4SaMD automatically computes the **initial risk level** based on the severity × probability combination using the ISO 14971:2019 "Option A" 5×5 risk matrix:
 
 | Risk Level | Meaning |
 |---|---|
 | **Unacceptable** | Risk must be mitigated before the device can proceed |
-| **ALARP** | Risk is tolerable only if reduced as low as reasonably practicable |
+| **Tolerable** | Risk is tolerable only if reduced as low as reasonably practicable |
 | **Acceptable** | Risk is within acceptable limits |
 
-The matrix classification:
-- **Unacceptable**: Any risk with S5 severity; S4 with P2–P5; S3 with P3–P5
-- **ALARP**: S4/P1; S3/P1–P2; S2/P3–P5; S1/P5
-- **Acceptable**: All remaining combinations
+:::note Terminology update in v3.5.0
+This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** — for example, Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3 — are now **Tolerable**. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#regulatory-risk-matrix-realigned-to-iso-14971-option-a) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
+:::
 
 ## Risk Lifecycle
 
@@ -76,7 +75,7 @@ The risk list displays all risks in the active workspace version with summary co
 **Summary cards** at the top provide an at-a-glance view:
 - **Total** risks in the version
 - **Unacceptable** risk count
-- **ALARP** risk count
+- **Tolerable** risk count
 - **Under Control** risk count
 
 ### Filters
@@ -85,7 +84,7 @@ You can filter the risk list by:
 - Harm category (Patient, Operator, Environment, Device)
 - Severity level (S1–S5)
 - Probability level (P1–P5)
-- Initial risk level (Unacceptable, ALARP, Acceptable)
+- Initial risk level (Unacceptable, Tolerable, Acceptable)
 - Residual risk level
 - Status
 - Assignee
