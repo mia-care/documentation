@@ -9,6 +9,92 @@ import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
 
 Releases are grouped by the month they shipped, newest first.
 
+## August 2026 (v3.5.0)
+
+### P4SaMD v3.5.0 — 26 August 2026
+
+Version 3.5 realigns the risk matrix with ISO 14971:2019 terminology and closes out the confirmed findings from a recent third-party penetration test. It also loosens System Design item typing, adds safety-alert acknowledgement to Verification, and fixes the most-reported cause of a stuck requirement quality score. **This release requires regulatory/QA review before promotion in regulated environments**, because it reclassifies existing risk records.
+
+<FeatureGrid>
+
+<FeatureBox icon="⚠️" title="Risk Matrix Realignment">
+
+The risk level matrix now follows the ISO 14971:2019 "Option A" 5×5 matrix. Existing risks are automatically recomputed, and some severity/probability combinations that were previously **Unacceptable** are now **Tolerable** — a genuine reclassification, not a relabelling.
+
+</FeatureBox>
+
+<FeatureBox icon="🔒" title="Security Hardening">
+
+Fixes for two confirmed findings from a penetration test targeting design-file rendering and upload: a stored script-execution issue in rendered design content, and insufficient validation of uploaded file content against its declared type.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+:::caution Existing risk records are reclassified — review before promoting
+This release renames the risk zone previously labelled **ALARP** to **Tolerable**, and replaces the risk matrix's severity/probability boundaries with the ISO 14971 "Option A" matrix. Every existing risk in your Risk Management File is automatically recomputed against the new matrix when you upgrade. Some risks that were previously classified **Unacceptable** — for example, Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3 combinations — are now classified **Tolerable**. This can change risk-control obligations for records that already exist, so have your regulatory/QA function review the change before promoting this release. Every reclassified risk gets its own history entry and audit log entry, so you can see exactly what changed and when.
+:::
+
+#### Breaking: the ALARP risk zone is renamed to Tolerable
+
+Per ISO 14971:2019 terminology, the risk zone formerly labelled **ALARP** is now called **Tolerable** everywhere in the platform: the risk level shown on a risk, risk list filters and summary cards, CSV import/export, error messages, and the MCP tool catalog. `ALARP` is no longer a valid value anywhere.
+
+You can still customize how the three zone names are displayed for your project from the Project Customization settings, but the underlying computation always uses the canonical **Acceptable / Tolerable / Unacceptable** zones.
+
+**If you or a connected tool call the P4SaMD API or MCP tools directly:** any integration that sends or filters on `ALARP` must be updated to use `Tolerable`. Filtering by an unrecognized risk level now returns a clear error naming the three valid zones instead of silently returning no results.
+
+#### Regulatory: risk matrix realigned to ISO 14971 "Option A"
+
+The risk level (initial and residual) is now computed from the ISO 14971:2019 "Option A" 5×5 severity/probability matrix, applied consistently everywhere a risk level is shown or computed. As part of this change, every existing risk's initial and residual risk level is recomputed once, automatically, during the upgrade — see the caution note above. This is a one-time, one-way update: there is no option to view risks under the previous matrix afterward.
+
+#### New: flexible System Design item types
+
+A System Design item's type (System, Software Item, Software Unit, or SOUP) can now be changed after creation, instead of being fixed forever. Changing an item's type is checked against its parent and existing children, and is rejected if it would leave the hierarchy in an invalid state.
+
+#### New: Verification safety alerts
+
+Verification can now raise a safety alert against a unit test report. A safety alert must be explicitly **acknowledged**, with a written justification, before it is cleared — and every acknowledgement is recorded in the audit log. (Raising alerts automatically from evaluation results is planned for a future release; this release adds acknowledgement only.)
+
+#### Improved: Verification and traceability
+
+- Unit test reports now always show the current name and status of their workspace version, even for older reports, instead of the name captured at the time the report was uploaded.
+- A test run's test cases can now be linked to multiple target types (for example, several software items and requirements) in a single submission, with a summary panel showing what was linked.
+- Traceability links between test cases that sit at different test levels are no longer allowed, to keep the traceability matrix consistent.
+
+#### Improved: Organization plan limits
+
+Your organization's user and project limits are now resolved the same way everywhere they're enforced or displayed — the invitation flow, project creation, the seats counter, and the Information tab always agree, based on any per-organization override, then your subscription tier, then the free-tier default.
+
+#### Fixed: the stuck "Evaluating…" quality score is resolved
+
+Requirement quality score is the most-reported issue fixed in this release, and it had two separate causes, now both fixed:
+
+- Editing a requirement no longer wipes its quality score unless the change actually touches requirement content (description or acceptance criteria) — a status change, reassignment, re-parenting, or reordering no longer clears an existing score or triggers an unnecessary re-evaluation.
+- Every quality-score evaluation the platform accepts now reliably reaches a final state, so a report no longer gets stuck showing **Evaluating…** indefinitely; if the AI evaluator can't complete it, you now see a failure you can retry instead of a spinner that never resolves.
+
+#### Fixed
+
+- The requirements list keeps a stable order across unrelated updates, and always reflects the sort order actually applied.
+- Re-selecting a value that was already set on a requirement (for example, in a dropdown) no longer records a spurious edit in its history.
+- The unsaved-changes warning on a requirement's detail page now only applies to the Description and Acceptance Criteria fields; other fields save automatically as you edit them.
+
+#### Security: penetration-test remediation
+
+Following a third-party penetration test, this release closes two confirmed findings affecting design files:
+
+- **Stored script execution in rendered design content.** Design-file content, previews, and diffs are now rendered through a single hardened Markdown renderer across the whole application, and the platform's content-security policy no longer allows inline or `eval`-based script execution — closing a path where design-file content containing a crafted script could execute in another user's browser.
+- **Insufficient validation of uploaded design files.** Uploaded design files are now validated against their actual byte content, not just their file extension or the browser-reported file type — so, for example, a renamed executable is rejected instead of accepted as if it were a text or markdown file. Rejected uploads get a generic error that doesn't reveal why validation failed. Downloaded design files also carry an additional protective header, and filenames with accented or non-ASCII characters now download with the correct name instead of a garbled one.
+
+#### For developers
+
+- The MCP tool catalog grows from 36 to 40 tools, adding SBOM download and unit test case management (`download_sbom`, `list_test_cases`, `get_test_case`, `create_test_case`).
+- The risk-level query parameter and MCP schemas now validate against `Acceptable`, `Tolerable`, and `Unacceptable` only, returning `400 invalid_query_parameter` with the allowed values for anything else.
+
+#### Upgrade notes
+
+- **Deploy backend and frontend together.** The `ALARP` → `Tolerable` rename is a shared contract between them; running mismatched versions can show blank or unmatched risk-zone labels.
+- **Back up your database before upgrading.** The risk matrix realignment rewrites existing risk records in place as part of the upgrade, and this step cannot be reversed. For a large Risk Management File, expect the upgrade to take noticeably longer than usual while it writes a history and audit entry for every reclassified risk.
+
 ## August 2026 (v3.4.0)
 
 ### P4SaMD v3.4.0 — 6 August 2026
