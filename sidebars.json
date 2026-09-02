@@ -71,6 +71,11 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/mcp_server",
+          "label": "P4SaMD MCP Server",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/handbook/sbom",
           "label": "SBOM",
           "type": "doc"
