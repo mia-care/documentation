@@ -71,11 +71,6 @@
           "type": "doc"
         },
         {
-          "id": "p4samd/handbook/mcp_server",
-          "label": "P4SaMD MCP Server",
-          "type": "doc"
-        },
-        {
           "id": "p4samd/handbook/sbom",
           "label": "SBOM",
           "type": "doc"
@@ -95,6 +90,27 @@
               "type": "doc"
             }
           ]
+        }
+      ]
+    },
+    {
+      "label": "MCP",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/mcp/overview",
+          "label": "Overview",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/mcp/setup",
+          "label": "Setup",
+          "type": "doc"
+        },
+        {
+          "id": "p4samd/mcp/troubleshooting",
+          "label": "Troubleshooting",
+          "type": "doc"
         }
       ]
     },

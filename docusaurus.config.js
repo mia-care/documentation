@@ -57,6 +57,12 @@ const config = {
           docId: "p4samd/handbook/getting_started",
         },
         {
+          label: "MCP",
+          position: "left",
+          type: "doc",
+          docId: "p4samd/mcp/overview",
+        },
+        {
           label: "Release Notes",
           position: "left",
           type: "doc",

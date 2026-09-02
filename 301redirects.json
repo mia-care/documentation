@@ -10,5 +10,9 @@
   "/docs/p4samd/handbook/ai_configuration": {
     "destination": "/docs/p4samd/handbook/ai-configuration",
     "addedOn": "2026-06-30"
+  },
+  "/docs/p4samd/handbook/mcp-server": {
+    "destination": "/docs/p4samd/mcp/overview",
+    "addedOn": "2026-09-02"
   }
 }
