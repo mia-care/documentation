@@ -12322,9 +12322,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mermaid@npm:^11.17.0":
-  version: 11.17.0
-  resolution: "mermaid@npm:11.17.0"
+"mermaid@npm:^11.17.2":
+  version: 11.17.2
+  resolution: "mermaid@npm:11.17.2"
   dependencies:
     "@braintree/sanitize-url": ^7.1.2
     "@iconify/utils": ^3.0.2
@@ -12348,7 +12348,7 @@ __metadata:
     stylis: ^4.3.6
     ts-dedent: ^2.2.0
     uuid: ^11.1.0 || ^12 || ^13 || ^14.0.0
-  checksum: c67bbbbe57e97fb783865c3b441ac54f70a821dbe0c278a644fb38d2712d62fc4bdbd798d07fda4a2fd8a1dbb5b96049b517c4370174f2d1bf2787a1c5830987
+  checksum: 07ee2b9148170b77049b2d23d445487efb89401e078dd4065c5983d4ec79925db0615461100e47381bf9b5f34cad4587c71b118fe42b15b833c498b279787b7b
   languageName: node
   linkType: hard
 
@@ -13631,7 +13631,7 @@ __metadata:
     git-tag: ^0.2.0
     klaw: ^4.1.0
     medium-zoom: ^1.0.8
-    mermaid: ^11.17.0
+    mermaid: ^11.17.2
     prism-react-renderer: ^2.3.0
     prop-types: ^15.8.1
     react: ^19.2.8
