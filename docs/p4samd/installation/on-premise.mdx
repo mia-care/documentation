@@ -27,7 +27,7 @@ These components must be present and correctly configured before installation ca
 | **Kubernetes** | v1.27 or later | Any CNCF-conformant distribution (EKS, GKE, AKS, RKE2, k3s, etc.) |
 | **Nodes** | 3 nodes minimum | For high-availability. Single-node is supported for non-production use only. |
 | **CPU** | 4 vCPU per node | 8 vCPU recommended for production workloads |
-| **RAM** | 16 GB per node | 32 GB recommended when AI-powered features are enabled |
+| **RAM** | 16 GB per node | 32 GB recommended for production workloads |
 | **Persistent storage** | 100 GB SSD | StorageClass with dynamic provisioning required |
 | **PostgreSQL** | v14 or later | External managed database recommended (RDS, Cloud SQL, Azure DB, self-hosted) |
 | **Object storage** | S3-compatible | AWS S3, MinIO, Google Cloud Storage, or Azure Blob Storage |
@@ -43,7 +43,8 @@ These components are not required but unlock specific capabilities or improve pe
 
 | Component | Purpose | Notes |
 |---|---|---|
-| **GPU nodes** | AI-powered features | Required only if you enable AI analysis capabilities; NVIDIA GPU with CUDA support |
+| **AI provider** | AI-powered features (Whisper, compliance evaluation) | Optional, needed only to use AI capabilities. You bring your own account with one of the supported providers: OpenAI, Anthropic, Google Vertex AI, or Azure OpenAI. P4SaMD does not provide or resell model access. The cluster needs outbound HTTPS (port 443) access to the provider's endpoint: `api.openai.com` (OpenAI), `api.anthropic.com` (Anthropic), the configured Vertex AI region endpoint such as `us-central1-aiplatform.googleapis.com` (Google Vertex AI), or your resource endpoint plus `management.azure.com` (Azure OpenAI). No external secrets manager is required; keys are stored encrypted in the platform database. A custom provider endpoint can be configured, but it must use HTTPS and must not resolve to a loopback, link-local, or private address range, so egress has to reach the provider over a public endpoint rather than an internal gateway address. See [AI Configuration](../handbook/ai_configuration.md) for the setup steps. |
+| **AI credential encryption key** | Storing AI provider API keys | Optional, needed only to use AI capabilities. A 32-byte AES-256 encryption key, base64-encoded, supplied as a deployment parameter during installation; the installer sets its value from the deployment package. Without it, provider API keys cannot be stored and AI features cannot be enabled. See [AI Configuration](../handbook/ai_configuration.md) for how the key is used. |
 | **Redis** | Session caching | Improves response times under high concurrency; falls back to in-memory if absent |
 | **Elasticsearch** | Enhanced full-text search | Accelerates requirement and document search at scale; PostgreSQL full-text search is used otherwise |
 | **Prometheus + Grafana** | Monitoring & alerting | Recommended for production. A pre-built dashboard bundle is provided. |

@@ -30,13 +30,13 @@ Select the primary reason for your compliance assessment. The use case helps P4S
 
 | Use Case | Description | Select it when… |
 |----------|-----------------|-----------------|
-| **Regulatory Change** | Evaluate impact of a standard version update on an existing compliant product. | Your product is certified under ISO 14971:2012, IEC 62304, or EU MDD and you need to re-align to a newer version (e.g., ISO 14971:2019, EU MDR). |
-| **Add Regulation** | Bring an existing product into scope of a new regulatory standard it was never assessed against. | Your product is compliant with one framework (e.g., IEC 62304) and you need to overlay an additional one (e.g., IEC 62366) without changing the primary compliance target. |
+| **Regulatory Change** | Evaluate impact of a standard version update on an existing compliant product. | Your product is certified under an earlier edition of ISO 14971 or IEC 62304 and you need to re-align to the current version (ISO 14971:2019/A11:2021 or IEC 62304:2006/AMD1:2015). |
+| **Add Regulation** | Bring an existing product into scope of a new regulatory standard it was never assessed against. | Your product is compliant with one framework (e.g., IEC 62304) and you need to overlay an additional one (e.g., IEC 62366-1:2015) without changing the primary compliance target. |
 | **Delta Certification** | Identify the compliance gap between your current evidence state and the requirements of a target certification. | You are preparing a first certification or re-certification dossier and want to know exactly what is missing or out-of-date before submission. |
-| **Change Region** | Adapt compliance evidence for a new geographic market with different regulatory requirements. | You are entering a new market (e.g., moving from FDA 510(k) to EU MDR) and need to identify what evidence is portable and what must be reworked. |
+| **Change Region** | Adapt compliance evidence for a new geographic market with different regulatory requirements. | You are entering a new market (e.g., adding a UK or US target alongside an existing EU MDR target) and need to identify what evidence is portable and what must be reworked. |
 | **Technical Update** | Verify that updated or modernized legacy components remain compliant. | You are upgrading libraries, replacing legacy modules, or migrating technology stacks, and need to re-verify SOUP, architecture, and risk records. |
 | **Add Feature** | Assess the compliance impact of new functional capabilities added to an existing product. | You are adding a new feature or module to a certified product and need to extend risk assessments, SRS, V&V records, and traceability to cover the new scope. It addresses the compliance of the new module to be used in a Medical Device, for example.  |
-| **Audit Preparation** | Verify readiness for an upcoming regulatory audit without making product changes. | A Notified Body surveillance audit, FDA inspection, or internal ISO 13485 audit is approaching and you want to identify open findings before the auditors do. |
+| **Audit Preparation** | Verify readiness for an upcoming regulatory audit without making product changes. | A Notified Body surveillance audit or an internal audit against EU MDR, IEC 62304, or FDA cybersecurity requirements is approaching and you want to identify open findings before the auditors do. |
 | **General** | Run a broad compliance assessment without a specific change scenario. | None of the above precisely fits your situation, or you want an overview evaluation across all document categories. |
 
  **Custom** is reserved for future use and is not available in the current release.
@@ -53,9 +53,9 @@ Define the compliance target that P4SaMD will assess your project against. The r
 | Field | Description |
 |---|---|
 | **Intended Use** | Plain-language statement of the software's intended medical purpose |
-| **Regulatory Framework** | EU MDR, FDA 510(k), FDA PMA, or other applicable framework |
+| **Regulatory Framework** | **IEC 62304** (software life cycle), **ISO 14971** (risk management), **IEC 62366-1** (usability engineering), **EU MDR**, **EU AI Act**, **GDPR**, **NIS2**, **MDCG 2019-16**, or **US FDA** (cybersecurity, SBOM, labeling and postmarket) |
 | **Software Safety Class** | IEC 62304 classification: Class A, B, or C |
-| **Target Market Jurisdiction** | Geographic markets where the device will be placed. Supported: **EU** (MDR / IVDR), **UK** (UKCA), **CH** (Swissmedic), **US** (FDA), **BR** (ANVISA), **JP** (PMDA), **CN** (NMPA) |
+| **Target Market Jurisdiction** | Geographic markets where the device will be placed. Supported: **EU** (MDR (EU) 2017/745), **US** (FDA), **UK** (UKCA / UK MDR 2002). Selecting **UK** applies the same supported frameworks listed under Regulatory Framework above; there is no UK-specific rule content. |
 
 </Step>
 
@@ -87,7 +87,7 @@ Upload existing compliance documentation. As with technical assets, assign an **
 | **Risk Management** | Risk Management File, FMEA, Hazard Analysis, RCM records |
 | **Verification** | Test Plans, Test Reports, Test Summary Reports |
 | **Configuration** | SOPs, Work Instructions, development environment records |
-| **Requirements / Risk Management** | Regulatory submissions (Technical File, 510(k), Declarations of Conformity) |
+| **Requirements / Risk Management** | Regulatory submissions (Technical File, FDA cybersecurity documentation, Declarations of Conformity) |
 
 Supported file formats: PDF, Word (`.docx`), Markdown, plain text.
 
