@@ -3,6 +3,7 @@
   "language": "en",
   "words": [
     "AES",
+    "DPIA",
     "Fluentd",
     "GCM",
     "GCS",
@@ -10,12 +11,14 @@
     "IMDRF",
     "Keycloak",
     "LLM",
+    "MDCG",
     "mitigations",
     "OIDC",
     "rgba",
     "SDLC",
     "syft",
     "Traefik",
+    "UKCA",
     "Velero",
     "Whisper"
   ],
