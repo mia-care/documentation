@@ -6,6 +6,11 @@
       "type": "doc"
     },
     {
+      "id": "p4samd/regulatory-coverage",
+      "label": "Regulatory Coverage",
+      "type": "doc"
+    },
+    {
       "label": "Installation",
       "type": "category",
       "items": [
