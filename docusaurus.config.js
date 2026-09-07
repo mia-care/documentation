@@ -47,32 +47,44 @@ const config = {
         {
           label: "Overview",
           position: "left",
-          type: "doc",
+          // See src/theme/NavbarItem/DocSectionNavbarItem.js. activeBaseRegex is honoured only
+          // by that component; a plain type:"doc" item ignores it.
+          type: "custom-docSection",
           docId: "p4samd/overview",
+          // Single page, so the end is anchored too. Without /?$ this would also light up on
+          // p4samd/mcp/overview, p4samd/handbook/brownfield/overview and
+          // p4samd/installation/installation_overview.
+          activeBaseRegex: "^/docs/(?:[^/]+/)?p4samd/overview/?$",
         },
         {
           label: "Handbook",
           position: "left",
-          type: "doc",
+          type: "custom-docSection",
           docId: "p4samd/handbook/getting_started",
+          activeBaseRegex: "^/docs/(?:[^/]+/)?p4samd/handbook/",
         },
         {
           label: "MCP",
           position: "left",
-          type: "doc",
+          type: "custom-docSection",
           docId: "p4samd/mcp/overview",
+          activeBaseRegex: "^/docs/(?:[^/]+/)?p4samd/mcp/",
         },
         {
           label: "Release Notes",
           position: "left",
-          type: "doc",
+          type: "custom-docSection",
           docId: "p4samd/release-notes/v3.0",
+          // Two branches: the release-notes/ directory, plus the archived top-level
+          // p4samd/release_notes page (underscore) that also sits in this sidebar category.
+          activeBaseRegex: "^/docs/(?:[^/]+/)?p4samd/(?:release-notes/|release_notes/?$)",
         },
         {
           label: "FAQ",
           position: "left",
-          type: "doc",
+          type: "custom-docSection",
           docId: "p4samd/faq",
+          activeBaseRegex: "^/docs/(?:[^/]+/)?p4samd/faq/?$",
         },
         {
           href: "https://mia-care.io",
