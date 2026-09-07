@@ -6,11 +6,11 @@ sidebar_label: "IEC 62304 Compliance"
 
 import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
 
-This tutorial walks through the complete lifecycle of developing a medical device software product in P4SaMD following IEC 62304 requirements — from initial product setup through version release and documentation generation.
+This tutorial walks through the complete lifecycle of a medical device software product in P4SaMD following IEC 62304 requirements, from initial product setup through version release and documentation generation.
 
 ## Example Project
 
-We'll implement **CardioWatch Remote**, a mobile application that monitors cardiac patients remotely by collecting heart rate, blood pressure, and ECG data from wearable devices and transmitting it to healthcare providers.
+We'll implement **CardioWatch Remote**, a mobile application for remote monitoring of cardiac patients. It collects heart rate, blood pressure, and ECG data from wearable devices and transmits it to healthcare providers.
 
 - **Device Classification**: Class IIb (medium risk)
 - **Safety Class**: Class B per IEC 62304
@@ -44,7 +44,7 @@ Navigate to **Products** in your organization dashboard and click **Create Produ
 **Result**: Your product workspace is created with a Draft v1.0.0 version automatically initialized.
 
 <Tip type="best-practice">
-Document your intended use statement clearly and early — it drives all downstream risk analysis and requirements decisions.
+Document your intended use statement clearly and early. It drives all downstream risk analysis and requirements decisions.
 </Tip>
 
 </Step>
@@ -79,7 +79,7 @@ Create 8-12 USRs covering functional, performance, security, and usability requi
 
 **Decompose into Software Requirements (SRS):**
 
-For each USR, create detailed SRS entries. Example for USR-001:
+For each USR, create SRS entries. Example for USR-001:
 
 - **SRS-001-1**: Bluetooth LE device discovery and pairing
 - **SRS-001-2**: Heart rate data parsing from ANT+ protocol
@@ -216,16 +216,14 @@ IEC 62304 requires 100% SRS coverage by V&V tests. Run the traceability report t
 
 <Step number={6} title="Document Changes" icon="🔄">
 
-If you need to modify requirements or design after testing reveals issues:
-
-Navigate to **Change Management** and create a Change Request.
+To modify requirements or design after testing reveals issues, navigate to **Change Management** and create a Change Request.
 
 **Example Change Request:**
 
 **CR-005**: Increase alert timeout from 30s to 60s
 - Reason: Performance testing (TEST-003) showed 5% of alerts exceeded 30s during peak network congestion
 - Impact Analysis: Affects SRS-003-1, TEST-003
-- Risk Assessment: Low — does not affect safety, improves reliability
+- Risk Assessment: Low. No safety impact, improves reliability
 - Approval: Product Owner approved 2024-04-15
 
 **Modified Requirements:**
@@ -238,9 +236,7 @@ Link the change request to affected requirements and re-execute impacted tests.
 
 <Step number={7} title="Release Version" icon="📌">
 
-When all requirements are verified and all tests pass:
-
-Navigate to **Versions** and select your Draft v1.0.0.
+When all requirements are verified and all tests pass, navigate to **Versions** and select your Draft v1.0.0.
 
 Click **Release Version** and confirm:
 - ✅ All requirements approved
@@ -249,7 +245,7 @@ Click **Release Version** and confirm:
 - ✅ Design documentation complete
 - ✅ SOUP list finalized
 
-**Version is now locked** and becomes a compliance baseline. A new Draft v1.1.0 is automatically created for future development.
+**Version is now locked** and becomes a compliance baseline. A new Draft v1.1.0 is created automatically.
 
 <Tip type="best-practice">
 Released versions are immutable. All requirements, risks, tests, and design documents are frozen as regulatory records. Any changes require a new version.
@@ -295,12 +291,12 @@ Generated documents automatically include version numbers, approval signatures, 
   items={[
     {
       title: "Continuous Compliance",
-      description: "Learn how to manage ongoing development with version control and change management",
+      description: "Manage ongoing development with version control and change management",
       link: "../handbook/version-management"
     },
     {
       title: "Risk Management Best Practices",
-      description: "Deep dive into ISO 14971 risk analysis workflows",
+      description: "ISO 14971 risk analysis workflows in detail",
       link: "../handbook/risk_management"
     },
     {

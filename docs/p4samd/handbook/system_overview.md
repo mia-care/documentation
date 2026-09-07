@@ -7,56 +7,51 @@ sidebar_label: Overview
 # System Overview
 
 ## Introduction
-The **Overview** tab provides a centralized summary of the progress and key metrics for the selected **system version**. Once a system version is chosen, the Overview tab automatically updates to display all relevant information tied to that version. This page is designed to give users a clear, real-time snapshot of their progress across various software development areas, making it easier to monitor and manage the development lifecycle effectively.
+The **Overview** tab summarizes the progress and key metrics for the selected **system version**. When you choose a system version, the tab automatically updates to show all the information tied to that version.
 
 ![System version overview](img/system_version_overview.png)
 
 ## KPIs
-At the core of the Overview tab is a **progress bar** that reflects the overall **completion percentage** of the entities associated with the selected system version. The calculation of each Key Performance Indicator (KPI) is based on the ratio of **correctly resolved issues** to the **total number of issues** for each specific entity.
+At the core of the Overview tab, a global **progress bar** shows the overall **completion percentage** of the entities associated with the selected system version. Each Key Performance Indicator (KPI) is the ratio of **correctly resolved issues** to the **total number of issues** for that entity.
 
-
-Below the global progress bar, users will find a series of **detailed progress bars** that break down the completion status for each type of entity:
+Below the global progress bar, **detailed progress bars** break down the completion status for each type of entity:
 - **Requirements**: Tracks the implementation and approval status of defined requirements.
 - **Risks**: Reflects the identification, assessment, and mitigation of risks.
 - **Tests**: Monitors the execution and success of validation and verification activities.
 - **Software Items**: Tracks the completion and review status of individual software components.
 - **Change Requests**: Shows the resolution of requested changes across the system version.
 
-These KPIs provide actionable insights, enabling teams to measure progress and focus on areas requiring immediate attention.
-
 ## Reports
-Directly beneath the overall progress bar, a **select dropdown menu** enables users to generate and download reports tailored to the selected system version.
-There will be some default reports that are taged as 
+Use the **select dropdown menu** directly beneath the overall progress bar to generate and download reports for the selected system version.
 
- The following reports are available as set of `Default` templates:
+These reports are available as `Default` templates:
 - **Release Note**: Summarizes the key updates, features, and resolved issues in the system version.
 - **SOUP Report**: Details the use of all Software of Unknown Provenance (SOUP).
-- **Changelogs**: A folder containing the changelogs of each custom software components.
-- **Unit Tests**: Presents the outcomes and coverage of unit tests performed on custom software components.
-- **Vulnerability Report**: Provides a summary and details of detected vulnerabilities for the specific system version.
-- **Software architecture Design**: Provides the software items high level design as an image.
+- **Changelogs**: A folder with the changelog of each custom software component.
+- **Unit Tests**: Outcomes and coverage of the unit tests performed on custom software components.
+- **Vulnerability Report**: Summary and details of the vulnerabilities detected in the system version.
+- **Software architecture Design**: The high-level design of the software items, as an image.
 
-The following reports are provided as startup package of customizable templates:
+These reports are provided as a startup package of customizable templates:
 - **Release Note**: Summarizes the key updates, features, and resolved issues in the system version.
-- **Acceptance Test Report**: Documents the results of acceptance testing to verify that the system meets specified requirements.
-- **Verbale collaudo**: Provides the official test acceptance record (Italian compliance document).
-- **Traceability Matrix**: Maps relationships between requirements, design elements, tests, and other artifacts to ensure full traceability.
-- **Change Report**: Details all changes made to the system version, including modifications, additions, and deletions.
-- **Software Architectural Design Description**: Describes the high-level software architecture, including components, interfaces.
-- **Risk Management Report**: Provides a comprehensive overview of identified risks, their assessments, and mitigation strategies.
+- **Acceptance Test Report**: Results of the acceptance testing that verifies the system against its specified requirements.
+- **Verbale collaudo**: The official test acceptance record (Italian compliance document).
+- **Traceability Matrix**: Maps the relationships between requirements, design elements, tests, and other artifacts to ensure full traceability.
+- **Change Report**: All changes made to the system version, including modifications, additions, and deletions.
+- **Software Architectural Design Description**: Describes the high-level software architecture, including components and interfaces.
+- **Risk Management Report**: Lists the identified risks, their assessments, and mitigation strategies.
+
+These reports support compliance, traceability, and audit or external review.
+
 ### Custom Reports
-You can create additional custom reports by designing templates using the documentation engine. Once published, these templates will become accessible in the dropdown menu and can be downloaded for any system version. please take a look at the [Documentation Engin](document-engine.md)
+Create additional custom reports by designing templates in the documentation engine. Once published, a template appears in the dropdown menu and can be downloaded for any system version. See the [Documentation Engine](document-engine.md).
 
-These reports ensure compliance, traceability, and readiness for audits or external reviews.
-
-For additional information about the available reports, please take a look at the [dedicated section](reports.md).
+For more about the available reports, see the [dedicated section](reports.md).
 
 ## Suggestions
-On the right-hand side of the Overview tab, the **Suggestions box** provides tailored recommendations to enhance compliance with industry regulations governing the development of Software as a Medical Device (SaMD), such as **IEC 62304**. These suggestions are aimed at improving quality, mitigating risks, and ensuring that all development activities align with regulatory standards.
+On the right-hand side of the Overview tab, the **Suggestions box** lists recommendations for complying with the regulations that govern Software as a Medical Device (SaMD) development, such as **IEC 62304**.
 
 Suggestions are categorized into three levels of severity:
 - **Error**: Critical issues that must be addressed immediately to meet compliance and avoid major risks.
-- **Warning**: Issues that, while not critical, could lead to compliance gaps or delays if not resolved.
-- **Info**: General recommendations or observations that can enhance process efficiency or documentation quality. These are non-mandatory but provide valuable insights, such as optimization opportunities or additional audit notes.
-
-By addressing these suggestions, teams can proactively ensure regulatory compliance and maintain high standards throughout the software lifecycle.
+- **Warning**: Issues that are not critical but could lead to compliance gaps or delays if not resolved.
+- **Info**: Non-mandatory recommendations or observations on process efficiency and documentation quality, such as optimization opportunities or additional audit notes.

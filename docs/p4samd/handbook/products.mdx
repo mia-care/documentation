@@ -6,37 +6,37 @@ sidebar_label: Products & Projects
 
 import { NextSteps } from '@site/src/components/StepGuide';
 
-The **Products page** is the organization-level hub that lists all medical device software projects in your organization. Access it by clicking **All Products** in the sidebar (visible when no project is selected), or by navigating up to the organization level via the breadcrumb.
+The **Products page** lists all medical device software projects in your organization. Open it by clicking **All Products** in the sidebar (visible when no project is selected), or by navigating up to the organization level via the breadcrumb.
 
-Each project is shown as a card. The card displays the project name and description, the project type (Standard or **AI-Powered**), the name and status of the most recent workspace version, the overall compliance posture, the IEC 62304 safety classification (Class A, B, or C), and the primary target regulatory framework. Clicking a card opens the project and loads its sidebar navigation pointing to the most recent version. If you work with a project frequently, hover over its card and click the **pin icon** — pinned projects appear at the top of the left sidebar for one-click access from anywhere in the platform.
+Each project appears as a card showing the project name and description, the project type (Standard or **AI-Powered**), the name and status of the most recent workspace version, the overall compliance posture, the IEC 62304 safety classification (Class A, B, or C), and the primary target regulatory framework. Clicking a card opens the project and loads its sidebar navigation pointing to the most recent version. To pin a project, hover over its card and click the **pin icon**. Pinned projects stay at the top of the left sidebar everywhere in the platform.
 
 ## Creating a Project
 
-To start a new project from scratch, click **Create New Project** on the Products page and fill in the form. The fields you must provide are: a project **name**, the project **type** (Standard or AI-Powered), an **intended use statement** in plain language, the **target market region** (EU, US, or other), the applicable **regulatory frameworks** (such as EU MDR or FDA 510(k)), and the **IEC 62304 safety classification** (Class A, B, or C). A description is optional but recommended.
+Click **Create New Project** on the Products page and fill in the form. Required fields: a project **name**, the project **type** (Standard or AI-Powered), an **intended use statement** in plain language, the **target market region** (EU, US, or other), the applicable **regulatory frameworks** (such as EU MDR or FDA 510(k)), and the **IEC 62304 safety classification** (Class A, B, or C). A description is optional but recommended.
 
-Choosing **AI-Powered** as the project type enables an additional set of sidebar sections for managing AI and ML components, model versions, datasets, and AI-specific compliance workflows. This setting can be changed later by a project administrator.
+The **AI-Powered** type adds sidebar sections for AI and ML components, model versions, datasets, and AI-specific compliance workflows. A project administrator can change this setting later.
 
-Once you click **Create**, P4SaMD provisions the project and takes you directly to the project dashboard.
+Click **Create**. P4SaMD provisions the project and opens its dashboard.
 
 ## Importing an Existing Project
 
-If you have an existing software system that you need to bring under a formal compliance process, use **Import Project** on the Products page to open the Brownfield Import wizard. The wizard guides you through six steps to describe the project, upload technical assets, and provide existing documentation. After submission, P4SaMD runs a compliance gap analysis and generates a prioritized remediation plan. See [Brownfield Import](./brownfield/overview) for the full walkthrough.
+To bring an existing software system under a formal compliance process, click **Import Project** on the Products page. This opens the Brownfield Import wizard: six steps to describe the project, upload technical assets, and provide existing documentation. After submission, P4SaMD runs a compliance gap analysis and generates a prioritized remediation plan. See [Brownfield Import](./brownfield/overview) for the full walkthrough.
 
 ## Product Information
 
-Each project has a **Product** page (open it from **Configuration → Product** in the project sidebar) showing the product's metadata and regulatory identifiers, organized into two tabs.
+Each project has a **Product** page (**Configuration → Product** in the project sidebar) showing the product's metadata and regulatory identifiers in two tabs.
 
-The **Details** tab shows the product name, description, intended use, software safety classification, the **AI Smart Assistance** toggle, target market region, and regulatory frameworks, alongside system information (created/updated timestamps and who made each change). Users with the **Admin** or **QA** role can click the edit icon in the tab bar to modify these fields; other roles see a read-only view. Some changes prompt a confirmation dialog because they could affect how the product is handled going forward.
+The **Details** tab shows the product name, description, intended use, software safety classification, the **AI Smart Assistance** toggle, target market region, and regulatory frameworks. It also shows system information: created/updated timestamps and who made each change. Users with the **Admin** or **QA** role can click the edit icon in the tab bar to modify these fields. Other roles see a read-only view. Some changes prompt a confirmation dialog because they could affect how the product is handled going forward.
 
-The **History** tab lists every change made to the product's metadata — who made the change and when — with a filter to narrow the feed to a single field. This gives you an audit trail of the product's regulatory identity over time.
+The **History** tab lists every change made to the product's metadata, with who made the change and when. A filter narrows the feed to a single field. This feed is the audit trail of the product's regulatory identity over time.
 
 ## Managing Product Members
 
-Each project has a **Product Members** page (open it from **Members** in the project sidebar) where administrators control who has access and at what role. The page shows a member table with **search** and a **role filter**, plus a stats panel summarizing the team (Active, Admin, Tech Team, and Business users).
+Each project has a **Product Members** page (**Members** in the project sidebar) where administrators control who has access and at what role. It shows a member table with **search** and a **role filter**, plus a stats panel counting Active, Admin, Tech Team, and Business users.
 
-Click **Add Member** to grant access: pick a user from your organization and assign a **Product Role** — **Admin**, **Tech Team**, **Business**, **QA**, or **Viewer**. The dialog includes a **Show capabilities** breakdown so you can see exactly what each role can do before assigning it. Removing a member is confirmed by typing their name and is blocked if it would leave the project without an Admin.
+Click **Add Member** to grant access. Pick a user from your organization and assign a **Product Role**: **Admin**, **Tech Team**, **Business**, **QA**, or **Viewer**. The dialog includes a **Show capabilities** breakdown, so you can see what each role can do before assigning it. Removing a member is confirmed by typing their name and is blocked if it would leave the project without an Admin.
 
-At the organization level, the same page is shown as **Tenant Members** for managing organization-wide membership. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
+At the organization level, the same page appears as **Tenant Members** for organization-wide membership. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
 
 <NextSteps items={[
   { icon: '📝', label: 'Work with requirements', to: './requirements' },

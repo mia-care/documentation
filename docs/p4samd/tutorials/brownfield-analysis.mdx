@@ -6,11 +6,11 @@ sidebar_label: "Brownfield Regulatory Analysis"
 
 import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
 
-This tutorial demonstrates how to use P4SaMD's Brownfield Import feature to analyze an existing software product that was developed without formal IEC 62304 compliance — identifying gaps, assessing regulatory risk, and creating a prioritized remediation roadmap.
+Use P4SaMD's Brownfield Import to analyze a software product built without formal IEC 62304 compliance: identify gaps, assess regulatory risk, and build a prioritized remediation roadmap.
 
 ## Example Project
 
-We'll analyze **NeuroTrack**, an existing neurology clinic management system that has been in production for 3 years. The company now wants CE marking under EU MDR to expand into European markets, but the software was built before any medical device regulations were considered.
+We'll analyze **NeuroTrack**, a neurology clinic management system in production for 3 years. The company wants CE marking under EU MDR to enter European markets, but the software was built before medical device regulations were considered.
 
 - **Current State**: Production software, 15,000 lines of code, no formal documentation
 - **Target Classification**: Class IIa medical device (patient data management)
@@ -43,7 +43,7 @@ The wizard guides you through six phases:
 5. Quality & Safety History
 6. Gap Analysis
 
-Click **Start Import** to begin.
+Click **Start Import**.
 
 </Step>
 
@@ -61,7 +61,7 @@ Click **Start Import** to begin.
 > No. It was developed as general-purpose clinic software without considering medical device regulations.
 
 **Why are you seeking regulatory compliance now?**
-> Business expansion into EU requires CE marking. After legal review, determined the EEG data storage and clinical report generation qualify the software as a Class IIa medical device under EU MDR.
+> Business expansion into the EU requires CE marking. Legal review determined that EEG data storage and clinical report generation qualify the software as a Class IIa medical device under EU MDR.
 
 **Technical stack:**
 - Frontend: Angular 14
@@ -74,7 +74,7 @@ Click **Start Import** to begin.
 **Result**: Product profile created, baseline context established.
 
 <Tip type="info">
-Be honest about current state — underestimating gaps will only delay your timeline. P4SaMD's analysis is confidential and helps you plan realistic remediation.
+Be honest about the current state: underestimating gaps delays your timeline. P4SaMD's analysis is confidential.
 </Tip>
 
 </Step>
@@ -87,7 +87,7 @@ Be honest about current state — underestimating gaps will only delay your time
 > NeuroTrack is intended to manage patient records, store and display electroencephalography (EEG) recordings, and generate clinical reports for neurologists to support diagnosis and treatment planning for patients with neurological conditions.
 
 **Does it directly influence clinical decisions?**
-> Yes — neurologists view EEG data and reports in NeuroTrack to make diagnostic decisions about epilepsy, seizure disorders, and other neurological conditions.
+> Yes. Neurologists view EEG data and reports in NeuroTrack to make diagnostic decisions about epilepsy, seizure disorders, and other neurological conditions.
 
 **What is the target regulatory classification?**
 - EU MDR: **Class IIa** (stores and displays data for medical decisions)
@@ -113,12 +113,12 @@ Classification determines your documentation burden. Class IIa + Safety Class B 
 **Upload or describe your architecture:**
 
 **System Components (NeuroTrack):**
-1. **Patient Portal** (Angular) - Patient registration, appointment booking
-2. **Clinician Dashboard** (Angular) - EEG review, clinical notes, prescriptions
-3. **API Backend** (Django REST) - Business logic, data validation
-4. **EEG Integration Service** (Python) - Parses EEG files from Natus, Nihon Kohden devices
-5. **Report Generator** (Python + LaTeX) - Generates PDF clinical reports
-6. **Database** (PostgreSQL) - Patient records, EEG metadata, appointments
+1. **Patient Portal** (Angular): Patient registration, appointment booking
+2. **Clinician Dashboard** (Angular): EEG review, clinical notes, prescriptions
+3. **API Backend** (Django REST): Business logic, data validation
+4. **EEG Integration Service** (Python): Parses EEG files from Natus, Nihon Kohden devices
+5. **Report Generator** (Python + LaTeX): Generates PDF clinical reports
+6. **Database** (PostgreSQL): Patient records, EEG metadata, appointments
 
 **Third-party dependencies (SOUP):**
 - Django 4.2.7
@@ -179,14 +179,14 @@ For NeuroTrack:
 **Result**: Documentation baseline captured, incident history recorded.
 
 <Tip type="best-practice">
-Known incidents are valuable for risk analysis — they represent realized hazards. Document them honestly; they'll help prioritize your remediation work.
+Known incidents represent realized hazards, which makes them valuable for risk analysis. Document them honestly to help prioritize remediation work.
 </Tip>
 
 </Step>
 
 <Step number={6} title="Review Gap Analysis Report" icon="📊">
 
-P4SaMD analyzes your inputs and generates a comprehensive gap analysis:
+P4SaMD analyzes your inputs and generates a gap analysis:
 
 **Compliance Score: 23/100** (Critical gaps identified)
 
@@ -248,8 +248,8 @@ P4SaMD analyzes your inputs and generates a comprehensive gap analysis:
 ### Recommended Approach
 
 **Phase 1 (Months 1-3): Foundation**
-1. Write comprehensive SRS based on current functionality (GAP-001)
-2. Conduct initial risk analysis with focus on known incidents (GAP-002)
+1. Write the SRS based on current functionality (GAP-001)
+2. Conduct initial risk analysis focused on known incidents (GAP-002)
 3. Document current architecture and SOUP inventory (GAP-006)
 4. Establish version control and release process (GAP-005)
 
@@ -276,7 +276,7 @@ P4SaMD analyzes your inputs and generates a comprehensive gap analysis:
 **Result**: Detailed roadmap created, effort estimated, priorities assigned.
 
 <Tip type="info">
-This is a realistic timeline for Class IIa software. Attempting to compress below 9 months typically results in documentation shortcuts that cause Notified Body delays.
+This is a realistic timeline for Class IIa software. Compressing below 9 months typically forces documentation shortcuts that cause Notified Body delays.
 </Tip>
 
 </Step>
@@ -313,8 +313,6 @@ P4SaMD automatically:
 ---
 
 ## Real-World Outcomes
-
-This approach has been used successfully to bring legacy software into compliance:
 
 **Case Study: NeuroTrack Results**
 - **Month 3**: Complete SRS with 142 requirements, initial risk file with 23 hazards
