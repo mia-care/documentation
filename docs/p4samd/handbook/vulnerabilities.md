@@ -6,14 +6,14 @@ sidebar_label: Vulnerabilities
 
 ## Vulnerabilities Overview
 
-The **Vulnerabilities** section allows users to monitor, analyze, and manage vulnerabilities detected in the Software Items of the Software System Version. Vulnerabilities are automatically detected using [Trivy](https://trivy.dev/) for software items that have a repository ID and import the P4SaMD pipelines `cve-generation-trivy.yml` and `send-cve-to-p4samd-webhook.yml`.
+Use the **Vulnerabilities** section to monitor, analyze, and manage vulnerabilities detected in the Software Items of the Software System Version. [Trivy](https://trivy.dev/) detects them automatically. Detection requires a software item with a repository ID that imports the P4SaMD pipelines `cve-generation-trivy.yml` and `send-cve-to-p4samd-webhook.yml`.
 
 
 ### Vulnerabilities Table
 
 ![Vulnerabilities table](img/vulnerabilities_table.png)
 
-The vulnerabilities table provides an overview of all vulnerabilities related to all the implementation of the Software Item. The following information is shown:
+The table lists all vulnerabilities related to every implementation of the Software Item:
 
 - **Vulnerability Name**: Name of the CVE (linked to the external advisory).
 - **Reported On**: Date when the vulnerability was reported.
@@ -37,7 +37,7 @@ Clicking on a row opens the vulnerability detail drawer.
 ### Vulnerability Detail Drawer
 
 
-Clicking on a vulnerability opens a drawer with detailed information, organized in two tabs:
+The drawer is organized in two tabs:
 
 #### Detail
 
@@ -67,7 +67,7 @@ This tab shows the linked issues, grouped by:
 
 ![alt text](img/vulnerability_accept_modal.png)
 
-When accepting a vulnerability, the user must provide:
+To accept a vulnerability, provide:
 
 - **Resolution**: The chosen resolution (Exploitable, Not exploitable, Exploitable with minor damage).
 - **Justification for resolution**: Reason for the chosen resolution.
@@ -78,7 +78,7 @@ When accepting a vulnerability, the user must provide:
 #### Revert Vulnerability Acceptance
 
 
-If a vulnerability was previously accepted, it is possible to revert the acceptance. A confirmation modal will appear to prevent accidental actions.
+You can revert the acceptance of an accepted vulnerability. A confirmation modal prevents accidental actions.
 
 ---
 

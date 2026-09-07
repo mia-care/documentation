@@ -6,22 +6,22 @@ sidebar_label: Risks
 
 # Risk Management
 
-The **Risk Analysis** section of P4SaMD enables you to identify, assess, mitigate, and track risks associated with your medical device software in compliance with ISO 14971. Risks are managed natively inside the platform — no external tool is required. Open it by clicking **Risk Analysis** in the left project sidebar.
+The **Risk Analysis** section of P4SaMD is where you identify, assess, mitigate, and track risks for your medical device software in compliance with ISO 14971. Risks are managed natively inside the platform, so no external tool is required. Open it by clicking **Risk Analysis** in the left project sidebar.
 
 ## Creating a Risk
 
-To add a new risk, click **+ New Risk** at the top of the risk list. You will be prompted to provide:
+Click **+ New Risk** at the top of the risk list, then provide:
 
-- **Title** — a concise description of the risk
-- **Hazard** — the source of potential harm
-- **Harm** — the damage that could result (e.g., patient injury, data loss)
-- **Harm category** — one of: Patient, Operator, Environment, or Device
-- **Initial severity** — rated S1 (negligible) through S5 (catastrophic)
-- **Initial probability** — rated P1 (improbable) through P5 (frequent)
+- **Title**: a concise description of the risk
+- **Hazard**: the source of potential harm
+- **Harm**: the damage that could result (e.g., patient injury, data loss)
+- **Harm category**: one of Patient, Operator, Environment, or Device
+- **Initial severity**: rated S1 (negligible) through S5 (catastrophic)
+- **Initial probability**: rated P1 (improbable) through P5 (frequent)
 
-You can also optionally provide the **sequence of events** (the causal chain leading from hazard to harm), the **hazardous situation** (the specific scenario in which harm could occur), and an **assignee** responsible for managing this risk.
+Optionally, add the **sequence of events** (the causal chain from hazard to harm), the **hazardous situation** (the specific scenario in which harm could occur), and an **assignee** responsible for the risk.
 
-After saving, the risk appears in the list with an automatically assigned display ID (e.g., `RSK-0001`) and an **Identified** status.
+On save, the risk appears in the list with an automatically assigned display ID (e.g., `RSK-0001`) and an **Identified** status.
 
 ## ISO 14971 Risk Matrix
 
@@ -34,7 +34,7 @@ P4SaMD automatically computes the **initial risk level** based on the severity �
 | **Acceptable** | Risk is within acceptable limits |
 
 :::note Terminology update in v3.5.0
-This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** — for example, Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3 — are now **Tolerable**. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#regulatory-risk-matrix-realigned-to-iso-14971-option-a) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
+This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** are now **Tolerable**, including Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#regulatory-risk-matrix-realigned-to-iso-14971-option-a) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
 :::
 
 ## Risk Lifecycle
@@ -56,23 +56,23 @@ Identified → Analyzed → Mitigation Required → Under Control → Verified
 | **Mitigation Required** | Risk requires control measures to reduce | Control (mark mitigated), Accept, Transfer |
 | **Under Control** | Control measures are in place | Verify, Accept, Transfer |
 | **Verified** | All control measures verified effective | Accept |
-| **Accepted** | Risk formally accepted with documented rationale | — (terminal) |
-| **Transferred** | Risk responsibility transferred with rationale | — (terminal) |
-| **Deprecated** | Risk no longer applicable | — (terminal) |
+| **Accepted** | Risk formally accepted with documented rationale | None (terminal) |
+| **Transferred** | Risk responsibility transferred with rationale | None (terminal) |
+| **Deprecated** | Risk no longer applicable | None (terminal) |
 
-**Accepting** or **transferring** a risk requires a mandatory rationale explaining the decision. **Verifying** a risk requires that all linked control measures have been verified first.
+**Accepting** or **transferring** a risk requires a mandatory rationale explaining the decision. **Verifying** a risk requires all linked control measures to be verified first.
 
 ## Control Measures
 
-Control measures are the mitigations you put in place to reduce a risk. You can add control measures to any risk from the risk detail view. Each control measure can be marked as verified once its effectiveness has been confirmed.
+Control measures are the mitigations you put in place to reduce a risk. Add them to any risk from the risk detail view. Mark each control measure as verified once its effectiveness is confirmed.
 
 After control measures are applied, you can record **residual severity** and **residual probability** values on the risk to document the reduced risk level.
 
 ## Risk List and Filtering
 
-The risk list displays all risks in the active workspace version with summary columns showing the display ID, hazard, harm, severity, probability, risk level, residual risk level, status, and assignee.
+The risk list shows all risks in the active workspace version. The summary columns are display ID, hazard, harm, severity, probability, risk level, residual risk level, status, and assignee.
 
-**Summary cards** at the top provide an at-a-glance view:
+**Summary cards** at the top show:
 - **Total** risks in the version
 - **Unacceptable** risk count
 - **Tolerable** risk count
@@ -80,10 +80,10 @@ The risk list displays all risks in the active workspace version with summary co
 
 ### Filters
 
-You can filter the risk list by:
+Filter the risk list by:
 - Harm category (Patient, Operator, Environment, Device)
-- Severity level (S1–S5)
-- Probability level (P1–P5)
+- Severity level (S1 to S5)
+- Probability level (P1 to P5)
 - Initial risk level (Unacceptable, Tolerable, Acceptable)
 - Residual risk level
 - Status
@@ -91,19 +91,19 @@ You can filter the risk list by:
 
 ### Search and Sort
 
-Use the search bar to find risks by title or display ID. Sorting is available by sequence number, last updated date, severity, probability, or risk level.
+Use the search bar to find risks by title or display ID. Sort by sequence number, last updated date, severity, probability, or risk level.
 
 ## Traceability
 
 From the risk detail view, you can see and manage links to:
-- **Requirements** — which requirements this risk relates to
-- **Test cases** — verification evidence for control measures
-- **History** — a full audit trail of every change, transition, and rationale
+- **Requirements**: which requirements this risk relates to
+- **Test cases**: verification evidence for control measures
+- **History**: a full audit trail of every change, transition, and rationale
 
 ## Import and Export
 
-You can **import** risks from a CSV file for bulk onboarding and **export** the current risk register (with active filters applied) for use in external reports or regulatory submissions.
+**Import** risks from a CSV file for bulk onboarding. **Export** the current risk register, with active filters applied, for external reports or regulatory submissions.
 
 ## Deprecating a Risk
 
-If a risk is no longer applicable (e.g., the related feature was removed), use the **Deprecate** action from the risk detail view. A mandatory rationale is required. Deprecated risks remain in the system for audit traceability but are excluded from active risk counts.
+If a risk is no longer applicable (e.g., the related feature was removed), use the **Deprecate** action from the risk detail view. A rationale is mandatory. Deprecated risks remain in the system for audit traceability but are excluded from active risk counts.

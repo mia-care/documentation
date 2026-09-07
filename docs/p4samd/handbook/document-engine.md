@@ -7,9 +7,9 @@ sidebar_label: Documentation Engine
 # Documentation engine
 
 ## Overview
-This module offers a centralized Documentation Engine to streamline compliance by automating the generation of regulated artifacts. 
-A default set of IEC 62304-compliant templates is provided to allow users a quick startup: templates can be extensively customized thanks to our editor (.markdown, .docx) and enriched by system data through provided variables and custom structure. 
-The documentation shaped from the templates can be generated and downloaded in the preferred format for every version of your Software System. 
+This module centralizes and automates the generation of regulated artifacts.
+A default set of IEC 62304-compliant templates is provided. Templates can be customized in the editor (.markdown, .docx) and enriched with system data through the provided variables and custom structure.
+The documentation shaped from the templates can be generated and downloaded in the preferred format for every version of your Software System.
 
 ![Documentation Engine Table](./img/documentation_engine_table.png)
 
@@ -17,18 +17,18 @@ The documentation shaped from the templates can be generated and downloaded in t
 
 ### Template Management
 
-P4SaMD provides a default set of templates to help you start with a IEC 62304-compliant framework. 
-For enabled users, it is always possible customize and manage templates: 
+P4SaMD provides a default set of templates as a starting point for an IEC 62304-compliant framework.
+Enabled users can customize and manage templates:
 - **Creating** new templates to extend the default template set
 - **Duplicating** an existing template to use it as a starting point for a new one
-- **Editing** a template, to align the structure to your company QMS and the deliverables required for your product. 
+- **Editing** a template, to align the structure to your company QMS and the deliverables required for your product
 - **Publishing** a template to make it visible in the System Version Dashboard and ready for the documentation download
-- **Deleting** the templates when no more needed (the records would be archived in P4SaMD database, but not available to users) 
+- **Deleting** the templates when no more needed (the records are archived in the P4SaMD database, but not available to users)
 
-For each template the following informations are available:
+Each template shows:
 
 - **Title**:  Changeable title for the template
-- **Revision**: Automatic version tracking for the published templates.
+- **Revision**: Automatic version tracking for published templates.
 - **Last Edit Date/Time**: Timestamp of the most recent modification
 - **Editor**: User who performed the last edit
 - **Status**: Template state indicator
@@ -42,12 +42,12 @@ For each template the following informations are available:
 
 ## Automatic Document Generation
 
-The Documentation Engine automatically generates compliance documents by combining published templates with real-time system data. This process eliminates manual document creation while ensuring consistency and accuracy across all regulatory deliverables.
+The Documentation Engine generates compliance documents by combining published templates with real-time system data.
 
 
 ### Variables and Data Interpolation
-The documentation engine supports dynamic content generation using predefined variables. Possible variables are defined in the variable list: you can either copy-paste int the templates or write them manually follwing the specific syntax format `{{CATEGORY.variable_name}}`.
-These variables are automatically populated with actual data when generating the documentation in a specific System Version. 
+The documentation engine supports dynamic content through predefined variables. Possible variables are defined in the variable list: copy and paste them into the templates, or write them manually with the syntax `{{CATEGORY.variable_name}}`.
+Variables are populated with actual data when you generate the documentation for a specific System Version.
 **Available Categories:**
 - `BUG`
 - `CHANGE_REQUEST`
@@ -62,20 +62,20 @@ These variables are automatically populated with actual data when generating the
 - `TEST_SUITE
 
 ### Custom Lists and Tables
-For data which are not unique, such as the Requirements of a System Version, custom structure are available to organized the actual data. 
-In Custom Lists, organize the structure of the appeareance of 1 item and it will be repeated for all the existing entities of that item. 
+For data which is not unique, such as the Requirements of a System Version, custom structures organize the actual data.
+In Custom Lists, define the appearance of one item and it is repeated for all the existing entities of that item.
 ```
 {{#each CATEGORY}}
 {{variable_name}}
 {{/each}}
 ```
-For instance, to print the list (as title) of all the requirements for a specific System Version, you need to insert in your template the related loop for requirements:
+To list all the requirements of a specific System Version by title, insert the requirements loop in your template:
 ```
 {{#each REQUIREMENT}}
 {{title}}
 {{/each}}
 ```
-**NB** Some categories may have nested data, constited in list of elements related to an element available in the custom lists. Loops inside loops are allowd for those nested data.
+**NB** Some categories have nested data: lists of elements related to an element available in the custom lists. Loops inside loops are allowed for that nested data.
 
 **Image Management:**
 To include images in your document:
@@ -83,21 +83,21 @@ To include images in your document:
 2. Generate and download the report
 3. Manually add the downloaded image to the placeholder location
 
-For instance, Software Item design image can be downloaded from the System Version Dashboard and attached dinamically to the generated .markdown documnet following the previous steps.  
+For instance, the Software Item design image can be downloaded from the System Version Dashboard and attached to the generated .markdown document with these steps.
 
 
 ### Revision Management
 
-The system automatically maintains revision history for each published template without requiring manual intervention. When a template is published, the revision number increments automatically with each subsequent modification and save operation.
+Once a template is published, its revision number increments with each subsequent modification and save.
 
 **Key Features:**
 - Automatic version increment on save for published templates
 - Complete change history tracking
-- Ability to restore previous revisions
+- Restore previous revisions
 
 ### Error Management
 
-The editor includes built-in validation that alerts users to syntax errors in variables or loop structures.
+The editor validates syntax and alerts users to errors in variables or loop structures.
 
 
 ### Report and Template Generation
@@ -106,7 +106,7 @@ The editor includes built-in validation that alerts users to syntax errors in va
 Raw templates can be downloaded directly from the template table without data interpolation.
 
 **Report Generation:**
-Once a template is published, it becomes available in the reports list on the overview tab. Published templates can be used to generate reports with interpolated data.
+Once published, a template appears in the reports list on the overview tab and can generate reports with interpolated data.
 
 **Supported Formats:**
 Both templates and reports are available in `Markdown` and `Docx` formats.

@@ -12,7 +12,7 @@ const handbookSections = [
     icon: "🏥",
     href: "/docs/p4samd/overview",
     description:
-      "Learn how P4SaMD supports compliant Software as a Medical Device development across the full lifecycle.",
+      "How P4SaMD supports compliant Software as a Medical Device development across the full lifecycle.",
   },
   {
     title: "Getting Started",
@@ -26,7 +26,7 @@ const handbookSections = [
     icon: "🏢",
     href: "/docs/p4samd/handbook/organizations",
     description:
-      "Understand how to switch between organizations and manage per-tenant settings.",
+      "Switch between organizations and manage per-tenant settings.",
   },
   {
     title: "Products & Projects",
@@ -56,21 +56,21 @@ const v3Features = [
     icon: "🏗️",
     tag: "Architecture",
     title: "Standalone Platform",
-    body: "P4SaMD v3 runs independently — no longer embedded in any third-party platform. A dedicated UI built specifically for compliance governance.",
+    body: "P4SaMD v3 runs independently, no longer embedded in any third-party platform. The UI is built specifically for compliance governance.",
     link: "/docs/p4samd/overview",
   },
   {
     icon: "🏢",
     tag: "Multi-Tenancy",
     title: "Multiple Organizations",
-    body: "A single installation serves multiple independent organizations simultaneously, with complete database-level data isolation between tenants.",
+    body: "A single installation serves multiple independent organizations, with complete database-level data isolation between tenants.",
     link: "/docs/p4samd/handbook/organizations",
   },
   {
     icon: "📝",
     tag: "Work Items",
     title: "Native Work-Item Management",
-    body: "Requirements, risks, tests, and changes are managed natively inside P4SaMD. No external ALM tool required — Jira and others are now optional.",
+    body: "Requirements, risks, tests, and changes are managed natively inside P4SaMD. No external ALM tool required: Jira and others are now optional.",
     link: "/docs/p4samd/handbook/requirements",
   },
   {
@@ -91,7 +91,7 @@ const v3Features = [
     icon: "⚙️",
     tag: "Self-Service",
     title: "Self-Service Configuration",
-    body: "Organizations configure projects, integrations, and settings autonomously — without requiring Mia-Care to intervene.",
+    body: "Organizations configure projects, integrations, and settings themselves, without Mia-Care intervening.",
     link: "/docs/p4samd/handbook/getting-started",
   },
 ];
@@ -125,7 +125,7 @@ function Home() {
 
   return (
     <Layout
-      description="The official handbook for Mia-Care P4SaMD — the Platform for Software as a Medical Device."
+      description="The official handbook for Mia-Care P4SaMD, the Platform for Software as a Medical Device."
       title={siteConfig.title}
     >
       {/* Hero */}
@@ -168,7 +168,7 @@ function Home() {
           <div className="container">
             <h2 className={styles.sectionHeading}>What&apos;s New in v3</h2>
             <p className={styles.sectionSubheading}>
-              Version 3 is a complete re-architecture of P4SaMD. Here are the key changes.
+              Version 3 is a complete re-architecture of P4SaMD.
             </p>
             <div className={styles.featuresShowcase}>
               {v3Features.map((props, idx) => (
@@ -189,17 +189,17 @@ function Home() {
             <div className={styles.resourcesGrid}>
               <div className={styles.resourceCard}>
                 <h3>📖 FAQ</h3>
-                <p>Find answers to common questions about P4SaMD capabilities, compliance, and deployment.</p>
+                <p>Common questions about P4SaMD capabilities, compliance, and deployment.</p>
                 <Link to="/docs/p4samd/faq">Read FAQ →</Link>
               </div>
               <div className={styles.resourceCard}>
                 <h3>📦 Release Notes</h3>
-                <p>Stay up to date with every version of P4SaMD, including patch-level improvements.</p>
+                <p>Every version of P4SaMD, including patch-level improvements.</p>
                 <Link to="/docs/p4samd/release-notes/v3.0">View release notes →</Link>
               </div>
               <div className={styles.resourceCard}>
                 <h3>🔒 Security & Roles</h3>
-                <p>Understand user roles, permissions, and the authentication model used in P4SaMD v3.</p>
+                <p>User roles, permissions, and the authentication model used in P4SaMD v3.</p>
                 <Link to="/docs/p4samd/security/roles_permissions">View roles →</Link>
               </div>
             </div>

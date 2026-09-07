@@ -6,15 +6,15 @@ sidebar_label: SaaS
 
 import { DeploymentTable } from '@site/src/components/DeploymentTable';
 
-P4SaMD offers two cloud-hosted deployment options: **Multi-tenant SaaS** and **Dedicated SaaS**. Both are fully managed by Mia-Care — you never need to provision servers, manage databases, or handle platform upgrades.
+P4SaMD offers two cloud-hosted deployment options: **Multi-tenant SaaS** and **Dedicated SaaS**. Mia-Care manages both, so you never provision servers, manage databases, or handle platform upgrades.
 
 ---
 
 ## Multi-tenant SaaS
 
-In the multi-tenant model, your organization runs alongside other P4SaMD customers on a shared cloud infrastructure. Your data is kept strictly isolated through row-level security at the database layer and organization-scoped access control at the application layer — no user from another organization can ever see or access your data.
+In the multi-tenant model, your organization runs alongside other P4SaMD customers on a shared cloud infrastructure. Row-level security at the database layer and organization-scoped access control at the application layer isolate your data. No user from another organization can see or access it.
 
-This mode is the fastest way to get started: provisioning a new organization takes minutes. Platform updates are applied automatically during scheduled maintenance windows, so you always run the latest version without any action on your part.
+This is the fastest mode to start with: provisioning a new organization takes minutes. Platform updates are applied automatically during scheduled maintenance windows, so you always run the latest version.
 
 The features available to your organization depend on your **subscription plan**.
 
@@ -22,7 +22,7 @@ The features available to your organization depend on your **subscription plan**
 
 ## Dedicated SaaS
 
-In the dedicated model, Mia-Care provisions a private cloud environment — a dedicated Kubernetes cluster, dedicated database, and dedicated object storage — exclusively for your organization. No other customer shares any part of your infrastructure.
+In the dedicated model, Mia-Care provisions a private cloud environment for your organization alone: a dedicated Kubernetes cluster, dedicated database, and dedicated object storage. No other customer shares any part of your infrastructure.
 
 Dedicated SaaS is available starting from the **Professional** plan. It is the recommended choice when:
 
@@ -31,13 +31,13 @@ Dedicated SaaS is available starting from the **Professional** plan. It is the r
 - You have specific data-residency requirements (e.g., data must remain within a specific EU region).
 - Your procurement or compliance process requires a dedicated-infrastructure vendor commitment.
 
-Platform updates are applied during a **scheduled maintenance window** agreed with you — giving your team advance notice before any change is deployed.
+Platform updates are applied during a **scheduled maintenance window** agreed with you, so your team has advance notice before any change is deployed.
 
 ---
 
 ## Plan Comparison
 
-The table below shows which features are available on each subscription tier. **Dedicated SaaS starts at the Professional plan**; the Starter and Standard tiers are multi-tenant only.
+Feature availability by subscription tier: **Dedicated SaaS starts at the Professional plan**; the Starter and Standard tiers are multi-tenant only.
 
 <DeploymentTable
   columns={['', 'Starter', 'Standard', 'Professional', 'Enterprise']}
@@ -97,13 +97,13 @@ The table below shows which features are available on each subscription tier. **
 
 ## System Requirements
 
-P4SaMD SaaS is a fully managed, browser-based web application. There is **nothing to install** and no servers, databases, or Kubernetes for you to provision — that is all handled by Mia-Care. (Infrastructure requirements such as Kubernetes, PostgreSQL, object storage, and an OIDC provider apply only to [On-premise](./on-premise.mdx) deployments.) The only requirements are on the end-user device.
+P4SaMD SaaS is a managed, browser-based web application. There is **nothing to install**: Mia-Care provisions the servers, databases, and Kubernetes. Infrastructure requirements such as Kubernetes, PostgreSQL, object storage, and an OIDC provider apply only to [On-premise](./on-premise.mdx) deployments. The only requirements are on the end-user device.
 
 > **Applies to:** P4SaMD v3.x &nbsp;·&nbsp; **Last updated:** 30 June 2026
 
 ### Supported Web Browsers
 
-P4SaMD supports recent desktop browsers. The minimum supported versions are:
+P4SaMD supports recent desktop browsers at these minimum versions:
 
 | Browser | Minimum version | Platforms |
 |---|---|---|
@@ -112,7 +112,7 @@ P4SaMD supports recent desktop browsers. The minimum supported versions are:
 | Mozilla Firefox | 115 (ESR) or later | Windows, macOS, Linux |
 | Apple Safari | 16.4 or later | macOS, iOS / iPadOS |
 
-Browsers and versions not listed above (including Microsoft Internet Explorer) are **not officially supported**. Using an unsupported or outdated browser may cause parts of the interface to render or behave incorrectly. Keeping your browser updated to the latest available version is recommended.
+Browsers and versions not listed above (including Microsoft Internet Explorer) are **not officially supported**. On an unsupported or outdated browser, parts of the interface may render or behave incorrectly. Keeping your browser updated to the latest available version is recommended.
 
 ### Client-Side Requirements
 
@@ -122,35 +122,35 @@ Browsers and versions not listed above (including Microsoft Internet Explorer) a
 | Screen resolution | 1280 × 720 (1366 × 768 or higher recommended) |
 | JavaScript | Must be enabled in the browser |
 | Cookies | First-party cookies must be allowed (used to maintain your authenticated session) |
-| Network | A stable broadband internet connection — **5 Mbps or faster recommended**. Outbound HTTPS (port 443) to your P4SaMD instance URL; if your network restricts egress, allowlist the instance domain. |
+| Network | A stable broadband internet connection (**5 Mbps or faster recommended**). Outbound HTTPS (port 443) to your P4SaMD instance URL; if your network restricts egress, allowlist the instance domain. |
 
 :::tip Sharing with customers
-The two tables above are self-contained: they can be copied directly into customer communications as the official P4SaMD SaaS system requirements, without needing the rest of this document.
+The two tables above are self-contained: you can copy them into customer communications as the official P4SaMD SaaS system requirements without the surrounding prose.
 :::
 
 ## Onboarding Prerequisites
 
-Beyond the system requirements above, onboarding a new SaaS organization requires only a few things on your side.
+Onboarding a new SaaS organization also requires only a few things on your side.
 
 ### Mandatory
 
 | Requirement | Details |
 |---|---|
-| **Business email** | A reachable email address per user, for invitations, notifications, and password resets. Ensure mail from Mia-Care's sending domain is not blocked by your spam filters. |
+| **Business email** | A reachable email address per user, for invitations, notifications, and password resets. Your spam filters must not block mail from Mia-Care's sending domain. |
 | **Organization administrator** | A named person to complete the initial organization setup wizard and manage members, roles, and settings. |
-| **Subscription plan** | An active subscription agreement with the plan tier that covers the features you need (see the [plan comparison](#plan-comparison) above). |
+| **Subscription plan** | An active subscription agreement on a plan tier that covers the features you need (see the [plan comparison](#plan-comparison) above). |
 
 ### Optional (plan-dependent)
 
-These unlock specific capabilities and are only needed if you intend to use the corresponding feature.
+Each item below is needed only if you intend to use the corresponding feature.
 
 | Requirement | Needed for | Details |
 |---|---|---|
-| **OIDC / SAML identity provider** | Single Sign-On (Professional plan and above) | Okta, Microsoft Entra ID, Auth0, Google Workspace, or any OIDC / SAML 2.0–compliant provider. Without SSO, P4SaMD manages credentials for you. |
+| **OIDC / SAML identity provider** | Single Sign-On (Professional plan and above) | Okta, Microsoft Entra ID, Auth0, Google Workspace, or any OIDC / SAML 2.0-compliant provider. Without SSO, P4SaMD manages credentials for you. |
 | **Custom domain + DNS control** | Custom domain (Dedicated SaaS, Professional plan and above) | A DNS record you control (e.g. `samd.yourcompany.com`) and authorization to validate it so a TLS certificate can be issued. |
 | **Data-residency decision** | Regional data hosting | Choose the **EU** or **US** region at provisioning. Dedicated SaaS supports a configurable region. |
 | **Egress IP ranges** | IP allowlist (Enterprise plan) | The public IP ranges your users connect from, if you want to restrict access to your organization to known networks. |
-| **AI provider API key** | AI-powered features (Professional plan and above) | Optional, needed only to use AI capabilities. An API key from your own account with one of the supported providers: OpenAI, Anthropic, Google Vertex AI, or Azure OpenAI. P4SaMD does not provide or resell model access. Configured by an organization Admin on the LLM Profiles settings page. See [AI Configuration](../handbook/ai_configuration.md) for the setup steps. |
+| **AI provider API key** | AI-powered features (Professional plan and above) | Optional, needed only to use AI capabilities. An API key from your own account with one of the supported providers: OpenAI, Anthropic, Google Vertex AI, or Azure OpenAI. P4SaMD does not provide or resell model access. An organization Admin configures it on the LLM Profiles settings page. See [AI Configuration](../handbook/ai_configuration.md) for the setup steps. |
 
 ---
 

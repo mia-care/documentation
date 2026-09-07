@@ -4,29 +4,29 @@ title: Software Items
 sidebar_label: Overview
 ---
 
-The section allows users to view, create, and edit software items in the Software System Version. It provides an intuitive interface for managing software items, including detailed views, adding new entries, and updating existing records. Additionally, using the console, software items are also detected automatically, ensuring efficient and seamless handling of software-related data.
+In this section you can view, create, and edit software items in the Software System Version. Software items are also detected automatically using the console.
 
-The Software Items are described by **General** and **Specific** properties: the former are reporting the item information, shared with all the possible instances of the item (e.g. name of Manufacturer for a SOUP-type SWI); the latter refers to properties related to the instances of the SWI, considering the location in the software system, parent and specific usage. 
+Software Items are described by **General** and **Specific** properties. General properties report the item information, shared with all the possible instances of the item (e.g. name of Manufacturer for a SOUP-type SWI). Specific properties refer to a single instance of the SWI: its location in the software system, parent and specific usage.
 
 ## Create Software Item Design
 
 ![Edit Modal](img/swi_create_modal.png)
 
 1. **Click the "Add software item design" Button**  
-   This will open the modal to create a new Software Item.
+   This opens the modal to create a new Software Item.
 
 2. **Fill in the Required Fields**  
-   In the modal, you will be prompted to fill out the **Software Item Name** field.  
-   When you click on this field, a dropdown will appear. In the dropdown, you can either:  
-   - **Enter a new Software Item name**: Type the name you want to assign to the new Software Item and select **Create new**.
-   - **Select an existing Software Item**: If a Software Item with the same name, type and version already exists in the system, you can select it from the list. This will automatically prefill the form with the details of the selected Software Item.
+   The modal prompts for the **Software Item Name** field.  
+   Clicking the field opens a dropdown, where you can either:  
+   - **Enter a new Software Item name**: type the name to assign to the new Software Item and select **Create new**.
+   - **Select an existing Software Item**: if a Software Item with the same name, type and version already exists in the system, select it from the list. The form is prefilled with the details of the selected Software Item.
    Fill in the required fields as needed ([Fields description](#fields-description))
 
 3. **Save the New Software Item**  
-   Once you've completed the form, click the **"Add software item design"** button at the end of the modal to create and save the new Software Item in the system.
+   Click the **"Add software item design"** button at the end of the modal to create and save the new Software Item in the system.
 
 :::tip
-You can create a new Software Item starting from an existing one. Simply select it from the dropdown, modify the `name` and other fields as needed, it will be added as a *new* instance within the current system version.
+You can create a new Software Item starting from an existing one. Select it from the dropdown and modify the `name` and other fields as needed: it is added as a *new* instance within the current system version.
 ::: 
 
 ### Existing software item
@@ -39,11 +39,11 @@ The modal displays two options:
 
 - **Existing software item**  
   Refers to the already existing Software Item and instances in the system.
-  Selecting this option, no changes are applied to other instances and the current instance is linked to the existing SWI.
+  No changes are applied to other instances, and the current instance is linked to the existing SWI.
 
 - **New software item**  
-  Uses the current information in the modal for updating the existing SWI.
-  Selecting this option, the current info in **General Properties** are propagated to the existing instances of the SWI.
+  Uses the current information in the modal to update the existing SWI.
+  The info in **General Properties** is propagated to the existing instances of the SWI.
   _NB. Editing the general properties of a SWI will revert the approval of the related instances and their tree structure (parents chain)_
   
 ## Software Items Visualization
@@ -55,30 +55,30 @@ The table shows basic info of the tree of software items:
 
 1. **+/-**: Expand/Collapse Software Item children
 2. **Software Item**: Name of the Software Item, clickable if the `Implementation link` is filled.
-3. **Suggestions**: Count of the suggestions, hover to show a dropdown with a number of how much is in error, in warning and in info. Clicking open drawer in the suggestion tab.
+3. **Suggestions**: Count of the suggestions. Hover to show a dropdown with how many are in error, in warning and in info. Clicking opens the drawer on the suggestion tab.
 4. **SOUP**: Show a label if the Software Item `Is SOUP` is filled or the number of SOUPS children if there are
 5. **Safety**: Show a label containing the Software item Safety class 
 6. **Design**: Show design status and version
 7. **Implementation**: Show Implementation status and detected version
-8. **Vulnerabilities**: Count of the vulnerabilities found, hover to show a dropdown with a number of how much are accepted and how much are still open. Clicking open drawer in the vulnerabilities tab.
+8. **Vulnerabilities**: Count of the vulnerabilities found. Hover to show a dropdown with how many are accepted and how many are still open. Clicking opens the drawer on the vulnerabilities tab.
 9. `Fast Action | Vulnerabilities Details | Three dots`: 
    - **Edit software item design**: Opens a modal to edit the item, following the guidelines in the ([Fields description](#fields-description)).
    - **Download**: Opens a menu to download History and/or Changelog.
    - **Delete item**: Opens a confirmation modal to delete the item.
 
 :::warning
-When **missing implementation** or **mismatch** status of SWI, the vulnerabilities of the designed SWI are not counted in the table. However, if the Repository ID is present and P4SaMD could access to pipeline information related to the implementation, the vulnerability column in table shows a warning badge if the scanning has detected at least one vulnerability in the associated repo. 
+When the SWI status is **missing implementation** or **mismatch**, the vulnerabilities of the designed SWI are not counted in the table. However, if the Repository ID is present and P4SaMD could access to pipeline information related to the implementation, the vulnerability column in table shows a warning badge. The badge appears if the scanning has detected at least one vulnerability in the associated repo. 
 :::
 
 **N.B.** Every edit of the software item is reflected in all instances.
 
 ### Graph  
 
-The graph provides a visual representation of software items, displaying only the first two levels of the hierarchy. Clicking on a box open the related drawer.
+The graph shows software items, displaying only the first two levels of the hierarchy. Clicking on a box opens the related drawer.
 
 ![Software Item Graph](img/swi_chart.png)  
 
-Each box contains key details about a software item, including:  
+Each box contains:  
 1. **Name** 
 2. **Version** 
 4. **Count of Suggestions** (shown only if greater than 0)  
@@ -87,15 +87,15 @@ Each box contains key details about a software item, including:
 6. **Software Safety Class** (shown only for Medical Device)
 
 ##### **Minimap**  
-- The minimap (bottom-right corner) provides an overview of the entire graph, helping users navigate large structures efficiently.  
+- The minimap (bottom-right corner) gives an overview of the entire graph.  
 
 ##### **Caption (Legend)**  
-- Located in the top-left corner, the caption explains the different symbols and colors used in the graph, see **Status** of [Software Item States and Related Actions](#software-item-states-and-related-actions) for more infos.
+- Located in the top-left corner, the caption explains the symbols and colors used in the graph. See **Status** of [Software Item States and Related Actions](#software-item-states-and-related-actions) for more infos.
 
 ##### **Actions**  
-- **Zoom In (+):** Increases the zoom level for a closer view of details.  
-- **Zoom Out (-):** Decreases the zoom level for a broader view.  
-- **Fit View:** Adjusts the graph to fit within the visible area, ensuring all elements are displayed properly.  
+- **Zoom In (+):** Increases the zoom level.  
+- **Zoom Out (-):** Decreases the zoom level.  
+- **Fit View:** Adjusts the graph to fit within the visible area.  
 
 
 ## Software Item States and Related Actions
@@ -108,15 +108,15 @@ Depending on the status of the software items, several fast actions are availabl
 |![alt text](img/swi_missing_approval.png)|![alt text](img/swi_approve_btn.png)|The Software Item should be approved|Approve the item, if `SOUP` open a modal to fill required fields|
 |![alt text](img/swi_missing_version.png)|![alt text](img/swi_tag_btn.png)|Project \| Service need to be tagged |Redirect to console to create a tag|
 |![alt text](img/swi_missing_implementation.png)|![alt text](img/swi_create_project_btn.png) ![alt text](img/swi_create_service_btn.png)|The Software Item is not implemented in the console  |Redirect to console create Project \| Service|
-|![alt text](img/swi_missing_design.png)|![alt text](img/swi_create_btn.png)|A Software Item was detected but not designed | Open modal to create a Software Item, If a design for a Software Item with the same name and version already exists, open the modal with pre-filled data|
+|![alt text](img/swi_missing_design.png)|![alt text](img/swi_create_btn.png)|A Software Item was detected but not designed | Open modal to create a Software Item. If a design for a Software Item with the same name and version already exists, the modal opens with pre-filled data|
 |![alt text](img/swi_version_unmatched.png)|        |Versions designed and detected do not match| |
 |![alt text](img/swi_undetectable.png)|        |Software Item can't be detected| |
 
 ## Software Item Drawer
 
-Clicking on a row or the specific button will open a navigable drawer.
+Clicking on a row or the specific button opens a navigable drawer.
 
-From here, you can approve or disapprove a Software Item. <br/>Additionally, all the actions available from the menu inside the table are accessible here as well, just click on the three dots icon in the top right corner.
+From here, you can approve or disapprove a Software Item. <br/>All the actions available from the menu inside the table are accessible here as well, under the three dots icon in the top right corner.
 
 This is divided into multiple tabs:
 - **Detail**: Displays all the fields entered ([Fields description](#fields-description)) for the Software Item.
@@ -153,7 +153,7 @@ If a Software Item is not designed but detected by the system, a warning will ap
 
 ## Edit Software Item
 
-When the **Edit** button is clicked, an edit modal will appear:
+Clicking the **Edit** button opens the edit modal:
 
 ![Edit Modal](img/swi_edit_modal.png)
 
@@ -180,7 +180,7 @@ This will cause the automatic **disapproval** of their associated tree structure
 
 ### Special Case: Version Change
 
-When changing the **version** of a software item, there are two possible outcomes:
+Changing the **version** of a software item has two possible outcomes:
 
 ####  1. No Existing Software Item with matching version
 
@@ -200,11 +200,11 @@ The modal displays two options:
 
 - **Existing software item**  
   Refers to the already existing Software Item and instances in the system.
-  Selecting this option, no changes are applied to other instances and the current instance is linked to the existing SWI.
+  No changes are applied to other instances, and the current instance is linked to the existing SWI.
 
 - **New software item**  
-  Uses the current information in the modal for updating the existing SWI.
-  Selecting this option, the current info in **General Properties** are propagated to the existing instances of the SWI.
+  Uses the current information in the modal to update the existing SWI.
+  The info in **General Properties** is propagated to the existing instances of the SWI.
   _NB. Editing the general properties of SWI will revert the approval of the related instances and their tree structure (parents chain)_
   
 
@@ -217,7 +217,7 @@ Be mindful of which tab you're editing. Only changes in Specific Properties are 
 
 ## Fields description
 
-The fields mentioned in the following sections are presented according to the location and order they appear in the user interface.
+The fields in the following sections follow the location and order they appear in the user interface.
 
 ### SWI classes
 
@@ -242,7 +242,7 @@ The fields mentioned in the following sections are presented according to the lo
 - **Parent software item**: Select the parent Software Items.
    - *Only for creation*
    - Editable only if the Software Item type is `Service` or `Library`.
-   - Allows the selection of multiple parent Software Items.
+   - Multiple parent Software Items can be selected.
 - **Architecture reference**: Link to the architecture reference of the Software Item.
 - **Repository ID**: ID of the repository associated with the Software Item.
 - **Repository link**: Link to the repository of the Software Item.
@@ -294,20 +294,20 @@ To **Approve** a Software Item all his children should be approved.
 
 ## Software Items settings 
 
-P4SaMD detects the implementation of the Software Items, considering all the Projects belonging to your Company by default. You can customize your Software System, excluding detected Projects so that they and all of their SWI children will not appear in the SWI table and will not be taken into account in the Software System documentation. It applies, for example, on test/POC projects which are not part of your software product.
+By default, P4SaMD detects the implementation of the Software Items across all the Projects belonging to your Company. You can customize your Software System by excluding detected Projects. An excluded Project and all of its SWI children do not appear in the SWI table and are not taken into account in the Software System documentation. It applies, for example, on test/POC projects which are not part of your software product.
 
 ![alt text](img/system_versions_setting.png)
 
 The settings modal is available in the SWI tab, for each version when they are not released
 
 1. **Click the "Settings" Button**  
-   This will open the modal to customize the Software System at the Project level.
+   This opens the modal to customize the Software System at the Project level.
 
 2. **Customize the Software System** 
    In the modal, select/deselect the Projects to define your Software System.
 
 3. **Save the customized Software System**  
-   Saving customization, the changes will be immediately apply on your Software System.
+   The changes apply immediately on your Software System.
 
 :::info
    - The exclusion of a Project is only possible when there is no associated design.

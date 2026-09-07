@@ -5,13 +5,13 @@ sidebar_label: Setup
 slug: setup
 ---
 
-This page explains how to connect an AI client to the P4SaMD MCP server. No coding is required. In most cases you paste a URL, or run a single command, and then sign in through your browser.
+Connecting an AI client to the P4SaMD MCP server usually means pasting a URL or running a single command, then signing in through your browser. No coding is required.
 
 For what an assistant can do once connected, see [Overview](./overview.md).
 
 ## Server address and authentication
 
-The P4SaMD MCP server is a remote MCP server, reachable over HTTP at:
+The P4SaMD MCP server is remote, reachable over HTTP at:
 
 ```
 https://<your-p4samd-instance>/mcp
@@ -24,7 +24,7 @@ The server publishes standard OAuth discovery metadata at `/.well-known/oauth-au
 Sessions for AI clients last 8 hours, after which you need to sign in again.
 
 :::caution Local clients only
-The sign-in flow currently accepts a redirect back only to `http://localhost` or `http://127.0.0.1`. Clients that run on your own machine, such as Claude Code, Cursor and VS Code, work with this. Cloud-hosted connectors, such as a Claude.ai or ChatGPT custom connector, redirect back to their own hosted domain and may not be able to complete sign-in. If you are configuring one of those, check the current status with your P4SaMD administrator first.
+The sign-in flow currently accepts a redirect back only to `http://localhost` or `http://127.0.0.1`. Clients that run on your own machine, such as Claude Code, Cursor and VS Code, work with this. Cloud-hosted connectors, such as a Claude.ai or ChatGPT custom connector, redirect back to their own hosted domain and may not be able to complete sign-in. Check the current status with your P4SaMD administrator before configuring one.
 :::
 
 ## Claude Code
@@ -37,7 +37,7 @@ claude mcp add --transport http p4samd https://<your-p4samd-instance>/mcp
 
 Then run `/mcp` inside a Claude Code session to complete the sign-in flow in your browser.
 
-You can also add the same configuration directly to your project's `.mcp.json`:
+Instead of the command, you can add the same configuration to your project's `.mcp.json`:
 
 ```json
 {
@@ -60,7 +60,7 @@ You can also add the same configuration directly to your project's `.mcp.json`:
    ```
 4. Save, click **Connect**, and complete the sign-in flow in the popup window.
 
-This path depends on your P4SaMD instance accepting a non-local redirect during sign-in. See the caution above.
+This path works only if your P4SaMD instance accepts a non-local redirect during sign-in (see the caution above).
 
 ## ChatGPT
 
@@ -72,7 +72,7 @@ This path depends on your P4SaMD instance accepting a non-local redirect during 
    ```
 4. Save and complete the sign-in flow when prompted.
 
-As with Claude.ai, see the caution above before relying on this path.
+See the caution above before relying on this path.
 
 ## Other MCP clients
 

@@ -6,7 +6,7 @@ sidebar_label: Import Wizard
 
 import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
 
-This page walks you through each step of the Brownfield Import wizard. To launch it, click **Brownfield** in the left sidebar, then click **+ Create Project** on the Sessions page.
+This page covers each step of the Brownfield Import wizard. To launch it, click **Brownfield** in the left sidebar, then click **+ Create Project** on the Sessions page.
 
 <Prerequisites items={[
   'Access to your source code repository (URL or downloadable archive).',
@@ -20,13 +20,13 @@ This page walks you through each step of the Brownfield Import wizard. To launch
 
 <Step number={1} icon="📋" title="Import Project">
 
-This step introduces the import process. Review the summary of what P4SaMD needs from you and what the evaluation will produce — the gap analysis, the types of evidence it can ingest, and the output of the process. When you are ready to proceed, click **Get Started**.
+This step introduces the import process. Review the summary of what P4SaMD needs from you, the types of evidence it can ingest, and what the evaluation produces (the gap analysis). Click **Get Started**.
 
 </Step>
 
 <Step number={2} icon="🎯" title="Use Case">
 
-Select the primary reason for your compliance assessment. The use case helps P4SaMD focus the gap analysis on what matters most for your situation.
+Select the primary reason for your compliance assessment. The use case focuses the gap analysis on your situation.
 
 | Use Case | Description | Select it when… |
 |----------|-----------------|-----------------|
@@ -35,12 +35,11 @@ Select the primary reason for your compliance assessment. The use case helps P4S
 | **Delta Certification** | Identify the compliance gap between your current evidence state and the requirements of a target certification. | You are preparing a first certification or re-certification dossier and want to know exactly what is missing or out-of-date before submission. |
 | **Change Region** | Adapt compliance evidence for a new geographic market with different regulatory requirements. | You are entering a new market (e.g., adding a UK or US target alongside an existing EU MDR target) and need to identify what evidence is portable and what must be reworked. |
 | **Technical Update** | Verify that updated or modernized legacy components remain compliant. | You are upgrading libraries, replacing legacy modules, or migrating technology stacks, and need to re-verify SOUP, architecture, and risk records. |
-| **Add Feature** | Assess the compliance impact of new functional capabilities added to an existing product. | You are adding a new feature or module to a certified product and need to extend risk assessments, SRS, V&V records, and traceability to cover the new scope. It addresses the compliance of the new module to be used in a Medical Device, for example.  |
+| **Add Feature** | Assess the compliance impact of new functional capabilities added to an existing product. | You are adding a new feature or module to a certified product and need to extend risk assessments, SRS, V&V records, and traceability to cover the new scope. The assessment covers the new module's compliance for use in a medical device. |
 | **Audit Preparation** | Verify readiness for an upcoming regulatory audit without making product changes. | A Notified Body surveillance audit or an internal audit against EU MDR, IEC 62304, or FDA cybersecurity requirements is approaching and you want to identify open findings before the auditors do. |
 | **General** | Run a broad compliance assessment without a specific change scenario. | None of the above precisely fits your situation, or you want an overview evaluation across all document categories. |
 
- **Custom** is reserved for future use and is not available in the current release.
-
+**Custom** is reserved for future use and is not available in the current release.
 
 Click **Next** after selecting a use case.
 
@@ -48,7 +47,7 @@ Click **Next** after selecting a use case.
 
 <Step number={3} icon="🗺️" title="Target Definition">
 
-Define the compliance target that P4SaMD will assess your project against. The regulatory framework, device class, safety classification, and intended use together determine exactly which requirements are checked.
+Define the compliance target that P4SaMD will assess your project against. The regulatory framework, device class, safety classification, and intended use together determine which requirements are checked.
 
 | Field | Description |
 |---|---|
@@ -61,7 +60,7 @@ Define the compliance target that P4SaMD will assess your project against. The r
 
 <Step number={4} icon="📁" title="Technical Assets">
 
-Upload the technical artifacts that make up your software product. For each file you upload, assign an **artifact category** — this tells P4SaMD which part of the compliance lifecycle it belongs to and determines what the evaluation checks against it. You do not need to cover every category; the more you provide, the more complete the evaluation.
+Upload the technical artifacts that make up your software product. Assign an **artifact category** to each file: the category sets which part of the compliance lifecycle the file belongs to and what the evaluation checks against it. You do not need to cover every category. The more you provide, the more complete the evaluation.
 
 | Category | What belongs here |
 |---|---|
@@ -78,7 +77,7 @@ Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
 
 <Step number={5} icon="📄" title="Documentation">
 
-Upload existing compliance documentation. As with technical assets, assign an **artifact category** to each document — this determines how it is weighted in the gap analysis and which remediation tasks it can satisfy.
+Upload existing compliance documentation. Assign an **artifact category** to each document, as with technical assets. The category determines how the document is weighted in the gap analysis and which remediation tasks it can satisfy.
 
 | Category | Document examples |
 |---|---|
@@ -95,14 +94,14 @@ Supported file formats: PDF, Word (`.docx`), Markdown, plain text.
 
 <Step number={6} icon="✅" title="Summary & Submit">
 
-Review all the information you have provided: the use case, target definition, list of uploaded technical assets, and list of uploaded documents. If anything needs to be corrected, use the **Back** button to return to the relevant step.
+Review everything you have provided: the use case, target definition, uploaded technical assets, and uploaded documents. To correct anything, use the **Back** button to return to the relevant step.
 
-When you are satisfied, click **Submit for Evaluation**. P4SaMD begins processing your uploaded materials immediately.
+Click **Submit for Evaluation**. P4SaMD begins processing your uploaded materials immediately.
 
-After submission you are redirected to the **Evaluation page**, which shows the current processing status (**Evaluating → Evaluated**, or **Failed** if the evaluation could not complete) and a progress indicator for each analysis phase. Processing can take from a few minutes to several hours depending on the volume of content. You can leave the page and return later — the evaluation runs in the background.
+After submission you are redirected to the **Evaluation page**. It shows the current processing status (**Evaluating → Evaluated**, or **Failed** if the evaluation could not complete) and a progress indicator for each analysis phase. Processing can take from a few minutes to several hours depending on the volume of content. The evaluation runs in the background, so you can leave the page and return later.
 
 <Tip>
-  If you need to pause before finishing the wizard, click <strong>Save as Draft</strong> in the wizard footer at any point. To resume, open the <strong>Brownfield</strong> section from the left sidebar and click <strong>Resume</strong> on your draft session card.
+  To pause before finishing the wizard, click <strong>Save as Draft</strong> in the wizard footer at any step. To resume, open the <strong>Brownfield</strong> section from the left sidebar and click <strong>Resume</strong> on your draft session card.
 </Tip>
 
 </Step>

@@ -1,18 +1,23 @@
 ---
 id: overview
-title: Brownfield Import — Overview
+title: Brownfield Import Overview
 sidebar_label: Overview
 ---
 
 import { NextSteps } from '@site/src/components/StepGuide';
 
-The **Brownfield Import** feature allows you to onboard an existing software project — one already in development or even in production — into P4SaMD. The platform analyzes your current state against the applicable regulatory framework and produces a prioritized compliance gap analysis and a remediation plan you can act on immediately.
+Use **Brownfield Import** to onboard an existing software project into P4SaMD, whether it is still in development or already in production. The platform analyzes your current state against the applicable regulatory framework and produces a prioritized compliance gap analysis and a remediation plan.
 
-Use this feature when your software product already exists but has not been developed under a formal IEC 62304-compliant process, when you need to understand the gap between your current state and EU MDR or FDA certification requirements, when you want to generate a structured roadmap to bring an existing product to audit-ready status, or when you are acquiring or inheriting a system and need to assess its regulatory posture.
+Use this feature when:
+
+- Your software product already exists but has not been developed under a formal IEC 62304-compliant process
+- You need to understand the gap between your current state and EU MDR or FDA certification requirements
+- You want a structured roadmap to bring an existing product to audit-ready status
+- You are acquiring or inheriting a system and need to assess its regulatory posture
 
 ## How It Works
 
-The process has two phases. First, a guided **six-step wizard** where you describe the project, upload technical assets, and provide existing documentation — this takes approximately 30–60 minutes depending on the volume of materials. Second, an **asynchronous evaluation** in which P4SaMD processes your uploaded materials and produces a compliance gap analysis and a prioritized remediation plan. You can track evaluation progress on the Evaluation page and return to it at any time while processing is underway.
+The process has two phases. In a guided **six-step wizard** you describe the project, upload technical assets, and provide existing documentation. The wizard takes approximately 30 to 60 minutes, depending on the volume of materials. P4SaMD then runs an **asynchronous evaluation** that processes your uploaded materials and produces a compliance gap analysis and a prioritized remediation plan. Track progress on the Evaluation page and return to it at any time while processing is underway.
 
 The six wizard steps are:
 
@@ -25,22 +30,22 @@ The six wizard steps are:
 | 5 | Documentation | Existing design documents, SOPs, test reports, risk analyses, and other compliance evidence |
 | 6 | Summary | Review all inputs before submitting for evaluation |
 
-You can pause at any time by clicking **Save as Draft** in the wizard footer. Your session is saved and listed as a draft in the **Brownfield** section of the left sidebar. Click **Resume** on the draft card to pick up exactly where you left off. To exit without saving, click **Cancel** and choose **Exit without saving** — if you have never saved the session as a draft, no data is stored.
+You can pause at any step: click **Save as Draft** in the wizard footer. The session is saved and listed as a draft in the **Brownfield** section of the left sidebar. Click **Resume** on the draft card to pick up where you left off. To exit without saving, click **Cancel** and choose **Exit without saving**. If you have never saved the session as a draft, no data is stored.
 
 ## After Evaluation
 
-When evaluation completes, the Evaluation page shows an **overall compliance score** (the percentage of the target framework currently satisfied), a **gap analysis breakdown** categorized by area with a severity rating and a normative **reference** for each gap, and a **remediation plan** organized by compliance area (Requirements, Design, Risk Management, Software Implementation, Verification, Configuration). Each task is assigned a priority (Critical, High, or Low) based on its impact on your regulatory target. The plan starts as an editable draft — you can review, reassign, and reorder tasks before confirming it. Once confirmed, you track task completion per area.
+When evaluation completes, the Evaluation page shows an **overall compliance score**, the percentage of the target framework currently satisfied. A **gap analysis breakdown** categorizes gaps by area and gives each gap a severity rating and a normative **reference**. A **remediation plan** is organized by compliance area (Requirements, Design, Risk Management, Software Implementation, Verification, Configuration). Each task is assigned a priority (Critical, High, or Low) based on its impact on your regulatory target. The plan starts as an editable draft: review, reassign, and reorder tasks before confirming it. Once confirmed, you track task completion per area.
 
 ### Evaluation Progress
 
 While the evaluation is running, the Evaluation page displays real-time progress through four processing phases:
 
-1. **Document Preparation** — uploaded files are normalized and prepared for analysis
-2. **Document Extraction** — relevant content is extracted from your technical assets and documentation
-3. **Payload Crafting** — extracted data is structured against your target regulatory framework
-4. **Evaluation** — the compliance gap analysis is computed and the remediation plan is generated
+1. **Document Preparation**: uploaded files are normalized and prepared for analysis
+2. **Document Extraction**: relevant content is extracted from your technical assets and documentation
+3. **Payload Crafting**: extracted data is structured against your target regulatory framework
+4. **Evaluation**: the compliance gap analysis is computed and the remediation plan is generated
 
-Progress updates appear in real time — you can leave the page and return at any time without losing your place.
+You can leave the page and return at any time without losing your place.
 
 ### If an Evaluation Fails
 
@@ -48,14 +53,14 @@ If processing cannot complete, the Evaluation page shows an **Evaluation Failed*
 
 ### Evaluation Metrics
 
-After evaluation completes, two key metrics are highlighted:
+After evaluation completes, two metrics are highlighted:
 
-- **Compliance Health Score** — an overall percentage indicating how much of the target framework is currently satisfied by your existing documentation and processes
-- **Traceability Coverage** — the degree to which your existing artifacts are traceable across lifecycle phases (requirements → design → implementation → verification)
+- **Compliance Health Score**: an overall percentage indicating how much of the target framework is currently satisfied by your existing documentation and processes
+- **Traceability Coverage**: the degree to which your existing artifacts are traceable across lifecycle phases (requirements → design → implementation → verification)
 
 ### Exporting Results
 
-You can export the evaluation results for use in external reports or regulatory submissions. Available export formats include **PDF** (for human-readable compliance reports) and **CSV** (for data import into other tools or spreadsheets). Click **Export** on the Evaluation page and select your preferred format.
+Export the evaluation results for use in external reports or regulatory submissions. Click **Export** on the Evaluation page and select a format: **PDF** for human-readable compliance reports, or **CSV** for data import into other tools or spreadsheets.
 
 <NextSteps items={[
   { icon: '📋', label: 'Start the Import Wizard', to: './import-wizard' },

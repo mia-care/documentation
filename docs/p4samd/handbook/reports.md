@@ -6,14 +6,14 @@ sidebar_label: Reports
 
 # Reports
 
-**Mia-Care P4SaMD** can automatically generate documentation based on information about managed entities, like [risks][risks], requirements, [tests][tests] and [changes][changes], to ensure compliance with most common documentation requirements outlined in international regulation and standards related to SaMD development. 
+**Mia-Care P4SaMD** can automatically generate documentation from managed entities such as [risks][risks], requirements, [tests][tests] and [changes][changes]. The generated documents cover the most common documentation requirements outlined in international regulation and standards related to SaMD development.
 
-In the following sections we illustrate the type of documentation you can generate out of the box, how you can do it and which information you can expect to find, but you can also use **Mia-Care P4SaMD** to generate additional documentation based on custom templates. 
+The sections below describe the documentation P4SaMD generates by default, how to generate it and what it contains. You can also generate additional documentation from custom templates.
 
 :::warning
 
 Documentation completeness and correctness depend on correct and updated information available in the integrated ALM.
-If ALM information are missing, incorrect or outdated, the generated documentation may not be generated correctly, lack relevant information or include incorrect or outdated information. 
+If ALM information is missing, incorrect or outdated, the generated documentation may not be generated correctly, lack relevant information or include incorrect or outdated information.
 
 :::
 
@@ -36,9 +36,9 @@ If ALM information are missing, incorrect or outdated, the generated documentati
 
 ## Changelogs
 
-Mia-Care P4SaMD allows you to download changelogs of software items in PDF format.
+With Mia-Care P4SaMD you can download changelogs of software items in PDF format.
 
-The changelog is not generated from ALM entities, but directly from an existing changelog in Markdown format and following the `CHANGELOG.md` naming convention, located in your software item repository.
+The changelog is not generated from ALM entities. It comes directly from an existing Markdown changelog in your software item repository, following the `CHANGELOG.md` naming convention.
 
 ### Software item
 
@@ -57,7 +57,7 @@ You can download the changelog from the drawer that appears when you select a ro
 | Zip archive containing PDF files | System version | Overview page |
 
 From the [Overview page][software-system-overview] you can download a zip archive containing all the available changelogs of software items linked to the system version.
-Each changelog in the archive is named according the software item name and version.
+Each changelog in the archive is named after the software item name and version.
 
 ![Download changelogs for system version](img/download_changelogs.png)
 
@@ -68,7 +68,7 @@ Each changelog in the archive is named according the software item name and vers
 | PDF               | System version | Overview page |
 
 The **Release notes** contain the list of all requirements and the hierarchy of software items (name and version) linked to the system version.
-You can download it from the [Overview page][software-system-overview].
+Download it from the [Overview page][software-system-overview].
 
 ![Download release notes from Overview page](img/download_release_note.png)
 
@@ -78,7 +78,7 @@ You can download it from the [Overview page][software-system-overview].
 |:------------------|:---------------|:--------------|
 | Excel (.xlsx)     | System version | Overview page |
 
-The SOUP report contains information about *Software of Unknown Provenance* (SOUP) and can be downloaded from the [Overview page][software-system-overview].
+The SOUP report contains information about *Software of Unknown Provenance* (SOUP). Download it from the [Overview page][software-system-overview].
 
 ![Download SOUP report from Overview page](img/download_soup_report.png)
 
@@ -86,7 +86,7 @@ The spreadsheet contains two tabs:
 
 - `Info`: document generation metadata, including when it was generated (in `dd/mm/yyyy` format) and who generated it (user name and email address);
 - `SOUP Report`: the list of SOUPs, with the following information:
-  - **Name**: the name of th software item;
+  - **Name**: the name of the software item;
   - **Version**: the version of the software item;
   - **Approved?**: if the software item is approved;
   - **Approver**: who approved the software item;
@@ -105,12 +105,12 @@ The spreadsheet contains two tabs:
 |:---------------------------------|:---------------|:--------------|
 | Zip archive containing PDF files | System version | Overview page |
 
-The **Unit Test report** contains the outcome of the automated test suites linked to the software items of a software system and can be downloaded from the [Overview page][software-system-overview].
-Each report in the archive is named according the software item name and version it refers to.
+The **Unit Test report** contains the outcome of the automated test suites linked to the software items of a software system. Download it from the [Overview page][software-system-overview].
+Each report in the archive is named after the software item name and version it refers to.
 
 ![Download unit test report from Overview page](img/download_unit_test_report.png)
 
-Each report provides a list of test suites with the following information:
+Each report lists the test suites with the following information:
 
 - **Name**: name of the test suite;
 - **Tests**: number of tests executed;
@@ -119,7 +119,7 @@ Each report provides a list of test suites with the following information:
 - **Skipped**: number of tests skipped; 
 - **Time**: how much time the test suite required to finish.
 
-For each test case in the test suite the following information are provided:
+For each test case in the test suite, the report provides:
 
 - **Test Case**: name of the test case;
 - **Class**: description of the test case;
@@ -131,10 +131,10 @@ For each test case in the test suite the following information are provided:
 |:------------------|:---------------|:--------------|
 | Excel (.xlsx)     | System version | Overview page |
 
-The **Vulnerability Report** contain the list of all vulnerabilities for wach software item for specific system version.
-You can download it from the [Overview page][software-system-overview].
+The **Vulnerability Report** lists all vulnerabilities of each software item for a specific system version.
+Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Summary**: The summary of software items and their Open, Exploitable, Unexploitable	Exploitable With Minor Damage
 - **System Vulnerabilities**: The information of all the available vulnerabilities in the specific system version, including:
@@ -182,9 +182,9 @@ The high level architecture image of software items for the specific system vers
 | Docx                   | System version | Overview page |
 
 The **Release notes** contain the list of all requirements and the hierarchy of software items (name and version) linked to the system version.
-You can download it from the [Overview page][software-system-overview].
+Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
 - **Reference Template**: name and revision of the template used;
@@ -210,9 +210,9 @@ The report provides the following information:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Acceptance Test Report** contains the outcome of the acceptance testing activities and can be downloaded from the [Overview page][software-system-overview].
+The **Acceptance Test Report** contains the outcome of the acceptance testing activities. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Reference Template**: name and revision of the template used;
 - **Project Name**: name of the project;
@@ -242,9 +242,9 @@ The report provides the following information:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Verbale di Collaudo** contains the outcome of the acceptance testing activities and can be downloaded from the [Overview page][software-system-overview].
+The **Verbale di Collaudo** contains the outcome of the acceptance testing activities. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information and the template is in italian:
+The template is in Italian. The report contains:
 
 - **Template di riferimento**: name and revision of the template used;
 - **Nome Progetto**: name of the project;
@@ -274,9 +274,9 @@ The report provides the following information and the template is in italian:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Traceability Matrix** contains the traceability information between requirements, tests, risks, software items and change requests and can be downloaded from the [Overview page][software-system-overview].
+The **Traceability Matrix** contains the traceability information between requirements, tests, risks, software items and change requests. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
 - **Reference Template**: name and revision of the template used;
@@ -304,9 +304,9 @@ The report provides the following information:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Change Request Report** contains the list of change requests linked to the system version and can be downloaded from the [Overview page][software-system-overview].
+The **Change Request Report** lists the change requests linked to the system version. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
 - **Reference Template**: name and revision of the template used;
@@ -339,9 +339,9 @@ The report provides the following information:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Software Architecture Description** contains the description of the software architecture and design and can be downloaded from the [Overview page][software-system-overview].
+The **Software Architecture Description** describes the software architecture and design. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
 - **Reference Template**: name and revision of the template used;
@@ -370,9 +370,9 @@ The report provides the following information:
 | Markdown               | System version | Overview page |
 | Docx                   | System version | Overview page |
 
-The **Risk Management Report** contains the risk analysis and management information and can be downloaded from the [Overview page][software-system-overview].
+The **Risk Management Report** contains the risk analysis and management information. Download it from the [Overview page][software-system-overview].
 
-The report provides the following information:
+The report contains:
 
 - **Signatures**: table with Role, Name, and Signature for Author, Reviewer, and Approver;
 - **Reference Template**: name and revision of the template used;

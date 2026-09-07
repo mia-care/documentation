@@ -7,7 +7,7 @@ sidebar_label: Archived (v2.x)
 This page archives the release notes for P4SaMD version 2.x. For the current v3.x release notes, see [Current (v3.x)](./release-notes/v3.0).
 
 :::caution Version 2.x is archived
-P4SaMD v2.x is no longer actively maintained. Version 3 is the current supported release. Select the appropriate version from the version dropdown above to view the v2.x documentation.
+P4SaMD v2.x is no longer actively maintained. Version 3 is the current supported release. Use the version dropdown above to view the v2.x documentation.
 :::
 
 | Version | Release Notes |

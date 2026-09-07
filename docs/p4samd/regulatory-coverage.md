@@ -4,7 +4,7 @@ title: Regulatory Coverage
 sidebar_label: Regulatory Coverage
 ---
 
-P4SaMD assesses medical device software against the regulatory requirements of three markets: the **European Union**, the **United States** and the **United Kingdom**. This page lists what each market covers, so you can confirm the platform matches your target market before you start an assessment.
+P4SaMD assesses medical device software against the regulatory requirements of three markets: the **European Union**, the **United States** and the **United Kingdom**. Check what each market covers before you start an assessment.
 
 ## Supported markets
 
@@ -14,11 +14,11 @@ P4SaMD assesses medical device software against the regulatory requirements of t
 | United States | `US` | FDA, under the Federal Food, Drug, and Cosmetic Act |
 | United Kingdom | `UK` | UKCA, UK MDR 2002 |
 
-You choose one or more of these markets in the Target Definition step of the [Brownfield Import wizard](./handbook/brownfield/import-wizard.mdx). That selection, together with the regulatory framework and the software safety class, determines which requirements are checked.
+Choose one or more of these markets in the Target Definition step of the [Brownfield Import wizard](./handbook/brownfield/import-wizard.mdx). The market, the regulatory framework and the software safety class together determine which requirements are checked.
 
 ## Standards applied in every market
 
-These international standards are assessed whichever market you select, because all three markets rely on them.
+These standards are assessed whichever market you select, because all three markets rely on them.
 
 | Standard | Scope |
 |---|---|
@@ -47,18 +47,18 @@ United States coverage addresses cybersecurity and labeling obligations. It is n
 
 ## United Kingdom
 
-The United Kingdom is available as a target market and is assessed against the international standards listed above. The platform does not currently carry rule content written specifically for UK MDR 2002 or for UKCA conformity assessment. If your submission depends on UK-specific requirements, [contact us][contact-us] so that coverage can be scoped for you.
+The United Kingdom is available as a target market, assessed against the international standards listed above. The platform does not currently carry rule content specific to UK MDR 2002 or UKCA conformity assessment. If your submission depends on UK-specific requirements, [contact us][contact-us] to have coverage scoped.
 
 ## Support for individual EU member states
 
 The European Union is assessed at Union level, against the EU regulations listed above. National implementations of EU law differ between member states, for example in registration routes, language requirements and national annexes. P4SaMD does not assess member-state requirements as delivered.
 
 :::info Available on request
-Coverage for a specific EU member state can be enabled for your organization. It is scoped as part of your engagement with Mia-Care rather than switched on from the settings page, because it requires new regulatory rule content to be authored. [Contact us][contact-us] with the member states you need.
+Coverage for a specific EU member state can be enabled for your organization. It requires new regulatory rule content, so it is scoped as part of your engagement with Mia-Care rather than switched on from the settings page. [Contact us][contact-us] with the member states you need.
 :::
 
 ## Markets outside this list
 
-No market other than the three above is assessed today. If you are placing a device in a market that is not listed on this page, [contact us][contact-us] before you start an assessment, so you know in advance which of your evidence carries over and which does not.
+No market other than the three above is assessed today. If you are placing a device in an unlisted market, [contact us][contact-us] before you start an assessment to find out which of your evidence carries over.
 
 [contact-us]: https://mia-care.io
