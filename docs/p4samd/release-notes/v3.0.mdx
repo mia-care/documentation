@@ -2,12 +2,86 @@
 id: v3.0
 title: Current Release Notes (v3.x)
 sidebar_label: Current (v3.x)
-toc_max_heading_level: 2
+toc_max_heading_level: 3
 ---
 
 import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
 
 Releases are grouped by the month they shipped, newest first.
+
+## September 2026 (v3.5.1)
+
+### P4SaMD v3.5.1, 9 September 2026 (patch)
+
+A patch release that completes the Verification safety alert feature 3.5.0 introduced: alerts are now raised automatically, instead of only being acknowledgeable. It also adds traceability coverage to each unit test report, lifts a limit that hid older test runs, and extends content-based file checking to project imports.
+
+<FeatureGrid>
+
+<FeatureBox icon="🚨" title="Automatic Safety Alerts">
+
+Verification now raises a safety alert on its own when a failed test result or a coverage gap affects a safety-relevant part of your system. Alerts are advisory and never block a report, its review, or its approval.
+
+</FeatureBox>
+
+<FeatureBox icon="📊" title="Coverage On Every Report">
+
+Each unit test report now shows how much of its own test population carries verification traceability, next to the gaps it already listed.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+:::info Safety alerts start appearing after this upgrade
+The safety alert list on a unit test report was always empty until now, because nothing raised alerts. After you upgrade, reports meeting the conditions below will show a safety alert banner. Alerts are advisory, they block nothing, and the upgrade changes no existing report data.
+:::
+
+#### New: safety alerts are raised automatically
+
+An alert is raised for a test case and the software item it verifies when either of these holds:
+
+- the test case has a **Failed** or **Error** result, or
+- the run's line or branch coverage is below the threshold for the software item's safety class: **100%** for Class C, **80%** for Class B, **60%** for Class A.
+
+The conditions are independent, so an item meeting both raises two alerts, and a run with no coverage figures raises no coverage alert. Only software items that are **Class C** or linked to a risk control measure are considered, and one classified as not medical device software never is.
+
+Alerts are re-evaluated automatically when anything they depend on changes, and clear once the condition no longer holds. An acknowledged alert stays visible until then, so acknowledging is a documented decision, not a dismissal. It still requires a written justification and is still recorded in the audit log.
+
+#### New: traceability coverage on each unit test report
+
+A report now shows how many of its active test cases carry a verification traceability link, out of how many, as a percentage, alongside the gap list it already showed. Both come from the same test population, so they always agree.
+
+Do not confuse it with the traceability coverage on the Verification dashboard, as the two can legitimately differ:
+
+- The **per-report** figure counts only verification links, for every report whatever its approval status.
+- The **dashboard** figure counts any link, including one only to a risk or a control measure, across approved reports only.
+
+#### Improved: the full unit test run history is reachable
+
+The run list was capped, so a workspace with a long history could not reach its older runs. It is now paginated, and run rows show the current name and status of the workspace version they belong to.
+
+#### Improved: file checks when importing an existing project
+
+Files attached in the import wizard are now validated by their actual content, not only by their extension and declared type: a file whose contents do not match the format its extension claims is refused, as is one carrying executable content. This extends to imports the check 3.5.0 applied to System Design files. The wizard also checks a file when you pick it rather than on submission, so a refusal is reported straight away.
+
+#### Improved: switching organization from the collapsed sidebar
+
+The organization switcher is now available while the sidebar is collapsed.
+
+#### Fixed
+
+- A test case linked with any traceability relationship now counts as traced in a run's traceability gaps, where previously only one relationship counted. Links to risks and control measures still do not count as verification, so a test case linked only to risks stays in the safety-relevant tier.
+- Editing a control measure no longer resets the relationship type on its linked items. Links are also read in both directions, so one created from the other end is no longer invisible to the control measure it belongs to.
+
+#### For developers
+
+- The safety alert payload on a run summary has changed. It previously carried a severity and a message, and was always empty. It now identifies the triggering test case and software item, that item's safety class and risk control measure link, why and when the alert was raised, and its acknowledgement state. Any integration reading the old severity or message fields needs updating.
+- A unit test report now carries its own traceability coverage counts and percentage, distinct from the project-level figure.
+- A new endpoint validates an import file against the same rules the real upload applies, without a session and without storing anything. The type catalogs also report which extensions are refused outright.
+
+#### Upgrade notes
+
+- **Deploy backend and frontend together.** The safety alert payload is a shared contract between them. An older frontend against this release shows safety alert banners with no message and no severity, which means a safety warning that cannot be read.
+- **Some import file uploads that previously succeeded may now be refused**, because files are checked against their actual content. This may affect an import routine that relied on a file whose extension did not match its contents.
 
 ## August 2026 (v3.4.0 to v3.5.0)
 
