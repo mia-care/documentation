@@ -47,9 +47,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^10.9.1",
     "@babel/eslint-parser": "^8.0.1",
     "@swc/core": "^1.16.2",
+    "eslint": "^10.10.0",
     "eslint-plugin-react": "7.37.5",
     "front-matter": "^4.0.2",
     "git-list-updated": "^1.2.1",
