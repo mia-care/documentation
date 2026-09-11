@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -96,7 +97,7 @@ const v3Features = [
   },
 ];
 
-function SectionCard({ title, icon, href, description }) {
+function SectionCard({title, icon, href, description}) {
   return (
     <Link className={styles.sectionCard} to={href}>
       <span className={styles.sectionCardIcon}>{icon}</span>
@@ -105,8 +106,14 @@ function SectionCard({ title, icon, href, description }) {
     </Link>
   );
 }
+SectionCard.propTypes = {
+  description: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
-function FeatureCard({ icon, tag, title, body, link }) {
+function FeatureCard({icon, tag, title, body, link}) {
   return (
     <Link className={styles.featureCard} to={link}>
       <div className={styles.featureCardHeader}>
@@ -115,13 +122,20 @@ function FeatureCard({ icon, tag, title, body, link }) {
       </div>
       <h4 className={styles.featureTitle}>{title}</h4>
       <p className={styles.featureBody}>{body}</p>
-      <span className={styles.featureLearnMore}>Learn more →</span>
+      <span className={styles.featureLearnMore}>{'Learn more →'}</span>
     </Link>
   );
 }
+FeatureCard.propTypes = {
+  body: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  link: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 function Home() {
-  const { siteConfig = {} } = useDocusaurusContext();
+  const {siteConfig = {}} = useDocusaurusContext();
 
   return (
     <Layout
@@ -133,17 +147,17 @@ function Home() {
         <div className={clsx("container", styles.heroInner)}>
           <div className={styles.heroText}>
             <h1 className={styles.heroTitle}>
-              The Compliance Platform<br />for Medical Device Software
+              {'The Compliance Platform'}<br />{'for Medical Device Software'}
             </h1>
             <p className={styles.heroSubtitle}>
               {siteConfig.tagline}
             </p>
             <div className={styles.heroCtas}>
               <Link className={clsx("button button--primary button--lg", styles.ctaPrimary)} to="/docs/p4samd/overview">
-                Get Started
+                {'Get Started'}
               </Link>
               <Link className={clsx("button button--secondary button--lg", styles.ctaSecondary)} to="/docs/p4samd/release-notes/v3.0">
-                What&apos;s New in v3
+                {"What's New in v3"}
               </Link>
             </div>
           </div>
@@ -154,7 +168,7 @@ function Home() {
         {/* Handbook Sections Grid */}
         <section className={styles.sectionsArea}>
           <div className="container">
-            <h2 className={styles.sectionHeading}>Explore the Handbook</h2>
+            <h2 className={styles.sectionHeading}>{'Explore the Handbook'}</h2>
             <div className={styles.sectionsGrid}>
               {handbookSections.map((props, idx) => (
                 <SectionCard key={idx} {...props} />
@@ -166,9 +180,9 @@ function Home() {
         {/* What's New in v3 */}
         <section className={styles.highlightsArea}>
           <div className="container">
-            <h2 className={styles.sectionHeading}>What&apos;s New in v3</h2>
+            <h2 className={styles.sectionHeading}>{"What's New in v3"}</h2>
             <p className={styles.sectionSubheading}>
-              Version 3 is a complete re-architecture of P4SaMD.
+              {'Version 3 is a complete re-architecture of P4SaMD.'}
             </p>
             <div className={styles.featuresShowcase}>
               {v3Features.map((props, idx) => (
@@ -177,7 +191,7 @@ function Home() {
             </div>
             <div className={styles.highlightsCta}>
               <Link to="/docs/p4samd/overview">
-                Read the full overview →
+                {'Read the full overview →'}
               </Link>
             </div>
           </div>
@@ -188,19 +202,19 @@ function Home() {
           <div className="container">
             <div className={styles.resourcesGrid}>
               <div className={styles.resourceCard}>
-                <h3>📖 FAQ</h3>
-                <p>Common questions about P4SaMD capabilities, compliance, and deployment.</p>
-                <Link to="/docs/p4samd/faq">Read FAQ →</Link>
+                <h3>{'📖 FAQ'}</h3>
+                <p>{'Common questions about P4SaMD capabilities, compliance, and deployment.'}</p>
+                <Link to="/docs/p4samd/faq">{'Read FAQ →'}</Link>
               </div>
               <div className={styles.resourceCard}>
-                <h3>📦 Release Notes</h3>
-                <p>Every version of P4SaMD, including patch-level improvements.</p>
-                <Link to="/docs/p4samd/release-notes/v3.0">View release notes →</Link>
+                <h3>{'📦 Release Notes'}</h3>
+                <p>{'Every version of P4SaMD, including patch-level improvements.'}</p>
+                <Link to="/docs/p4samd/release-notes/v3.0">{'View release notes →'}</Link>
               </div>
               <div className={styles.resourceCard}>
-                <h3>🔒 Security & Roles</h3>
-                <p>User roles, permissions, and the authentication model used in P4SaMD v3.</p>
-                <Link to="/docs/p4samd/security/roles_permissions">View roles →</Link>
+                <h3>{'🔒 Security & Roles'}</h3>
+                <p>{'User roles, permissions, and the authentication model used in P4SaMD v3.'}</p>
+                <Link to="/docs/p4samd/security/roles_permissions">{'View roles →'}</Link>
               </div>
             </div>
           </div>

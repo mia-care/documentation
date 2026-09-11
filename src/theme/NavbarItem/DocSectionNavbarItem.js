@@ -35,6 +35,7 @@
  * active item.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   useActiveDocContext,
   useLayoutDoc,
@@ -84,3 +85,9 @@ export default function DocSectionNavbarItem({
     />
   );
 }
+DocSectionNavbarItem.propTypes = {
+  activeBaseRegex: PropTypes.string,
+  docId: PropTypes.string.isRequired,
+  docsPluginId: PropTypes.string,
+  label: PropTypes.string,
+};

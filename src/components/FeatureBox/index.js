@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
 /**
  * FeatureBox — a simple card for highlighting features in release notes.
  * Props: icon (emoji), title (string), children (content)
  */
-export function FeatureBox({ icon, title, children }) {
+export function FeatureBox({icon, title, children}) {
   return (
     <div className={styles.featureBox}>
       <div className={styles.featureBoxHeader}>
@@ -16,10 +17,18 @@ export function FeatureBox({ icon, title, children }) {
     </div>
   );
 }
+FeatureBox.propTypes = {
+  children: PropTypes.node,
+  icon: PropTypes.node,
+  title: PropTypes.string.isRequired,
+};
 
 /**
  * FeatureGrid — wrapper for a grid of feature boxes
  */
-export function FeatureGrid({ children }) {
+export function FeatureGrid({children}) {
   return <div className={styles.featureGrid}>{children}</div>;
 }
+FeatureGrid.propTypes = {
+  children: PropTypes.node,
+};

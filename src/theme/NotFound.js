@@ -21,7 +21,7 @@ function NotFound() {
             <p>You can:</p>
             <ul>
               <li>Go back to the <a href="/">home page</a></li>
-              <li><a href={getMailLink()} target="_blank" rel="noreferrer">Let us know about the broken link</a></li>
+              <li><a href={getMailLink()} rel="noreferrer" target="_blank">Let us know about the broken link</a></li>
             </ul>
           </div>
         </div>

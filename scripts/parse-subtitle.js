@@ -3,9 +3,9 @@ const fs = require('fs');
 const parseSubtitle = (srt) => {
     const subtitleBlocks = srt.trim().split(/\n\s*\n/);
     const subtitles = subtitleBlocks.map(subtitleBlock => {
-        let [timeString, ...textLines] = subtitleBlock.split("\n");
-        timeString = textLines[0];
-        textLines.shift(); // remove index
+        const [, ...textLines] = subtitleBlock.split("\n"); // first line is the subtitle index, discard it
+        const timeString = textLines[0];
+        textLines.shift(); // remove the time-range line, leaving just the subtitle text lines
         const [startTimeString, endTimeString] = timeString.split(" --> ");
         const text = textLines
             .join("\n")
