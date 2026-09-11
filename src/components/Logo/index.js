@@ -2,8 +2,7 @@ import React from "react";
 import Classes from "./styles.module.css";
 
 
-const renderSvg = function (options) {
-  options = options || {};
+const renderSvg = function () {
   return (
     <div className={Classes.logoBox}>
       <img src="img/logo.png" />

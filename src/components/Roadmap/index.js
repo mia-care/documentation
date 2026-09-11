@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
-export function RoadmapItem({ icon, title, quarter, status = 'planned', beta = false, children }) {
+export function RoadmapItem({icon, title, quarter, status = 'planned', beta = false, children}) {
   const statusLabels = {
     'available': 'Available',
     'in-progress': 'In Development',
@@ -25,7 +26,7 @@ export function RoadmapItem({ icon, title, quarter, status = 'planned', beta = f
               <span className={`${styles.statusBadge} ${styles[`status_${status}`]}`}>
                 {statusLabels[status]}
               </span>
-              {beta && <span className={styles.betaBadge}>Beta</span>}
+              {beta && <span className={styles.betaBadge}>{'Beta'}</span>}
             </div>
           </div>
         </div>
@@ -36,11 +37,22 @@ export function RoadmapItem({ icon, title, quarter, status = 'planned', beta = f
     </div>
   );
 }
+RoadmapItem.propTypes = {
+  beta: PropTypes.bool,
+  children: PropTypes.node,
+  icon: PropTypes.node,
+  quarter: PropTypes.string,
+  status: PropTypes.oneOf(['available', 'in-progress', 'planned', 'soon']),
+  title: PropTypes.string.isRequired,
+};
 
-export function Roadmap({ children }) {
+export function Roadmap({children}) {
   return (
     <div className={styles.roadmap}>
       {children}
     </div>
   );
 }
+Roadmap.propTypes = {
+  children: PropTypes.node,
+};

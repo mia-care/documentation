@@ -3788,6 +3788,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/js@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "@eslint/js@npm:10.0.1"
+  peerDependencies:
+    eslint: ^10.0.0
+  peerDependenciesMeta:
+    eslint:
+      optional: true
+  checksum: 5e60b80ec48d303c9273d5c2803ae3fe12fd5335d57d889d4f9df9249910a97e2921118403765bff26a00b734182437f91a0f6f552654cf12ad73bb49995e22e
+  languageName: node
+  linkType: hard
+
 "@eslint/object-schema@npm:^3.0.5":
   version: 3.0.5
   resolution: "@eslint/object-schema@npm:3.0.5"
@@ -10097,6 +10109,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globals@npm:^17.12.0":
+  version: 17.12.0
+  resolution: "globals@npm:17.12.0"
+  checksum: e93793811268f69ea7b8dc7e45e09de08a06b96b21038c240d185625e313adb15f08a0b5e5bcb8502fa87232f9d6498c0adfd89bbf06c31c37609cf4d612fa27
+  languageName: node
+  linkType: hard
+
 "globalthis@npm:^1.0.3":
   version: 1.0.3
   resolution: "globalthis@npm:1.0.3"
@@ -13709,6 +13728,7 @@ __metadata:
     "@docusaurus/core": 3.10.2
     "@docusaurus/plugin-client-redirects": 3.10.2
     "@docusaurus/preset-classic": 3.10.2
+    "@eslint/js": ^10.0.1
     "@mdx-js/react": ^3.0.0
     "@swc/core": ^1.16.2
     clsx: ^2.1.1
@@ -13718,6 +13738,7 @@ __metadata:
     front-matter: ^4.0.2
     git-list-updated: ^1.2.1
     git-tag: ^0.2.0
+    globals: ^17.12.0
     klaw: ^4.1.0
     medium-zoom: ^1.0.8
     mermaid: ^11.17.2

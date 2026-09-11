@@ -9,6 +9,7 @@ import {desktop} from "../../lib/constants"
 
 const STORAGE_VERSION_BANNER_DISMISS_KEY = 'custom.versionBanner{{majorVersion}}.dismiss'
 
+// eslint-disable-next-line no-unused-vars -- isDesktop drives the currently-commented-out tuna-logo image block below
 const BannerContent = ({isDesktop, title, subtitle}) => {
   return (
     <>

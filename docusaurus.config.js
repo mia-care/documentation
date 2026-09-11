@@ -1,4 +1,5 @@
 const createRedirects = require("./createRedirects");
+// eslint-disable-next-line no-unused-vars -- kept for the currently-commented-out editUrl option below
 const createEditUrl = require("./createEditUrl");
 
 /** @type {import('@docusaurus/types').Config} */

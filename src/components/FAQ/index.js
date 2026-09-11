@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, {useState, useMemo} from "react";
+import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
 const FAQ_DATA = [
@@ -73,13 +74,13 @@ const FAQ_DATA = [
   },
 ];
 
-function AccordionItem({ q, a, isOpen, onToggle }) {
+function AccordionItem({q, a, isOpen, onToggle}) {
   return (
     <div className={`${styles.item} ${isOpen ? styles.itemOpen : ""}`}>
       <button
+        aria-expanded={isOpen}
         className={styles.question}
         onClick={onToggle}
-        aria-expanded={isOpen}
       >
         <span>{q}</span>
         <span className={styles.chevron}>{isOpen ? "▲" : "▼"}</span>
@@ -92,6 +93,12 @@ function AccordionItem({ q, a, isOpen, onToggle }) {
     </div>
   );
 }
+AccordionItem.propTypes = {
+  a: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  q: PropTypes.string.isRequired,
+};
 
 export default function FAQ() {
   const [search, setSearch] = useState("");
@@ -112,7 +119,7 @@ export default function FAQ() {
 
   function toggleItem(catIdx, itemIdx) {
     const key = `${catIdx}-${itemIdx}`;
-    setOpenItems((prev) => ({ ...prev, [key]: !prev[key] }));
+    setOpenItems((prev) => ({...prev, [key]: !prev[key]}));
   }
 
   function isOpen(catIdx, itemIdx) {
@@ -125,22 +132,22 @@ export default function FAQ() {
     <div className={styles.faqWrapper}>
       {/* Search bar */}
       <div className={styles.searchWrapper}>
-        <span className={styles.searchIcon}>🔍</span>
+        <span className={styles.searchIcon}>{'🔍'}</span>
         <input
-          className={styles.searchInput}
-          type="text"
-          placeholder="Search questions…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
           aria-label="Search FAQ"
+          className={styles.searchInput}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search questions…"
+          type="text"
+          value={search}
         />
         {search && (
           <button
+            aria-label="Clear search"
             className={styles.clearBtn}
             onClick={() => setSearch("")}
-            aria-label="Clear search"
           >
-            ✕
+            {'✕'}
           </button>
         )}
       </div>
@@ -148,23 +155,23 @@ export default function FAQ() {
       {/* Result count when searching */}
       {search && (
         <p className={styles.resultCount}>
-          {totalResults === 0
-            ? "No matching questions found."
-            : `${totalResults} question${totalResults !== 1 ? "s" : ""} found`}
+          {totalResults === 0 ?
+            "No matching questions found." :
+            `${totalResults} question${totalResults !== 1 ? "s" : ""} found`}
         </p>
       )}
 
       {/* Categories */}
       {filtered.map((cat, catIdx) => (
-        <div key={catIdx} className={styles.category}>
+        <div className={styles.category} key={catIdx}>
           <h3 className={styles.categoryTitle}>{cat.category}</h3>
           {cat.items.map((item, itemIdx) => (
             <AccordionItem
-              key={itemIdx}
-              q={item.q}
               a={item.a}
               isOpen={isOpen(catIdx, itemIdx)}
+              key={itemIdx}
               onToggle={() => toggleItem(catIdx, itemIdx)}
+              q={item.q}
             />
           ))}
         </div>
