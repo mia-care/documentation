@@ -1,0 +1,195 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.wrapper {
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ─── Area row ───────────────────────────────────────────────── */
+.areaRow {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-card-background-color);
+  transition: border-color 0.15s;
+}
+
+.areaRowOpen {
+  border-color: var(--ifm-color-primary-light);
+}
+
+.areaHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.areaHeader:hover {
+  background: var(--ifm-background-surface-color);
+}
+
+.areaIconWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  color: var(--ifm-color-content-secondary);
+}
+
+[data-theme='dark'] .areaIconWrap {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ifm-color-content-secondary);
+}
+
+.areaIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.areaName {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--ifm-heading-color);
+  flex-shrink: 0;
+  margin-right: 0.25rem;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  display: flex;
+  color: var(--ifm-color-content-secondary);
+  transition: transform 0.15s ease;
+  margin-left: 0.25rem;
+}
+
+.areaRowOpen .chevron {
+  transform: rotate(180deg);
+}
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.badgeIcon {
+  flex-shrink: 0;
+}
+
+.badgeCount {
+  font-weight: 700;
+}
+
+.badgeNewFeature {
+  background: rgb(247, 239, 255);
+  color: rgb(113, 51, 205);
+}
+
+.badgeImprovement {
+  background: rgb(235, 255, 249);
+  color: rgb(33, 118, 121);
+}
+
+.badgeBugFix {
+  background: rgb(255, 242, 242);
+  color: rgb(229, 0, 32);
+}
+
+[data-theme='dark'] .badgeNewFeature {
+  background: rgba(113, 51, 205, 0.22);
+  color: rgb(206, 168, 255);
+}
+
+[data-theme='dark'] .badgeImprovement {
+  background: rgba(33, 118, 121, 0.25);
+  color: rgb(120, 224, 219);
+}
+
+[data-theme='dark'] .badgeBugFix {
+  background: rgba(229, 0, 32, 0.2);
+  color: rgb(255, 143, 143);
+}
+
+/* ─── Body / grouped lists ───────────────────────────────────── */
+.areaBody {
+  padding: 0.25rem 1rem 1rem 3.55rem;
+  border-top: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-background-surface-color);
+}
+
+.group {
+  margin-top: 0.9rem;
+}
+
+.groupHeading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-content-secondary);
+  margin: 0 0 0.4rem;
+}
+
+.groupList {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.groupList li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0.35rem;
+}
+
+.groupList li:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Small screens ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .areaHeader {
+    flex-wrap: wrap;
+  }
+
+  .badgeRow {
+    justify-content: flex-start;
+    order: 3;
+    width: 100%;
+    padding-left: 2.75rem;
+  }
+
+  .areaBody {
+    padding-left: 1.25rem;
+  }
+}
