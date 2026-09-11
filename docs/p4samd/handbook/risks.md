@@ -34,7 +34,7 @@ P4SaMD automatically computes the **initial risk level** based on the severity Ã
 | **Acceptable** | Risk is within acceptable limits |
 
 :::note Terminology update in v3.5.0
-This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** are now **Tolerable**, including Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#regulatory-risk-matrix-realigned-to-iso-14971-option-a) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
+This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** are now **Tolerable**, including Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#p4samd-v350-26-august-2026) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
 :::
 
 ## Risk Lifecycle
