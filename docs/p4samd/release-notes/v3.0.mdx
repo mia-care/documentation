@@ -9,7 +9,20 @@ import { FeatureBox, FeatureGrid } from '@site/src/components/FeatureBox';
 
 Releases are grouped by the month they shipped, newest first.
 
-## September 2026 (v3.5.1)
+## September 2026 (v3.5.1 to v3.5.2)
+
+### P4SaMD v3.5.2, 11 September 2026 (patch)
+
+A frontend-only patch release with two interface fixes, in System Design and in Risk Management. No new features.
+
+#### Fixed
+
+- **System Design:** Adding a child item under a Software Item is no longer blocked by the parent item's own type. You can now add a child under a SOUP, a Software Unit, or an item not marked as a medical device, as long as you have write access to the project.
+- **Risks:** A control measure's linked-item badges no longer stretch the card on the Controls tab when a measure has many links. Badges beyond the first three now collapse into a "+N" indicator; hover it to see the rest in a scrollable list. The same fix applies to the "Control measure applied" summary shown on a risk's Evaluation tab, where the overflow list previously had no size limit of its own.
+
+#### Upgrade notes
+
+- This release only changes the frontend. The backend requirement stays at v0.10.1 or later, unchanged from v3.5.1.
 
 ### P4SaMD v3.5.1, 9 September 2026 (patch)
 
