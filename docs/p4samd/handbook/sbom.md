@@ -37,7 +37,34 @@ Once a scan completes, the SBOM tab shows the **status** (not generated / genera
 - Use the **version selector** to switch between SBOMs generated for different versions or refs of the same software item, and compare a component's dependency footprint at an earlier point.
 - Open a **diff** between two scans of the same version to see which components were added, removed, or changed.
 
-For each component you can review its identity (name, version) and set a per-version **status** and **notes**, for example to record that a flagged component has been reviewed and accepted. The status is scoped to the P4SaMD version you're working in, so the same component is tracked independently across releases of your product.
+For each component you can review its identity (name, version, and **manufacturer**) and set a per-version **status** and **notes**, for example to record that a flagged component has been reviewed and accepted. The status is scoped to the P4SaMD version you're working in, so the same component is tracked independently across releases of your product.
+
+A component whose version does not identify an exact release (for example, a version range instead of a pinned version) is marked with an **unpinned version** badge. Two filters let you isolate unpinned components in the component table, so you can find and pin them down before a release.
+
+## Reconciliation
+
+The **Reconciliation** view, alongside the SBOM tab on a software item's detail page, compares that item's declared SOUP components against its most recent SBOM scan and classifies each one as:
+
+- **Matched**: the design and the scan agree.
+- **Version mismatch**: the design and the scan disagree on version.
+- **Manufacturer mismatch**: the design and the scan disagree on manufacturer. This is flagged independently of a version mismatch, so a component can show both at once.
+- **Matched but not comparable**: the component is present on both sides but P4SaMD cannot compare one of its fields.
+- **Design only**: the component appears in the design but not in the latest scan.
+- **Scan only**: the component appears in the latest scan but not in the design.
+
+Resolve each mismatch with one of the following actions:
+
+- **Accept the scanned value**, replacing the designed one.
+- **Fill in a missing value**, when the design is incomplete.
+- **Mark as approved as designed**, keeping the designed value over the scanned one.
+- **Match or unlink** the scanned component against a design item.
+- **Create a draft entry** from the scanned component.
+- **Remove** the component from the design.
+- **Ignore** the mismatch with a written justification.
+
+Select multiple rows to resolve them together. A **bulk action** shows a preview of exactly what it will change before you confirm it. Once a mismatch is resolved, it is excluded from the outstanding count until the underlying scan changes again.
+
+A badge on the Software Items list flags any item with reconciliation outstanding, so you can find items that need review without opening each one.
 
 ## Project-wide view
 
@@ -55,7 +82,10 @@ If a software item can't be scanned automatically (no resolvable git reference),
 
 ## Exporting
 
-You can export an SBOM in standard CycloneDX format at any time, either for a single software item's scan or as a project-wide aggregate. Use it in your own compliance records, or share it with auditors and customers.
+You can export an SBOM at any time, either for a single software item's scan or as a project-wide aggregate. The export menu separates the two kinds of output:
+
+- **Regulatory SBOM formats** (such as CycloneDX): the standard, machine-readable artifact for your compliance records, auditors, and customers.
+- **CSV**: a human-readable summary of the component table. This is not the regulatory SBOM artefact and should not be submitted as one.
 
 ## Troubleshooting
 

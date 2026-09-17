@@ -10,7 +10,89 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## September 2026 (v3.5.1 to v3.5.2)
+## September 2026 (v3.5.1 to v3.6.0)
+
+### P4SaMD v3.6.0, 17 September 2026
+
+Version 3.6 adds a Reconciliation view that compares your System Design against the latest SBOM scan, component by component, and lets you resolve any mismatch directly from the platform. Unit test reports gain free-text tags and a two-step download (raw or traceability-enriched, as PDF, CSV, or JUnit XML). Git connection errors on a linked repository now explain what went wrong instead of showing a generic failure, and target market regions are limited to the platform's current assessed scope.
+
+<FeatureGrid>
+
+<FeatureBox icon="🔍" title="SBOM Reconciliation">
+
+A new Reconciliation view under System Design compares each software item's declared SOUP (Software of Unknown Provenance) components against its latest SBOM scan, and lets a reviewer resolve every mismatch: accept the scanned value, fill in a missing one, mark it approved as designed, match or unlink an item, create a draft entry, remove it from the design, or ignore it with a justification. A badge on the Software Items list flags any item with reconciliation outstanding.
+
+</FeatureBox>
+
+<FeatureBox icon="📄" title="Report Tagging and Two-Format Downloads">
+
+Unit test reports can now carry your own free-text tags, and the report list and test case list can be filtered by them. Downloading a report is now a two-step choice: Raw (the file as uploaded) or Traced (enriched with traceability information), each available as PDF, CSV, or JUnit XML.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "SBOM",
+    newFeatures: [
+      "A Reconciliation view compares each software item's declared SOUP components against its most recent SBOM scan and classifies every component as matched, a version mismatch, matched but not comparable, present only in the design, or present only in the scan. Resolve a mismatch by accepting the scanned value, auto-filling a missing one, marking it approved as designed, matching or unlinking it against a design item, creating a new draft item from it, removing it from the design, or ignoring it with a written justification. A bulk action previews exactly what it will change before you confirm it, and every resolved item is excluded from the outstanding count until the underlying scan changes again.",
+      "SBOM components now carry a manufacturer, shown as its own column in the SBOM tables and compared during reconciliation. A manufacturer mismatch is flagged independently of a version mismatch, so a component can show both at once.",
+      "SBOM component versions that do not identify an exact release (for example, a version range) are now flagged with a badge in the SBOM component tables and detail views, with two filters to isolate them.",
+    ],
+    improvements: [
+      "The SBOM export menu now separates the regulatory SBOM formats from the CSV export, which is labelled as a human-readable summary and not the regulatory SBOM artefact.",
+    ],
+  },
+  {
+    name: "System Design",
+    improvements: [
+      "When a linked Git repository cannot be reached, the interface now names the specific reason: an invalid or expired credential, the repository not being found, the repository being unreachable, the branch not existing, or an unsupported URL. Where updating the access token would fix it, an \"Update token\" action is offered directly on the item, including to read-only viewers so they can see why data is missing even though they cannot act on it.",
+      "A repository URL entered as `git@host:org/repo` or with an `ssh://` prefix is now rejected immediately, with a clear message, instead of being accepted and failing later.",
+      "The System Design views are now presented as tabs at the top of the page, matching Requirements and Verification, instead of as separate sidebar entries. Existing links to a specific view keep working.",
+    ],
+    bugFixes: [
+      "A long software item name in the Software Items table or on the item's own hierarchy no longer stretches its column; it is now truncated with a tooltip showing the full name.",
+    ],
+  },
+  {
+    name: "Verification",
+    newFeatures: [
+      "Unit test reports can now carry free-text tags. Add or remove them from the run detail page, and use them to filter both the report list and the test case list.",
+      "Downloading a report is now a two-step choice: Raw (the file exactly as uploaded) or Traced (enriched with linked items, approver, and approval date), each available as PDF, CSV, or JUnit XML. Downloading a report now requires a project role above Viewer.",
+    ],
+    improvements: [
+      "The \"By Report\" dashboard now shows total reports, reports uploaded this month, draft and approved report counts, reports awaiting your approval, and overall traceability coverage.",
+      "The run detail page layout has been reorganized: actions, upload details, and the approval record are grouped together at the top, tags are edited from a compact popover instead of an always-open field, and a new gauge shows the run's traceability coverage alongside the pass-rate breakdown.",
+    ],
+    bugFixes: [
+      "A run's Passed, Failed, and Skipped percentages no longer occasionally add up to more than 100%.",
+      "Editing a report's tags no longer clears the \"Assigned to\" value shown on the run detail page.",
+    ],
+  },
+  {
+    name: "Risk Management",
+    bugFixes: [
+      "A control measure with many linked items no longer stretches its card on the Controls tab; items beyond the first few now collapse into a \"+N\" indicator you can open for the full list. The same fix applies to the summary shown on a risk's Evaluation tab.",
+    ],
+  },
+  {
+    name: "Product Configuration",
+    improvements: [
+      "Target market region selection is limited to the platform's current assessed regulatory scope: EU, US, and UK. The \"International\" option and other regions are no longer offered when creating a product or setting a project's regulatory framework.",
+    ],
+  },
+  {
+    name: "Organization & Members",
+    improvements: [
+      "The top navigation bar now shows your initials in place of a generic icon, with your full name available on hover.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- **Deploy backend and frontend together.** The reconciliation view, the specific Git failure messages, and the two-step report download all rely on responses this release's backend introduces; against an older backend they are unavailable or show a generic error, and a lapsed Git credential renders as a plain "not reachable" message instead of naming the credential as the cause.
 
 ### P4SaMD v3.5.2, 11 September 2026 (patch)
 
