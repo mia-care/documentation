@@ -54,8 +54,8 @@ In chat, users can **override the model per message** by choosing from the avail
 Once an **Evaluation** LLM Profile is configured, P4SaMD evaluates requirements automatically, with no manual action needed. A background AI compliance evaluation runs whenever you:
 
 - **Create a new requirement.**
-- **Edit a requirement's content** — title, description, acceptance criteria, type, level, priority, or labels. Changes to status, assignee, or other metadata-only edits do not trigger a new evaluation.
-- **Import requirements in bulk** — each imported requirement is evaluated individually.
+- **Edit a requirement's content**: title, description, acceptance criteria, type, level, priority, or labels. Changes to status, assignee, or other metadata-only edits do not trigger a new evaluation.
+- **Import requirements in bulk**: each imported requirement is evaluated individually.
 
 Whisper's compliance suggestions for a document are kept up to date the same way: a few seconds after any of the changes above, P4SaMD automatically refreshes Whisper's findings for that version, so you don't need to manually ask Whisper to re-check it.
 
@@ -67,21 +67,21 @@ Every automatic evaluation above is an LLM request billed to your configured Eva
 
 ### Stopping automatic evaluation
 
-The **AI features** toggle (see [Enabling AI Features](#enabling-ai-features)) only hides the AI configuration screens and the Whisper assistant from your team — it does **not** stop background evaluation. As long as an **Evaluation** LLM Profile is configured, requirement create/edit/import events keep triggering evaluation calls to your LLM provider even after the toggle is switched off.
+The **AI features** toggle (see [Enabling AI Features](#enabling-ai-features)) only hides the AI configuration screens and the Whisper assistant from your team; it does **not** stop background evaluation. As long as an **Evaluation** LLM Profile is configured, requirement create/edit/import events keep triggering evaluation calls to your LLM provider even after the toggle is switched off.
 
-To fully stop automatic evaluation calls, **remove the Evaluation LLM Profile's credentials** on the **LLM Profiles** settings page — don't rely on the AI features toggle alone.
+To fully stop automatic evaluation calls, **remove the Evaluation LLM Profile's credentials** on the **LLM Profiles** settings page. Don't rely on the AI features toggle alone.
 
 ## Cost management
 
 :::danger P4SaMD does not enforce spend limits
-P4SaMD does not cap, rate-limit, or monitor how much you spend with your LLM provider. Every automatic evaluation described above, and every Whisper chat message, is a request billed directly to the provider account configured in your LLM Profile. On an active project with frequent requirement edits, automatic evaluation alone can generate a large number of LLM requests. **Cost enforcement is on our roadmap but not yet available** — until then, protect yourself using your provider's own controls.
+P4SaMD does not cap, rate-limit, or monitor how much you spend with your LLM provider. Every automatic evaluation described above, and every Whisper chat message, is a request billed directly to the provider account configured in your LLM Profile. On an active project with frequent requirement edits, automatic evaluation alone can generate a large number of LLM requests. **Cost enforcement is on our roadmap but not yet available.** Until then, protect yourself using your provider's own controls.
 :::
 
 We strongly recommend configuring **spend limits or budget alerts directly with your LLM provider** (for example, OpenAI usage limits, Anthropic workspace spend limits, Azure OpenAI quotas, or Google Vertex AI budget alerts) before enabling AI features on a production organization.
 
 ### Recommended models
 
-For the **Evaluation** workload, we recommend a **low-cost, fast model** — such as **Claude Haiku 4.5** or an equivalent lightweight tier from another provider. In our internal testing, larger and more expensive models did not produce significantly better results when applying compliance policies, so the cost/quality trade-off generally favors the smaller model for this workload.
+For the **Evaluation** workload, we recommend a **low-cost, fast model**, such as **Claude Haiku 4.5** or an equivalent lightweight tier from another provider. In our internal testing, larger and more expensive models did not produce significantly better results when applying compliance policies, so the cost/quality trade-off generally favors the smaller model for this workload.
 
 Contact us for more detailed guidance on which models we recommend and how they perform for your use case.
 
