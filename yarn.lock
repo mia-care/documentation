@@ -336,9 +336,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "@babel/eslint-parser@npm:8.0.5"
+"@babel/eslint-parser@npm:^8.0.6":
+  version: 8.0.6
+  resolution: "@babel/eslint-parser@npm:8.0.6"
   dependencies:
     eslint-scope: ^9.1.0
     eslint-visitor-keys: ^5.0.0
@@ -346,7 +346,7 @@ __metadata:
   peerDependencies:
     "@babel/core": ^8.0.0
     eslint: ^9.0.0 || ^10.0.0
-  checksum: 226ef8ee574581d57f3d6157beb10e462bd73dd99db98763b8f70a4d4e0ff361e7ca3f59949204bbd740368816774a37ab2fbe8c2787db9ad4d4e998d193bf3f
+  checksum: 70c4de295eca1dc1450c0d56ec3c25631997b8b0be947b43965dbeedd5299a8bb1c3de58b120f37aa02a7d603041c1b0fcbd8e461537bd7db5d869c963dd8aff
   languageName: node
   linkType: hard
 
@@ -9268,9 +9268,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.10.0":
-  version: 10.10.0
-  resolution: "eslint@npm:10.10.0"
+"eslint@npm:^10.11.0":
+  version: 10.11.0
+  resolution: "eslint@npm:10.11.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.8.0
     "@eslint-community/regexpp": ^4.12.2
@@ -9309,7 +9309,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 37b2faadefc36876599d1b5c4f817513eb458079ba8bf56ba6a4b7847a7138ca23613997ccf94398d8fa3f53e38f3cac6a9f9f8a032f1070a66b1a51952bddda
+  checksum: 4836916ccd27397c16f464658ba293797abee7967cae6bdff0134381897766d00489751b6be2c3a95e21d8f18e4ff154b5b99f0e233bdc2f7f882676313ec0cb
   languageName: node
   linkType: hard
 
@@ -10843,11 +10843,11 @@ __metadata:
   linkType: hard
 
 "image-size@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "image-size@npm:2.0.2"
+  version: 2.0.4
+  resolution: "image-size@npm:2.0.4"
   bin:
     image-size: bin/image-size.js
-  checksum: 33c3fafdd8af6bb2727bca51c4bae6e6dac16e9715337a6685a1af29fcbf7a2f9ec75eeaaa61e82d20f74d6f1fa748110936e32b1dbea4521217133eb159a29d
+  checksum: 172f6b6cca0937d2d70034366655c5af457dcdef62339e504f4030ed70f3992c53c001b6613dbf13f2938f698868dabfc634c77dd551ee7c329b69828d6fc6ef
   languageName: node
   linkType: hard
 
@@ -13778,7 +13778,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "p4samd-handbook@workspace:."
   dependencies:
-    "@babel/eslint-parser": ^8.0.5
+    "@babel/eslint-parser": ^8.0.6
     "@docusaurus/core": 3.10.2
     "@docusaurus/plugin-client-redirects": 3.10.2
     "@docusaurus/preset-classic": 3.10.2
@@ -13787,7 +13787,7 @@ __metadata:
     "@swc/core": ^1.16.2
     clsx: ^2.1.1
     cspell: ^10.3.3
-    eslint: ^10.10.0
+    eslint: ^10.11.0
     eslint-plugin-react: 7.37.5
     front-matter: ^4.0.2
     git-list-updated: ^1.2.1
