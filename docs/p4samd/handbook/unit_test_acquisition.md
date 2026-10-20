@@ -49,17 +49,17 @@ Each row shows the item's current status, its last attempt and outcome, and when
 
 ## When a source stops pulling automatically
 
-A source is automatically disabled after too many consecutive failed attempts, so a broken credential or a renamed CI job doesn't keep failing silently. The row shows why the last attempt failed — Repository unreachable, Credential rejected, Report invalid, No report found, or Internal error — so you know what to fix. Once it's fixed, **re-enable** the source from Repository health to resume pulling.
+A source is automatically disabled after too many consecutive failed attempts, so a broken credential or a renamed CI job doesn't keep failing silently. The row shows why the last attempt failed (Repository unreachable, Credential rejected, Report invalid, No report found, or Internal error), so you know what to fix. Once it's fixed, **re-enable** the source from Repository health to resume pulling.
 
 ## How an acquired report is attributed
 
-A report pulled in automatically shows **"Acquired automatically on \{date\}"** on its run detail page, instead of the usual **"Uploaded on \{date\} by \{name\}"** — there is no person to attribute it to.
+A report pulled in automatically shows **"Acquired automatically on \{date\}"** on its run detail page, instead of the usual **"Uploaded on \{date\} by \{name\}"**, because there is no person to attribute it to.
 
 ## Reviewing what changed since the last run
 
 When a run is ingested for a software item that already has a previous run in the same workspace version, its detail page compares the two and flags what changed:
 
 - **Removed**: a test case present in the previous run but missing from this one is listed in a banner and must be **acknowledged**, one by one, before the run can be approved or submitted for approval.
-- **Rename / move candidates**: a test case that looks like it may have been renamed or moved rather than deleted and re-added can be **confirmed** — carrying its identifier, traceability links, and approval state forward — or **rejected**, in which case it's treated as two independent test cases (one removed, one added).
+- **Rename / move candidates**: a test case that looks like it may have been renamed or moved rather than deleted and re-added can be **confirmed**, carrying its identifier, traceability links, and approval state forward, or **rejected**, in which case it's treated as two independent test cases (one removed, one added).
 
 A test case that's genuinely new is simply marked **New** in the test list; it needs a traceability link like any other test case, but doesn't require a separate review step here.
