@@ -9,6 +9,23 @@ const BADGE_CONFIG = [
   {key: 'bugFixes', label: 'Bug fix', heading: 'Bug fixes', className: styles.badgeBugFix, Icon: BadgeIcons.bugFix},
 ];
 
+// Items are passed as plain JS strings, which MDX does not parse, so the
+// inline markdown they use (**bold** and `code`) is rendered here.
+const INLINE_MARKDOWN = /(\*\*[^*]+\*\*|`[^`]+`)/g;
+
+function renderInline(item) {
+  if (typeof item !== 'string') return item;
+  return item.split(INLINE_MARKDOWN).map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
+      return <code key={i}>{part.slice(1, -1)}</code>;
+    }
+    return part;
+  });
+}
+
 function Badge({count, label, className, Icon}) {
   if (!count) return null;
   return (
@@ -71,7 +88,7 @@ function AreaRow({area}) {
               <h5 className={styles.groupHeading}>{g.heading}</h5>
               <ul className={styles.groupList}>
                 {g.items.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i}>{renderInline(item)}</li>
                 ))}
               </ul>
             </div>
