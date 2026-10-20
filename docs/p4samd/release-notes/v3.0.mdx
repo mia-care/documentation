@@ -53,7 +53,7 @@ Ten new US-oriented frameworks are available for Brownfield gap analysis, coveri
     ],
     improvements: [
       "The All Tests table's Item, Type, Status, Runs, and Last result columns are now sortable.",
-      "Deleting a software item that still has linked test cases now tells you how many will be unlinked — never deleted — before you confirm.",
+      "Deleting a software item that still has linked test cases now tells you how many will be unlinked (not deleted) before you confirm.",
     ],
     bugFixes: [
       "Deprecating a test case, and the Approve / Submit for approval / Reverse approval actions on the test case detail page, now work correctly; they previously failed with an error.",
@@ -63,7 +63,7 @@ Ten new US-oriented frameworks are available for Brownfield gap analysis, coveri
   {
     name: "Documentation Hub",
     newFeatures: [
-      "A new **Documentation Hub** page catalogs every exportable artifact across seven sections — Requirements, Software Design, Software Development, Verification, Risk Analysis, Traceability, and Product — each showing how many records it holds for the active version. It is visible to every project member, including Viewers, though a Viewer's download controls are disabled with an explanation; the same applies to anyone without read access to a given section.",
+      "A new **Documentation Hub** page catalogs every exportable artifact across seven sections (Requirements, Software Design, Software Development, Verification, Risk Analysis, Traceability, and Product), each showing how many records it holds for the active version. It is visible to every project member, including Viewers, though a Viewer's download controls are disabled with an explanation; the same applies to anyone without read access to a given section.",
       "A **Download History** view lists every download made from the Hub (and from a report or SBOM's own page), searchable and filterable by section, user, and date, with a one-click re-download of the exact same file.",
     ],
   },
@@ -76,7 +76,7 @@ Ten new US-oriented frameworks are available for Brownfield gap analysis, coveri
     ],
     improvements: [
       "The completeness check for mandatory compliance fields now distinguishes a field that is still empty from one that is filled in but does not qualify, and explains why in the latter case. Changing an item's safety class away from Class B or C now warns you before it clears that item's performance and interface requirements.",
-      "SBOM reconciliation handles a component observed at more than one version in the same scan by showing all of them, instead of silently picking one. A bulk resolution that includes one invalid row no longer fails the whole batch — that row is reported and left out, and the rest is still applied.",
+      "SBOM reconciliation handles a component observed at more than one version in the same scan by showing all of them, instead of silently picking one. A bulk resolution that includes one invalid row no longer fails the whole batch: that row is reported and left out, and the rest is still applied.",
     ],
     bugFixes: [
       "Removing a software item's last tag works again, and tags are now matched without regard to case, so the same tag is not added twice under different capitalization.",
