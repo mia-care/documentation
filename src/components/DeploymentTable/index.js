@@ -14,7 +14,7 @@ function CellValue({value, highlight}) {
   if (value === 'plan')
     return <span className={styles.cellPlan} title="Depends on plan">{'Plan'}</span>;
   if (value === null || value === undefined)
-    return <span className={styles.cellNa}>{'—'}</span>;
+    return <span className={styles.cellNa}>{'N/A'}</span>;
   return <span className={clsx(styles.cellText, highlight && styles.cellHighlight)}>{value}</span>;
 }
 CellValue.propTypes = {

@@ -37,7 +37,7 @@ The **Verification** card's test list defaults to unit-level tests; switching te
 
 ## Download History
 
-Every download from the Hub — and every report or SBOM downloaded from its own page elsewhere in the product — is recorded. Open **Download History** from the Hub to see:
+Every download from the Hub is recorded, as is every report or SBOM downloaded from its own page elsewhere in the product. Open **Download History** from the Hub to see:
 
 - Document name, format, date, who downloaded it, and its size.
 - Filters to search by document, user, or version, and to narrow by section, downloaded-by, or download date.
