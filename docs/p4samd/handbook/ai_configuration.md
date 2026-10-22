@@ -67,9 +67,9 @@ Every automatic evaluation above is an LLM request billed to your configured Eva
 
 ### Stopping automatic evaluation
 
-The **AI features** toggle (see [Enabling AI Features](#enabling-ai-features)) only hides the AI configuration screens and the Whisper assistant from your team; it does **not** stop background evaluation. As long as an **Evaluation** LLM Profile is configured, requirement create/edit/import events keep triggering evaluation calls to your LLM provider even after the toggle is switched off.
+Switch off the **AI features** toggle (see [Enabling AI Features](#enabling-ai-features)) to stop automatic evaluation. While the toggle is off, creating, editing, or importing requirements does not send any request to your LLM provider, and Whisper's findings are no longer refreshed. Your LLM Profiles are kept, so turning the toggle back on resumes automatic evaluation from the next requirement change.
 
-To fully stop automatic evaluation calls, **remove the Evaluation LLM Profile's credentials** on the **LLM Profiles** settings page. Don't rely on the AI features toggle alone.
+Requirements changed while the toggle was off are not evaluated retroactively. They are evaluated the next time their content is edited.
 
 ## Cost management
 
