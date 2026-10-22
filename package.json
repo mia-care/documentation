@@ -32,7 +32,7 @@
     "mermaid": "^12.2.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.1"
   },
   "browserslist": {
     "production": [
