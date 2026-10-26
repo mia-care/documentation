@@ -53,7 +53,7 @@ The most significant changes:
 | **Deployment** | Embedded in Console (shared infrastructure) | Standalone platform with dedicated UI |
 | **Authentication** | Single Sign-On with Console | Federated OIDC authentication, independent identity provider |
 | **Tenancy** | Single-tenant per instance | Multi-tenant: one installation serves multiple organizations |
-| **Work-Item Management** | Required external ALM (Jira mandatory) | Native work-item management built in; external ALMs are optional |
+| **Work-Item Management** | Required external ALM (Jira mandatory) | Native work-item management built in; an external ALM is optional and used for planning |
 | **Project Scope** | One project per instance | Multiple projects per organization |
 | **Self-Service** | Mia-Care configures on your behalf | Organizations configure themselves through the admin portal |
 
@@ -71,7 +71,7 @@ All three deployment models provide the same feature set.
 
 - **Git providers**: GitHub, GitLab (for source control and automated evidence collection)
 - **CI/CD**: Jenkins, GitHub Actions, GitLab CI (for automated test result ingestion)
-- **ALM tools**: Jira and others (optional bidirectional sync, no longer mandatory)
+- **ALM tools**: Jira and others, no longer mandatory. Keep backlog and sprints in your ALM and SDLC governance in P4SaMD; P4SaMD does not ship a built-in ALM connector. See [Working with P4SaMD and Your ALM Tool](./ways-of-working/alm-tools.mdx)
 - **eQMS systems**: connect to your quality management system for document access
 
 ## Next Steps

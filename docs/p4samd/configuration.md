@@ -4,30 +4,20 @@ title: Configuration
 sidebar_label: Configuration
 ---
 
-After installation, **Mia-Care qualified personnel** configure Mia-Care P4SaMD to match the customer’s requirements.
+After installation, an organization configures P4SaMD itself through the web application. No Mia-Care intervention is required, although Mia-Care qualified personnel can assist on request, for example during an on-premise rollout.
 
 ### **Configuration Activities**
 
-1. **JIRA Integration (Mandatory)**: Required to synchronize data between JIRA and Mia-Care P4SaMD. This includes:
-    - **Mapping JIRA Issue Fields:** Aligning the JIRA issue fields with the P4SaMD data model.
-    - **Setup of JIRA Webhooks:** Configuring webhooks on JIRA projects so relevant data reaches P4SaMD in real time.
-    - **Setup Jira Project Link (Optional):** Linking the JIRA project URL within P4SaMD for direct navigation between the two systems.
+1. **Organization settings**: an organization Admin opens **Settings** to review the subscription plan and to invite members with the right role. See [Organizations](./handbook/organizations.mdx) and [Roles and Permissions](./security/roles_permissions.md).
 
-2. **Console extension with Single Sign-On**: P4SaMD runs as a [Console extension with SSO][console-extension-sso], using the Mia-Platform Console authentication and authorization flow. This avoids additional logins and keeps security policies in the Console. For Console roles and permissions, see the [official documentation][console-roles-permissions].
+2. **AI features (Optional)**: an Admin enables AI features and connects the organization's own LLM provider, which powers Whisper and AI-based compliance evaluation. See [AI Configuration](./handbook/ai_configuration.md).
 
-3. **Test Framework Setup (Optional)**: Mia-Care can configure the testing framework for automated integration and system testing. This includes:
-    - Setting up and enabling automated test tools for quality assurance.
-    - Configuring test cases and workflows to validate system functionality and performance.
-    
+3. **Git and CI integration (Optional)**: link the git repository of each software item and configure [Automatic Test Acquisition](./handbook/unit_test_acquisition.md) so unit test reports are pulled from GitLab CI or GitHub Actions.
+
+4. **ALM tool (Optional)**: Jira or another ALM is no longer required. If your team plans its work in one, agree how responsibilities are split and how the two tools are kept consistent. P4SaMD does not ship a built-in ALM connector: see [Working with P4SaMD and Your ALM Tool](./ways-of-working/alm-tools.mdx) for the recommended setup.
+
+5. **AI assistant access (Optional)**: connect an MCP-capable AI assistant to P4SaMD. See [MCP Setup](./mcp/setup.md).
+
 :::note
-Customers may also choose to perform this configuration independently at a later stage using the provided documentation.
+Mia-Care can perform or support these activities on request. Contact Mia-Care's support team for additional customization or support.
 :::
-
-### Configuration Completion
-Once the requested configurations are complete, Mia-Care provides a detailed summary of the activities performed and of the resulting settings.
-
-For additional customization or support, contact Mia-Care’s support team.
-
-
-[console-extension-sso]: https://docs.mia-platform.eu/docs/console/console-extensibility/extension-sso
-[console-roles-permissions]: https://docs.mia-platform.eu/docs/development_suite/identity-and-access-management/console-levels-and-permission-management
