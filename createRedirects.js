@@ -11,21 +11,20 @@ addedOn is optional but recommended, please use the format YYYY-MM-DD, this is u
 
 const linkFile = require('./301redirects.json');
 
-// Build JS redirect map from JSON file
+// Build JS redirect map from JSON file. Several old links can share a destination, so each
+// destination holds a list.
 let redirectPaths = Object.keys(linkFile).reduce((redirects, sourceLink) => {
   const destinationLink = linkFile[sourceLink].destination;
-  redirects[destinationLink] = sourceLink;
+  (redirects[destinationLink] ??= []).push(sourceLink);
   return redirects;
 }, {});
 
 const createRedirects = (path) => {
   // Paths arrive with a trailing slash (trailingSlash: true); 301redirects.json destinations are written without it
-  const redirectPath = redirectPaths[path.replace(/\/$/, "")];
-
-  if (redirectPath) return [redirectPath];
+  const sourceLinks = redirectPaths[path.replace(/\/$/, "")] ?? [];
 
   // Redirects all url without docs to docs/../..
-  return [path.replace(/^\/docs/g, "")];
+  return [...sourceLinks, path.replace(/^\/docs/g, "")];
 };
 
 module.exports = createRedirects;

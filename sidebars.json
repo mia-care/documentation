@@ -39,6 +39,11 @@
           "id": "p4samd/installation/installation_on_premise",
           "label": "On-premise",
           "type": "doc"
+        },
+        {
+          "id": "p4samd/configuration",
+          "label": "Configuration",
+          "type": "doc"
         }
       ]
     },

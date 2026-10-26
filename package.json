@@ -14,6 +14,7 @@
     "spellcheck": "cspell --no-progress --show-suggestions './docs/**'",
     "release-note": "node ./new-release-note.js",
     "check-content": "npm run validate-links && node ./check-content.js",
+    "check-sidebar": "node ./check-content.js",
     "validate-links": "node ./scripts/validate-links.js",
     "build-redirects": "node ./scripts/build-permanent-redirects.js",
     "check-redirects": "node ./scripts/check-permanent-redirects.js",
