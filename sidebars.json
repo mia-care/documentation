@@ -11,6 +11,17 @@
       "type": "doc"
     },
     {
+      "label": "How to Work with P4SaMD",
+      "type": "category",
+      "items": [
+        {
+          "id": "p4samd/ways-of-working/alm-tools",
+          "label": "P4SaMD and Jira (or Other ALMs)",
+          "type": "doc"
+        }
+      ]
+    },
+    {
       "label": "Installation",
       "type": "category",
       "items": [

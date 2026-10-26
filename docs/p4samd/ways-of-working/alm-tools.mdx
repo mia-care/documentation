@@ -1,0 +1,203 @@
+---
+id: alm-tools
+title: Working with P4SaMD and Your ALM Tool
+sidebar_label: P4SaMD and Jira (or Other ALMs)
+slug: alm-tools
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+Most teams that adopt P4SaMD already plan their work in an Application Lifecycle Management (ALM) tool such as Jira. This page explains how to introduce P4SaMD next to that tool without asking your developers to change how they run sprints, and how to keep the two consistent over time.
+
+The examples use Jira because it is the most common case. The same model applies to Azure DevOps, Linear, YouTrack, GitHub Issues, GitLab Issues and similar tools.
+
+## The short version
+
+- **P4SaMD governs the software development lifecycle (SDLC).** Requirements, risks, software architecture, design files, test evidence, versions and the regulatory documentation live in P4SaMD.
+- **Jira runs the daily work.** Backlog, sprint planning, stories, tasks, bugs, estimates and boards stay in Jira.
+- **The two meet through stable identifiers.** Every Jira story points to the P4SaMD requirement it implements, and every governed item in Jira is a thin pointer to its P4SaMD counterpart, never a second copy of its content.
+
+This is the way of working the P4SaMD team itself follows to develop P4SaMD.
+
+## Why split the work this way
+
+### What Jira is good at
+
+Jira is designed for planning and executing work. It is strong at:
+
+- backlog grooming, prioritization and estimation;
+- sprint planning, boards, burndown and velocity;
+- assigning and tracking day-to-day tasks across a team;
+- integrations with chat, code hosting and CI tools that developers already use.
+
+Your developers know it, and moving sprint execution out of it would cost productivity without improving compliance.
+
+### What Jira is not designed for
+
+Jira is a generic work tracker. It was not designed for medical device software development, and using it as the system of record for IEC 62304 and ISO 14971 evidence has well-known gaps:
+
+- **No medical device data model.** Jira has no native concept of User and Software Requirements levels, software items with a safety class, SOUP, hazards, harms, control measures or residual risk. Teams rebuild them with custom issue types and fields, and every project ends up with a slightly different scheme.
+- **Traceability is just links.** Issue links have no meaning for an auditor until someone interprets them. Coverage questions such as "which Software Requirements have no passing test" or "which risks have an unverified control measure" need manual exports and spreadsheets.
+- **Weak change control on content.** A ticket description can be edited at any time. Field history exists, but there is no formal approval lifecycle or version baseline for a requirement or a design document.
+- **No release baseline.** A Jira fix version groups tickets, it does not freeze the approved state of requirements, architecture, risks and tests for a given software release.
+- **Documentation is assembled by hand.** Software Requirements Specification, architecture, risk management file, test reports, SOUP list and release notes are compiled outside Jira, so they drift from the work that was actually done.
+- **Workflows drift.** Jira workflows are easy to change, which is useful for teams and risky for a controlled process: a status or a field can disappear and silently break your evidence.
+
+### What P4SaMD adds
+
+P4SaMD is built for exactly this part of the job:
+
+- a native medical device data model: [requirements](../handbook/requirements.mdx) with levels and a controlled lifecycle (`Draft → In Review → Approved → Verified`), [risks](../handbook/risks.md) with control measures, [software items](../handbook/software_items.md) with safety class and SOUP, [test cases](../handbook/verification.md) and [changes](../handbook/changes.md);
+- typed, queryable traceability across all of them, with coverage visible at a glance;
+- [system versions](../handbook/version_management.mdx) that baseline the state of the product for each release;
+- an audit trail of every change, with the author and the time;
+- [generated regulatory documentation](../handbook/documentation_hub.md) that always reflects the current data;
+- AI-assisted quality checks on requirements and gap analysis against the applicable standards.
+
+## How the responsibilities are split
+
+| Topic | System of record | What the other tool holds |
+|---|---|---|
+| User and Software Requirements | P4SaMD | Jira: optional placeholder issue with ID, title and link |
+| Risks and control measures | P4SaMD | Jira: nothing, or a task to implement a control measure |
+| Software architecture, SOUP, design files | P4SaMD | Jira: nothing |
+| Test cases and test evidence | P4SaMD (manual tests and automated results from CI) | Jira: optional tasks to write or run tests |
+| Release baseline and regulatory documents | P4SaMD (system versions, Documentation Hub) | Jira: fix version used for planning only |
+| Stories, tasks, bugs, spikes | Jira | P4SaMD: the requirement or change they implement |
+| Backlog, sprints, estimates, assignments | Jira | P4SaMD: nothing |
+| Source code and CI | Your Git provider | Commits and pull requests reference the Jira key |
+
+The resulting traceability chain is:
+
+```text
+User Requirement (P4SaMD)
+  └─ Software Requirement (P4SaMD)  ─── linked to risks, software items and tests in P4SaMD
+       └─ Jira story / task (references the Software Requirement ID)
+            └─ commits and pull requests (reference the Jira key)
+```
+
+P4SaMD answers "what must the device do, why, how is it verified, and is it safe". Jira answers "who is doing what, and when".
+
+## Setting it up
+
+### 1. Decide what lives where
+
+Agree with your quality and development leads on the table above and record it in your Software Development Plan. The rule that matters most is **one system of record per item type**. If a requirement can be edited in both tools, the two copies will diverge.
+
+### 2. Bring existing requirements into P4SaMD
+
+If your requirements currently live in Jira, move their content into P4SaMD once:
+
+- export them from Jira and load them with the [CSV import](../handbook/requirements.mdx#csv-import), or
+- use an AI assistant connected to both tools (see [Assisted synchronization](#assisted-synchronization-with-an-ai-assistant)) to migrate them in batches, or
+- for a large legacy corpus, use the [Brownfield Import](../handbook/brownfield/overview.mdx).
+
+Keep the original Jira key on each migrated requirement, for example as a label (`jira:PROJ-123`) or as a footer line in the description. This key is what you use later to reconcile the two sides.
+
+### 3. Turn Jira requirement issues into placeholders
+
+If your Jira project has issue types for requirements, you have two options:
+
+- **Retire them.** Stories reference the P4SaMD ID directly in their summary or a custom field (for example `SRS-AUTH-004`).
+- **Keep them as placeholders.** The issue keeps the P4SaMD ID and title, and its description contains only a link to the requirement in P4SaMD. This keeps Jira's own story-to-requirement links working for teams that rely on them.
+
+In both cases, do not copy the requirement text into Jira. Readers follow the link to P4SaMD for the approved content.
+
+### 4. Reference P4SaMD IDs from stories
+
+Every story or task that implements a governed item names it:
+
+- in the summary or a dedicated custom field (for example `P4SaMD ID`);
+- or with a link to the P4SaMD item.
+
+Add this check to your Definition of Ready: a story that changes device behavior cannot enter a sprint without at least one Software Requirement reference.
+
+### 5. Align status and release information
+
+Requirement status is owned by P4SaMD, but a team often wants a Jira board that reflects it. Map the Jira workflow to the P4SaMD lifecycle once and write the mapping down. A typical mapping:
+
+| Jira status (example) | P4SaMD requirement status |
+|---|---|
+| Draft, Backlog, On hold | Draft |
+| Waiting for approval, In progress | In Review |
+| Ready for development, Waiting for test | Approved |
+| Done, Closed (with passing tests) | Verified |
+| Won't do, Deprecated | Deprecated in P4SaMD, with a justification |
+
+Your Jira workflow will have its own statuses: what matters is that the mapping is explicit, versioned and applied the same way every time.
+
+For release planning, push the Jira fix version to the related requirements in P4SaMD as a label (for example `release:2.4.0`). When the release is frozen, create the [system version](../handbook/version_management.mdx) in P4SaMD: that, not the Jira fix version, is the regulatory baseline.
+
+## Keeping Jira and P4SaMD consistent
+
+P4SaMD does not need write access to Jira, and Jira does not need write access to P4SaMD. Consistency is kept by the conventions above plus a regular reconciliation. Pick the level of automation that fits your team.
+
+### Manual reconciliation
+
+Suitable for small teams or a pilot:
+
+1. Export requirements from P4SaMD and the referenced issues from Jira.
+2. Join them on the P4SaMD ID (or the original Jira key).
+3. Review differences: stories without a requirement, requirements without a story, status mismatches, missing release labels.
+4. Fix them in the system of record for that item.
+
+Do it at least at every sprint review and before every release.
+
+### Assisted synchronization with an AI assistant
+
+P4SaMD exposes an [MCP server](../mcp/overview.md). Most AI assistants that support MCP (Claude, ChatGPT, Cursor, VS Code and others) can also connect to Jira through the Atlassian MCP connector. With both connected, one assistant can read both sides and propose the updates for you, for example:
+
+> Compare the Software Requirements in P4SaMD project "CardioWatch" with the stories in Jira project CW. List stories with no P4SaMD reference, requirements with no story, and status mismatches according to our mapping. Then propose the P4SaMD status updates and the `release:` labels to add.
+
+Every change the assistant makes in P4SaMD runs with your own account, is limited by your role and is recorded in the audit trail as your action. Review each write before it is applied (see [Permissions and audit](../mcp/overview.md#permissions-and-audit)).
+
+Because the instructions are plain language, the same approach works for any ALM that offers an MCP server or an API. A team can also save the prompt and run it as a scheduled job, applying only the mechanical changes (status per the agreed mapping, release labels) and reporting anything that needs a human decision.
+
+### Scripted synchronization
+
+Teams with internal tooling can script the reconciliation against the P4SaMD and Jira APIs, using the same join keys and mapping. Contact Mia-Care to discuss the integration options available for your deployment.
+
+### Rules that keep the two sides aligned
+
+- **One owner per field.** Content and status of governed items are changed in P4SaMD. Assignee, estimate and sprint are changed in Jira.
+- **Stable identifiers.** Never reuse or renumber a P4SaMD ID or a Jira key that has been referenced.
+- **Deprecate, do not delete.** Retire requirements in P4SaMD with a justification, so the history stays auditable. Close the matching Jira item with a resolution that says so.
+- **New scope starts in P4SaMD.** A new feature first becomes a requirement (Draft) in P4SaMD, then stories are created in Jira to implement it. A bug that reveals missing behavior leads to a requirement change in P4SaMD before the fix is planned.
+- **Reconcile on a schedule.** Drift accumulates even with good discipline. A short, regular check is cheaper than a large clean-up before an audit.
+
+## Benefits of this model
+
+**For developers**
+
+- No change to the daily routine: sprints, boards and tooling stay the same.
+- Clear acceptance criteria: the story points to an approved requirement instead of a description that may have been edited.
+- Less compliance busywork: no need to maintain requirement text, risk tables or test matrices inside Jira.
+
+**For quality, regulatory and product owners**
+
+- A single, controlled source for requirements, risks, architecture and test evidence, with approval lifecycle and audit trail.
+- End-to-end traceability, from User Requirement down to the Jira story and the code, that can be shown to an auditor in minutes.
+- Regulatory documents generated from live data and baselined per release, instead of compiled by hand.
+- Coverage gaps (untested requirements, unmitigated risks) visible during the sprint, not at release time.
+
+**For the organization**
+
+- Each tool is used for what it is designed for, so neither has to be heavily customized.
+- The ALM can change (for example moving from Jira to Azure DevOps) without touching the regulatory record.
+- Onboarding is simpler: developers learn one convention (reference the P4SaMD ID), quality teams work in one governed system.
+
+## Applying the model to other ALM tools
+
+The model does not depend on Jira. For any ALM:
+
+1. Keep backlog, sprints and task execution in the ALM.
+2. Keep requirements, risks, architecture, tests and release baselines in P4SaMD.
+3. Reference P4SaMD IDs from work items, and keep the original ALM key on migrated items.
+4. Define a written status mapping between the ALM workflow and the P4SaMD lifecycle.
+5. Reconcile on a schedule, manually, through an AI assistant connected to both tools, or with a script.
+
+<NextSteps items={[
+  { icon: '📋', label: 'Manage requirements', to: '../../handbook/requirements' },
+  { icon: '🔌', label: 'Connect an AI assistant (MCP)', to: '../../mcp/setup' },
+  { icon: '🏷️', label: 'Baseline a release', to: '../../handbook/version-management' },
+]} />
