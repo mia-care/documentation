@@ -12,9 +12,10 @@ P4SaMD v2.x is no longer actively maintained. Version 3 is the current supported
 
 | Version | Release Notes |
 |---------|--------------|
-| v2.5 | [Read the release notes](release-notes/v2.5.md) |
-| v2.4 | [Read the release notes](release-notes/v2.4.md) |
-| v2.3 | [Read the release notes](release-notes/v2.3.md) |
-| v2.2 | [Read the release notes](release-notes/v2.2.md) |
-| v2.1 | [Read the release notes](release-notes/v2.1.md) |
-| v2.0 | [Read the release notes](release-notes/v2.0.md) |
+| v2.5 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.5.md) |
+| v2.4 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.4.md) |
+| v2.3.1 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.3.1.md) |
+| v2.3 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.3.md) |
+| v2.2 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.2.md) |
+| v2.1 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.1.md) |
+| v2.0 | [Read the release notes](../../versioned_docs/version-2.5.x/p4samd/release-notes/v2.0.md) |

@@ -29,6 +29,10 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
+      # Every page must be in its version's sidebar, and every image in a docs folder must be used.
+      # A page outside the sidebar is still published, without a sidebar.
+      - name: Check sidebar and images
+        run: yarn check-sidebar
 
   spellcheck:
     name: Spellcheck

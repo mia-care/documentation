@@ -14,5 +14,81 @@
   "/docs/p4samd/handbook/mcp-server": {
     "destination": "/docs/p4samd/mcp/overview",
     "addedOn": "2026-09-02"
+  },
+  "/docs/p4samd/system_requirement": {
+    "destination": "/docs/p4samd/installation/installation_overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/monitoring": {
+    "destination": "/docs/p4samd/installation/installation_on_premise",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/system_versions": {
+    "destination": "/docs/p4samd/handbook/version-management",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/document_engine": {
+    "destination": "/docs/p4samd/handbook/documentation_hub",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/reports": {
+    "destination": "/docs/p4samd/handbook/documentation_hub",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/software_items": {
+    "destination": "/docs/p4samd/handbook/sbom",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/software_verification": {
+    "destination": "/docs/p4samd/handbook/unit_test_acquisition",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/changes": {
+    "destination": "/docs/p4samd/overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/references": {
+    "destination": "/docs/p4samd/overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/vulnerabilities": {
+    "destination": "/docs/p4samd/overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/system_overview": {
+    "destination": "/docs/p4samd/overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/handbook/insight_and_suggestions": {
+    "destination": "/docs/p4samd/overview",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.0": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.0",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.1": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.1",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.2": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.2",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.3": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.3",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.3.1": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.3.1",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.4": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.4",
+    "addedOn": "2026-10-26"
+  },
+  "/docs/p4samd/release-notes/v2.5": {
+    "destination": "/docs/2.5.x/p4samd/release-notes/v2.5",
+    "addedOn": "2026-10-26"
   }
 }

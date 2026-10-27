@@ -4,26 +4,8 @@ const klaw = require('klaw')
 const path = require('path')
 const fs = require('fs')
 
-// mode could be warn, debug or throw
-checkSidebar('./docs', './sidebars.json', '', false, 'throw')
-
-const filesToExcludeFromSidebarCheck = [
-  "monitoring/paas_alerting_rules",
-  "info/licenses-reports/.gitkeep",
-  'cli/miactl/*',
-  "info/licenses/*",
-  "runtime_suite/*",
-  "runtime_suite_applications/*",
-  "runtime_suite_templates/*",
-  "runtime_suite_libraries/*",
-  "runtime_suite_tools/*",
-  "microfrontend-composer/back-kit/*",
-  "microfrontend-composer/composer/*",
-  "infrastructure/self-hosted/installation-chart/*",
-  "getting-started/videos/*",
-  "getting-started/videos/subtitle/*",
-  "standalone-resources/*"
-]
+// Exact doc ids or image paths, or "folder/*" prefixes, relative to the docs folder
+const filesToExcludeFromSidebarCheck = []
 
 const checkIdRegexp = new RegExp('^---(\\n.*)+id:\\s+([-\\w. ]+)(.*\\n)+---$', 'm')
 const checkImg = new RegExp('\\[[^\\]]*\\]\\((?<filename>.*?)(?=\\"|\\))(?<optionalpart>\\".*\\")?\\)', 'mg')
@@ -132,7 +114,7 @@ async function checkSidebar(folder, sidebarFilePath, sidebarBasePath, removeImag
     fs.writeFileSync('./images.json', JSON.stringify(imagesNotLinked, null, 2))
   }
 
-  if (mode === 'throw' && filesNotInSidebar.length > 0 || imagesNotLinked.length > 0) {
+  if (mode === 'throw' && (filesNotInSidebar.length > 0 || imagesNotLinked.length > 0)) {
     const err = new Error('Sidebar not linked to files and images not linked')
     err.filesNotInSidebar = JSON.stringify(filesNotInSidebar, null, 2)
     err.imagesNotLinked = JSON.stringify(imagesNotLinked, null, 2)
@@ -187,7 +169,7 @@ function getSidebarLinkedFiles(sidebarFilePath, prefix = '') {
 }
 
 async function getFooterLinkedFiles() {
-  const config = await require('./docusaurus.config')()
+  const config = require('./docusaurus.config')
   let files = {}
   config.themeConfig.footer.links.forEach(({items}) => {
     items.forEach(item => {
@@ -198,6 +180,36 @@ async function getFooterLinkedFiles() {
   })
   return files
 }
+
+// Checks the current docs and every archived version against its own sidebar
+async function main() {
+  const versions = require('./versions.json')
+  const targets = [
+    {label: 'current', folder: './docs', sidebar: './sidebars.json'},
+    ...versions.map(version => ({
+      label: version,
+      folder: `./versioned_docs/version-${version}`,
+      sidebar: `./versioned_sidebars/version-${version}-sidebars.json`,
+    })),
+  ]
+
+  let failed = false
+  for (const {label, folder, sidebar} of targets) {
+    try {
+      // mode could be warn, debug or throw
+      await checkSidebar(folder, sidebar, '', false, 'throw')
+    } catch (err) {
+      failed = true
+      // eslint-disable-next-line no-console
+      console.error(`[${label}] ${err.message}\nfilesNotInSidebar: ${err.filesNotInSidebar}\nimagesNotLinked: ${err.imagesNotLinked}`)
+    }
+  }
+  if (failed) {
+    process.exit(1)
+  }
+}
+
+main()
 
 function excludeFromSidebarCheck(fileName) {
   if (filesToExcludeFromSidebarCheck.includes(fileName)) {
