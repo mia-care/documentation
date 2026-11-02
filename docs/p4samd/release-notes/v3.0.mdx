@@ -10,7 +10,94 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## October 2026 (v3.7.0 to v3.7.4)
+## October 2026 (v3.7.0 to v3.7.5)
+
+### P4SaMD v3.7.5, 30 October 2026 (patch)
+
+A patch release that adds organization branding, two new Brownfield target frameworks, and a number of fixes, including a long-standing sign-in issue. It also updates the wording of many existing compliance checks to match the official regulation and guidance text more closely, which can change the outcome of a Brownfield gap analysis.
+
+:::info Brownfield gap analysis: some results may change
+This release rewrites many compliance checks across IEC 62304, ISO 14971, IEC 62366-1, NIS2, MDCG 2019-16, the MDR, the AI Act, GDPR, and the FDA cybersecurity framework to match the official regulation and guidance text more closely, and turns off a number of NIS2 and GDPR checks that were not adding reliable value. If you run a gap analysis again against one of these frameworks, you may see different findings than before. MDR gap analysis sessions now also evaluate against the MDCG 2019-16 guidance, which can surface findings that did not exist in an earlier run.
+:::
+
+:::note Document templates: not yet available
+This release adds the ability to store and generate tenant-authored document templates, and a published template will appear in the Documentation Hub next to the built-in documents. There is no screen in the product yet for creating a template, so this is not something you can use on your own in this release.
+:::
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Organization & Members",
+    newFeatures: [
+      "Organizations can now upload a logo (PNG). Once set, it replaces the default initials avatar in the sidebar's organization switcher and on the organization-selection screen. Only Admins can upload, replace, or remove the logo, from the Tenant Overview page.",
+    ],
+    bugFixes: [
+      "Fixed an issue where, in rare cases, an organization's logo visibility could be computed from a different organization's data left over on a shared connection. Each organization's logo is now resolved independently every time.",
+    ],
+  },
+  {
+    name: "Documentation Hub",
+    improvements: [
+      "Files you download directly from a requirements, risk, software item, SBOM, or test-report page (not only from the Documentation Hub itself) are now recorded in the Download History, so the history reflects every export no matter where it was started.",
+    ],
+  },
+  {
+    name: "Brownfield Import",
+    newFeatures: [
+      "Two new target frameworks are available for gap analysis: **MDCG 2025-6** (on the interplay between the MDR/IVDR and the EU AI Act) and the **EU Cyber Resilience Act**.",
+    ],
+    bugFixes: [
+      "A compliance check whose AI-generated answer could not be read was previously shown as compliant. It is now correctly shown as unable to evaluate and raised as an open finding, so a parsing problem can no longer be mistaken for a passing check.",
+      "A small number of MDCG 2019-16 checks were not triggering on MDR assessments due to a mismatch in how they were keyed internally, and now evaluate correctly.",
+    ],
+  },
+  {
+    name: "Authentication & Security",
+    bugFixes: [
+      "Fixed a long-standing issue where, in rare circumstances, signing in could bounce back and forth between the login page and the identity provider without ever completing, leaving some users unable to sign in at all.",
+    ],
+  },
+  {
+    name: "AI Configuration",
+    bugFixes: [
+      "Fixed several cases where the LLM Configuration page silently failed to save, including when the current default model had been removed from the available list, or when a provider was shared between the Chat and Evaluation workloads. Validation errors are now shown next to the field that caused them.",
+    ],
+  },
+  {
+    name: "Requirements",
+    improvements: [
+      "Create and edit actions now confirm success or report an error, instead of sometimes showing nothing.",
+    ],
+    bugFixes: [
+      "Parent-child relationships in the requirement tree now correctly count toward traceability coverage and appear in the Traceability tab and the traceability matrix; previously they were invisible there. The link chip for this kind of relationship no longer offers a remove action that wouldn't have worked; re-parent the requirement instead to change it.",
+    ],
+  },
+  {
+    name: "Risk Management",
+    improvements: [
+      "Adding a control measure, verifying or deleting one, and other common risk actions, now confirm success or report an error, instead of sometimes showing nothing.",
+    ],
+  },
+  {
+    name: "Verification",
+    improvements: [
+      "The former \"Repository health\" tab is now named \"Test Source\". A manual pull that finds no new reports now tells you so, instead of appearing to do nothing.",
+      "An automatic test-report pull that fails because the report is too large now says so specifically, instead of being reported as a generic invalid report.",
+    ],
+    bugFixes: [
+      "The run detail page no longer crashes when a run raises a safety alert for a test that was executed in a previous report but is missing from this one; the alert is now shown correctly.",
+      "A run with a very large number of safety alerts or removed tests no longer renders every one of them at once, which could make the page unresponsive; these lists now show the first 20 with an option to show all.",
+      "The Run Approval page's Passed / Failed / Not Run filter, and the page-size, quality-score, and assignee filters on test case lists, now work correctly; they were previously ignored due to a naming mismatch with the server.",
+      "Corrected a mislabeled \"Submit for Third-Party Approval\" action on the test case detail page; a test case has no third-party approver, so it is now labelled \"Mark as ready for approval\".",
+      "Test case identifiers are now shown consistently across the run detail page, the removed-tests list, and the rename/move candidate picker.",
+      "Fixed an issue in the Edit Git Repository dialog where selecting Private and leaving the access token blank could save a source with no credential at all, so it silently behaved like a public repository despite being marked Private.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- Deploy backend and frontend together for this release.
+- If your organization relies on Brownfield gap-analysis results for NIS2, GDPR, the MDR, or MDCG 2019-16, review the note above before comparing a new run against an older one.
 
 ### P4SaMD v3.7.2 to v3.7.4, 29 October 2026 (patches)
 
