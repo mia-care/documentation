@@ -6,7 +6,7 @@ sidebar_label: On-premise
 
 On-premise deployments run P4SaMD entirely within infrastructure you own and manage. The platform is delivered as Kubernetes workloads, distributed as OCI container images. On-premise installations include the full **Enterprise** feature set.
 
-Your team is responsible for provisioning the infrastructure, running the installer, and managing ongoing operations (upgrades, backups, monitoring). Mia-Care provides the deployment package, release notes, and a dedicated account manager.
+Your team provisions the infrastructure listed below and operates it (backups, monitoring of the cluster and the database). The **Mia-Care Support Team** installs P4SaMD on it and performs every upgrade. Mia-Care also provides the release notes and a dedicated account manager.
 
 :::note Non-Kubernetes runtimes
 Kubernetes is the standard and recommended runtime for on-premise deployments. P4SaMD can also run on a VM-based environment using **Docker Compose**, typically where Kubernetes is not a viable option or a lighter operational footprint is required. Docker Compose deployments are not self-serve. Suitability depends on your scale, availability requirements, and operational context, so the **Mia-Care Support Team** must complete a feasibility assessment before you proceed. Contact your account manager to initiate the assessment.
@@ -16,7 +16,7 @@ Kubernetes is the standard and recommended runtime for on-premise deployments. P
 
 ## Prerequisites
 
-Before installing, confirm that your environment satisfies the requirements below.
+Before the installation, confirm that your environment satisfies the requirements below.
 
 ### Mandatory Requirements
 
@@ -24,58 +24,50 @@ These components must be present and correctly configured before installation.
 
 | Component | Minimum Requirement | Notes |
 |---|---|---|
-| **Kubernetes** | v1.27 or later | Any CNCF-conformant distribution (EKS, GKE, AKS, RKE2, k3s, etc.) |
-| **Nodes** | 3 nodes minimum | For high-availability. Single-node is supported for non-production use only. |
-| **CPU** | 4 vCPU per node | 8 vCPU recommended for production workloads |
-| **RAM** | 16 GB per node | 32 GB recommended for production workloads |
-| **Persistent storage** | 100 GB SSD | StorageClass with dynamic provisioning required |
-| **PostgreSQL** | v14 or later | External managed database recommended (RDS, Cloud SQL, Azure DB, self-hosted) |
-| **Object storage** | S3-compatible | AWS S3, MinIO, Google Cloud Storage, or Azure Blob Storage |
-| **Ingress controller** | Any Kubernetes-compatible | NGINX Ingress, Traefik, AWS ALB, etc. |
+| **Kubernetes** | v1.25 or later | Any CNCF-conformant distribution (EKS, GKE, AKS, RKE2, k3s, etc.). A dedicated namespace for P4SaMD. |
+| **Compute** | 4.5 vCPU and 11 GB of memory available to P4SaMD | Sized on the limits of one replica per component; about 1 vCPU and 3 GB are reserved. |
+| **PostgreSQL** | v13 or later | External database, managed or self-hosted. Three databases: application, identity (Keycloak) and AI gateway. The application database user must be neither superuser nor `BYPASSRLS`. |
+| **Object storage** | S3-compatible API | AWS S3, MinIO, or another service exposing the S3 API with path-style addressing and access keys. Azure Blob Storage does not expose the S3 API. Only the platform reaches the bucket; users' browsers never do. |
+| **Ingress controller** | Supports Kubernetes `Ingress` (`networking.k8s.io/v1`) | NGINX Ingress, Traefik, AWS ALB, etc. One hostname serves the application, the API and the sign-in pages. |
 | **TLS certificate** | Valid certificate | For your custom domain; cert-manager is supported for automated provisioning |
-| **Container registry access** | Pull access | Direct internet access or an internal mirror of the Mia-Care registry |
+| **Container registry access** | Pull access | To the Mia-Care registry, and to quay.io, ghcr.io and docker.io for the bundled open-source components, directly or through an internal mirror |
 | **SMTP server** | Any standards-compliant relay | For email notifications, password reset, and account invitations |
-| **OIDC identity provider** | OIDC-compliant IdP | Keycloak (bundled), Okta, Microsoft Entra ID, Auth0, or any OIDC-compliant provider |
+
+P4SaMD needs no persistent volumes: all data lives in PostgreSQL and object storage.
+
+Sign-in is provided by a bundled **Keycloak**, installed with P4SaMD. Users are managed in it, and two-factor authentication (TOTP) is required. Federation with a corporate identity provider is not part of the standard installation; contact your account manager if you need it.
 
 ### Optional Requirements
 
-These components are not required. They add specific capabilities or improve performance and observability.
+These components are not required. They add specific capabilities.
 
 | Component | Purpose | Notes |
 |---|---|---|
 | **AI provider** | AI-powered features (Whisper, compliance evaluation) | Needed only to use AI capabilities. Bring your own account with one of the supported providers: OpenAI, Anthropic, Google Vertex AI, or Azure OpenAI. P4SaMD does not provide or resell model access. The cluster needs outbound HTTPS (port 443) access to the provider's endpoint: `api.openai.com` (OpenAI), `api.anthropic.com` (Anthropic), the configured Vertex AI region endpoint such as `us-central1-aiplatform.googleapis.com` (Google Vertex AI), or your resource endpoint plus `management.azure.com` (Azure OpenAI). No external secrets manager is required: keys are stored encrypted in the platform database. A custom provider endpoint must use HTTPS and must not resolve to a loopback, link-local, or private address range. Egress must therefore reach the provider over a public endpoint rather than an internal gateway address. See [AI Configuration](../handbook/ai_configuration.md) for the setup steps. |
-| **AI credential encryption key** | Storing AI provider API keys | Needed only to use AI capabilities. A 32-byte AES-256 encryption key, base64-encoded, supplied as a deployment parameter during installation; the installer sets its value from the deployment package. Without it, provider API keys cannot be stored and AI features cannot be enabled. See [AI Configuration](../handbook/ai_configuration.md) for how the key is used. |
-| **Redis** | Session caching | Improves response times under high concurrency; falls back to in-memory if absent |
-| **Elasticsearch** | Enhanced full-text search | Accelerates requirement and document search at scale; PostgreSQL full-text search is used otherwise |
-| **Prometheus + Grafana** | Monitoring & alerting | Recommended for production. A pre-built dashboard bundle is provided. |
-| **HashiCorp Vault** | Secrets management | P4SaMD integrates with Vault for external secret storage; Kubernetes Secrets are used otherwise |
-| **LDAP directory** | User provisioning | Supplementary to OIDC; enables LDAP-based group sync for user provisioning |
+| **Software composition data** | SBOM enrichment | Outbound HTTPS access to `api.deps.dev` and `packages.ecosyste.ms` adds package metadata to imported SBOMs. Without it, SBOMs are imported without enrichment. |
+| **Secrets manager** | Secret storage | Platform secrets are Kubernetes Secrets. They can be supplied by an external manager, such as HashiCorp Vault through External Secrets, instead of being created by the installation. |
+
+Encryption keys (for stored AI provider keys and repository access tokens) are generated by Mia-Care during the installation and kept as Kubernetes Secrets.
 
 ---
 
 ## Installation Overview
 
-Install with the P4SaMD Helm chart, distributed through the Mia-Care Helm repository. The steps:
+The Mia-Care Support Team installs P4SaMD with its Helm chart. The steps:
 
-1. **Prepare your cluster**: verify all mandatory prerequisites are satisfied, create the target namespace, and configure image pull secrets.
-2. **Configure values**: copy the provided `values.yaml` template and fill in your environment-specific parameters (database credentials, OIDC client, object storage bucket, domain name, etc.).
-3. **Run the installer**: apply the Helm chart. The installer creates all required Kubernetes resources and runs database migrations automatically.
-4. **Verify the deployment**: check that all pods are running and healthy, then run the built-in health-check endpoint to confirm the platform is operational.
-5. **Bootstrap the admin organization**: access the P4SaMD instance at your custom domain and complete the initial organization setup wizard.
-
-Full step-by-step installation instructions are provided in the deployment package delivered by your Mia-Care account manager.
+1. **Prepare the infrastructure** (your team): satisfy the mandatory prerequisites, create the namespace and the three databases, and give Mia-Care access to the cluster.
+2. **Configure the installation** (Mia-Care): hostname, database connections, object storage, SMTP relay, and the generated secrets.
+3. **Install** (Mia-Care): the chart creates all Kubernetes resources. Database migrations run automatically when the services start.
+4. **Verify** (Mia-Care): all pods are ready, and `https://<your-domain>/-/info` reports the installed version.
+5. **Create the first organization** (Mia-Care): the organization and its first administrator, who then invites the rest of your team.
 
 ---
 
 ## Upgrades
 
-P4SaMD follows semantic versioning. Upgrade packages are released on a regular cadence and include:
+P4SaMD follows semantic versioning. Each release comes with a Helm chart of the same version, its release notes, and any manual steps it needs.
 
-- Updated Helm chart and container images
-- Migration scripts for any database schema changes
-- A release-specific upgrade guide noting any breaking changes or manual steps
-
-To upgrade, update the Helm chart version and re-run `helm upgrade`. Database migrations run automatically. Mia-Care strongly recommends taking a database snapshot before each upgrade.
+Mia-Care performs upgrades with `helm upgrade`. Database migrations run automatically. Take a database snapshot before each upgrade.
 
 ---
 
