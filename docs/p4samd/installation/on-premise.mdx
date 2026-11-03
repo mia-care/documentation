@@ -29,13 +29,19 @@ These components must be present and correctly configured before installation.
 | **PostgreSQL** | v13 or later | External database, managed or self-hosted. Three databases: application, identity (Keycloak) and AI gateway. The application database user must be neither superuser nor `BYPASSRLS`. |
 | **Object storage** | S3-compatible API | AWS S3, MinIO, or another service exposing the S3 API with path-style addressing and access keys. Azure Blob Storage does not expose the S3 API. Only the platform reaches the bucket; users' browsers never do. |
 | **Ingress controller** | Supports Kubernetes `Ingress` (`networking.k8s.io/v1`) | NGINX Ingress, Traefik, AWS ALB, etc. One hostname serves the application, the API and the sign-in pages. |
-| **TLS certificate** | Valid certificate | For your custom domain; cert-manager is supported for automated provisioning |
+| **TLS certificate** | Valid certificate | For your custom domain. When P4SaMD is published on the internet, cert-manager is supported for automated provisioning. See [Private installations](#private-installations) otherwise. |
 | **Container registry access** | Pull access | To the Mia-Care registry, and to quay.io, ghcr.io and docker.io for the bundled open-source components, directly or through an internal mirror |
 | **SMTP server** | Any standards-compliant relay | For email notifications, password reset, and account invitations |
 
 P4SaMD needs no persistent volumes: all data lives in PostgreSQL and object storage.
 
 Sign-in is provided by a bundled **Keycloak**, installed with P4SaMD. Users are managed in it, and two-factor authentication (TOTP) is required. Federation with a corporate identity provider is not part of the standard installation; contact your account manager if you need it.
+
+### Private installations
+
+P4SaMD does not have to be published on the internet. In that case cert-manager is not needed: the certificate can come from your internal certificate authority, as long as your users' devices trust it.
+
+Users outside your network then need another way to reach the platform, such as a VPN. Set it up before the installation, and include the Mia-Care Support Team, who need access to install and upgrade P4SaMD.
 
 ### Optional Requirements
 
