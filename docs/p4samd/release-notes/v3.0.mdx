@@ -10,6 +10,27 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
+## November 2026 (v3.7.6)
+
+### P4SaMD v3.7.6, 3 November 2026 (patch)
+
+A patch release that keeps the compliance checks used by Brownfield gap analysis exactly in line with the set shipped with each release. No new features and no changes to the user interface.
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Brownfield Import",
+    bugFixes: [
+      "Some compliance checks could stay on an older version after an upgrade, so a gap analysis did not always use the wording shipped with the release. This could affect the checks rewritten in v3.7.5. The full set of checks is now refreshed from the shipped set every time the service starts, and checks that are no longer shipped are removed.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- This release only changes the policy engine. The backend and frontend stay at the versions shipped with v3.7.5.
+- Existing gap-analysis findings stay attached to their compliance checks.
+- If you run a gap analysis again against a framework rewritten in v3.7.5, you may see different findings than in a run made on v3.7.5.
+
 ## October 2026 (v3.7.0 to v3.7.5)
 
 ### P4SaMD v3.7.5, 30 October 2026 (patch)
