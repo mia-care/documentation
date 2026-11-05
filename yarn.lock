@@ -10144,10 +10144,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^17.13.0":
-  version: 17.13.0
-  resolution: "globals@npm:17.13.0"
-  checksum: d52fbe6fafa4458756f2237fd785516311aa2c5fe2c5f1e29a7130915a2abbaab2021af8b7bdda86111af24586a0377847048e2233e029fb4d921794722b112a
+"globals@npm:^17.14.0":
+  version: 17.14.0
+  resolution: "globals@npm:17.14.0"
+  checksum: dad7cb5959e5588c53e72b3519ccddbd9e0c95da5fad7e369e94da14e1ae58a6628ac48ce81347b0d1f6f30d6ee0cff69fa4be3d0649fbc68f6c84d7b1f391cd
   languageName: node
   linkType: hard
 
@@ -13774,7 +13774,7 @@ __metadata:
     front-matter: ^4.0.2
     git-list-updated: ^1.2.1
     git-tag: ^0.2.0
-    globals: ^17.13.0
+    globals: ^17.14.0
     klaw: ^4.1.0
     medium-zoom: ^1.1.1
     mermaid: ^12.2.0
