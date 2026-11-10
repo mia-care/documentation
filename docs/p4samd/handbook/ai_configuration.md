@@ -30,7 +30,7 @@ For each workload (Chat and Evaluation), provide:
 
 | Field | Description |
 |---|---|
-| **Provider** | The LLM provider. Supported options: **OpenAI**, **Anthropic**, **Google Vertex AI**, **Azure OpenAI**. |
+| **Provider** | The LLM provider. Which providers you can use depends on the workload; see [Supported providers](#supported-providers). |
 | **Model** | The default model used for the workload. |
 | **API Base URL** | The provider endpoint (when applicable). |
 | **API Key** | The credential used to authenticate with the provider. |
@@ -38,6 +38,19 @@ For each workload (Chat and Evaluation), provide:
 Click **Save** to store the configuration. P4SaMD **validates the credentials live** before saving, so an invalid key is reported immediately: "Invalid API key. Please check your credentials and try again."
 
 Each workload shows its current status (**Configured** or **Not configured**) and the date it was last updated. On the Chat workload, **Use same configuration as Evaluation** copies the Evaluation provider settings across.
+
+### Supported providers
+
+The settings page lists four providers, but not every provider works for every workload yet:
+
+| Provider | Evaluation | Chat (Whisper) |
+|---|---|---|
+| **Anthropic** | Supported (Claude models) | Supported |
+| **OpenAI** | Supported (GPT and o-series models) | Not supported |
+| **Azure OpenAI** | On request: contact us before configuring it | Not supported |
+| **Google Vertex AI** | Not supported | Not supported |
+
+If you use OpenAI for Evaluation, configure **Anthropic** for the Chat workload, and don't use **Use same configuration as Evaluation**.
 
 :::info Credential security
 API keys are stored **encrypted at rest (AES-256-GCM)** in the database. They are never returned to the browser; the configuration form only indicates whether a key is currently stored. As of v3.3, every AI-powered evaluation workload (Requirement Quality Score, Brownfield analysis, and Whisper compliance suggestions) uses your organization's own configured **Evaluation** credentials end to end for every request.
