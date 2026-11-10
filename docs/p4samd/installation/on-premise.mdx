@@ -35,7 +35,11 @@ These components must be present and correctly configured before installation.
 
 P4SaMD needs no persistent volumes: all data lives in PostgreSQL and object storage.
 
-Sign-in is provided by a bundled **Keycloak**, installed with P4SaMD. Users are managed in it, and two-factor authentication (TOTP) is required. Federation with a corporate identity provider is not part of the standard installation; contact your account manager if you need it.
+Sign-in is provided by a bundled **Keycloak**, installed with P4SaMD. Users are managed in it, and two-factor authentication (TOTP) is required. Federation with a corporate identity provider is not part of the standard installation; contact your account manager if you need it. When it is set up, users sign in with their organization account: inviting a user sends no email and creates no separate P4SaMD password, so the identity provider and its multi-factor checks always apply.
+
+P4SaMD can also be published under a path on a hostname shared with other applications, for example `https://example.com/p4samd/`, instead of at the root of its own hostname. Tell your account manager if you need this.
+
+From v3.8, installations also include the **Admin Console**, a separate application for your installation operators. It has its own operator accounts with passkey-only sign-in, and manages organizations, users, memberships, licences and permission overrides. Sensitive actions need a second operator's approval, and every action is recorded in an audit trail. Project members do not use it.
 
 ### Private installations
 

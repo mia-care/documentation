@@ -73,6 +73,16 @@ Upload the technical artifacts that make up your software product. Assign an **a
 
 Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
 
+**How a Git repository is read.** P4SaMD does not send a whole repository to the evaluation. It sorts every file into one of three groups and records the reason:
+
+- **Kept**: files read in full as evidence. These are application code in areas that matter for compliance (logging and audit, human oversight, AI pipeline, user-facing text, authentication and security, consent and retention, monitoring, error handling, configuration), the data model, CI and deployment files, and the main build and dependency files.
+- **Mapped**: other application code, listed by folder with file counts but without content.
+- **Excluded**: everything else, such as documentation, tests, third-party and generated code, lock files and binaries. A file that contains a secret is also left out and listed.
+
+The same repository at the same commit always gives the same selection. Each import stores a manifest with the files in each group, the reason for each decision, the total size, the code areas where no file was found and the largest parts of the selection. You can read and export the manifest, and set include and exclude paths for a Git source, through the API. Screens for these are planned for a later release.
+
+**Size limits.** When a selection passes about 150,000 tokens, the evaluation still runs in full, but you are warned that it takes longer. When it passes 1,000,000 tokens, the evaluation does not start: the message names the source, its size and its largest parts. Narrow the selection and evaluate again. If the import itself fails, for example because the URL or access token is wrong, the evaluation stops with a message asking you to check them or remove the source, and you can evaluate again.
+
 </Step>
 
 <Step number={5} icon="📄" title="Documentation">

@@ -10,7 +10,88 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## November 2026 (v3.7.6)
+## November 2026 (v3.7.6 to v3.8.0)
+
+### P4SaMD v3.8.0, 10 November 2026
+
+This release adds the Admin Console for installation operators, sign-in through your organization's own identity provider, a downloadable Traceability Matrix, and a smarter way of reading Git repositories during Brownfield import. It also fixes requirement link counters and AI evaluations on recent OpenAI models.
+
+<FeatureGrid>
+
+<FeatureBox icon="🛠️" title="Admin Console">
+
+A separate console where installation operators manage organizations, users, memberships and licences, with approvals for sensitive actions and a tamper-evident audit trail.
+
+</FeatureBox>
+
+<FeatureBox icon="🔐" title="Sign in with your identity provider">
+
+Installations can let users sign in with their organization account. Invited users no longer receive an email or set a separate password.
+
+</FeatureBox>
+
+<FeatureBox icon="📊" title="Traceability Matrix download">
+
+Download the full requirement-to-evidence matrix as a CSV file from the Documentation Hub.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Platform & Infrastructure",
+    newFeatures: [
+      "The Admin Console is now available to installation operators. It is a separate web application, with its own operator accounts and passkey-only sign-in, for managing organizations (create, rename, suspend, reactivate), licences and limits, users, memberships, roles and permission overrides. Sensitive actions, such as granting the Admin role or permanently deleting an organization, need a second operator's approval. Every operator action is recorded in a tamper-evident audit trail and also appears in the affected organization's own audit log. It is not part of the application your project members use.",
+      "P4SaMD can now be served under a path on a shared hostname, for example https://example.com/p4samd/, for customers that publish several applications on one hostname. Installations at the root of a hostname are unchanged.",
+    ],
+  },
+  {
+    name: "Authentication & Security",
+    newFeatures: [
+      "Installations that connect P4SaMD to an organization's identity provider can use single sign-on. In that mode, inviting a user creates the account ready to use: no invitation email is sent, the user signs in with their organization account, and no separate P4SaMD password exists. The Invite Users dialog says so, and the Resend action is not offered. Installations that do not use single sign-on behave as before.",
+    ],
+    improvements: [
+      "Access tokens stored for Git repository sources now have stronger protection.",
+    ],
+  },
+  {
+    name: "Documentation Hub",
+    newFeatures: [
+      "The Traceability Matrix is now a downloadable item under the Traceability section of the Documentation Hub. It downloads as a CSV file and lists, for each requirement chain, the linked risks, test cases and software items. A matrix over 100,000 rows is not downloaded, and the Hub explains that the file is over the row limit. Downloading follows the same permissions as the Traceability section, and the download appears in Download History.",
+    ],
+    improvements: [
+      "In Download History, the origin filter options are renamed: \"From templates\" is now \"Documents\" and \"Built-in documents\" is now \"Raw data\".",
+    ],
+  },
+  {
+    name: "Brownfield Import",
+    improvements: [
+      "Git repositories are no longer cut to the first 1,000 files. P4SaMD now sorts every file into kept (read in full as evidence), mapped (application code listed by folder with file counts, without content) or excluded (such as documentation, tests, third-party and generated code, lock files and binaries), and records the reason for each decision. Files that contain secrets are left out and listed. The same repository at the same commit always gives the same selection.",
+      "Every Git import now stores an import manifest: the files kept, mapped and excluded with the reason for each, the total size, compliance-relevant code areas where no file was found, and the largest parts of the selection. The manifest can be read and exported through the API. You can also set include and exclude paths for a Git source through the API. Screens for both are planned for a later release.",
+      "Large repositories now show a warning once the selection passes about 150,000 tokens, noting that the evaluation will take longer. If a selection is over the safety ceiling of 1,000,000 tokens, the evaluation does not start. The message names the source, its size and the largest parts, so you can narrow the selection and evaluate again.",
+      "If a Git import fails, for example because of a wrong URL or token, the evaluation now stops straight away with a message that tells you to check the URL and token, or remove the source, and then evaluate again.",
+    ],
+  },
+  {
+    name: "Requirements",
+    bugFixes: [
+      "The Linked Tests, Linked Risks, Linked Software Items and Linked Change Requests counters on a requirement now count links made from either side. Before, a test linked from the test side was listed in the links box but the counter stayed at 0. A relationship linked from both sides counts once. Counters in existing projects can rise as a result, which is the intended correction. The MCP traceability tool returns the corrected numbers too.",
+    ],
+  },
+  {
+    name: "AI Configuration",
+    bugFixes: [
+      "AI evaluations failed for organizations using a recent OpenAI model that rejects the older output-limit setting. They now work with these models. A reasoning model that uses its whole output limit before answering now reports that the output limit was reached, instead of an empty response.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- **Deploy backend and frontend together.** The Traceability Matrix download and the single sign-on invite flow need both.
+- Link counters on existing requirements may rise after the upgrade, because links made from the other side are now counted.
+
 
 ### P4SaMD v3.7.6, 3 November 2026 (patch)
 
