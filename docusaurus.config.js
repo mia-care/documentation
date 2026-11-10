@@ -165,6 +165,11 @@ const config = {
               path: "",
               banner: "none"
             },
+            "3.8.x": {
+              label: "3.8.x",
+              path: "3.8.x",
+              banner: "none"
+            },
             "2.5.x": {
               label: "2.5.x",
               path: "2.5.x",
