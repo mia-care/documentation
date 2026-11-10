@@ -1,0 +1,115 @@
+---
+id: getting_started
+title: Getting Started
+sidebar_label: Getting Started
+slug: getting-started
+---
+
+import { StepGuide, Step, Prerequisites, Tip, NextSteps } from '@site/src/components/StepGuide';
+
+This guide covers your first session in P4SaMD, from logging in to navigating your first project.
+
+<Prerequisites items={[
+  'Your organization has an active P4SaMD subscription (SaaS or on-premise).',
+  'A P4SaMD administrator has created your user account and added you to at least one organization.',
+  'You have a welcome email with the URL of your P4SaMD instance and your login credentials.',
+]} />
+
+<StepGuide>
+
+<Step number={1} icon="🔑" title="Log In">
+
+1. Navigate to the P4SaMD URL provided by your administrator.
+2. On the login screen, enter your username and password.
+3. The first time you sign in, you're asked to set up two-factor authentication before you can continue, using an authenticator app such as Google Authenticator or 1Password.
+
+If your installation uses single sign-on, you sign in with your organization account instead, and you have no separate P4SaMD password.
+
+P4SaMD then checks which organizations your account belongs to and continues automatically.
+
+</Step>
+
+<Step number={2} icon="🏢" title="Select Your Organization">
+
+If your account belongs to **more than one organization**, a selection screen appears after login. Each card shows the organization name and your role within it.
+
+- Click an organization card to enter it.
+- Your selection determines which projects, users, and data are visible for the rest of your session.
+
+If your account belongs to **exactly one organization**, P4SaMD skips this screen and takes you directly to the Products page.
+
+<Tip>
+  Switch organizations at any time with the organization switcher in the top navigation bar. Your session data is saved, so you return to the same context when you switch back.
+</Tip>
+
+</Step>
+
+<Step number={3} icon="📦" title="Explore the Products Page">
+
+After selecting an organization, you land on the **Products page**, the hub for all software projects in your organization.
+
+Each product card shows:
+
+- Project name and description
+- Project type (Standard or AI-Powered)
+- Latest version name and status
+- Software safety classification (Class A, B, or C)
+- Applicable regulatory framework (e.g., EU MDR, FDA)
+
+**Entering a project**: click any product card. P4SaMD loads the project dashboard with the most recent workspace version.
+
+**Pinning a project**: hover over a card and click the pin icon to add it to the **Pinned Projects** section of the left sidebar.
+
+</Step>
+
+<Step number={4} icon="🗺️" title="Navigate the Project">
+
+Inside a project, the left sidebar lists the available tools. Which sections you see depends on your subscription plan and role.
+
+| Sidebar Section | Purpose |
+|---|---|
+| **Dashboard** | Overview of project health, compliance status, and recent activity |
+| **Requirements** | Manage and trace software requirements |
+| **System Design** | Define and document your software architecture |
+| **Risks** | Identify, assess, and mitigate software risks |
+| **Verification & Validation** | Manage test plans and test cases |
+| **Changes** | Track and manage change requests |
+| **Versions** | Manage workspace versions and release workflows |
+| **Documentation** | Generate compliance documentation and reports |
+| **AI Inventory** | Manage AI/ML components, model versions, and AI-specific compliance workflows (AI-Powered projects only) |
+
+<Tip>
+  Click the **sparkles icon** in the top bar to open <strong>Whisper</strong>, the in-platform AI assistant. It surfaces compliance suggestions for the current version and answers questions in a chat. Whisper appears once an administrator enables AI features for your organization. See [AI Configuration](./ai_configuration.md).
+</Tip>
+
+</Step>
+
+<Step number={5} icon="🚀" title="Create or Import a Project">
+
+#### Starting a new project from scratch
+
+1. On the Products page, click **Create New Project**.
+2. Fill in the project details: name, description, type (Standard or AI-Powered), intended use statement, target market region, regulatory frameworks, and safety classification (IEC 62304 Class A, B, or C).
+3. Click **Create**. P4SaMD creates the project and opens its dashboard.
+
+#### Bringing in an existing system (Brownfield)
+
+To bring an existing software system into P4SaMD:
+
+1. In the left sidebar, click **Brownfield**, then click **+ Import Project** on the Sessions page.
+2. Follow the Brownfield Import wizard.
+3. After the wizard completes, P4SaMD performs a compliance gap analysis and generates a remediation plan.
+
+See [Brownfield Import](./brownfield/overview.mdx) for the full walkthrough.
+
+</Step>
+
+</StepGuide>
+
+<NextSteps items={[
+  { icon: '🏢', label: 'Organizations & multi-tenancy', to: '../organizations' },
+  { icon: '📦', label: 'Products & projects', to: '../products' },
+  { icon: '📝', label: 'Work with requirements', to: '../requirements' },
+  { icon: '🤖', label: 'Whisper AI Assistant', to: '../whisper' },
+  { icon: '🔄', label: 'Brownfield Import', to: '../brownfield/overview' },
+]} />

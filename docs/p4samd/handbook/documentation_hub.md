@@ -33,6 +33,12 @@ Not every member can download. If you don't have permission to export a section'
 - **Viewer role**: download controls are disabled everywhere in the Hub, with a tooltip explaining that downloading isn't available for Viewers.
 - **No read access to a section**: if your role doesn't carry read access to a particular SDLC section, that section's downloads stay disabled for you specifically, with a tooltip explaining why.
 
+### Traceability Matrix
+
+The **Traceability** card includes the **Traceability Matrix**, downloadable as a CSV file. Each row follows one chain from a user requirement, through any intermediate requirements, to a system requirement, and lists the risks, test cases and software items linked to each requirement in the chain. Links made from either side are included. Related-to links, cause links and control measures are not part of the matrix.
+
+The matrix is limited to the active version of your product and to active records. Downloading it needs read access to the Traceability section, like the rest of that card. A matrix with more than 100,000 rows cannot be downloaded: the Hub shows a message that the file is over the row limit, and nothing is added to Download History.
+
 The **Verification** card's test list defaults to unit-level tests; switching test type re-queries just that card without reloading the rest of the catalog.
 
 ## Download History
@@ -40,7 +46,7 @@ The **Verification** card's test list defaults to unit-level tests; switching te
 Every download from the Hub is recorded, as is every report or SBOM downloaded from its own page elsewhere in the product. Open **Download History** from the Hub to see:
 
 - Document name, format, date, who downloaded it, and its size.
-- Filters to search by document, user, or version, and to narrow by section, downloaded-by, or download date.
+- Filters to search by document, user, or version, and to narrow by section, downloaded-by, or download date. The origin filter separates **Documents** from **Raw data**.
 - A **re-download** action on each row, so you can fetch the exact same file again without navigating back to where it came from.
 
 This gives every project member visibility into who exported what, and when, as part of your record of who has handled regulated artifacts.
