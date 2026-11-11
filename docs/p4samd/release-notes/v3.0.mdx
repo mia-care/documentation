@@ -10,7 +10,26 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## November 2026 (v3.7.6 to v3.8.0)
+## November 2026 (v3.7.6 to v3.8.1)
+
+### P4SaMD v3.8.1, 11 November 2026 (patch)
+
+A maintenance release that gives long-running AI evaluations and large document imports more time to finish. No new features and no changes to the user interface.
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Brownfield Import",
+    improvements: [
+      "Gap analyses and other AI evaluations on large document sets are far less likely to be stopped early. An evaluation is now treated as stuck only after two hours without progress, instead of twenty minutes.",
+      "Extracting content from large or complex documents now has up to thirty minutes to complete, instead of five, so these documents no longer fail with a timeout error.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- No action is required. The backend, frontend and all other services stay at the versions shipped with v3.8.0.
+- Evaluations that failed with a stalled or timed-out error on v3.8.0 can be started again.
 
 ### P4SaMD v3.8.0, 10 November 2026
 
