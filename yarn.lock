@@ -8642,7 +8642,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.4.12":
+"dompurify@npm:^3.4.17":
   version: 3.4.17
   resolution: "dompurify@npm:3.4.17"
   dependencies:
@@ -8744,10 +8744,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"elkjs@npm:^0.9.3":
-  version: 0.9.3
-  resolution: "elkjs@npm:0.9.3"
-  checksum: 1293e42e0ea034b39d3719f3816b7b3cbaceb52a3114f2c1bd5ddd969bb1e36ae0afef58e77864fff7a1018dc5e96c177e9b0a40c16e4aaac26eb87f5785be4b
+"elkjs@npm:^0.12.0":
+  version: 0.12.1
+  resolution: "elkjs@npm:0.12.1"
+  checksum: 9e558f392c2dcbed30726293937b6d57824085d608aa82d2040a4bb2c46f52ed28e975d5d93f3ae031e1e5b74fc396768657705fcbd97f0b707d0dcfbf612054
   languageName: node
   linkType: hard
 
@@ -12473,9 +12473,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mermaid@npm:^12.2.0":
-  version: 12.2.0
-  resolution: "mermaid@npm:12.2.0"
+"mermaid@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "mermaid@npm:12.3.0"
   dependencies:
     "@braintree/sanitize-url": ^7.1.2
     "@iconify/utils": ^3.0.2
@@ -12490,8 +12490,8 @@ __metadata:
     d3-sankey: ^0.12.3
     dagre-d3-es: 7.0.14
     dayjs: ^1.11.21
-    dompurify: ^3.4.12
-    elkjs: ^0.9.3
+    dompurify: ^3.4.17
+    elkjs: ^0.12.0
     es-toolkit: ^1.45.1
     katex: ^0.18.0
     khroma: ^2.1.0
@@ -12499,8 +12499,7 @@ __metadata:
     roughjs: ^4.6.6
     stylis: ^4.3.6
     ts-dedent: ^2.2.0
-    uuid: ^11.1.0 || ^12 || ^13 || ^14.0.0
-  checksum: 663d20708da71c25aa965e093f21542425b8c70e327881ec9b8bf97afdd4ef9fb5e8328b67bca18fce4bd8c57580276953d0d4b29d2e70716871c73e1d468edc
+  checksum: 3a64e903b52b753ab79f228e467521bab8a402d397cbd4e623a6d47373a7b04168a31446f4ab54421f74daa279f6da1f0150d16b4cc6da8e424ec48ddbd1cb13
   languageName: node
   linkType: hard
 
@@ -13785,7 +13784,7 @@ __metadata:
     globals: ^17.14.0
     klaw: ^4.1.0
     medium-zoom: ^1.1.2
-    mermaid: ^12.2.0
+    mermaid: ^12.3.0
     prism-react-renderer: ^2.3.0
     prop-types: ^15.8.1
     react: ^19.3.1
@@ -17611,15 +17610,6 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
-  languageName: node
-  linkType: hard
-
-"uuid@npm:^11.1.0 || ^12 || ^13 || ^14.0.0":
-  version: 14.0.0
-  resolution: "uuid@npm:14.0.0"
-  bin:
-    uuid: dist-node/bin/uuid
-  checksum: 08608584a79e987cdae000fa8eb724fa51dd8aafc136cd9fa9a8c87d07b246c56eec5fd9027fdb3e49a863eedf758bc19e325909ce281955c7a027fed67dc89e
   languageName: node
   linkType: hard
 
