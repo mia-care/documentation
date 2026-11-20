@@ -25,12 +25,15 @@ These standards are assessed whichever market you select, because all three mark
 | IEC 62304:2006/AMD1:2015 | Software life cycle processes |
 | ISO 14971:2019/A11:2021 | Application of risk management to medical devices |
 | IEC 62366-1:2015 | Application of usability engineering to medical devices |
+| ISO 13485:2016 | Quality management system clauses that touch the software life cycle: software validation, documentation and records, design and development, purchasing, servicing and traceability, feedback and complaints, internal audit, nonconformity and corrective and preventive action |
+| IEC 81001-5-1:2021 | Security activities in the health software life cycle: secure design and coding, security requirements, security testing, release, maintenance, security risk management and issue handling, and the transitional path for legacy software |
 
 ## European Union
 
 | Framework | Scope |
 |---|---|
-| MDR (EU) 2017/745 | Device classification, technical documentation, clinical evaluation, post-market surveillance, UDI and registration |
+| MDR (EU) 2017/745 | Device classification (including a proposed Rule 11 class compared with your declared class), technical documentation, clinical evaluation, post-market surveillance, UDI and registration |
+| IVDR (EU) 2017/746 | General safety and performance requirements, technical documentation, manufacturer obligations, classification, conformity assessment, CE marking, UDI and EUDAMED, performance evaluation, post-market surveillance and vigilance, and the transitional provisions |
 | GDPR (EU) 2016/679 | Lawful basis, data minimization, retention, right to erasure, data protection by design, DPIA and security measures |
 | EU AI Act (EU) 2024/1689 | High-risk AI classification, risk management system, data governance, technical documentation, transparency and human oversight |
 | NIS2 (EU) 2022/2555 | Security risk management, incident handling, business continuity and vulnerability management |

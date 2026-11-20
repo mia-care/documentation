@@ -16,8 +16,8 @@ Click **+ New Risk** at the top of the risk list, then provide:
 - **Hazard**: the source of potential harm
 - **Harm**: the damage that could result (e.g., patient injury, data loss)
 - **Harm category**: one of Patient, Operator, Environment, or Device
-- **Initial severity**: rated S1 (negligible) through S5 (catastrophic)
-- **Initial probability**: rated P1 (improbable) through P5 (frequent)
+- **Initial severity**: rated from S1 (lowest) up to the highest level of your product's [risk scale](#risk-scale). The default scale goes from S1 (negligible) to S5 (catastrophic)
+- **Initial probability**: rated from P1 (lowest) up to the highest level of your product's risk scale. The default scale goes from P1 (improbable) to P5 (frequent)
 
 Optionally, add the **sequence of events** (the causal chain from hazard to harm), the **hazardous situation** (the specific scenario in which harm could occur), and an **assignee** responsible for the risk.
 
@@ -25,7 +25,7 @@ On save, the risk appears in the list with an automatically assigned display ID 
 
 ## ISO 14971 Risk Matrix
 
-P4SaMD automatically computes the **initial risk level** based on the severity × probability combination using the ISO 14971:2019 "Option A" 5×5 risk matrix:
+P4SaMD automatically computes the **initial risk level** based on the severity × probability combination. New products start with the ISO 14971:2019 "Option A" 5×5 risk matrix, which you can change for your product (see [Risk scale](#risk-scale)):
 
 | Risk Level | Meaning |
 |---|---|
@@ -36,6 +36,33 @@ P4SaMD automatically computes the **initial risk level** based on the severity �
 :::note Terminology update in v3.5.0
 This zone was previously labelled **ALARP**. As of P4SaMD v3.5.0, it is called **Tolerable** everywhere in the platform, and the matrix's severity/probability boundaries were realigned to the ISO 14971 "Option A" matrix. This was a genuine reclassification, not just a rename: some combinations that were previously **Unacceptable** are now **Tolerable**, including Severity 5/Probability 1, Severity 4/Probability 2, and Severity 3/Probability 3. See the [v3.5.0 release notes](../release-notes/v3.0.mdx#p4samd-v350-26-august-2026) for details. You can customize how the three zone names are displayed for your project from the Project Customization settings; this does not affect how risk levels are computed.
 :::
+
+## Risk Scale
+
+Every product has its own risk scale. A new product starts with the default scale: five severity levels (Negligible, Minor, Serious, Critical, Catastrophic) and five probability levels (Improbable, Remote, Occasional, Probable, Frequent), with the zones of the ISO 14971 "Option A" matrix. You can adapt it to your own risk policy.
+
+### Viewing the scale
+
+Open **Configuration → Product** and look at the **Risk scale** card in the **Details** tab. Every member can see it. Every risk form, matrix, badge and filter in the product uses the product's levels and their names.
+
+### Changing the scale
+
+Only an **Admin** can change the scale, at any time.
+
+1. In the **Risk scale** card, set the number of severity levels and probability levels, from 2 to 10 each. You cannot go below the number of levels your existing risks already use. The card shows that minimum and the risks that set it.
+2. Give each level a name, up to 40 characters.
+3. Click a cell of the matrix to change its zone, or restore the proposed matrix.
+4. Click save. A review step lists the risks whose level would change and highlights the ones that get worse.
+5. Enter a **rationale**. It is mandatory when the product already has risks.
+6. Confirm.
+
+Every change is recorded with its rationale in the product's **History** tab.
+
+P4SaMD warns you when the scale looks unusual, for example when the most severe cell is acceptable or when most cells are acceptable. The warnings are advice and do not block you.
+
+### Risks outside the current scale
+
+A released risk whose stored severity or probability falls outside the current scale keeps its stored values and level. It is shown with grey badges and marked as outside the scale. When you create or edit a risk, or import risks from a CSV file, a value outside the scale is refused with a message naming the allowed levels.
 
 ## Risk Lifecycle
 
@@ -82,8 +109,8 @@ The risk list shows all risks in the active workspace version. The summary colum
 
 Filter the risk list by:
 - Harm category (Patient, Operator, Environment, Device)
-- Severity level (S1 to S5)
-- Probability level (P1 to P5)
+- Severity level (the levels of your product's risk scale)
+- Probability level (the levels of your product's risk scale)
 - Initial risk level (Unacceptable, Tolerable, Acceptable)
 - Residual risk level
 - Status

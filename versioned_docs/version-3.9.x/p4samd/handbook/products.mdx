@@ -1,0 +1,45 @@
+---
+id: products
+title: Products & Projects
+sidebar_label: Products & Projects
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+The **Products page** lists all medical device software projects in your organization. Open it by clicking **All Products** in the sidebar (visible when no project is selected), or by navigating up to the organization level via the breadcrumb.
+
+Each project appears as a card showing the project name and description, the project type (Standard or **AI-Powered**), the name and status of the most recent workspace version, the overall compliance posture, the IEC 62304 safety classification (Class A, B, or C), and the primary target regulatory framework. Clicking a card opens the project and loads its sidebar navigation pointing to the most recent version. To pin a project, hover over its card and click the **pin icon**. Pinned projects stay at the top of the left sidebar everywhere in the platform.
+
+## Creating a Project
+
+Click **Create New Project** on the Products page and fill in the form. Required fields: a project **name**, the project **type** (Standard or AI-Powered), an **intended use statement** in plain language, the **target market region** (EU, US, or UK), the applicable **regulatory frameworks** (such as EU MDR or FDA 510(k)), and the **IEC 62304 safety classification** (Class A, B, or C). A description is optional but recommended.
+
+The **AI-Powered** type adds sidebar sections for AI and ML components, model versions, datasets, and AI-specific compliance workflows. A project administrator can change this setting later.
+
+Click **Create**. P4SaMD provisions the project and opens its dashboard.
+
+## Importing an Existing Project
+
+To bring an existing software system under a formal compliance process, click **Import Project** on the Products page. This opens the Brownfield Import wizard: six steps to describe the project, upload technical assets, and provide existing documentation. After submission, P4SaMD runs a compliance gap analysis and generates a prioritized remediation plan. See [Brownfield Import](./brownfield/overview.mdx) for the full walkthrough.
+
+## Product Information
+
+Each project has a **Product** page (**Configuration → Product** in the project sidebar) showing the product's metadata and regulatory identifiers in two tabs.
+
+The **Details** tab shows the product name, description, intended use, software safety classification, the **AI Smart Assistance** toggle, target market region, and regulatory frameworks. It also shows system information: created/updated timestamps and who made each change. Users with the **Admin** or **QA** role can click the edit icon in the tab bar to modify these fields. Other roles see a read-only view. Some changes prompt a confirmation dialog because they could affect how the product is handled going forward.
+
+The **History** tab lists every change made to the product's metadata, with who made the change and when. A filter narrows the feed to a single field. This feed is the audit trail of the product's regulatory identity over time.
+
+## Managing Product Members
+
+Each project has a **Product Members** page (**Members** in the project sidebar) where administrators control who has access and at what role. It shows a member table with **search** and a **role filter**, plus a stats panel counting Active, Admin, Tech Team, and Business users.
+
+Click **Add Member** to grant access. Pick a user from your organization and assign a **Product Role**: **Admin**, **Tech Team**, **Business**, **QA**, or **Viewer**. The dialog includes a **Show capabilities** breakdown, so you can see what each role can do before assigning it. Removing a member is confirmed by typing their name and is blocked if it would leave the project without an Admin.
+
+At the organization level, the same page appears as **Tenant Members** for organization-wide membership. See [Roles and Permissions](../security/roles_permissions.md) for the full role model.
+
+<NextSteps items={[
+  { icon: '📝', label: 'Work with requirements', to: '../requirements' },
+  { icon: '🔄', label: 'Run a Brownfield Import', to: '../brownfield/overview' },
+  { icon: '📋', label: 'Manage versions', to: '../version-management' },
+]} />

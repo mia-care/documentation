@@ -1,10 +1,16 @@
 ---
 id: unit_test_acquisition
-title: Automatic Unit Test Report Acquisition
-sidebar_label: Automatic Test Acquisition
+title: Test Levels and Automatic Test Acquisition
+sidebar_label: Test Levels & Acquisition
 ---
 
-# Automatic Unit Test Report Acquisition
+# Test Levels and Automatic Test Acquisition
+
+The whole **Verification** area works at three test levels: **Unit**, **Integration** and **System**. Pick the level in the Verification menu. At each level you get the **By Report**, **All Tests** and **Test Source** views, and everything you see, including the dashboard figures, is limited to that level. Older links to Verification pages keep working.
+
+Test cases at any level open the same test case page. Manual tests are described in [Manual Test Management](./manual_test_management.md). You can also upload a report by hand and choose its level in the upload dialog.
+
+This page first describes unit test acquisition from a software item, then the test sources used at integration and system level.
 
 Instead of uploading unit test reports by hand, a software item with a linked git repository can pull them in automatically from your CI pipeline, on a schedule or on demand.
 
@@ -19,7 +25,7 @@ Automatic acquisition is configured per software item, as an opt-in addition to 
 5. Optionally set a **Branch** to pull from. Leave it blank to use the repository's default branch.
 6. Set a schedule (see below), then save.
 
-P4SaMD always reads the first matching report file it finds in the job's or artifact's output; there is currently no way to point it at a specific file path yourself.
+P4SaMD reads every matching report file in the job's or artifact's output and combines them into one report, so tests split across several files are never lost. The report shows how many documents were merged. If any file cannot be read as a test report, the whole acquisition fails and nothing is imported.
 
 You can also configure or change these settings later from **Repository health** (below), which opens the same dialog.
 
@@ -63,3 +69,55 @@ When a run is ingested for a software item that already has a previous run in th
 - **Rename / move candidates**: a test case that looks like it may have been renamed or moved rather than deleted and re-added can be **confirmed**, carrying its identifier, traceability links, and approval state forward, or **rejected**, in which case it's treated as two independent test cases (one removed, one added).
 
 A test case that's genuinely new is simply marked **New** in the test list; it needs a traceability link like any other test case, but doesn't require a separate review step here.
+
+## Integration and system test sources
+
+At integration and system level, results come from a **test source**: a connection between a repository and the test level, instead of a single software item.
+
+### Setting up a test source
+
+1. Open **Verification**, choose **Integration** or **System** and open the **Test Source** view.
+2. Click to add a source and fill in the **General config** tab: the provider (**GitLab** or **GitHub Actions**), the repository URL, the job or artifact name that holds the JUnit report, the access credential for a private repository, and optionally a branch and the report file path.
+3. Choose the **software items** the tests exercise. A source covers a set of items, and each combination of item set and test level can have one active source.
+4. Enter the **interface** the tests run on, as a free-text label of up to 64 characters, for example "API" or "Mobile app". Set the **test type** of the suite. You can also declare the requirements and control measures the suite verifies.
+5. Set the schedule and save.
+
+The same scenario run on two interfaces is tracked as two separate test cases, each with its own identifier and links.
+
+When you create a test case with **Automated** execution at integration or system level, the last step of the wizard creates or reuses the matching test source for you.
+
+### Getting results into P4SaMD
+
+A source can bring results in four ways:
+
+- **On a schedule**: daily or weekly, as for unit sources.
+- **Fetch latest results**: retrieves the results already available at the source. It does not start a test run. It is hidden while no source is configured and while the source is paused or auto-disabled.
+- **Run now**: starts a test run remotely. Switch on remote execution in the **Execution config** tab, then enter the execution target and reference, and the access token for that run. **Run now** only appears for sources that have a remote execution target.
+- **Push delivery**: your pipeline sends the report to P4SaMD when it finishes. In the source form, enable push delivery to get a one-time secret. Copy it before dismissing the call-out because it is never shown again. You can rotate or disable it at any time.
+
+When a pull finds that several runs finished since the last one, P4SaMD imports them in order, oldest first, up to 20 runs or 7 days. If that limit cuts the catch-up short, the report shows a notice.
+
+The **Automatic executions** view lists every acquisition attempt of the level with its status (running, completed, failed, timed out or rejected), its elapsed time and a **Retry** action.
+
+### Test types
+
+Tests are classified by type: Functional, Non-Functional, Smoke, Performance, Security or Load. You can also type your own label. Use the test type filter in the test list to narrow it down.
+
+## Reviewing a run
+
+When a run is ingested for a source or item that already has a previous run in the same workspace version, its detail page compares the two. At integration and system level the review also shows:
+
+- links a test case carried over from the previous run, tagged **Carried forward**, so they read differently from links you add in this review;
+- the interface of each test case in the reconciliation list;
+- the software items the comparison was made against;
+- when approval is blocked because coverage is incomplete, the names of the test cases that lack traceability, up to five and then "and N more".
+
+**Accept all** and **Reject all** in the rename and move card, and **Acknowledge all** in the removed banner, apply a decision to every pending test case at once. Your rejections and acknowledgements are saved, so they are still there after a refresh.
+
+## Approving a report
+
+Approving a report needs write access to Verification and the Admin or QA role.
+
+Approving a report now also approves every automated test case that ran in it and is not already approved or retired. A deprecated test case that reappears is revived. Test cases you acknowledged as removed are retired.
+
+**Reversing** an approval undoes exactly those changes: each test case returns to the status it had before. The confirmation lists the affected test cases and the status each one returns to.

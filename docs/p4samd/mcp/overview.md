@@ -17,6 +17,9 @@ Once connected, an assistant can:
 - Draft new requirements, risks or test cases for your review.
 - Inspect traceability coverage (for example which requirements are untested or which risks are unmitigated) and propose fixes.
 - Read and update text-based design files (Markdown, JSON, XML, drawio) attached to a software item.
+- Write manual tests, send them for approval, assign executions to testers and record step results.
+- Configure automatic test acquisition for integration and system testing, and trigger a pull.
+- Author, publish and generate Documentation Engine templates. The assistant can read the template authoring guide and the list of available fields and variables. New templates are created as drafts until you publish them.
 - Deprecate a requirement, add a control measure to a risk, or link two work items together.
 
 ## Permissions and audit
