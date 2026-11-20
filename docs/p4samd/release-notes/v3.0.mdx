@@ -10,7 +10,32 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## November 2026 (v3.7.6 to v3.9.0)
+## November 2026 (v3.7.6 to v3.9.1)
+
+### P4SaMD v3.9.1, 20 November 2026 (patch)
+
+A patch release that lets you choose which branch or tag of a Git repository Brownfield analyses, instead of always using the default branch. See [Brownfield Import Wizard](../handbook/brownfield/import-wizard.mdx).
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Brownfield Import",
+    newFeatures: [
+      "Choose the branch or tag to analyse. When you add a Git repository in the Technical Assets step, a Branch or tag field lists the branches and tags of the repository, with the default branch preselected and marked as the default.",
+      "Paste a link that points straight at a branch or tag and the repository address and the branch or tag are both filled in for you, instead of the link being rejected or treated as a plain repository address.",
+      "Change the branch or tag of a source you already added, until the assessment starts evaluating. After that the source is locked.",
+      "Source rows in the Technical Assets step and in the Summary show the branch or tag used, together with the commit it was taken from.",
+    ],
+    improvements: [
+      "When the list of branches and tags cannot be loaded, the reason is shown next to the field, with an Update token action when the access token was rejected and a Reload action. You can still add the source by typing the branch or tag name, so a failed listing never blocks you.",
+      "A branch or tag that has been deleted since you chose it is reported on the Branch or tag field, not as an access token problem.",
+      "Typing in the access token field no longer moves the cursor away while the repository is being checked.",
+    ],
+  },
+]} />
+
+#### Upgrade notes
+
+- No action is required. Sources added before this release keep following the default branch of their repository, so existing assessments behave as before.
 
 ### P4SaMD v3.9.0, 19 November 2026
 

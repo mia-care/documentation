@@ -73,6 +73,22 @@ Upload the technical artifacts that make up your software product. Assign an **a
 
 Supported upload formats: `.zip`, `.tar.gz`, `.json`, `.yaml`, `.toml`, `.lock`.
 
+**Choosing a branch or tag.** By default P4SaMD analyses the default branch of a repository. To analyse another branch or a tag, for example a release you certified, choose it when you add the source.
+
+1. Enter the repository address and your access token if the repository is private. P4SaMD checks that it can reach the repository.
+2. Open the **Branch or tag** field. It lists the branches and tags of the repository, with the default branch preselected and marked as the default.
+3. Select the branch or tag you want to analyse, then add the source.
+
+Keep the default branch selected and the source keeps following it, so it always analyses the latest default branch when the evaluation runs. Sources added before this option existed behave this way, so existing assessments are unchanged.
+
+You can also paste a link that points straight at a branch or tag, as copied from your Git hosting service. P4SaMD fills in both the repository address and the branch or tag for you. If it cannot confirm which branch or tag the link names, the message appears on the repository address field.
+
+If the list of branches and tags cannot be loaded, the reason is shown next to the field. When the access token was rejected, choose **Update token** and try again. Otherwise choose **Reload** to retry. You can always type the branch or tag name by hand, so a failed listing never prevents you from adding the source. If the name you typed, or a branch or tag you selected earlier, no longer exists in the repository, the message appears on the **Branch or tag** field and not on the access token field.
+
+To change the branch or tag of a source you already added, edit the source and choose another one. You can do this until the assessment starts evaluating. After that, the source is locked so that the results always match what was analysed.
+
+Each source row in this step and in the **Summary** step shows the branch or tag used, together with the short identifier of the commit it was taken from.
+
 **How a Git repository is read.** P4SaMD does not send a whole repository to the evaluation. It sorts every file into one of three groups and records the reason:
 
 - **Kept**: files read in full as evidence. These are application code in areas that matter for compliance (logging and audit, human oversight, AI pipeline, user-facing text, authentication and security, consent and retention, monitoring, error handling, configuration), the data model, CI and deployment files, and the main build and dependency files.
@@ -104,7 +120,7 @@ Supported file formats: PDF, Word (`.docx`), Markdown, plain text.
 
 <Step number={6} icon="✅" title="Summary & Submit">
 
-Review everything you have provided: the use case, target definition, uploaded technical assets, and uploaded documents. To correct anything, use the **Back** button to return to the relevant step.
+Review everything you have provided: the use case, target definition, uploaded technical assets, and uploaded documents. For each Git repository, the Summary shows the branch or tag and the commit it was taken from. To correct anything, use the **Back** button to return to the relevant step.
 
 Click **Submit for Evaluation**. P4SaMD begins processing your uploaded materials immediately.
 
