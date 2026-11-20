@@ -10,7 +10,108 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## November 2026 (v3.7.6 to v3.8.1)
+## November 2026 (v3.7.6 to v3.9.0)
+
+### P4SaMD v3.9.0, 19 November 2026
+
+This release adds Manual Test Management, integration and system testing across the whole Verification area, a risk scale you define for each product, and three new compliance frameworks for gap analysis. It also makes large document imports and verification lists more reliable and faster.
+
+<FeatureGrid>
+
+<FeatureBox icon="🧪" title="Manual Test Management">
+
+Write manual tests with ordered steps, get them approved, assign executions to testers and keep the evidence of every run. See [Manual Test Management](../handbook/manual_test_management.md).
+
+</FeatureBox>
+
+<FeatureBox icon="🔗" title="Integration and system testing">
+
+Verification now works at unit, integration and system level, with test sources connected to your repositories, on-demand fetch, remote runs and push delivery.
+
+</FeatureBox>
+
+<FeatureBox icon="⚖️" title="A risk scale you define">
+
+Choose 2 to 10 severity and probability levels per product, with your own names and matrix zones. See [Risk Management](../handbook/risks.md#risk-scale).
+
+</FeatureBox>
+
+<FeatureBox icon="📜" title="Three new frameworks">
+
+Assess gaps against EU IVDR 2017/746, ISO 13485:2016 and IEC 81001-5-1:2021, alongside MDR and the AI Act.
+
+</FeatureBox>
+
+</FeatureGrid>
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Verification",
+    newFeatures: [
+      "Manual Test Management. Write a manual test with preconditions, environment, conditions and ordered steps, with an action and an expected result for each. Send it to a named approver, who approves it or rejects it with a reason. Deprecate a test with a rationale and an impact analysis, and run lifecycle actions on several tests at once from the test list.",
+      "Assign executions of an approved manual test to testers, one per interface, with an optional due date. The executor records each step as Pass, Fail, Blocked or Not executed, in bulk or with the P, F, B and N keys, fills in the conditions actually used, attaches evidence and anomalies, and completes the run with a result derived from the steps.",
+      "Executions keep the test revision they ran against, can be rerun, and appear in an execution history on the test case. A new Manual executions view lists them, the test list shows executors and the last valid result, and the history can be downloaded.",
+      "Integration and system testing. The whole Verification area now works at integration and system level, not only unit: By Report, All Tests and Test Source views at every level, per-level reports and dashboard figures, and manual uploads that let you choose the level.",
+      "Test sources for integration and system level connect a repository to a set of software items and an interface. Fetch the latest results on demand, start a run remotely with Run now, or let your pipeline push the report to P4SaMD with a secret you can rotate.",
+      "A new Automatic executions view lists every acquisition attempt with its status, elapsed time and a Retry action. When several runs finished since the last pull, they are imported in order.",
+      "Several report files in one CI artifact are now combined into a single report instead of only the first one being read. The report shows how many documents were merged.",
+      "Traceability review for each integration or system run: carried-forward links are tagged, the interface of each test case is shown, and a blocked approval names the test cases that lack coverage. Accept all, Reject all and Acknowledge all apply a decision to every pending test case, and your decisions are saved.",
+      "Tests can carry a test type, either a predefined one or your own label, and the test list can be filtered by type.",
+    ],
+    improvements: [
+      "Opening, paging and filtering the test report list is quicker on large projects.",
+      "The interface of a test is now a free-text label of up to 64 characters instead of a fixed list.",
+      "Approving a test report now also approves the automated test cases that ran in it and retires the ones you acknowledged as removed. Reversing an approval returns each test case to the status it had before, and the confirmation lists them.",
+      "Approving a report needs write access to Verification and the Admin or QA role.",
+      "The Verification addresses now include the test level. Older links keep working.",
+      "Creating a test case requires the QA role or higher. The step and execution result formerly called Not run is now called Not executed.",
+    ],
+  },
+  {
+    name: "Risk Management",
+    newFeatures: [
+      "Define the risk scale of each product: 2 to 10 severity levels and 2 to 10 probability levels, with your own level names and the zone of every matrix cell. Changing the scale shows which risks move, highlights the ones that get worse and asks for a rationale. Every change is recorded in the product History.",
+      "Every risk form, matrix, badge and filter now follows the product's scale. A released risk whose stored values fall outside the current scale keeps its values and is marked as outside the scale.",
+    ],
+    improvements: [
+      "A severity or probability outside the product's scale is refused with a message that names the allowed levels, also during CSV import.",
+    ],
+  },
+  {
+    name: "Brownfield Import",
+    newFeatures: [
+      "Three new frameworks for gap analysis: EU IVDR 2017/746, ISO 13485:2016 and IEC 81001-5-1:2021. See [Regulatory Coverage](../regulatory-coverage.md).",
+      "EU MDR classification now proposes the class that Rule 11 gives your software and flags a mismatch with the class you declared.",
+    ],
+    improvements: [
+      "Long and complex PDF documents are read in parts and reassembled instead of failing partway through, and a brief outage of the extraction step no longer fails the import.",
+      "Gap analysis results on very long answers are retried once before the check is reported as failed.",
+    ],
+    bugFixes: [
+      "Older Brownfield sessions that selected a framework now show and evaluate that framework again.",
+    ],
+  },
+  {
+    name: "Whisper AI Assistant",
+    newFeatures: [
+      "Document templates from your AI assistant. The Documentation Engine can be driven by an assistant: write, publish and generate templates, with the authoring guide and the available fields built in.",
+      "An assistant can also write and approve manual tests, assign and record executions, and configure automatic test acquisition. The assistant in the chat never handles delivery secrets for you.",
+    ],
+  },
+]} />
+
+#### For developers
+
+- The MCP tool catalog is consolidated: related tools are merged, for example one tool now saves a test source and one tool manages its push delivery. Review the tool list of your client after upgrading.
+- Error responses of the test case and execution tools now use the standard invalid-parameter error with the reason in its data, instead of an internal error.
+- Reconciliation decisions on a report diff now take several items per request. Clients of the single-pair confirmation must send the new format.
+- Manual step and execution results use the value Not executed instead of Not run.
+
+#### Upgrade notes
+
+- **Report approval changes.** Approving a test report now approves all automated test cases that ran in it, not only the new ones, and retires the removed ones you acknowledged. Reversing an approval restores each test case to its previous status. Review your approval process if you relied on the previous behavior.
+- **Who can create tests.** Viewers can no longer create test cases. The QA role or higher is required.
+- Existing risks, test cases and test sources keep their data.
 
 ### P4SaMD v3.8.1, 11 November 2026 (patch)
 

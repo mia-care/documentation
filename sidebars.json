@@ -97,8 +97,13 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/manual_test_management",
+          "label": "Manual Test Management",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/handbook/unit_test_acquisition",
-          "label": "Automatic Test Acquisition",
+          "label": "Test Levels & Acquisition",
           "type": "doc"
         },
         {
