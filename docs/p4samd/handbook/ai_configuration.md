@@ -94,9 +94,13 @@ We strongly recommend configuring **spend limits or budget alerts directly with 
 
 ### Recommended models
 
-For the **Evaluation** workload, we recommend a **low-cost, fast model**, such as **Claude Haiku 4.5** or an equivalent lightweight tier from another provider. In our internal testing, larger and more expensive models did not produce significantly better results when applying compliance policies, so the cost/quality trade-off generally favors the smaller model for this workload.
+We recommend **current-generation, general-purpose lightweight models from frontier providers**, such as **Claude Haiku 5.5**, **GPT-6-Terra** or an equivalent tier from another provider. What we observed in our testing and in customer deployments:
 
-Contact us for more detailed guidance on which models we recommend and how they perform for your use case.
+- **Larger models do not pay off.** More powerful and more expensive models did not show a meaningful improvement in quality when applying compliance policies, so the lightweight model gives the best cost/quality trade-off.
+- **Task-specific models perform poorly.** Models tuned for a narrow task, such as coding models, are not suited to the general-purpose, regulatory and legal reasoning that P4SaMD relies on. In one customer deployment, the model provided was a coding variant (a "-Codex" model), and the quality of the results was clearly lower than with a general-purpose lightweight model.
+- **Old models perform poorly.** Models from earlier generations give noticeably weaker results, even if they were top-tier when they were released.
+
+For more information on which models we recommend and how they perform for your use case, contact the Mia-Care team.
 
 ## How this powers Whisper
 
