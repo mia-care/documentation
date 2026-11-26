@@ -1,0 +1,138 @@
+---
+id: alm-tools
+title: Working with P4SaMD and Your ALM
+sidebar_label: P4SaMD and ALMs
+slug: alm-tools
+---
+
+import { NextSteps } from '@site/src/components/StepGuide';
+
+Some organizations manage regulated development in a full Application Lifecycle Management (ALM) tool, such as Polarion, Codebeamer, Jama Connect or Helix ALM. Unlike a work tracker, an ALM already holds requirements, risks, tests, traceability and baselines as controlled records, often validated as part of the organization's quality management system.
+
+This page explains how P4SaMD works next to an ALM, what each tool owns, and how to keep them in sync.
+
+:::tip Using Jira?
+Jira and similar work trackers plan and track work, but do not manage controlled records. If your team plans its work in Jira, see [Working with P4SaMD and Jira](./jira.mdx).
+:::
+
+## The short version
+
+- **The ALM and P4SaMD overlap more than Jira and P4SaMD do.** Both can hold requirements, risks and tests, so decide once which tool is the system of record for each item type, and never edit the same item in both.
+- **P4SaMD syncs with your ALM in two ways:** through the APIs of the two tools, or through an AI agent connected to both.
+- **P4SaMD adds value where an ALM stays generic about software:** the software part of the device, evidence retrieved from code and CI, alignment between what is approved and what is implemented, and AI in medical devices.
+
+## What an ALM already covers
+
+An ALM is built for controlled, cross-discipline development. It is usually strong at:
+
+- system and product requirements, across hardware, software and mechanical parts;
+- device-level risk analysis;
+- test management for system verification and validation;
+- traceability, approval workflows, electronic signatures and baselines;
+- the Design History File for the whole device.
+
+If your ALM is validated and your teams rely on it, P4SaMD does not ask you to move these records.
+
+## What P4SaMD adds on top of an ALM
+
+An ALM manages documents and items, but it does not know the software: it cannot see the code, the pipeline, the dependencies or the AI components. That is where P4SaMD adds value.
+
+### The software part of the device
+
+P4SaMD has a native IEC 62304 data model for the software:
+
+- [software items](../handbook/sbom.md) with their safety class, SOUP and the SBOM of each item;
+- software architecture and design files, linked to the requirements they implement;
+- [software risks](../handbook/risks.md) and their control measures, linked to the device-level risk analysis in the ALM;
+- [system versions](../handbook/version_management.mdx) that baseline the software for each release;
+- [generated software documentation](../handbook/documentation_hub.md) that always reflects the current data.
+
+### Evidence retrieval
+
+P4SaMD collects evidence directly from the development toolchain, instead of asking engineers to attach it by hand:
+
+- [automated test results](../handbook/unit_test_acquisition.md) ingested from your CI pipelines;
+- SBOM and SOUP information collected from your repositories;
+- links between requirements, commits and pull requests from your Git provider.
+
+The evidence is linked to the requirements and risks it verifies, so coverage gaps are visible during development, not at release time.
+
+### Implementation alignment
+
+An ALM can show that a requirement was approved. P4SaMD helps show that the code actually implements it:
+
+- AI coding assistants connected through the [P4SaMD MCP server](../mcp/overview.md) read the approved requirements, design and risk controls before they write code, and report traceability back to P4SaMD;
+- every change an assistant makes runs with the user's account and is recorded in the audit trail;
+- for existing code, the [Brownfield Analysis](../handbook/brownfield/overview.mdx) compares what is implemented with what is documented and produces a gap analysis and a remediation plan.
+
+### AI in medical devices
+
+When the device includes AI, P4SaMD classifies AI-based software items in the architecture and covers the obligations of the EU AI Act next to IEC 62304, ISO 14971 and the MDR (see [Regulatory Coverage](../regulatory-coverage.md)). The same governance applies to the AI assistants your team uses to build the device.
+
+## How the responsibilities are split
+
+The split below is a common starting point. Agree on it with your quality and development leads and record it in your Software Development Plan.
+
+| Topic | Typical system of record | What the other tool holds |
+|---|---|---|
+| System and product requirements | ALM | P4SaMD: a synchronized copy, with the ALM ID, used for traceability |
+| Software requirements | ALM or P4SaMD, choose one | The other tool: a synchronized copy with the owner's ID |
+| Device-level risk analysis | ALM | P4SaMD: software risks and control measures linked to it |
+| Software risks and control measures | P4SaMD | ALM: a reference, if your risk file needs it |
+| Software architecture, software items, SOUP, SBOM | P4SaMD | ALM: nothing, or the generated documents |
+| Software test evidence (unit and integration, from CI) | P4SaMD | ALM: test results synchronized, if your process needs them there |
+| System verification and validation | ALM | P4SaMD: nothing |
+| Release baseline | ALM for the device, P4SaMD for the software | Each baseline references the other |
+| Software regulatory documents | P4SaMD (Documentation Hub) | ALM: the generated documents, attached to the Design History File |
+
+The resulting traceability chain is:
+
+```text
+System / product requirement (ALM)
+  └─ Software requirement (ALM or P4SaMD)  ─── linked to software risks, items and tests in P4SaMD
+       └─ Code, commits and pull requests  ─── checked and evidenced by P4SaMD
+            └─ Test evidence from CI (P4SaMD)  ─── synchronized back to the ALM if needed
+```
+
+## Keeping the ALM and P4SaMD in sync
+
+There is no built-in connector to configure: synchronization runs through the APIs or an AI agent. Both approaches use the same join keys (the ALM ID and the P4SaMD ID) and the same ownership rules.
+
+### Through the APIs
+
+Teams with integration tooling can script the synchronization between the P4SaMD APIs and the ALM's REST API. This suits high volumes and mappings that must behave the same way every time. A typical job:
+
+1. Reads the items the ALM owns and creates or updates their copies in P4SaMD, keeping the ALM ID.
+2. Reads the items P4SaMD owns, such as test evidence and software risk status, and writes them back to the ALM where your process needs them.
+3. Reports conflicts, such as an item changed on the side that does not own it, for a person to resolve.
+
+Contact Mia-Care to discuss the integration options available for your deployment.
+
+### Through an AI agent
+
+P4SaMD exposes an [MCP server](../mcp/overview.md). With an AI assistant connected to P4SaMD and to your ALM (through the ALM's MCP server or its API), one agent can read both sides and propose the updates in plain language, for example:
+
+> Compare the Software Requirements in Polarion project "CardioWatch" with P4SaMD project "CardioWatch". List requirements missing on either side and items whose content or status differs. Update the P4SaMD copies of the items Polarion owns, and list the test results in P4SaMD that are not yet reflected in Polarion.
+
+Every change the agent makes in P4SaMD runs with your own account, is limited by your role and is recorded in the audit trail as your action. Review each write before it is applied (see [Permissions and audit](../mcp/overview.md#permissions-and-audit)). A team can also save the prompt and run it as a scheduled job, applying only the mechanical changes and reporting anything that needs a human decision.
+
+### Rules that keep the two sides aligned
+
+- **One owner per item type.** An item is created and changed only in its system of record. The copy in the other tool is updated by the synchronization, never edited by hand.
+- **Stable identifiers.** Keep the ALM ID on every item copied into P4SaMD, and the P4SaMD ID on every item copied into the ALM. Never reuse or renumber an ID that has been referenced.
+- **Deprecate, do not delete.** Retire items with a justification in their system of record, so the history stays auditable on both sides.
+- **Baselines reference each other.** When you freeze a software release in P4SaMD, record the system version in the device baseline in the ALM.
+- **Reconcile on a schedule.** Run the synchronization regularly and always before a release or an audit.
+
+## Benefits of this model
+
+- **No change to a validated ALM:** device-level records, workflows and signatures stay where they are.
+- **Software evidence without manual work:** test results, SBOM and traceability to code come from the toolchain, not from attachments.
+- **Confidence that the code matches the approved design:** implementation alignment is checked during development, not reconstructed before an audit.
+- **AI covered from the start:** AI components in the device and AI assistants in the development process are governed in the same place.
+
+<NextSteps items={[
+  { icon: '🧩', label: 'Model your software items', to: '../../handbook/sbom' },
+  { icon: '🔌', label: 'Connect an AI assistant (MCP)', to: '../../mcp/setup' },
+  { icon: '🧪', label: 'Collect automated test evidence', to: '../../handbook/unit_test_acquisition' },
+]} />

@@ -41,7 +41,7 @@ Each workload shows its current status (**Configured** or **Not configured**) an
 
 ### Supported providers
 
-The settings page lists four providers, but not every provider works for every workload yet:
+The settings page lists the following providers, but not every provider works for every workload yet:
 
 | Provider | Evaluation | Chat (Whisper) |
 |---|---|---|
@@ -49,8 +49,37 @@ The settings page lists four providers, but not every provider works for every w
 | **OpenAI** | Supported (GPT and o-series models) | Not supported |
 | **Azure OpenAI** | On request: contact us before configuring it | Not supported |
 | **Google Vertex AI** | Not supported | Not supported |
+| **OpenAI-compatible endpoint** | Supported, see [Using your own AI endpoint](#using-your-own-ai-endpoint) | Only by sharing the Evaluation configuration |
 
 If you use OpenAI for Evaluation, configure **Anthropic** for the Chat workload, and don't use **Use same configuration as Evaluation**.
+
+### Using your own AI endpoint
+
+If your organization reaches AI models through its own enterprise API gateway, choose the **OpenAI-compatible endpoint** provider for the Evaluation workload. P4SaMD then sends Evaluation requests to your gateway instead of to a provider directly. The endpoint must speak an OpenAI-style API.
+
+Fill in these fields:
+
+| Field | Description |
+|---|---|
+| **API Base URL** | The address of your gateway. It must start with `https://`. It cannot contain a user name, a query string or a fragment. |
+| **Model** | The name of the model or deployment, typed as free text. P4SaMD does not fetch a model list from this kind of endpoint. |
+| **Auth header** | How the key is sent. **Authorization (Bearer token)** is the default. Choose **api-key** if your gateway expects the key in an `api-key` header. |
+| **Wire API** | The API your gateway serves: **Chat completions** (the default) or **Responses**. Keep Chat completions unless the gateway offers only the Responses API. |
+| **API Key** | The credential for your gateway. |
+
+The **api-key** header works only with the Responses API, so choosing it fixes the Wire API to **Responses** and requires a base URL that ends in `/openai/v1`.
+
+When you save, P4SaMD sends one minimal request to your endpoint to check the key, the header and the address. A rejected key is reported on the spot. If the endpoint cannot be checked at that moment, the configuration is saved and a warning tells you it was not verified. Check the endpoint if Evaluation does not work.
+
+A few rules apply:
+
+- If you switch an existing provider to or from **OpenAI-compatible endpoint**, enter the API key again. A stored key never moves to a different kind of provider.
+- An endpoint that sits on a private network address is refused unless your P4SaMD administrator has approved its host. Ask your administrator if you need this.
+- Your gateway key is stored encrypted, like every other provider key.
+
+#### Sharing the endpoint with Chat
+
+You cannot configure an OpenAI-compatible endpoint for Chat on its own. To let Whisper use it, open the **Chat** workload and choose **Use same configuration as Evaluation**. While Chat shares the endpoint, you cannot change or remove the Evaluation provider. Switch Chat to another provider first.
 
 :::info Credential security
 API keys are stored **encrypted at rest (AES-256-GCM)** in the database. They are never returned to the browser; the configuration form only indicates whether a key is currently stored. As of v3.3, every AI-powered evaluation workload (Requirement Quality Score, Brownfield analysis, and Whisper compliance suggestions) uses your organization's own configured **Evaluation** credentials end to end for every request.

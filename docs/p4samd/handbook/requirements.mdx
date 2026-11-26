@@ -14,6 +14,19 @@ Switch between two views with the toggle at the top of the list. The **tree view
 
 Each requirement carries a set of standard fields: an auto-generated **ID**, a **title** and **description**, a **type** (Functional, Non-Functional, or Interface), a **priority** (Must, Should, Could), and a **status** that progresses through the lifecycle. You can also assign a **level** (System or Software) to support IEC 62304 V-model traceability. Further fields are an **assignee**, **labels** for grouping, **acceptance criteria**, and an optional mockup reference.
 
+### External Key
+
+If a requirement already has an ID in your own system or documentation, for example a number from a specification or from another tool, you can record it in the optional **External Key** field. The External Key is shown next to the P4SaMD ID, on the requirement list and in the header of the detail view, so you can recognize the requirement by either name. It never replaces the P4SaMD ID.
+
+To set it, type the value in the **External Key** field of the create or edit form, or in the **Details** tab of the requirement. Clear the field to remove it. The **History** tab lists every change to it.
+
+- An External Key can have up to 100 characters. Spaces at the start and end are removed.
+- It must be unique within the version. Uppercase and lowercase letters are treated as the same, so `SPEC-12` and `spec-12` cannot both be used. If the value is already taken, P4SaMD tells you which requirement holds it.
+- Sections do not have an External Key.
+- Changing the External Key does not change the quality score of the requirement.
+
+The External Key is searchable, so typing it in the search bar finds the requirement. It is also carried through [CSV import and export](#csv-import), shown in the [Traceability Matrix](./documentation_hub.md#traceability-matrix) and available to [document templates](./documentation_hub.md#generating-documents).
+
 ## Creating Requirements
 
 To add a new requirement, click **+ New Requirement** at the top of the list, or right-click a section in tree view and choose **Add requirement**. Fill in at minimum a title and a type, then save. New requirements are created in **Draft** status.
@@ -34,13 +47,22 @@ P4SaMD maintains bidirectional traceability automatically. The requirement detai
 
 ## Searching, Filtering, and Bulk Actions
 
-Use the search bar to find requirements by title or ID. The filter panel narrows by type, status, quality level, and assignee. For large projects, the flat view with filters is the fastest way to work through a backlog.
+Use the search bar to find requirements by title, ID or External Key. The filter panel narrows by type, status, quality level, and assignee. For large projects, the flat view with filters is the fastest way to work through a backlog.
 
-You can also **import** requirements from a CSV file, for example when migrating from an external ALM tool or loading a pre-existing requirement set. **Export** the full list in standard formats for use outside P4SaMD.
+You can also **import** requirements from a CSV file, for example when migrating from an external ALM tool or loading a pre-existing requirement set. **Export** the full list in standard formats for use outside P4SaMD. The CSV and JSON exports include the External Key.
 
 ### CSV Import
 
 Each row of a CSV import is validated individually. Valid rows are imported and errors are reported for the rejected ones, so you do not need to fix everything before any requirements are created. Error details are shown per row, so you can correct and re-import only the failed entries.
+
+The import template has an optional `external_key` column after the title. Use it to bring the IDs your requirements already have in another system. A row is rejected if its External Key is not valid, if the version already holds it, or if the same value appears on more than one row of the file. In the last case every row that shares the value is rejected, so you can decide which one keeps it.
+
+When the import finishes, the dialog tells you how many rows were imported, for example "8 of 10 row(s) imported", and lists everything it left out as warnings:
+
+- **Ignored columns**: every column header the import does not read. A file with a column that has an older or different name, for example `external_id`, is flagged here instead of the column being dropped without a word. Rename the column to `external_key` and import again.
+- **External Key on a section**: sections cannot hold an External Key, so the value on a section row is not stored.
+
+The dialog closes by itself only when the import has no errors and no warnings. Otherwise it stays open so you can read them.
 
 ## Quality Assessment
 
