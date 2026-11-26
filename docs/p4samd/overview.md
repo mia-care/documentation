@@ -71,7 +71,7 @@ All three deployment models provide the same feature set.
 
 - **Git providers**: GitHub, GitLab (for source control and automated evidence collection)
 - **CI/CD**: Jenkins, GitHub Actions, GitLab CI (for automated test result ingestion)
-- **ALM tools**: Jira and others, no longer mandatory. Keep backlog and sprints in your ALM and SDLC governance in P4SaMD; P4SaMD does not ship a built-in ALM connector. See [Working with P4SaMD and Your ALM Tool](./ways-of-working/alm-tools.mdx)
+- **Work trackers and ALM tools**: no longer mandatory. With Jira or a similar work tracker, keep backlog and sprints there and SDLC governance in P4SaMD; see [Working with P4SaMD and Jira](./ways-of-working/jira.mdx). With a full ALM (for example Polarion, Codebeamer or Jama Connect), P4SaMD syncs with it through the APIs or an AI agent and covers the software side; see [Working with P4SaMD and Your ALM](./ways-of-working/alm-tools.mdx)
 - **eQMS systems**: connect to your quality management system for document access
 
 ## Next Steps

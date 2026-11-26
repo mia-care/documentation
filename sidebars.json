@@ -15,8 +15,13 @@
       "type": "category",
       "items": [
         {
+          "id": "p4samd/ways-of-working/jira",
+          "label": "P4SaMD and Jira",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/ways-of-working/alm-tools",
-          "label": "P4SaMD and Jira (or Other ALMs)",
+          "label": "P4SaMD and ALMs",
           "type": "doc"
         }
       ]
