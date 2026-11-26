@@ -102,6 +102,11 @@
           "type": "doc"
         },
         {
+          "id": "p4samd/handbook/software_item_lifecycle",
+          "label": "Software Item Lifecycle",
+          "type": "doc"
+        },
+        {
           "id": "p4samd/handbook/manual_test_management",
           "label": "Manual Test Management",
           "type": "doc"

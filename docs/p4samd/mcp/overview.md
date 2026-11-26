@@ -20,6 +20,8 @@ Once connected, an assistant can:
 - Write manual tests, send them for approval, assign executions to testers and record step results.
 - Configure automatic test acquisition for integration and system testing, and trigger a pull.
 - Author, publish and generate Documentation Engine templates. The assistant can read the template authoring guide and the list of available fields and variables. New templates are created as drafts until you publish them.
+- Review and update a product's risk scale, after previewing which risks the change would affect.
+- Export the full Traceability Matrix of a project to the Documentation Hub.
 - Deprecate a requirement, add a control measure to a risk, or link two work items together.
 
 ## Permissions and audit
@@ -41,10 +43,10 @@ The tables below list the tools the P4SaMD MCP server exposes, grouped by area. 
 | Tool | Description |
 |---|---|
 | `list_projects` | List the projects you have access to in the current organization. |
-| `list_requirements` | Browse and filter a project's requirements by level, status or free-text search. |
-| `get_requirement` | Retrieve one requirement in full, including its description, acceptance criteria and links. |
-| `create_requirement` | Create a requirement, with title, description, level (Users, System or Software), type, priority and labels. Requires the Tech Team role or higher. |
-| `update_requirement` | Change one or more fields of an existing requirement. Not permitted on a deprecated requirement or one belonging to a released version. |
+| `list_requirements` | Browse and filter a project's requirements by level, status or free-text search. The search also matches the External Key. |
+| `get_requirement` | Retrieve one requirement in full, including its description, acceptance criteria, External Key and links. |
+| `create_requirement` | Create a requirement, with title, description, level (Users, System or Software), type, priority, labels and an optional External Key. Requires the Tech Team role or higher. |
+| `update_requirement` | Change one or more fields of an existing requirement, including its External Key (send an empty value to clear it). Not permitted on a deprecated requirement or one belonging to a released version. |
 | `deprecate_requirement` | Retire a requirement. An explanation is mandatory and is recorded in the audit trail. Only Approved or Verified requirements can be deprecated. |
 | `delete_requirement` | Permanently remove a **Draft** requirement or section that has no links and no child items. This is a hard delete and cannot be undone. |
 | `create_section` | Add a grouping heading to the requirements tree. |
@@ -55,7 +57,8 @@ The tables below list the tools the P4SaMD MCP server exposes, grouped by area. 
 
 | Tool | Description |
 |---|---|
-| `get_traceability_matrix` | Show every link attached to a risk or requirement. Use it to find untested requirements or unmitigated risks. |
+| `get_traceability_matrix` | Show every link attached to one risk or requirement. Use it to find untested requirements or unmitigated risks. |
+| `export_traceability_matrix` | Produce the Traceability Matrix of the whole project as a CSV file and record it in the Documentation Hub download history. The assistant gives you a link to download it from the Hub. |
 | `create_requirement_link` | Create a typed traceability link between two work items, for example a user requirement that satisfies a software requirement, or a test that verifies a requirement. |
 | `delete_requirement_link` | Remove a traceability link by its ID. |
 | `list_requirement_links` | List the traceability links attached to a work item, with optional direction and type filters. |
@@ -67,7 +70,10 @@ The tables below list the tools the P4SaMD MCP server exposes, grouped by area. 
 |---|---|
 | `list_risks` | Browse the risk register, with filters for status, harm category, severity, probability and risk level. |
 | `get_risk` | Retrieve one risk in full, including its control measures and its ISO 14971 initial and residual risk levels. |
-| `create_risk` | Create a risk, with hazard, harm, harm category, initial severity and initial probability. The initial risk level is calculated automatically. |
+| `get_risk_scale` | Read a product's risk scale: its severity and probability levels, the zone of every cell and any advisory warnings. Risks must use levels of this scale. |
+| `preview_risk_scale` | Preview a new risk scale without saving it, showing which risks would change level and which would get worse. Project Admin only. |
+| `update_risk_scale` | Save a new risk scale after its preview. The assistant must send the scale exactly as previewed and the number of affected risks the preview returned, so a scale previewed against outdated data is never saved. A rationale is required when the product has risks. Project Admin only. |
+| `create_risk` | Create a risk, with hazard, harm, harm category, initial severity and initial probability, using the levels of the product's risk scale. The initial risk level is calculated automatically. |
 | `update_risk` | Update a risk's fields, including the residual severity and probability after mitigation. Editing a risk on a released version requires an explanation. |
 | `create_control_measure` | Add a mitigation to a risk, optionally linking it to the requirements, tests or software items that implement it. |
 | `update_control_measure` | Change or re-link an existing control measure. |
@@ -77,6 +83,7 @@ The tables below list the tools the P4SaMD MCP server exposes, grouped by area. 
 | Tool | Description |
 |---|---|
 | `list_software_items` | Browse your software architecture as a tree or a flat list, covering systems, components, units and third-party (SOUP) dependencies. |
+| `list_software_item_tags` | List every tag in use on the project's software items, with how many items carry each. |
 | `get_software_item` | Retrieve one software item in full, including its safety classification and its linked requirements, risks and tests. |
 | `create_software_item` | Add an architecture component, unit or SOUP dependency. |
 | `update_software_item` | Change a software item's name, type, safety class or other fields. Editing an item on a released version requires an explanation. |
@@ -112,5 +119,51 @@ Only text-based design files (`.md`, `.txt`, `.json`, `.xml`, `.drawio`) can be 
 | Tool | Description |
 |---|---|
 | `list_test_cases` | Browse test cases (Unit, Integration, System or Acceptance), with filters for status, execution mode and others. |
-| `get_test_case` | Retrieve one test case in full, including its execution history and traceability links. |
-| `create_test_case` | Create a test case, optionally linking it in the same call to the requirements or risks it verifies. |
+| `get_test_case` | Retrieve one test case in full, including its execution history and traceability links. For a manual test, this includes its steps, test data and files. |
+| `save_test_case` | Create a test case, or update one. Links to requirements or risks can be created in the same call. A manual test can carry up to 50 interfaces by default. |
+| `delete_test_case` | Delete a test case. Its execution history and links are kept as evidence. The assistant must confirm the deletion. |
+
+### Manual tests
+
+| Tool | Description |
+|---|---|
+| `list_test_candidate_users` | List the project members who can approve a manual test or execute it. |
+| `set_test_case_status` | Move a manual test through its lifecycle: submit for approval, approve, reject or deprecate. Only the named approver can decide. |
+| `create_test_executions` | Assign executions of approved manual tests to testers, one per interface, or rerun a completed execution. |
+| `list_test_executions` | List manual test executions with their progress, results and due dates. |
+| `update_test_execution` | Change the due date or the conditions of an execution that is not completed yet. |
+| `get_next_test_execution` | Find the next execution assigned to you. |
+| `record_test_execution_step_results` | Record the result of one or more steps of an execution. Only the executor can record. |
+| `complete_test_execution` | Complete an execution. The result is derived from the steps. Notes are required unless every step passed. |
+| `upload_test_attachment` | Attach a file to an execution as evidence, or to a manual test as test data. |
+| `delete_test_attachment` | Remove such a file. |
+| `download_test_attachment` | Read a file attached to an execution or to a manual test. |
+
+### Automatic test acquisition
+
+| Tool | Description |
+|---|---|
+| `list_test_acquisition_sources` | List the sources that bring test reports into the project from your CI provider, at every test level. |
+| `save_test_acquisition_source` | Create a source, or replace the configuration of an existing one. |
+| `delete_test_acquisition_source` | Delete a source. The reports it already produced are kept. |
+| `set_test_acquisition_webhook` | Enable, rotate or disable the delivery secret that lets a pipeline push its results. |
+| `trigger_test_acquisition_source` | Fetch the latest test report of a source now. It never starts a CI run. |
+| `list_test_runs` | List the acquisition attempts of the project, newest first, to check that a delivery arrived. |
+
+### Document templates
+
+Template tools that change data need the organization **Admin** role.
+
+| Tool | Description |
+|---|---|
+| `list_document_templates` | List document templates. Admins also see drafts. |
+| `get_document_template` | Read one template. |
+| `get_template_authoring_reference` | Read the template writing guide, the categories and the fields a template can use. |
+| `save_document_template` | Create a draft template, or change a draft. |
+| `set_document_template_status` | Publish a draft so every member can generate documents from it, or withdraw a published template. |
+| `delete_document_template` | Delete a draft template. |
+| `save_template_category` | Create, rename or reorder a template category. |
+| `save_document_variable` | Register a document variable or change its label. |
+| `delete_document_registry_entry` | Delete a template category or a document variable. |
+| `list_document_generations` | List generated documents with their provenance. |
+| `generate_document` | Generate a document from a published template and give you a link to download it from the Documentation Hub. |

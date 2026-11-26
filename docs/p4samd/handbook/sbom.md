@@ -28,6 +28,17 @@ A scan can start in three ways:
 
 While a scan is running, the tab shows a **generating** status. If a scan does not report back within the expected window (for example after an interruption), P4SaMD detects and recovers it, so you can re-scan.
 
+### Scan warnings
+
+A scan can finish successfully and still not see your dependencies. When that happens, the SBOM tab shows a warning above the component table instead of an empty list that could be read as "no dependencies". The version selector marks any snapshot that carries a warning.
+
+- **No supported dependency manifest found**: the scan did not find any lockfile or dependency manifest that the scanner supports, so the SBOM lists no components. This does not mean your software has no dependencies. Commit the lockfile of your package manager, then re-scan.
+- **Gradle dependencies not scanned**: the scanner reads Gradle dependencies only from lockfiles, and one or more Gradle projects in the repository have none. The warning names the directories. Enable Gradle dependency locking and commit the lockfiles it writes, for example with `./gradlew dependencies --write-locks` for each project, then re-scan.
+
+If the repository cannot be changed, [upload an SBOM](#importing-an-sbom) generated outside P4SaMD instead.
+
+The scan itself still counts as completed, and a scheduled scan is not reported as failed.
+
 ## Browsing an SBOM
 
 Once a scan completes, the SBOM tab shows the **status** (not generated / generating / ready). From there you can:
@@ -78,7 +89,7 @@ Use it to see what changed across the whole product between two releases without
 
 ## Importing an SBOM
 
-If a software item can't be scanned automatically (no resolvable git reference), import an existing CycloneDX file for it instead. The **preview** step shows what will be recorded. Nothing is saved until you confirm.
+If a software item can't be scanned automatically (no resolvable git reference), or the scan cannot see its dependencies (see [Scan warnings](#scan-warnings)), import an existing CycloneDX file for it instead. The **preview** step shows what will be recorded. Nothing is saved until you confirm.
 
 ## Exporting
 

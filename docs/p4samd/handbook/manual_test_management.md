@@ -13,7 +13,7 @@ Not every check can be automated. **Manual Test Management** lets you write a ma
 1. Open **Verification**, choose the test level and click **Create Test**.
 2. In the **Identity** step, name the test and choose **Manual** as the execution mode.
 3. In the **Details** step, fill in the **Manual test setup** section: the preconditions, the environment, the test data, the test tools, the hardware and software configuration, and the pass criteria. All of these are optional.
-4. Choose the **Interface** or interfaces the test runs on, for example a web application or a command line. The list is fed by the interfaces already used in the project. Type a new label to add it to the list.
+4. Choose the **Interface** or interfaces the test runs on, for example a web application or a command line. The list is fed by the interfaces already used in the project. Type a new label to add it to the list. A test can use up to 50 interfaces by default, and each interface name can have up to 64 characters. Your administrator can change the limit for your installation. If a save goes over it, the Interface field says "You can select at most N interfaces". When a test has many interfaces, the picker and the **Test procedure** card show the first ones and collapse the rest into a **+N** chip, which opens the full list.
 5. In the **Config** step, add the ordered **steps**. Each step has one **action** and one **expected result**. A test can have up to 100 steps.
 6. Add test data as links (up to 20) or attachments (up to 10 files of 10 MB each), then save.
 

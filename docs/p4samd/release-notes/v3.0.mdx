@@ -10,7 +10,116 @@ import ReleaseNoteAccordion from '@site/src/components/ReleaseNoteAccordion';
 
 Releases are grouped by the month they shipped, newest first.
 
-## November 2026 (v3.7.6 to v3.9.1)
+## November 2026 (v3.7.6 to v3.10.0)
+
+### P4SaMD v3.10.0, 26 November 2026
+
+This release lets a requirement carry the ID it has in your own system, lets you run AI evaluation through your own enterprise API gateway, and adds the option to revoke the approval of a software item. It also makes document generation more reliable and tells you when an SBOM scan could not see your dependencies.
+
+<FeatureGrid>
+
+<FeatureBox icon="🔑" title="External Key on requirements">
+
+Record the ID a requirement already has in your own system or documents, next to its P4SaMD ID. It is searchable, travels through CSV import and export and appears in the Traceability Matrix. See [External Key](../handbook/requirements.mdx#external-key).
+
+</FeatureBox>
+
+<FeatureBox icon="🔌" title="Use your own AI endpoint">
+
+Run AI evaluation against an OpenAI-compatible endpoint behind your enterprise API gateway, and let Whisper share it. See [Using your own AI endpoint](../handbook/ai_configuration.md#using-your-own-ai-endpoint).
+
+</FeatureBox>
+
+<FeatureBox icon="↩️" title="Revoke a software item approval">
+
+Return an approved or verified software item to Draft, with a required reason kept in its history. See [Software Item Lifecycle](../handbook/software_item_lifecycle.md).
+
+</FeatureBox>
+
+<FeatureBox icon="⚠️" title="SBOM scan warnings">
+
+A scan that could not see your dependencies now says so, instead of showing an empty component list. See [Scan warnings](../handbook/sbom.md#scan-warnings).
+
+</FeatureBox>
+
+</FeatureGrid>
+
+<ReleaseNoteAccordion areas={[
+  {
+    name: "Requirements",
+    newFeatures: [
+      "External Key. A requirement can carry the ID it has in your own system or documentation. It is shown next to the P4SaMD ID in the requirement list and in the detail header, and writers can set, change or clear it in the create and edit form and in the Details tab. The value is unique within a version, ignoring uppercase and lowercase, and can have up to 100 characters. The History tab shows its changes.",
+      "The External Key is searchable from the requirement list, included in the CSV and JSON export, read from an optional external_key column of the CSV import, and shown in an External Key column after each requirement ID in the Traceability Matrix.",
+      "Document templates can use the External Key of a requirement, of its parent, of a link target and of the requirement behind a change request, next to the P4SaMD ID.",
+    ],
+    improvements: [
+      "The requirements import reports what it did. It shows how many rows were imported, for example 8 of 10, and lists everything it left out: the columns it does not read, and an External Key on a section row. The dialog closes by itself only when there are no errors and no warnings.",
+      "When several rows of a CSV file share the same External Key, every one of them is rejected, but a row that is rejected for another reason, such as a missing title, no longer makes the valid row that shares its key a duplicate.",
+    ],
+  },
+  {
+    name: "AI Configuration",
+    newFeatures: [
+      "A new OpenAI-compatible endpoint provider for the Evaluation workload. Enter the address of your enterprise API gateway, a model name, how the key is sent (Authorization bearer token or an api-key header) and the API your gateway serves (Chat completions or Responses). P4SaMD checks the endpoint with one minimal request when you save, and warns you when it could not be verified.",
+      "Whisper can use the same endpoint. On the Chat workload, Use same configuration as Evaluation is available when the Evaluation provider is an OpenAI-compatible endpoint. While Chat shares it, the Evaluation provider cannot be changed or removed.",
+    ],
+  },
+  {
+    name: "System Design",
+    newFeatures: [
+      "Revoke the approval of a software item. Revert to Draft returns an approved or verified item to Draft. A reason of at least 10 characters is required and is kept in the history of the item. Only members with the Admin role in the project can revoke an approval.",
+    ],
+  },
+  {
+    name: "SBOM",
+    newFeatures: [
+      "A warning when a scan found no supported dependency manifest, explaining that the empty SBOM does not mean the software has no dependencies.",
+      "A warning when Gradle projects have no lockfile, naming the directories and the two ways forward: commit the lockfiles, or upload an SBOM produced outside P4SaMD when the repository cannot be changed. The version selector marks the snapshots that carry a warning.",
+    ],
+  },
+  {
+    name: "Documentation Hub",
+    improvements: [
+      "Generating a document shows its progress: Preparing, Still preparing for a long document, and Ready, Downloading when the file starts to download.",
+      "When another document is already being prepared, you are told so and offered Try again, instead of waiting. A document that takes too long, and any other failure, each have their own message.",
+      "The built-in document templates no longer have the MDR- prefix in their name. For example, MDR-Software Test Plan is now Software Test Plan.",
+    ],
+    bugFixes: [
+      "Generating a large document no longer ends in a timeout. P4SaMD now gives the whole generation one time budget and answers within it.",
+    ],
+  },
+  {
+    name: "Verification",
+    improvements: [
+      "The limit of 20 interfaces on a manual test case is gone. The default is now 50, and your administrator can change it. A save over the limit shows how many interfaces are allowed.",
+      "Long lists of interfaces collapse. The Test procedure card shows up to two lines and a +N chip that opens the rest, and the Interface picker shows one line and a +N chip.",
+      "Adding an interface that is already selected no longer removes it.",
+    ],
+  },
+  {
+    name: "Whisper AI Assistant",
+    newFeatures: [
+      "An assistant can review and update the risk scale of a product. It previews which risks the change affects first, and the update is refused if the data changed since the preview. Project Admins only.",
+      "An assistant can export the full Traceability Matrix of a project to the Documentation Hub.",
+      "An assistant can set, change and clear the External Key of a requirement, and search by it.",
+    ],
+  },
+]} />
+
+#### For developers
+
+- The MCP tool catalog grows from 71 to 74 tools, adding `preview_risk_scale`, `update_risk_scale` and `export_traceability_matrix`. See the [MCP tool reference](../mcp/overview.md#tool-reference).
+- The MCP requirement tools accept and return an External Key. A value that is not text is now refused with an invalid-parameter error instead of being ignored.
+- The software item transition request accepts a new revoke action with a required rationale.
+- The SBOM scan results carry the new warnings in their notices list.
+
+#### Upgrade notes
+
+- **Deploy backend and frontend together.** The External Key, the OpenAI-compatible provider and the revoke action need both.
+- **Built-in templates are renamed.** The MDR- prefix is dropped from the names of the built-in document templates. Update any procedure, checklist or technical file index that refers to them by name.
+- **Revoking an approval is for project Admins.** The Revert to Draft action on a software item now needs a written reason and the Admin role in the project.
+- **Imports from older CSV files.** A column that is not read, for example an older name for the External Key, is now reported as a warning. Rename it to external_key to import it.
+- Existing requirements, software items and AI configuration keep their data.
 
 ### P4SaMD v3.9.1, 20 November 2026 (patch)
 
